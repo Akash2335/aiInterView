@@ -1,0 +1,604 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "How do you handle Lambda cold starts in production applications?",
+      "category": "serverless",
+      "answer": "Use provisioned concurrency for critical functions, optimize package size by tree-shaking dependencies, use ARM architecture for faster startup, avoid VPC when possible, implement async initialization patterns, and use warming techniques for high-traffic endpoints."
+    },
+    {
+      "id": 2,
+      "question": "What's the difference between ALB and API Gateway for REST APIs?",
+      "category": "api",
+      "answer": "ALB: Layer 7 load balancing, cheaper for high traffic, supports WebSocket, integrates with ECS/EC2. API Gateway: Full API management, request/response transformation, built-in caching, SDK generation, usage plans, Lambda integration. Choose ALB for simple routing, API Gateway for full API lifecycle management."
+    },
+    {
+      "id": 3,
+      "question": "How do you implement proper error handling in Step Functions?",
+      "category": "orchestration",
+      "answer": "Use Catch fields for error handling, implement retry policies with exponential backoff, use fallback states for graceful degradation, log errors to CloudWatch, implement dead-letter queues for unrecoverable errors, and use parallel states for independent error handling."
+    },
+    {
+      "id": 4,
+      "question": "What are DynamoDB best practices for single-table design?",
+      "category": "database",
+      "answer": "Design around access patterns first, use composite keys (PK/SK), implement GSIs for alternative queries, use sparse indexes, leverage transactions for atomic operations, implement TTL for data expiration, and use adaptive capacity for uneven workloads."
+    },
+    {
+      "id": 5,
+      "question": "How do you secure API Gateway endpoints with Cognito?",
+      "category": "security",
+      "answer": "Configure Cognito user pool as authorizer, implement custom scopes for fine-grained permissions, use Lambda authorizers for complex logic, enable CORS properly, implement rate limiting, and use WAF for additional protection against common threats."
+    },
+    {
+      "id": 6,
+      "question": "What's the difference between SQS Standard and FIFO queues?",
+      "category": "messaging",
+      "answer": "Standard: Higher throughput, at-least-once delivery, best-effort ordering. FIFO: Exactly-once processing, strict ordering, limited throughput. Use Standard for high-volume analytics, FIFO for transactional systems where order matters."
+    },
+    {
+      "id": 7,
+      "question": "How do you implement canary deployments for Lambda functions?",
+      "category": "deployment",
+      "answer": "Use CodeDeploy with traffic shifting, configure pre/post traffic hooks, monitor CloudWatch metrics during deployment, implement automatic rollback on errors, use weighted aliases for gradual traffic shift, and test with synthetic transactions."
+    },
+    {
+      "id": 8,
+      "question": "What are the trade-offs between AppSync and REST APIs?",
+      "category": "api",
+      "answer": "AppSync: Real-time subscriptions, offline support, automatic batching, GraphQL schema management. REST: Simpler caching, wider tooling support, easier debugging. Choose AppSync for real-time/mobile apps, REST for traditional web services."
+    },
+    {
+      "id": 9,
+      "question": "How do you handle database connections in Lambda functions?",
+      "category": "serverless",
+      "answer": "Use connection pooling outside handler, implement connection reuse across invocations, use RDS Proxy for MySQL/PostgreSQL, set proper timeout values, monitor connection counts, and implement circuit breaker patterns for database failures."
+    },
+    {
+      "id": 10,
+      "question": "What's the difference between CodeBuild and GitHub Actions?",
+      "category": "ci-cd",
+      "answer": "CodeBuild: Native AWS integration, managed build environment, seamless with CodePipeline. GitHub Actions: Tighter GitHub integration, larger community actions, multi-cloud support. Choose based on existing workflows and team preferences."
+    },
+    {
+      "id": 11,
+      "question": "How do you implement feature flags in serverless applications?",
+      "category": "development",
+      "answer": "Use AWS AppConfig for managed feature flags, store configuration in Parameter Store, implement gradual rollouts, use Lambda layers for shared flag logic, monitor feature usage with CloudWatch, and implement kill switches for critical features."
+    },
+    {
+      "id": 12,
+      "question": "What are ECS task definitions and when to use Fargate vs EC2?",
+      "category": "containers",
+      "answer": "Task definitions: Container blueprint with CPU/memory/network config. Fargate: Serverless, no cluster management, faster scaling. EC2: More control, cheaper for consistent workloads, custom AMIs. Choose Fargate for variable workloads, EC2 for predictable high-load."
+    },
+    {
+      "id": 13,
+      "question": "How do you handle secrets in Lambda functions securely?",
+      "category": "security",
+      "answer": "Use Secrets Manager for automatic rotation, access via IAM roles (never hardcode), cache secrets with TTL, use Parameter Store for non-rotating configs, implement secret versioning, and use KMS for encryption at rest."
+    },
+    {
+      "id": 14,
+      "question": "What's the difference between EventBridge and SNS for event-driven architecture?",
+      "category": "events",
+      "answer": "EventBridge: Schema registry, event filtering, cross-account events, scheduled events. SNS: Simple pub/sub, SMS/email notifications, raw message delivery. Use EventBridge for complex event routing, SNS for simple notifications."
+    },
+    {
+      "id": 15,
+      "question": "How do you implement distributed tracing in microservices?",
+      "category": "observability",
+      "answer": "Use AWS X-Ray for tracing, instrument Lambda functions and APIs, propagate trace headers between services, create service maps, analyze performance bottlenecks, and correlate logs with trace IDs for debugging."
+    },
+    {
+      "id": 16,
+      "question": "What are CloudFormation vs CDK vs Terraform differences?",
+      "category": "iac",
+      "answer": "CloudFormation: Native AWS, declarative YAML/JSON. CDK: Imperative programming languages, higher-level constructs. Terraform: Multi-cloud, provider ecosystem, state management. Choose based on team skills and multi-cloud requirements."
+    },
+    {
+      "id": 17,
+      "question": "How do you optimize Lambda function performance?",
+      "category": "performance",
+      "answer": "Right-size memory allocation (affects CPU), use ARM architecture, minimize deployment package, use layers for common dependencies, implement connection pooling, use async patterns, and monitor with CloudWatch Insights."
+    },
+    {
+      "id": 18,
+      "question": "What are the limitations of DynamoDB and when to choose alternatives?",
+      "category": "database",
+      "answer": "Limitations: Complex queries, item size limits, no native aggregation. Choose RDS for complex joins/transactions, Elasticsearch for full-text search, Redshift for analytics. Use DynamoDB Streams for real-time processing."
+    },
+    {
+      "id": 19,
+      "question": "How do you implement graceful shutdown in ECS tasks?",
+      "category": "containers",
+      "answer": "Use SIGTERM handling in application, configure ECS task stop timeout, implement health check endpoints, drain connections properly, complete in-flight requests, and use CloudWatch for monitoring shutdown behavior."
+    },
+    {
+      "id": 20,
+      "question": "What's the difference between KMS and CloudHSM?",
+      "category": "security",
+      "answer": "KMS: AWS-managed, integrated with most services, automatic key rotation. CloudHSM: Dedicated hardware, FIPS 140-2 Level 3, customer-managed keys. Use KMS for general encryption, CloudHSM for regulatory compliance."
+    },
+    {
+      "id": 21,
+      "question": "How do you handle file uploads to S3 from web applications?",
+      "category": "storage",
+      "answer": "Use S3 pre-signed URLs for direct uploads, implement multipart upload for large files, use S3 Transfer Acceleration for global users, validate file types server-side, set proper CORS policies, and use CloudFront for distribution."
+    },
+    {
+      "id": 22,
+      "question": "What are the best practices for VPC design?",
+      "category": "networking",
+      "answer": "Use multiple AZs for high availability, separate public/private subnets, use NAT Gateway for outbound traffic, implement VPC endpoints for AWS services, use security groups for instance-level security, and NACLs for subnet-level rules."
+    },
+    {
+      "id": 23,
+      "question": "How do you implement circuit breaker pattern in Lambda?",
+      "category": "resilience",
+      "answer": "Use DynamoDB for state storage, implement failure threshold tracking, use exponential backoff for retries, fallback to cached responses, monitor with CloudWatch alarms, and implement health check endpoints."
+    },
+    {
+      "id": 24,
+      "question": "What's the difference between CodeDeploy and Elastic Beanstalk deployments?",
+      "category": "deployment",
+      "answer": "CodeDeploy: Flexible deployment strategies, works with any compute platform. Elastic Beanstalk: Platform as a Service, simpler setup, managed platform updates. Choose CodeDeploy for custom orchestration, Beanstalk for rapid application deployment."
+    },
+    {
+      "id": 25,
+      "question": "How do you monitor Lambda function costs?",
+      "category": "cost-optimization",
+      "answer": "Use Cost Explorer with service breakdown, set CloudWatch alarms for invocation spikes, monitor concurrent executions, right-size memory allocation, use provisioned concurrency wisely, and implement usage tracking with tags."
+    },
+    {
+      "id": 26,
+      "question": "What are the security considerations for S3 pre-signed URLs?",
+      "category": "security",
+      "answer": "Set short expiration times, validate user permissions before generating URLs, use IAM conditions for additional restrictions, monitor URL usage with CloudTrail, implement bucket policies for additional protection, and rotate access keys regularly."
+    },
+    {
+      "id": 27,
+      "question": "How do you implement backpressure in event-driven systems?",
+      "category": "architecture",
+      "answer": "Use SQS visibility timeout, implement DLQ for failed messages, use Step Functions for workflow management, monitor queue depth with CloudWatch, implement auto-scaling based on queue size, and use batch processing in Lambda."
+    },
+    {
+      "id": 28,
+      "question": "What's the difference between Fargate Spot and Standard?",
+      "category": "containers",
+      "answer": "Fargate Spot: Up to 70% discount, interruptible workloads, good for batch processing. Fargate Standard: Reliable, guaranteed capacity, for production workloads. Use Spot for fault-tolerant workloads, Standard for critical services."
+    },
+    {
+      "id": 29,
+      "question": "How do you implement A/B testing in API Gateway?",
+      "category": "development",
+      "answer": "Use canary deployments with traffic shifting, implement feature flags with AppConfig, use Route 53 weighted routing, track metrics with CloudWatch, implement user segmentation, and analyze results with QuickSight."
+    },
+    {
+      "id": 30,
+      "question": "What are the considerations for multi-region deployments?",
+      "category": "architecture",
+      "answer": "Use Route 53 for DNS failover, implement cross-region replication for data, use Global Accelerator for performance, design for eventual consistency, implement disaster recovery procedures, and monitor costs across regions."
+    },
+    {
+      "id": 31,
+      "question": "How do you handle database migrations in RDS?",
+      "category": "database",
+      "answer": "Use blue-green deployments, create read replicas for minimal downtime, use Database Migration Service for large migrations, test thoroughly in staging, implement rollback procedures, and monitor performance during migration."
+    },
+    {
+      "id": 32,
+      "question": "What's the difference between CloudWatch Logs and third-party logging?",
+      "category": "observability",
+      "answer": "CloudWatch: Native integration, Logs Insights for querying, cheaper for AWS services. Third-party: Advanced analytics, better visualization, multi-cloud support. Choose based on existing tooling and analysis requirements."
+    },
+    {
+      "id": 33,
+      "question": "How do you implement request validation in API Gateway?",
+      "category": "api",
+      "answer": "Use request models with JSON schema, implement Lambda authorizers for custom validation, use request/response mapping templates, set up usage plans for rate limiting, and implement WAF rules for security validation."
+    },
+    {
+      "id": 34,
+      "question": "What are the best practices for ECR image management?",
+      "category": "containers",
+      "answer": "Use image scanning for vulnerabilities, implement lifecycle policies for cleanup, use immutable tags for production, scan images in CI/CD pipeline, use cross-region replication for DR, and monitor image usage."
+    },
+    {
+      "id": 35,
+      "question": "How do you handle partial failures in Step Functions?",
+      "category": "orchestration",
+      "answer": "Implement retry policies with max attempts, use catch blocks for error handling, implement compensation actions, use parallel states for independent failures, log detailed error information, and use DLQ for unrecoverable errors."
+    },
+    {
+      "id": 36,
+      "question": "What's the difference between ALB and NLB?",
+      "category": "networking",
+      "answer": "ALB: Layer 7, content-based routing, SSL termination. NLB: Layer 4, ultra-high performance, static IP, preserves source IP. Use ALB for HTTP/HTTPS, NLB for TCP/UDP with performance requirements."
+    },
+    {
+      "id": 37,
+      "question": "How do you implement custom domains for API Gateway?",
+      "category": "api",
+      "answer": "Use Route 53 for DNS management, request ACM certificate for SSL, configure custom domain in API Gateway, set up base path mappings, implement proper CORS configuration, and monitor with CloudWatch."
+    },
+    {
+      "id": 38,
+      "question": "What are the considerations for choosing between Aurora and RDS?",
+      "category": "database",
+      "answer": "Aurora: Higher performance, automatic scaling, read replicas with minimal lag. RDS: Simpler pricing, wider engine support. Choose Aurora for high-performance needs, RDS for cost-sensitive or specific engine requirements."
+    },
+    {
+      "id": 39,
+      "question": "How do you implement bulk operations in DynamoDB?",
+      "category": "database",
+      "answer": "Use BatchWriteItem for up to 25 items, implement pagination for large datasets, use parallel scans with careful capacity planning, implement backoff strategies for throttling, and use DynamoDB Streams for real-time processing."
+    },
+    {
+      "id": 40,
+      "question": "What's the difference between Parameter Store and Secrets Manager?",
+      "category": "security",
+      "answer": "Parameter Store: Hierarchical organization, versioning, standard and advanced tiers. Secrets Manager: Automatic rotation, cross-account access, dedicated for secrets. Use Parameter Store for config, Secrets Manager for credentials needing rotation."
+    },
+    {
+      "id": 41,
+      "question": "How do you implement custom metrics in CloudWatch?",
+      "category": "observability",
+      "answer": "Use PutMetricData API, implement dimensional metrics for filtering, set up alarms based on custom metrics, use embedded metric format for structured logging, and create dashboards for visualization."
+    },
+    {
+      "id": 42,
+      "question": "What are the best practices for S3 bucket naming?",
+      "category": "storage",
+      "answer": "Use DNS-compliant names (lowercase, no underscores), include environment prefixes, avoid sensitive information, use consistent naming conventions, consider global uniqueness, and implement proper bucket policies."
+    },
+    {
+      "id": 43,
+      "question": "How do you implement cross-account access securely?",
+      "category": "security",
+      "answer": "Use IAM roles with assume-role policy, implement resource-based policies, use AWS Organizations for centralized management, monitor cross-account activity with CloudTrail, and implement least privilege principles."
+    },
+    {
+      "id": 44,
+      "question": "What's the difference between EKS and self-managed Kubernetes?",
+      "category": "containers",
+      "answer": "EKS: Managed control plane, automated patching, integrated with AWS services. Self-managed: Full control, more flexibility, higher operational overhead. Choose EKS for reduced management, self-managed for specific requirements."
+    },
+    {
+      "id": 45,
+      "question": "How do you implement data validation in DynamoDB?",
+      "category": "database",
+      "answer": "Use conditional writes for atomic operations, implement application-level validation, use DynamoDB Streams with Lambda for complex validation, implement schema versioning, and use transactions for multi-item validation."
+    },
+    {
+      "id": 46,
+      "question": "What are the considerations for choosing between SNS and SQS?",
+      "category": "messaging",
+      "answer": "SNS: Pub/sub, fan-out pattern, multiple subscribers. SQS: Point-to-point, message queuing, guaranteed processing. Use SNS for broadcasting, SQS for ordered processing with multiple workers."
+    },
+    {
+      "id": 47,
+      "question": "How do you implement custom authorizers in API Gateway?",
+      "category": "security",
+      "answer": "Create Lambda function for authorization logic, return IAM policy document, cache authorizer responses, validate tokens (JWT/OAuth), implement proper error handling, and monitor authorizer performance."
+    },
+    {
+      "id": 48,
+      "question": "What's the difference between CloudFront and S3 website hosting?",
+      "category": "storage",
+      "answer": "CloudFront: Global CDN, better performance, advanced features (Lambda@Edge, WAF). S3 website hosting: Simple static hosting, lower cost. Use CloudFront for production websites, S3 hosting for simple static sites."
+    },
+    {
+      "id": 49,
+      "question": "How do you implement data encryption in transit?",
+      "category": "security",
+      "answer": "Use SSL/TLS for all communications, implement certificate validation, use AWS Certificate Manager for SSL certificates, enforce encryption in S3 policies, use VPC endpoints for private access, and implement proper cipher suites."
+    },
+    {
+      "id": 50,
+      "question": "What are the best practices for Lambda environment variables?",
+      "category": "serverless",
+      "answer": "Use encryption with KMS for sensitive data, separate config by environment, use Parameter Store for dynamic config, implement proper naming conventions, monitor variable usage, and rotate encryption keys regularly."
+    },
+    {
+      "id": 51,
+      "question": "How do you implement request throttling in API Gateway?",
+      "category": "api",
+      "answer": "Configure usage plans with rate limits, implement API keys for client identification, use WAF for additional protection, implement caching for repeated requests, and use CloudWatch for monitoring throttling events."
+    },
+    {
+      "id": 52,
+      "question": "What's the difference between Spot Fleet and Auto Scaling?",
+      "category": "compute",
+      "answer": "Spot Fleet: Manages Spot Instances across pools, cost optimization focus. Auto Scaling: Maintains desired capacity, focuses on availability. Use Spot Fleet for cost-sensitive workloads, Auto Scaling for reliable capacity management."
+    },
+    {
+      "id": 53,
+      "question": "How do you implement blue-green deployments for databases?",
+      "category": "database",
+      "answer": "Use read replicas for minimal downtime, implement database migration tools, test thoroughly in staging, use Route 53 for DNS switch, monitor performance during cutover, and implement rollback procedures."
+    },
+    {
+      "id": 54,
+      "question": "What are the considerations for multi-tenant architectures?",
+      "category": "architecture",
+      "answer": "Use separate databases vs shared schema, implement proper tenant isolation, use IAM for access control, monitor resource usage per tenant, implement tenant-aware logging, and consider data residency requirements."
+    },
+    {
+      "id": 55,
+      "question": "How do you implement custom retry logic in SQS?",
+      "category": "messaging",
+      "answer": "Configure visibility timeout, set up DLQ for failed messages, implement exponential backoff, use message attributes for retry count, monitor DLQ with CloudWatch, and implement reprocessing mechanisms."
+    },
+    {
+      "id": 56,
+      "question": "What's the difference between CloudWatch Events and EventBridge?",
+      "category": "events",
+      "answer": "CloudWatch Events: Original service, basic event routing. EventBridge: Enhanced version, schema registry, cross-account events, partner events. Use EventBridge for new implementations, CloudWatch Events for existing setups."
+    },
+    {
+      "id": 57,
+      "question": "How do you implement data archiving strategies?",
+      "category": "storage",
+      "answer": "Use S3 lifecycle policies for automatic tiering, implement Glacier for long-term storage, use Intelligent-Tiering for unknown access patterns, implement data expiration with TTL, and monitor storage costs with Cost Explorer."
+    },
+    {
+      "id": 58,
+      "question": "What are the best practices for VPC peering?",
+      "category": "networking",
+      "answer": "Use non-overlapping CIDR blocks, implement proper route tables, use security groups for traffic control, monitor peering connections, consider transitive routing limitations, and use Transit Gateway for complex topologies."
+    },
+    {
+      "id": 59,
+      "question": "How do you implement custom health checks?",
+      "category": "monitoring",
+      "answer": "Create custom health check endpoints, use Route 53 health checks for DNS failover, implement CloudWatch synthetic monitoring, set up proper thresholds and intervals, and integrate with auto-scaling for instance replacement."
+    },
+    {
+      "id": 60,
+      "question": "What's the difference between RDS read replicas and Aurora replicas?",
+      "category": "database",
+      "answer": "RDS read replicas: Async replication, limited to 5 replicas, specific engine support. Aurora replicas: Sync replication, up to 15 replicas, automatic failover. Use Aurora for high-availability requirements, RDS for simpler read scaling."
+    },
+    {
+      "id": 61,
+      "question": "How do you implement data masking in AWS?",
+      "category": "security",
+      "answer": "Use application-level masking before storage, implement DynamoDB streams with Lambda for real-time masking, use RDS data masking features, implement proper IAM policies for data access, and use Macie for sensitive data discovery."
+    },
+    {
+      "id": 62,
+      "question": "What are the considerations for real-time applications?",
+      "category": "architecture",
+      "answer": "Use WebSocket with API Gateway, implement AppSync for GraphQL subscriptions, use DynamoDB streams for real-time updates, consider Kinesis for high-throughput streaming, and implement proper connection management."
+    },
+    {
+      "id": 63,
+      "question": "How do you implement custom domain for CloudFront?",
+      "category": "networking",
+      "answer": "Request ACM certificate for domain, create CloudFront distribution with custom domain, configure Route 53 alias record, set up proper SSL/TLS configuration, and implement caching policies for performance."
+    },
+    {
+      "id": 64,
+      "question": "What's the difference between EFS and FSx?",
+      "category": "storage",
+      "answer": "EFS: NFS-based, multi-AZ, Linux-compatible. FSx: Windows file server or Lustre for HPC. Use EFS for Linux workloads, FSx for Windows or high-performance computing."
+    },
+    {
+      "id": 65,
+      "question": "How do you implement data backup strategies for DynamoDB?",
+      "category": "database",
+      "answer": "Use point-in-time recovery for automatic backups, implement on-demand backups for manual snapshots, use DynamoDB Streams for real-time replication, export to S3 for analytics, and test restore procedures regularly."
+    },
+    {
+      "id": 66,
+      "question": "What are the best practices for CloudFormation templates?",
+      "category": "iac",
+      "answer": "Use nested stacks for modularity, implement change sets for safety, use parameters and mappings for flexibility, implement proper rollback configurations, use CloudFormation Drift Detection, and organize resources logically."
+    },
+    {
+      "id": 67,
+      "question": "How do you implement custom logging formats?",
+      "category": "observability",
+      "answer": "Use structured logging (JSON), implement embedded metric format for CloudWatch, use Lambda layers for shared logging logic, configure log retention policies, and integrate with third-party logging services when needed."
+    },
+    {
+      "id": 68,
+      "question": "What's the difference between NAT Gateway and NAT Instance?",
+      "category": "networking",
+      "answer": "NAT Gateway: Managed service, highly available, scales automatically. NAT Instance: EC2-based, more control, manual management. Use NAT Gateway for production, NAT Instance for specific requirements."
+    },
+    {
+      "id": 69,
+      "question": "How do you implement data validation in API Gateway?",
+      "category": "api",
+      "answer": "Use request models with JSON schema, implement request validation, use mapping templates for transformation, implement custom authorizers for business logic validation, and use WAF for security validation."
+    },
+    {
+      "id": 70,
+      "question": "What are the considerations for batch processing?",
+      "category": "architecture",
+      "answer": "Use Step Functions for workflow orchestration, implement S3 for data storage, use Lambda for processing with appropriate timeout, consider Fargate for long-running tasks, and implement proper error handling and retries."
+    },
+    {
+      "id": 71,
+      "question": "How do you implement custom metrics for business KPIs?",
+      "category": "observability",
+      "answer": "Use CloudWatch PutMetricData API, implement dimensional metrics for segmentation, create custom dashboards, set up alarms for business thresholds, and integrate with QuickSight for advanced analytics."
+    },
+    {
+      "id": 72,
+      "question": "What's the difference between CloudFront and Global Accelerator?",
+      "category": "networking",
+      "answer": "CloudFront: CDN for content delivery, edge caching. Global Accelerator: Improves TCP/UDP performance, static IP addresses. Use CloudFront for web content, Global Accelerator for non-HTTP applications."
+    },
+    {
+      "id": 73,
+      "question": "How do you implement data partitioning strategies?",
+      "category": "architecture",
+      "answer": "Use DynamoDB partition keys for even distribution, implement sharding for RDS when needed, use S3 prefixes for parallel access, consider data access patterns, and monitor partition hotspots."
+    },
+    {
+      "id": 74,
+      "question": "What are the best practices for ECS service discovery?",
+      "category": "containers",
+      "answer": "Use Cloud Map for service registry, implement health checks, use Route 53 for DNS-based discovery, configure proper TTL values, and implement circuit breakers for service communication."
+    },
+    {
+      "id": 75,
+      "question": "How do you implement custom authentication flows?",
+      "category": "security",
+      "answer": "Use Cognito for user management, implement custom auth challenges, use Lambda triggers for custom logic, implement MFA requirements, and use external identity providers when needed."
+    },
+    {
+      "id": 76,
+      "question": "What's the difference between S3 consistency models?",
+      "category": "storage",
+      "answer": "Read-after-write consistency for PUTs of new objects, eventual consistency for overwrite PUTs and DELETEs. Design applications to handle eventual consistency, use versioning for conflict resolution."
+    },
+    {
+      "id": 77,
+      "question": "How do you implement data transformation pipelines?",
+      "category": "data",
+      "answer": "Use Glue for ETL jobs, implement Step Functions for workflow orchestration, use Lambda for custom transformations, store data in S3, and use Athena for querying transformed data."
+    },
+    {
+      "id": 78,
+      "question": "What are the considerations for mobile applications?",
+      "category": "mobile",
+      "answer": "Use Amplify for rapid development, implement Cognito for authentication, use AppSync for real-time data, optimize for network conditions, implement offline capabilities, and use Device Farm for testing."
+    },
+    {
+      "id": 79,
+      "question": "How do you implement custom domain for WebSocket APIs?",
+      "category": "api",
+      "answer": "Use API Gateway v2 for WebSocket, configure custom domain name, set up Route 53 records, implement proper CORS configuration, and monitor connection metrics with CloudWatch."
+    },
+    {
+      "id": 80,
+      "question": "What's the difference between CodePipeline and third-party CI/CD?",
+      "category": "ci-cd",
+      "answer": "CodePipeline: Native AWS integration, simpler setup, managed service. Third-party: More features, larger plugin ecosystem, multi-cloud support. Choose based on existing workflows and team preferences."
+    },
+    {
+      "id": 81,
+      "question": "How do you implement data compression strategies?",
+      "category": "optimization",
+      "answer": "Use gzip compression in API Gateway, implement client-side compression for large downloads, use S3 Select with compression, optimize DynamoDB item size, and monitor storage costs."
+    },
+    {
+      "id": 82,
+      "question": "What are the best practices for DynamoDB capacity planning?",
+      "category": "database",
+      "answer": "Use on-demand capacity for variable workloads, provisioned capacity for predictable patterns, implement auto-scaling, monitor consumption with CloudWatch, and use adaptive capacity for burst traffic."
+    },
+    {
+      "id": 83,
+      "question": "How do you implement custom error responses?",
+      "category": "api",
+      "answer": "Configure gateway responses in API Gateway, use mapping templates for error transformation, implement consistent error formats, include proper HTTP status codes, and provide helpful error messages."
+    },
+    {
+      "id": 84,
+      "question": "What's the difference between S3 Select and Athena?",
+      "category": "analytics",
+      "answer": "S3 Select: Serverless SQL queries on S3 objects, good for single object queries. Athena: Interactive query service, good for complex analytics across multiple files. Use S3 Select for simple filtering, Athena for complex analysis."
+    },
+    {
+      "id": 85,
+      "question": "How do you implement data replication strategies?",
+      "category": "architecture",
+      "answer": "Use cross-region replication for S3, implement read replicas for RDS, use Global Tables for DynamoDB, implement Kinesis for real-time streaming, and monitor replication lag."
+    },
+    {
+      "id": 86,
+      "question": "What are the considerations for IoT applications?",
+      "category": "iot",
+      "answer": "Use IoT Core for device management, implement proper security with certificates, use Rules Engine for message processing, consider device constraints, and implement offline operation capabilities."
+    },
+    {
+      "id": 87,
+      "question": "How do you implement custom caching strategies?",
+      "category": "performance",
+      "answer": "Use API Gateway caching for APIs, implement CloudFront for content delivery, use ElastiCache for application caching, implement proper cache invalidation, and monitor cache hit ratios."
+    },
+    {
+      "id": 88,
+      "question": "What's the difference between Fargate and Lambda?",
+      "category": "compute",
+      "answer": "Fargate: Container-based, longer running tasks, more control. Lambda: Function-based, event-driven, automatic scaling. Use Fargate for container workloads, Lambda for event-driven functions."
+    },
+    {
+      "id": 89,
+      "question": "How do you implement data migration strategies?",
+      "category": "data",
+      "answer": "Use Database Migration Service for databases, implement DataSync for file transfers, use Snowball for large datasets, plan for downtime, test thoroughly, and validate data integrity."
+    },
+    {
+      "id": 90,
+      "question": "What are the best practices for CloudWatch alarms?",
+      "category": "monitoring",
+      "answer": "Set proper thresholds based on baseline, implement composite alarms for complex conditions, use OK actions for recovery notification, implement proper alarm descriptions, and test alarm functionality."
+    },
+    {
+      "id": 91,
+      "question": "How do you implement custom domain for Application Load Balancer?",
+      "category": "networking",
+      "answer": "Request SSL certificate from ACM, configure ALB listener with certificate, set up Route 53 record, implement proper security policies, and monitor with CloudWatch."
+    },
+    {
+      "id": 92,
+      "question": "What's the difference between CloudTrail and Config?",
+      "category": "governance",
+      "answer": "CloudTrail: Logs API activity, for auditing and security analysis. Config: Tracks resource configuration, for compliance and change management. Use both for comprehensive governance."
+    },
+    {
+      "id": 93,
+      "question": "How do you implement data archiving compliance?",
+      "category": "compliance",
+      "answer": "Use S3 Glacier for long-term storage, implement object lock for WORM compliance, use Macie for sensitive data discovery, implement proper access logging, and retain logs for required periods."
+    },
+    {
+      "id": 94,
+      "question": "What are the considerations for high-frequency trading systems?",
+      "category": "performance",
+      "answer": "Use placement groups for low latency, implement enhanced networking, use NLB for high performance, consider Direct Connect for dedicated bandwidth, and optimize for millisecond response times."
+    },
+    {
+      "id": 95,
+      "question": "How do you implement custom monitoring for business metrics?",
+      "category": "observability",
+      "answer": "Use CloudWatch custom metrics, implement business-level dashboards, set up alarms for business thresholds, use QuickSight for advanced analytics, and correlate technical and business metrics."
+    },
+    {
+      "id": 96,
+      "question": "What's the difference between Systems Manager and third-party configuration management?",
+      "category": "operations",
+      "answer": "Systems Manager: AWS-native, integrated with other services. Third-party: More features, larger community, multi-cloud support. Choose based on existing tooling and team expertise."
+    },
+    {
+      "id": 97,
+      "question": "How do you implement data retention policies?",
+      "category": "governance",
+      "answer": "Use S3 lifecycle policies for automatic archiving, implement DynamoDB TTL for automatic expiration, use RDS automated backups with retention, and comply with regulatory requirements."
+    },
+    {
+      "id": 98,
+      "question": "What are the best practices for disaster recovery?",
+      "category": "resilience",
+      "answer": "Implement multi-region architecture, use automated failover mechanisms, test recovery procedures regularly, maintain backup and restore procedures, and document recovery runbooks."
+    },
+    {
+      "id": 99,
+      "question": "How do you implement custom security controls?",
+      "category": "security",
+      "answer": "Use IAM policies with conditions, implement Service Control Policies in Organizations, use Config rules for compliance, implement custom WAF rules, and use Security Hub for centralized security management."
+    },
+    {
+      "id": 100,
+      "question": "What's the developer's approach to AWS cost optimization?",
+      "category": "cost-optimization",
+      "answer": "Right-size resources from development phase, implement auto-scaling, use Spot Instances for appropriate workloads, implement proper tagging for cost allocation, monitor with Cost Explorer, use Savings Plans for committed usage, and regularly review and optimize architecture."
+    }
+  ]
+}

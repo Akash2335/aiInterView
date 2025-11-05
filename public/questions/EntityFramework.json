@@ -1,0 +1,1204 @@
+{
+  "data": [
+    { 
+      "id": 1, 
+      "question": "What is Entity Framework and its different approaches?", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "When would you choose Code First over Database First?",
+        "What are the advantages of using an ORM like Entity Framework?",
+        "How does Entity Framework simplify database operations?"
+      ],
+      "referenceAnswer": "EF is an ORM (Object-Relational Mapper) for .NET. Approaches: Database First (generate models from existing DB), Model First (design model in designer, generate DB), Code First (write classes, EF creates DB). Code First is most common in modern development with EF Core."
+    },
+    { 
+      "id": 2, 
+      "question": "Explain Code First vs Database First vs Model First.", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "What scenarios favor Database First approach?",
+        "Why has Model First become less popular?",
+        "How do migration strategies differ between approaches?"
+      ],
+      "referenceAnswer": "Code First: Define classes, EF handles DB schema. Database First: Reverse engineer from existing database. Model First: Design in EF designer, generate both classes and database. Code First preferred for new projects, Database First for existing databases, Model First is legacy."
+    },
+    { 
+      "id": 3, 
+      "question": "What are migrations and how do they work?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you handle migration conflicts in team development?",
+        "What's the purpose of the __EFMigrationsHistory table?",
+        "How do you rollback a migration?"
+      ],
+      "referenceAnswer": "Migrations track model changes and update database schema. Commands: Add-Migration, Update-Database, Remove-Migration. Generates Up() and Down() methods. Migration files stored in project, __EFMigrationsHistory table tracks applied migrations. Use for versioning database schema."
+    },
+    { 
+      "id": 4, 
+      "question": "How do you handle relationships in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are navigation properties and how are they used?",
+        "How do you configure cascade delete behavior?",
+        "What's the difference between required and optional relationships?"
+      ],
+      "referenceAnswer": "One-to-One: HasOne().WithOne(), One-to-Many: HasOne().WithMany(), Many-to-Many: HasMany().WithMany() (EF Core 5+). Configure using Fluent API or data annotations. Navigation properties define object relationships. Cascade behaviors control delete operations."
+    },
+    { 
+      "id": 5, 
+      "question": "What is lazy loading vs eager loading?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you avoid lazy loading?",
+        "How do you enable lazy loading in EF Core?",
+        "What performance implications does each loading strategy have?"
+      ],
+      "referenceAnswer": "Eager loading: Load related data immediately using Include(). Lazy loading: Load related data on access (requires virtual navigation properties). Explicit loading: Load related data manually using Load(). Eager loading better for known data needs, lazy loading for optional data."
+    },
+    { 
+      "id": 6, 
+      "question": "How do you optimize EF Core performance?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are N+1 queries and how do you prevent them?",
+        "How does AsNoTracking() improve performance?",
+        "When should you use compiled queries?"
+      ],
+      "referenceAnswer": "Use AsNoTracking() for read-only queries, use projection with Select(), avoid N+1 queries, use compiled queries, batch operations, disable change tracking when not needed, use appropriate loading strategies, update to latest EF Core version for performance improvements."
+    },
+    { 
+      "id": 7, 
+      "question": "Explain DbContext and DbSet.", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "What is the lifetime of a DbContext?",
+        "How do you configure DbContext in dependency injection?",
+        "What's the difference between DbSet and DbQuery?"
+      ],
+      "referenceAnswer": "DbContext: Main class for database interaction, represents unit of work and repository pattern. DbSet: Represents database table for specific entity type. DbContext manages connections, change tracking, saving changes. DbSet provides querying capabilities for entities."
+    },
+    { 
+      "id": 8, 
+      "question": "What are navigation properties in EF?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do navigation properties affect query performance?",
+        "What are inverse navigation properties?",
+        "How do you configure navigation properties without foreign keys?"
+      ],
+      "referenceAnswer": "Navigation properties represent relationships between entities. Reference navigation (single related entity) and collection navigation (multiple related entities). Used for object graph traversal. Can be configured as required or optional."
+    },
+    { 
+      "id": 9, 
+      "question": "How do you handle transactions in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the different transaction isolation levels?",
+        "How do you handle distributed transactions?",
+        "What happens if a transaction fails?"
+      ],
+      "referenceAnswer": "Implicit: SaveChanges() creates transaction. Explicit: Use Database.BeginTransaction(). Use TransactionScope for distributed transactions. Configure isolation levels. Use async transactions with BeginTransactionAsync. Always dispose transactions properly."
+    },
+    { 
+      "id": 10, 
+      "question": "What is the difference between IQueryable and IEnumerable?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When does query execution actually happen?",
+        "How do you force immediate execution?",
+        "What are the performance implications of each?"
+      ],
+      "referenceAnswer": "IQueryable: Builds expression trees for database execution, queries executed on server. IEnumerable: Executes locally after data is retrieved. Switching to IEnumerable (via AsEnumerable()) brings data to client. Use IQueryable to push filtering to database."
+    },
+    { 
+      "id": 11, 
+      "question": "How do you handle database concurrency in Entity Framework?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is optimistic concurrency?",
+        "How do concurrency tokens work?",
+        "What strategies handle concurrency conflicts?"
+      ],
+      "referenceAnswer": "Use concurrency tokens with [ConcurrencyCheck] or IsConcurrencyToken(). Handle DbUpdateConcurrencyException. Implement optimistic concurrency with row version/timestamp columns. Use retry logic for transient errors."
+    },
+    { 
+      "id": 12, 
+      "question": "What are the different ways to configure entities in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use Fluent API over data annotations?",
+        "How do you organize entity configurations?",
+        "What can you configure with Fluent API that you can't with data annotations?"
+      ],
+      "referenceAnswer": "Data Annotations: [Key], [Required], [MaxLength]. Fluent API: modelBuilder.Entity<T>().HasKey(), Property().HasMaxLength(). Fluent API is more powerful and separates configuration from entities. Use in OnModelCreating method."
+    },
+    { 
+      "id": 13, 
+      "question": "Explain the change tracking in Entity Framework.", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What is the performance impact of change tracking?",
+        "How do you manually detect changes?",
+        "What are the different change tracking strategies?"
+      ],
+      "referenceAnswer": "Change tracking monitors entity changes for SaveChanges(). Types: Snapshot (default), ChangedNotifications (implement INotifyPropertyChanged). Disable with AsNoTracking(). Detect changes manually with ChangeTracker.DetectChanges(). Affects performance."
+    },
+    { 
+      "id": 14, 
+      "question": "How do you handle many-to-many relationships in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How did many-to-many relationships change in EF Core 5?",
+        "When do you need a join entity?",
+        "How do you configure additional properties in many-to-many relationships?"
+      ],
+      "referenceAnswer": "EF Core 5+: Direct many-to-many with HasMany().WithMany(). EF Core 3.1 and earlier: Use junction entity with two one-to-many relationships. Configure join entity explicitly with UsingEntity() in EF Core 5+ for additional properties."
+    },
+    { 
+      "id": 15, 
+      "question": "What is the difference between Add and AddRange?", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "When should you use AddRange over multiple Add calls?",
+        "Are there async versions of these methods?",
+        "How do these methods affect performance?"
+      ],
+      "referenceAnswer": "Add: Adds single entity to change tracker. AddRange: Adds multiple entities efficiently. Both mark entities as Added, changes saved on SaveChanges(). Use AddRange for better performance with multiple entities. Both are synchronous, use async versions for async operations."
+    },
+    { 
+      "id": 16, 
+      "question": "How do you execute raw SQL queries in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you prevent SQL injection with raw SQL?",
+        "When should you use raw SQL over LINQ?",
+        "Can you use raw SQL with related data loading?"
+      ],
+      "referenceAnswer": "FromSqlRaw() for entity queries, ExecuteSqlRaw() for non-query commands. Use parameterization to prevent SQL injection. For stored procedures: FromSqlRaw(\"EXEC ProcedureName {0}\", param). Use SqlQuery for arbitrary types in EF Core 7+."
+    },
+    { 
+      "id": 17, 
+      "question": "What are global query filters?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you disable global query filters?",
+        "What are common use cases for query filters?",
+        "How do query filters affect performance?"
+      ],
+      "referenceAnswer": "Global query filters automatically apply to all queries for entity type. Use for: soft delete (IsDeleted == false), multi-tenancy, security. Configure with HasQueryFilter() in OnModelCreating. Ignore with IgnoreQueryFilters()."
+    },
+    { 
+      "id": 18, 
+      "question": "How do you handle database seeding in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the difference between migration seeding and runtime seeding?",
+        "How do you seed data for production?",
+        "What are the limitations of HasData()?"
+      ],
+      "referenceAnswer": "Use HasData() in OnModelCreating for migration-based seeding. Use DbInitializer class with EnsureCreated() and manual data insertion. For production: use SQL scripts or application startup logic. Migration seeding is good for reference data."
+    },
+    { 
+      "id": 19, 
+      "question": "Explain the difference between Find and FirstOrDefault.", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use Find over FirstOrDefault?",
+        "How does Find handle entities in the local cache?",
+        "What are the performance characteristics of each?"
+      ],
+      "referenceAnswer": "Find: Searches by primary key, checks local cache first, faster for primary key lookups. FirstOrDefault: LINQ query, always goes to database if no local match, more flexible with conditions. Use Find for primary key, FirstOrDefault for other queries."
+    },
+    { 
+      "id": 20, 
+      "question": "What are owned entity types?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do owned types differ from regular entities?",
+        "When should you use owned types?",
+        "How are owned types stored in the database?"
+      ],
+      "referenceAnswer": "Owned entities are part of owner entity, stored in same table. Use for value objects in DDD. Configure with OwnsOne() or OwnsMany(). Can be stored in separate table with ToTable(). Useful for complex types that don't need identity."
+    },
+    { 
+      "id": 21, 
+      "question": "How do you implement inheritance in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the trade-offs between TPH, TPT, and TPC?",
+        "How do you query inherited types?",
+        "What is a discriminator column?"
+      ],
+      "referenceAnswer": "TPH (Table per Hierarchy): Single table with discriminator. TPT (Table per Type): Separate table for each type. TPC (Table per Concrete Class): Table for each concrete type. Configure with HasDiscriminator() or ToTable(). TPH is default and most common."
+    },
+    { 
+      "id": 22, 
+      "question": "What is the difference between AsNoTracking and AsTracking?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use AsNoTracking?",
+        "What is the performance benefit of AsNoTracking?",
+        "Can you update entities loaded with AsNoTracking?"
+      ],
+      "referenceAnswer": "AsNoTracking: Entities not tracked by change tracker, better performance for read-only. AsTracking: Explicitly enable change tracking (default behavior). Use AsNoTracking when you don't need to update entities. AsTracking is rarely needed explicitly."
+    },
+    { 
+      "id": 23, 
+      "question": "How do you handle bulk operations in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the limitations of ExecuteUpdate and ExecuteDelete?",
+        "When should you use third-party bulk extensions?",
+        "How do bulk operations affect performance?"
+      ],
+      "referenceAnswer": "EF Core 7+: ExecuteUpdate and ExecuteDelete for bulk updates/deletes. Third-party libraries: EFCore.BulkExtensions. For large operations: use raw SQL or stored procedures. Avoid individual SaveChanges() calls for bulk operations."
+    },
+    { 
+      "id": 24, 
+      "question": "What are shadow properties?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you access and modify shadow properties?",
+        "What are common use cases for shadow properties?",
+        "How do shadow properties affect queries?"
+      ],
+      "referenceAnswer": "Shadow properties exist in database but not in entity class. Use for: audit fields (CreatedDate), foreign keys without navigation. Configure with Property(\"ShadowProperty\"). Access via Entry(entity).Property(\"ShadowProperty\")."
+    },
+    { 
+      "id": 25, 
+      "question": "Explain the database providers in EF Core.", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you switch between database providers?",
+        "What are the limitations of InMemory provider?",
+        "How do provider capabilities affect your application?"
+      ],
+      "referenceAnswer": "SQL Server, PostgreSQL, MySQL, SQLite, Oracle, Cosmos DB, InMemory (testing). Configure with UseSqlServer(), UseNpgsql(), etc. Each provider has specific capabilities and limitations. Choose based on database system requirements."
+    },
+    { 
+      "id": 26, 
+      "question": "How do you handle connection strings securely?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Where should connection strings be stored in production?",
+        "How do you use Azure Key Vault with EF Core?",
+        "What are the security risks of hardcoded connection strings?"
+      ],
+      "referenceAnswer": "Store in appsettings.json (development), environment variables, Azure Key Vault, user secrets. Use configuration providers. Never hardcode. Use managed identities for Azure resources. Encrypt sensitive parts of connection string."
+    },
+    { 
+      "id": 27, 
+      "question": "What is the difference between Database.EnsureCreated and migrations?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When is EnsureCreated appropriate?",
+        "Can you switch from EnsureCreated to migrations?",
+        "What are the limitations of EnsureCreated?"
+      ],
+      "referenceAnswer": "EnsureCreated: Creates database schema without migrations, can't update later. Migrations: Versioned schema changes, can update and rollback. Use EnsureCreated for testing/rapid prototyping, migrations for production applications."
+    },
+    { 
+      "id": 28, 
+      "question": "How do you implement soft delete in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you query soft-deleted records?",
+        "What challenges does soft delete introduce?",
+        "How do you handle foreign key constraints with soft delete?"
+      ],
+      "referenceAnswer": "Add IsDeleted property to entities. Use global query filter: HasQueryFilter(e => !e.IsDeleted). Override SaveChanges to set IsDeleted instead of hard delete. Handle cascade delete appropriately. Use IgnoreQueryFilters() to include deleted records."
+    },
+    { 
+      "id": 29, 
+      "question": "What are value converters in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What types of conversions are commonly needed?",
+        "How do value converters affect query performance?",
+        "Can you use value converters with primitive collections?"
+      ],
+      "referenceAnswer": "Value converters transform property values between database and application. Use for: enum-string conversion, encryption, custom serialization. Configure with HasConversion(). Built-in converters for common scenarios."
+    },
+    { 
+      "id": 30, 
+      "question": "Explain the difference between Add and Attach.", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use Attach instead of Add?",
+        "What happens if you Attach an entity with modified values?",
+        "How do Add and Attach affect entity state?"
+      ],
+      "referenceAnswer": "Add: Marks entity as Added, will insert on SaveChanges(). Attach: Marks entity as Unchanged, assumes existing in database. Use Add for new entities, Attach for existing entities you want to track changes on."
+    },
+    { 
+      "id": 31, 
+      "question": "How do you handle database views in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Can you update data through database views?",
+        "How do you map complex views to entities?",
+        "What are the limitations of keyless entity types?"
+      ],
+      "referenceAnswer": "Map views as keyless entity types with HasNoKey(). Use ToView() instead of ToTable(). Can be used in LINQ queries but read-only. For complex views, use raw SQL queries or database functions."
+    },
+    { 
+      "id": 32, 
+      "question": "What are interceptors in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What types of operations can you intercept?",
+        "How do you implement custom interceptors?",
+        "What are common use cases for interceptors?"
+      ],
+      "referenceAnswer": "Interceptors allow intercepting EF Core operations. Types: DbCommandInterceptor, DbConnectionInterceptor, SaveChangesInterceptor. Use for: logging, auditing, query modification, retry logic. Register with AddInterceptors()."
+    },
+    { 
+      "id": 33, 
+      "question": "How do you implement database functions in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you map user-defined database functions?",
+        "What database functions are built into EF Core?",
+        "How do provider-specific functions work?"
+      ],
+      "referenceAnswer": "Use DbFunction attribute or HasDbFunction() in Fluent API. Map to SQL functions. Use in LINQ queries. EF Core translates to appropriate SQL. For database-specific functions, use EF.Functions property (SqlFunctions, NpgsqlFunctions, etc.)."
+    },
+    { 
+      "id": 34, 
+      "question": "What is the difference between State and Entry methods?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you change entity state manually?",
+        "What information does EntityEntry provide?",
+        "When would you use ChangeTracker.Entries()?"
+      ],
+      "referenceAnswer": "DbContext.Entry(entity): Gets EntityEntry for entity, provides access to state and properties. ChangeTracker.Entries(): Gets all tracked entities. Use Entry() for specific entity, Entries() for all entities. Both provide access to state management."
+    },
+    { 
+      "id": 35, 
+      "question": "How do you handle composite keys in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you query entities with composite keys?",
+        "What are the limitations of composite keys?",
+        "How do composite keys affect relationships?"
+      ],
+      "referenceAnswer": "Configure with HasKey() in Fluent API: HasKey(e => new { e.Key1, e.Key2 }). Use in entities with [Key] attribute on multiple properties. Order of keys matters for some operations. Supported in relationships and queries."
+    },
+    { 
+      "id": 36, 
+      "question": "What are the different entity states?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How does entity state affect SaveChanges()?",
+        "How do you manually change entity state?",
+        "What is the Detached state used for?"
+      ],
+      "referenceAnswer": "Detached: Not tracked. Added: Will be inserted. Unchanged: No changes. Modified: Will be updated. Deleted: Will be deleted. Check with Entry(entity).State. Change with Entry(entity).State = EntityState.Modified."
+    },
+    { 
+      "id": 37, 
+      "question": "How do you implement auditing in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you track who made changes?",
+        "What's the difference between application and database auditing?",
+        "How do you handle audit trail performance?"
+      ],
+      "referenceAnswer": "Override SaveChanges to set audit fields (CreatedBy, CreatedDate, etc.). Use interceptors for comprehensive auditing. Implement IAuditable interface. Use shadow properties for audit fields. Store audit trail in separate table."
+    },
+    { 
+      "id": 38, 
+      "question": "What is the difference between Include and ThenInclude?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How deep can you nest ThenInclude?",
+        "What performance issues can arise from overusing Include?",
+        "How do you include multiple navigation properties?"
+      ],
+      "referenceAnswer": "Include: Load first-level related entities. ThenInclude: Load further levels of related entities (grandchildren). Use for eager loading nested collections. Example: Include(a => a.B).ThenInclude(b => b.C). Multiple ThenInclude for multiple paths."
+    },
+    { 
+      "id": 39, 
+      "question": "How do you handle database indexes in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What types of indexes can you create?",
+        "How do filtered indexes work?",
+        "When should you create composite indexes?"
+      ],
+      "referenceAnswer": "Configure with HasIndex() in Fluent API. Specify columns with HasIndex(e => e.Property). Configure uniqueness with IsUnique(). Filtered indexes with HasFilter(). Composite indexes with multiple properties."
+    },
+    { 
+      "id": 40, 
+      "question": "What are database collations and how to configure them?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do collations affect string comparisons?",
+        "What are case-sensitive vs case-insensitive collations?",
+        "How do you handle collation in queries?"
+      ],
+      "referenceAnswer": "Collations define string comparison rules. Configure at database level or per column. Use HasCollation() in Fluent API. Affects sorting, comparison, case sensitivity. Important for international applications and performance."
+    },
+    { 
+      "id": 41, 
+      "question": "How do you implement repository pattern with EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the benefits of repository pattern with EF Core?",
+        "How do you handle complex queries in repositories?",
+        "What's the difference between repository and unit of work patterns?"
+      ],
+      "referenceAnswer": "Create generic repository with CRUD operations. Use DbContext as unit of work. Keep repository thin - EF Core already implements repository and unit of work patterns. Consider if abstraction provides real value for your application."
+    },
+    { 
+      "id": 42, 
+      "question": "What is the difference between ExecuteUpdate and SaveChanges?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "When should you use ExecuteUpdate over SaveChanges?",
+        "What are the limitations of ExecuteUpdate?",
+        "How does ExecuteUpdate affect change tracking?"
+      ],
+      "referenceAnswer": "ExecuteUpdate: Bulk update without loading entities, executes immediately. SaveChanges: Track changes on loaded entities, executes on call. Use ExecuteUpdate for performance with large updates, SaveChanges for complex business logic with change tracking."
+    },
+    { 
+      "id": 43, 
+      "question": "How do you handle spatial data in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What spatial operations are supported?",
+        "How do you configure NetTopologySuite?",
+        "What databases support spatial data?"
+      ],
+      "referenceAnswer": "Use NetTopologySuite for spatial types. Configure with UseNetTopologySuite() on provider. Supports Point, LineString, Polygon, etc. Use DbFunctions for spatial operations (Distance, Contains, Intersects). Requires database spatial support."
+    },
+    { 
+      "id": 44, 
+      "question": "What are the different relationship behaviors?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the difference between Cascade and Restrict?",
+        "When should you use SetNull behavior?",
+        "How do client behaviors differ from database behaviors?"
+      ],
+      "referenceAnswer": "Cascade: Delete/update related entities. Restrict: Prevent delete if related entities exist. SetNull: Set foreign key to null. ClientCascade: Cascade on client. ClientSetNull: Set null on client. Configure with OnDelete() in Fluent API."
+    },
+    { 
+      "id": 45, 
+      "question": "How do you implement value objects in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the characteristics of value objects?",
+        "How do value objects differ from entities?",
+        "When should you use value objects?"
+      ],
+      "referenceAnswer": "Use owned entity types with OwnsOne() or OwnsMany(). Value objects have no identity, are dependent on owner. Configure column names and types. Can be stored in same table or separate table."
+    },
+    { 
+      "id": 46, 
+      "question": "What is the difference between FromSql and FromSqlInterpolated?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Why is FromSqlInterpolated safer?",
+        "How do you handle dynamic SQL safely?",
+        "What are the performance considerations?"
+      ],
+      "referenceAnswer": "FromSqlRaw: Takes string with parameters, vulnerable to SQL injection if not careful. FromSqlInterpolated: Uses string interpolation, automatically parameterizes values, safer. Prefer FromSqlInterpolated for security. Both execute raw SQL queries."
+    },
+    { 
+      "id": 47, 
+      "question": "How do you handle database sequences?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is the Hi-Lo pattern?",
+        "How do sequences differ from identity columns?",
+        "When should you use sequences?"
+      ],
+      "referenceAnswer": "Configure with HasSequence() in Fluent API. Use for key generation with HasDefaultValueSql(). Use Hi-Lo pattern for efficient key generation. Access sequence values in raw SQL or through database functions."
+    },
+    { 
+      "id": 48, 
+      "question": "What are the different configuration approaches for relationships?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How does convention-based configuration work?",
+        "When should you use explicit configuration?",
+        "What relationship configurations require Fluent API?"
+      ],
+      "referenceAnswer": "By convention: Navigation properties automatically detected. Data annotations: [ForeignKey], [InverseProperty]. Fluent API: HasOne(), WithMany(), HasForeignKey(). Fluent API is most powerful and explicit."
+    },
+    { 
+      "id": 49, 
+      "question": "How do you implement multi-tenancy in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the different multi-tenant architectures?",
+        "How do you handle tenant isolation?",
+        "What performance considerations are there?"
+      ],
+      "referenceAnswer": "Use global query filters with tenant id. Implement tenant resolution (header, claim, subdomain). Use separate databases or shared database with tenant isolation. Handle tenant-specific migrations and data seeding."
+    },
+    { 
+      "id": 50, 
+      "question": "What is the difference between AsSplitQuery and AsSingleQuery?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is Cartesian explosion?",
+        "When should you use split queries?",
+        "How do split queries affect performance?"
+      ],
+      "referenceAnswer": "AsSingleQuery: Uses JOINs for related data - single SQL query, can cause Cartesian explosion. AsSplitQuery: Uses separate queries for each Include - multiple roundtrips but avoids Cartesian explosion. Use AsSplitQuery for queries with multiple collections."
+    },
+    { 
+      "id": 51, 
+      "question": "How do you handle database timeouts?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you set command timeout?",
+        "What causes database timeouts?",
+        "How do you handle timeout exceptions?"
+      ],
+      "referenceAnswer": "Set CommandTimeout on DbContext: Database.SetCommandTimeout(). Use cancellation tokens with async methods. Implement retry logic with Polly. Optimize slow queries. Use database monitoring to identify bottlenecks."
+    },
+    { 
+      "id": 52, 
+      "question": "What are computed columns and how to use them?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the difference between database and application computed columns?",
+        "How do computed columns affect queries?",
+        "Can you index computed columns?"
+      ],
+      "referenceAnswer": "Database-computed columns: Value computed by database. Configure with HasComputedColumnSql(). Application-computed: Properties with getter logic. Use database-computed for data integrity, application-computed for business logic."
+    },
+    { 
+      "id": 53, 
+      "question": "How do you implement database resilience?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are transient errors?",
+        "How do execution strategies work?",
+        "What resilience patterns can you implement?"
+      ],
+      "referenceAnswer": "Use execution strategies with EnableRetryOnFailure(). Implement circuit breaker pattern. Use health checks. Handle transient errors with retry logic. Configure connection resiliency in connection string."
+    },
+    { 
+      "id": 54, 
+      "question": "What is the difference between HasDefaultValue and HasDefaultValueSql?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use SQL expressions for defaults?",
+        "How do database defaults affect inserts?",
+        "Can you override database defaults?"
+      ],
+      "referenceAnswer": "HasDefaultValue: Constant default value. HasDefaultValueSql: SQL expression for default value. Use HasDefaultValue for simple values, HasDefaultValueSql for database functions (GETDATE(), NEWID())."
+    },
+    { 
+      "id": 55, 
+      "question": "How do you handle JSON columns in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What JSON operations are supported?",
+        "How do you query JSON properties?",
+        "What are the performance implications?"
+      ],
+      "referenceAnswer": "EF Core 7+: Native JSON column support. Use ToJson() for owned entities stored as JSON. Query with EF.Functions.JsonValue. For older versions: store as string and handle serialization/deserialization manually."
+    },
+    { 
+      "id": 56, 
+      "question": "What are the different ways to load related data?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How does explicit loading work?",
+        "What are the trade-offs between loading strategies?",
+        "How do you choose the right loading strategy?"
+      ],
+      "referenceAnswer": "Eager loading: Include()/ThenInclude(). Explicit loading: Entry().Collection().Load()/Reference().Load(). Lazy loading: Virtual navigation properties. Select loading: Projection with Select(). Choose based on data access patterns."
+    },
+    { 
+      "id": 57, 
+      "question": "How do you implement database partitioning?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the benefits of partitioning?",
+        "How do you query partitioned tables?",
+        "What partitioning strategies are common?"
+      ],
+      "referenceAnswer": "Use EF Core with database partitioning features. Configure partition key in Fluent API. Use raw SQL for partition management. Consider partitioning by date, region, or other business criteria. EF Core works with partitioned tables transparently."
+    },
+    { 
+      "id": 58, 
+      "question": "What is the difference between Remove and RemoveRange?", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "When should you use RemoveRange?",
+        "How do these methods affect entity state?",
+        "Are there async versions available?"
+      ],
+      "referenceAnswer": "Remove: Marks single entity as Deleted. RemoveRange: Marks multiple entities as Deleted efficiently. Both require entities to be tracked. Changes saved on SaveChanges(). Use RemoveRange for better performance with multiple entities."
+    },
+    { 
+      "id": 59, 
+      "question": "How do you handle database constraints in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What types of constraints can you configure?",
+        "How do you handle constraint violations?",
+        "What's the difference between unique constraints and unique indexes?"
+      ],
+      "referenceAnswer": "Unique constraints: HasIndex().IsUnique(). Check constraints: HasCheckConstraint(). Foreign key constraints: HasForeignKey(). EF Core can create constraints via migrations. Handle constraint violations with specific exceptions."
+    },
+    { 
+      "id": 60, 
+      "question": "What are the different database providers' limitations?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you write provider-agnostic code?",
+        "What are common workarounds for provider limitations?",
+        "How do you test with different providers?"
+      ],
+      "referenceAnswer": "SQLite: Limited ALTER TABLE, no schemas. MySQL: Case sensitivity, limited OFFSET. PostgreSQL: Different naming conventions. Cosmos: No joins, different transaction model. Know your provider's limitations and workarounds."
+    },
+    { 
+      "id": 61, 
+      "question": "How do you implement temporal tables in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the benefits of temporal tables?",
+        "How do you query historical data?",
+        "What are the storage implications?"
+      ],
+      "referenceAnswer": "EF Core 6+: Temporal table support. Use IsTemporal() in Fluent API. Query historical data with TemporalAsOf(), TemporalAll(), etc. Configure period columns and history table. Automatic history tracking by database."
+    },
+    { 
+      "id": 62, 
+      "question": "What is the difference between Database.First and DbSet.First?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What operations are available on Database?",
+        "When would you use Database methods?",
+        "How do these relate to DbContext?"
+      ],
+      "referenceAnswer": "DbContext.Database: Database-level operations (transactions, raw SQL). DbSet: Entity-level operations (queries, changes). Use Database for database management, DbSet for entity operations. Both are properties of DbContext."
+    },
+    { 
+      "id": 63, 
+      "question": "How do you handle database functions that EF can't translate?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is client evaluation?",
+        "How do you identify untranslatable queries?",
+        "What are the performance risks of client evaluation?"
+      ],
+      "referenceAnswer": "Use client evaluation with AsEnumerable(). Create database function and map with HasDbFunction(). Use raw SQL queries. Consider rewriting query to use supported functions. Client evaluation can cause performance issues."
+    },
+    { 
+      "id": 64, 
+      "question": "What are the different migration commands?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you generate SQL scripts from migrations?",
+        "What's the purpose of Remove-Migration?",
+        "How do you handle migration errors?"
+      ],
+      "referenceAnswer": "Add-Migration: Create new migration. Remove-Migration: Remove last migration. Update-Database: Apply migrations to database. Script-Migration: Generate SQL script. Drop-Database: Delete database. Use --verbose for detailed information."
+    },
+    { 
+      "id": 65, 
+      "question": "How do you implement database-specific features?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you conditionally use provider-specific features?",
+        "What abstraction patterns work for multiple providers?",
+        "How do you test provider-specific code?"
+      ],
+      "referenceAnswer": "Use provider-specific Fluent API extensions. Use raw SQL for unsupported features. Create database-specific migrations. Use conditional compilation or provider checks. Abstract provider differences when needed."
+    },
+    { 
+      "id": 66, 
+      "question": "What is the difference between ValueGeneratedOnAdd and ValueGeneratedOnAddOrUpdate?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are common use cases for each?",
+        "How do these affect insert and update operations?",
+        "Can you manually set values for generated properties?"
+      ],
+      "referenceAnswer": "ValueGeneratedOnAdd: Value generated only on insert (identity, sequence). ValueGeneratedOnAddOrUpdate: Value generated on insert and update (computed columns, timestamps). Configure with Fluent API or [DatabaseGenerated] attribute."
+    },
+    { 
+      "id": 67, 
+      "question": "How do you handle large datasets with EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is streaming and how does it work?",
+        "How do you implement efficient pagination?",
+        "What are the memory considerations?"
+      ],
+      "referenceAnswer": "Use pagination with Skip()/Take(). Use streaming with AsAsyncEnumerable(). Use bulk operations instead of individual SaveChanges(). Disable change tracking. Use projection to select only needed columns. Consider raw SQL for complex queries."
+    },
+    { 
+      "id": 68, 
+      "question": "What are the different ways to configure table names?", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "How do you configure schema names?",
+        "What naming conventions does EF Core use?",
+        "How do you handle legacy database naming?"
+      ],
+      "referenceAnswer": "By convention: DbSet property name. Data annotations: [Table(\"TableName\")]. Fluent API: ToTable(\"TableName\"). Configure schema with ToTable(\"TableName\", \"SchemaName\"). Use for legacy database naming conventions."
+    },
+    { 
+      "id": 69, 
+      "question": "How do you implement database-level default values?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What SQL expressions are commonly used?",
+        "How do defaults affect entity creation?",
+        "Can you use functions in default values?"
+      ],
+      "referenceAnswer": "Use HasDefaultValueSql() in Fluent API. Configure with SQL expressions (GETDATE(), NEWSEQUENTIALID()). Values set by database on insert. Can be overridden by application. Useful for audit fields and sequential IDs."
+    },
+    { 
+      "id": 70, 
+      "question": "What is the difference between IEntityTypeConfiguration and OnModelCreating?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use separate configuration classes?",
+        "How do you apply configurations from assemblies?",
+        "What are the organizational benefits?"
+      ],
+      "referenceAnswer": "OnModelCreating: Configure all entities in DbContext. IEntityTypeConfiguration: Separate configuration class per entity. Use IEntityTypeConfiguration for better organization in large models. Apply with modelBuilder.ApplyConfigurationsFromAssembly()."
+    },
+    { 
+      "id": 71, 
+      "question": "How do you handle circular references in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What causes circular reference issues?",
+        "How do you break circular references?",
+        "What are the serialization implications?"
+      ],
+      "referenceAnswer": "Use [JsonIgnore] for API serialization. Configure relationship with OnDelete(DeleteBehavior.ClientSetNull). Use DTOs for API responses. Handle in business logic to avoid infinite loops. Consider database design to avoid circular references."
+    },
+    { 
+      "id": 72, 
+      "question": "What are the different delete behaviors?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the difference between ClientCascade and Cascade?",
+        "When should you use Restrict?",
+        "How do delete behaviors affect performance?"
+      ],
+      "referenceAnswer": "Cascade: Delete related entities. Restrict: Throw if related entities exist. SetNull: Set foreign key to null. ClientCascade: Cascade on client. ClientSetNull: Set null on client. NoAction: Database restrict. Configure based on business rules."
+    },
+    { 
+      "id": 73, 
+      "question": "How do you implement database encryption?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the different encryption strategies?",
+        "How do you handle key management?",
+        "What are the performance impacts?"
+      ],
+      "referenceAnswer": "Use database-level encryption (TDE, column encryption). Use application-level encryption with value converters. Use Azure Key Vault for key management. Consider performance implications. Always encrypt sensitive data."
+    },
+    { 
+      "id": 74, 
+      "question": "What is the difference between HasColumnType and HasConversion?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When would you use both together?",
+        "How do these affect database schema?",
+        "What are common type mappings?"
+      ],
+      "referenceAnswer": "HasColumnType: Database column type (nvarchar(100), decimal(18,2)). HasConversion: Value conversion between CLR type and database type. Use HasColumnType for database schema, HasConversion for value transformation."
+    },
+    { 
+      "id": 75, 
+      "question": "How do you handle database schema changes in production?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are zero-downtime deployment strategies?",
+        "How do you test migrations?",
+        "What rollback strategies exist?"
+      ],
+      "referenceAnswer": "Use migrations with careful planning. Test migrations on staging. Use migration scripts for complex changes. Consider zero-downtime deployments. Backup database before migrations. Use migration bundles in EF Core 6+."
+    },
+    { 
+      "id": 76, 
+      "question": "What are the different ways to query data?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are compiled queries?",
+        "When should you use raw SQL?",
+        "How do you choose between query approaches?"
+      ],
+      "referenceAnswer": "LINQ queries (method syntax, query syntax). Raw SQL queries. Compiled queries for performance. Stored procedures. Choose based on complexity, performance, and maintainability. Prefer LINQ for type safety."
+    },
+    { 
+      "id": 77, 
+      "question": "How do you implement database-level validation?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the difference between database and application validation?",
+        "When should you use check constraints?",
+        "How do you handle validation errors?"
+      ],
+      "referenceAnswer": "Use check constraints with HasCheckConstraint(). Use database triggers (outside EF). Use stored procedures for complex validation. EF Core data annotations for application-level validation. Combine both for comprehensive validation."
+    },
+    { 
+      "id": 78, 
+      "question": "What is the difference between AsNoTracking and AsNoTrackingWithIdentityResolution?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is identity resolution?",
+        "When would you need identity resolution?",
+        "What are the performance implications?"
+      ],
+      "referenceAnswer": "AsNoTracking: No change tracking, repeated entities as separate objects. AsNoTrackingWithIdentityResolution: No change tracking but same entities reference-equal. Use latter when you have repeated entities in results and want identity resolution."
+    },
+    { 
+      "id": 79, 
+      "question": "How do you handle database connection resiliency?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are transient errors?",
+        "How do you configure retry policies?",
+        "What monitoring is needed?"
+      ],
+      "referenceAnswer": "Use EnableRetryOnFailure() for transient errors. Implement circuit breaker pattern. Use health checks to monitor database. Configure connection timeout and retry logic. Use Polly for advanced resilience patterns."
+    },
+    { 
+      "id": 80, 
+      "question": "What are the different migration strategies for multiple DbContext?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you manage multiple migration folders?",
+        "What are bounded contexts?",
+        "How do you handle cross-context relationships?"
+      ],
+      "referenceAnswer": "Separate migrations for each DbContext. Shared migrations for related contexts. Use different migration folders. Consider database design - multiple contexts often indicate separate bounded contexts in DDD."
+    },
+    { 
+      "id": 81, 
+      "question": "How do you implement query filters with parameters?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you pass parameters to query filters?",
+        "What are the performance considerations?",
+        "How do you handle filter changes?"
+      ],
+      "referenceAnswer": "Use HasQueryFilter with parameters from DbContext. Set parameters via DbContext properties or method calls. Useful for multi-tenancy, user-specific data. Recompile queries when parameters change."
+    },
+    { 
+      "id": 82, 
+      "question": "What is the difference between HasPrecision and HasColumnType for decimals?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you configure decimal precision and scale?",
+        "What are the default decimal settings?",
+        "How does this affect database schema?"
+      ],
+      "referenceAnswer": "HasPrecision: Sets precision and scale (total digits, decimal places). HasColumnType: Sets complete database type. Use HasPrecision for decimal configuration, HasColumnType when you need specific database type."
+    },
+    { 
+      "id": 83, 
+      "question": "How do you handle database views with parameters?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What alternatives exist for parameterized views?",
+        "How do you use database functions instead?",
+        "What are the limitations?"
+      ],
+      "referenceAnswer": "Use database functions instead of parameterized views. Use raw SQL queries with parameters. Create stored procedures for complex parameterized queries. EF Core doesn't directly support parameterized views."
+    },
+    { 
+      "id": 84, 
+      "question": "What are the different ways to configure primary keys?", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "What is the convention for primary keys?",
+        "How do you configure composite keys?",
+        "What are the key generation strategies?"
+      ],
+      "referenceAnswer": "By convention: \"Id\" or ClassNameId property. Data annotations: [Key]. Fluent API: HasKey(). Composite keys: HasKey(e => new { e.Key1, e.Key2 }). Configure key generation with ValueGeneratedOnAdd()."
+    },
+    { 
+      "id": 85, 
+      "question": "How do you implement database-level auditing?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are temporal tables?",
+        "How do database triggers work with EF?",
+        "What are the performance impacts?"
+      ],
+      "referenceAnswer": "Use database triggers for comprehensive auditing. Use EF Core interceptors for application-level auditing. Use temporal tables for change tracking. Consider performance impact. Store audit trail separately from business data."
+    },
+    { 
+      "id": 86, 
+      "question": "What is the difference between Database.ExecuteSqlRaw and DbSet.FromSqlRaw?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When would you use each method?",
+        "How do you handle results from each?",
+        "What are the security considerations?"
+      ],
+      "referenceAnswer": "Database.ExecuteSqlRaw: Executes non-query SQL (INSERT, UPDATE, DELETE). DbSet.FromSqlRaw: Executes query SQL that returns entities. Use ExecuteSqlRaw for commands, FromSqlRaw for queries. Both support parameterization."
+    },
+    { 
+      "id": 87, 
+      "question": "How do you handle database case sensitivity?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do collations affect case sensitivity?",
+        "How do you perform case-insensitive queries?",
+        "What are the performance implications?"
+      ],
+      "referenceAnswer": "Configure collation at database, table, or column level. Use case-insensitive comparisons in LINQ (StringComparison.OrdinalIgnoreCase). Be consistent with database collation settings. Test with different data cases."
+    },
+    { 
+      "id": 88, 
+      "question": "What are the different approaches to data seeding?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the difference between migration and runtime seeding?",
+        "How do you seed production data?",
+        "What are the limitations of each approach?"
+      ],
+      "referenceAnswer": "Migration seeding with HasData(). Custom initializer with EnsureCreated(). SQL scripts for production. Application startup logic. Use migration seeding for reference data, custom logic for dynamic data."
+    },
+    { 
+      "id": 89, 
+      "question": "How do you implement complex types in EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are complex types?",
+        "How do they differ from owned types?",
+        "What are common use cases?"
+      ],
+      "referenceAnswer": "Use owned entity types with OwnsOne(). Complex types are stored in same table as owner. Configure column names and types. Can be used for value objects, address objects, money objects, etc."
+    },
+    { 
+      "id": 90, 
+      "question": "What is the difference between Relational and SqlServer methods?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use provider-agnostic methods?",
+        "What SQL Server-specific features exist?",
+        "How do you write cross-provider compatible code?"
+      ],
+      "referenceAnswer": "Relational(): Database-agnostic relational configuration. SqlServer(): SQL Server-specific configuration. Use Relational for cross-database compatibility, SqlServer for SQL Server-specific features. Similar for other providers."
+    },
+    { 
+      "id": 91, 
+      "question": "How do you handle database connection pooling?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the connection pool settings?",
+        "How do you monitor pool usage?",
+        "What causes pool exhaustion?"
+      ],
+      "referenceAnswer": "Configure in connection string (Max Pool Size, Min Pool Size). Use async operations to free connections. Dispose DbContext properly. Avoid long-running operations holding connections. Monitor pool usage and adjust as needed."
+    },
+    { 
+      "id": 92, 
+      "question": "What are the different ways to handle concurrency?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is optimistic vs pessimistic concurrency?",
+        "How do concurrency tokens work?",
+        "What are the performance trade-offs?"
+      ],
+      "referenceAnswer": "Optimistic concurrency with concurrency tokens. Pessimistic concurrency with transactions and locks. Use row version/timestamp for automatic concurrency detection. Handle DbUpdateConcurrencyException with retry logic."
+    },
+    { 
+      "id": 93, 
+      "question": "How do you implement database functions in queries?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you map custom database functions?",
+        "What provider-specific functions are available?",
+        "How do functions affect query translation?"
+      ],
+      "referenceAnswer": "Use EF.Functions for provider-specific functions. Use DbFunction for user-defined functions. Use raw SQL for unsupported functions. Create method stubs for database functions with DbFunction attribute."
+    },
+    { 
+      "id": 94, 
+      "question": "What is the difference between AddDbContext and AddDbContextFactory?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use DbContext factory?",
+        "What are the lifetime differences?",
+        "How do you configure each?"
+      ],
+      "referenceAnswer": "AddDbContext: Registers DbContext with scoped lifetime. AddDbContextFactory: Registers factory to create DbContext instances. Use factory when you need multiple instances per scope or in background services."
+    },
+    { 
+      "id": 95, 
+      "question": "How do you handle large text/blob data?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the performance considerations?",
+        "How do you stream large data?",
+        "When should you use external storage?"
+      ],
+      "referenceAnswer": "Use appropriate data types (nvarchar(max), varbinary(max)). Consider streaming for very large data. Use separate table for blob storage. Lazy load blob data when needed. Consider file system storage for very large files."
+    },
+    { 
+      "id": 96, 
+      "question": "What are the different migration generation options?", 
+      "category": "entity-framework",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you create custom migration code?",
+        "What are migration bundles?",
+        "How do you organize complex migrations?"
+      ],
+      "referenceAnswer": "Automatic: EF Core generates migration code. Manual: Write custom migration code. Use migrationBuilder.Sql() for custom SQL. Use namespaces for organization. Use partial classes for complex migrations."
+    },
+    { 
+      "id": 97, 
+      "question": "How do you implement database security with EF Core?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is row-level security?",
+        "How do you implement principle of least privilege?",
+        "What are the SQL injection prevention strategies?"
+      ],
+      "referenceAnswer": "Use principle of least privilege for database user. Implement row-level security in database. Use views/stored procedures for data access. Encrypt sensitive data. Audit database access. Use parameterized queries to prevent SQL injection."
+    },
+    { 
+      "id": 98, 
+      "question": "What is the difference between HasColumnName and HasColumnType?", 
+      "category": "entity-framework",
+      "difficulty": "beginner",
+      "followUps": [
+        "When would you use each?",
+        "How do these affect database schema?",
+        "Can you use both on the same property?"
+      ],
+      "referenceAnswer": "HasColumnName: Database column name. HasColumnType: Database column type. Use HasColumnName for naming, HasColumnType for type specification. Both are part of Fluent API configuration."
+    },
+    { 
+      "id": 99, 
+      "question": "How do you handle database-specific data types?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are common database-specific types?",
+        "How do you create custom type mappings?",
+        "What are the compatibility challenges?"
+      ],
+      "referenceAnswer": "Use HasColumnType() for specific database types. Use value converters for custom type mapping. Create custom type mappings for complex types. Use provider-specific extensions for advanced type configuration."
+    },
+    { 
+      "id": 100, 
+      "question": "What are the best practices for EF Core performance?", 
+      "category": "entity-framework",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you identify performance bottlenecks?",
+        "What monitoring tools are available?",
+        "How do you optimize common patterns?"
+      ],
+      "referenceAnswer": "Use AsNoTracking() for read-only queries. Use projection with Select(). Avoid N+1 queries with Include(). Use compiled queries for hot paths. Batch operations where possible. Update to latest EF Core version. Monitor and profile queries."
+    }
+  ]
+}

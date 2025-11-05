@@ -1,0 +1,404 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "What are collections in C# and why are they used?",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "Collections are classes used to store and manage groups of related objects. They provide dynamic memory allocation, sorting, searching, and manipulation capabilities. Common uses: storing data lists, managing object groups, implementing data structures.",
+      "hasCode": false
+    },
+    {
+      "id": 2,
+      "question": "What is the difference between Array and ArrayList?",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "Array: Fixed size, type-safe, better performance. ArrayList: Dynamic size, stores objects (boxing/unboxing), less type-safe. Arrays are faster but ArrayLists are more flexible.",
+      "hasCode": false
+    },
+    {
+      "id": 3,
+      "question": "Write code to create and initialize a List<int>",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "```csharp\n// Method 1: Collection initializer\nList<int> numbers = new List<int> { 1, 2, 3, 4, 5 };\n\n// Method 2: Add items later\nList<int> numbers2 = new List<int>();\nnumbers2.Add(1);\nnumbers2.Add(2);\n\n// Method 3: From array\nint[] array = {1, 2, 3};\nList<int> numbers3 = new List<int>(array);\n```",
+      "hasCode": true
+    },
+    {
+      "id": 4,
+      "question": "What are the main methods available in List<T>?",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "Add(), AddRange(), Remove(), RemoveAt(), Contains(), IndexOf(), Sort(), Reverse(), Find(), FindAll(), ForEach(), Clear(), Count, Capacity, ToArray()",
+      "hasCode": false
+    },
+    {
+      "id": 5,
+      "question": "What is the difference between List and Dictionary?",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "List: Ordered collection accessed by index, allows duplicates. Dictionary: Key-value pairs accessed by key, keys must be unique, faster lookups by key.",
+      "hasCode": false
+    },
+    {
+      "id": 6,
+      "question": "Write code to create and use a Dictionary<string, int>",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "```csharp\nDictionary<string, int> ages = new Dictionary<string, int>();\nages.Add(\"John\", 25);\nages[\"Jane\"] = 30; // Alternative syntax\n\n// Access values\nint johnAge = ages[\"John\"];\n\n// Check if key exists\nif (ages.ContainsKey(\"Mike\")) {\n    Console.WriteLine(ages[\"Mike\"]);\n}\n\n// Iterate through dictionary\nforeach (var kvp in ages) {\n    Console.WriteLine($\"{kvp.Key}: {kvp.Value}\");\n}\n```",
+      "hasCode": true
+    },
+    {
+      "id": 7,
+      "question": "What is HashSet<T> and when would you use it?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "HashSet stores unique elements using hash codes. Use when you need fast lookups, set operations (union, intersection), or to ensure uniqueness. O(1) for Contains() vs O(n) for List.",
+      "hasCode": false
+    },
+    {
+      "id": 8,
+      "question": "Write code demonstrating HashSet operations",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "```csharp\nHashSet<int> set1 = new HashSet<int> { 1, 2, 3, 4, 5 };\nHashSet<int> set2 = new HashSet<int> { 4, 5, 6, 7, 8 };\n\n// Union\nset1.UnionWith(set2); // set1 becomes {1,2,3,4,5,6,7,8}\n\n// Intersection\nset1.IntersectWith(set2); // set1 becomes {4,5}\n\n// Difference\nset1.ExceptWith(set2); // Removes set2 elements from set1\n\n// Check subset\nbool isSubset = set1.IsSubsetOf(set2);\n```",
+      "hasCode": true
+    },
+    {
+      "id": 9,
+      "question": "What is the difference between Queue and Stack?",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "Queue: FIFO (First-In-First-Out) - Enqueue adds to end, Dequeue removes from front. Stack: LIFO (Last-In-First-Out) - Push adds to top, Pop removes from top.",
+      "hasCode": false
+    },
+    {
+      "id": 10,
+      "question": "Write code demonstrating Queue and Stack usage",
+      "category": "collections",
+      "difficulty": "beginner",
+      "answer": "```csharp\n// Queue example\nQueue<string> queue = new Queue<string>();\nqueue.Enqueue(\"First\");\nqueue.Enqueue(\"Second\");\nqueue.Enqueue(\"Third\");\nstring firstItem = queue.Dequeue(); // Returns \"First\"\n\n// Stack example\nStack<string> stack = new Stack<string>();\nstack.Push(\"First\");\nstack.Push(\"Second\");\nstack.Push(\"Third\");\nstring topItem = stack.Pop(); // Returns \"Third\"\n```",
+      "hasCode": true
+    },
+    {
+      "id": 11,
+      "question": "What are LinkedList<T> and when to use it?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "LinkedList is a doubly-linked list where each node points to next and previous. Use when you need frequent insertions/deletions in the middle. O(1) for insert/delete vs O(n) for List.",
+      "hasCode": false
+    },
+    {
+      "id": 12,
+      "question": "Write code demonstrating LinkedList operations",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "```csharp\nLinkedList<string> list = new LinkedList<string>();\nlist.AddLast(\"First\");\nlist.AddLast(\"Third\");\n\n// Add before specific node\nLinkedListNode<string> thirdNode = list.Find(\"Third\");\nlist.AddBefore(thirdNode, \"Second\");\n\n// Iterate\nforeach (string item in list) {\n    Console.WriteLine(item); // Output: First, Second, Third\n}\n\n// Remove\nlist.Remove(\"Second\");\nlist.RemoveFirst();\n```",
+      "hasCode": true
+    },
+    {
+      "id": 13,
+      "question": "What is SortedDictionary vs SortedList?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "SortedDictionary: Binary search tree, faster insertion/deletion O(log n), uses more memory. SortedList: Array-based, faster iteration, less memory, slower insertion/deletion O(n). Use SortedDictionary for frequent updates, SortedList for mostly static data.",
+      "hasCode": false
+    },
+    {
+      "id": 14,
+      "question": "What are the different collection interfaces in C#?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "IEnumerable<T> (iteration), ICollection<T> (count, add, remove), IList<T> (index-based access), IDictionary<TKey, TValue> (key-value pairs), IReadOnlyCollection<T> (immutable view), IEqualityComparer<T> (comparison logic)",
+      "hasCode": false
+    },
+    {
+      "id": 15,
+      "question": "What is the difference between IEnumerable and IQueryable?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "IEnumerable: LINQ-to-Objects, executes queries in memory. IQueryable: LINQ-to-SQL/Entities, builds expression trees for remote execution. IQueryable is deferred execution with server-side filtering.",
+      "hasCode": false
+    },
+    {
+      "id": 16,
+      "question": "Write code using LINQ with collections",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "```csharp\nList<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };\n\n// Filtering\nvar evenNumbers = numbers.Where(n => n % 2 == 0);\n\n// Projection\nvar squares = numbers.Select(n => n * n);\n\n// Aggregation\nint sum = numbers.Sum();\nint max = numbers.Max();\n\n// Sorting\nvar sorted = numbers.OrderBy(n => n);\nvar descending = numbers.OrderByDescending(n => n);\n\n// Grouping\nvar groups = numbers.GroupBy(n => n % 2 == 0 ? \"Even\" : \"Odd\");\n```",
+      "hasCode": true
+    },
+    {
+      "id": 17,
+      "question": "What are concurrent collections and when to use them?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "Concurrent collections (System.Collections.Concurrent) are thread-safe: ConcurrentBag, ConcurrentDictionary, ConcurrentQueue, ConcurrentStack, BlockingCollection. Use in multi-threaded scenarios to avoid manual locking.",
+      "hasCode": false
+    },
+    {
+      "id": 18,
+      "question": "Write code demonstrating ConcurrentDictionary",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\nConcurrentDictionary<string, int> concurrentDict = new ConcurrentDictionary<string, int>();\n\n// Thread-safe operations\nconcurrentDict.TryAdd(\"key1\", 1);\nconcurrentDict.AddOrUpdate(\"key1\", 1, (key, oldValue) => oldValue + 1);\n\n// Get or add\nint value = concurrentDict.GetOrAdd(\"key2\", key => 2);\n\n// Thread-safe iteration\nforeach (var kvp in concurrentDict) {\n    Console.WriteLine($\"{kvp.Key}: {kvp.Value}\");\n}\n```",
+      "hasCode": true
+    },
+    {
+      "id": 19,
+      "question": "What is BlockingCollection and its use cases?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "BlockingCollection is a thread-safe producer-consumer collection. Blocks when trying to take from empty collection or add to bounded full collection. Use for pipeline patterns, task coordination.",
+      "hasCode": false
+    },
+    {
+      "id": 20,
+      "question": "Write code demonstrating producer-consumer with BlockingCollection",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\nBlockingCollection<int> collection = new BlockingCollection<int>(boundedCapacity: 10);\n\n// Producer\nTask.Run(() => {\n    for (int i = 0; i < 20; i++) {\n        collection.Add(i);\n        Thread.Sleep(100);\n    }\n    collection.CompleteAdding();\n});\n\n// Consumer\nTask.Run(() => {\n    foreach (int item in collection.GetConsumingEnumerable()) {\n        Console.WriteLine($\"Consumed: {item}\");\n    }\n});\n```",
+      "hasCode": true
+    },
+    {
+      "id": 21,
+      "question": "What are collection initializers and how do they work?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "Collection initializers provide syntactic sugar for adding items during collection creation. The compiler translates them to Add() method calls. Works with any type implementing IEnumerable and having Add() method.",
+      "hasCode": false
+    },
+    {
+      "id": 22,
+      "question": "What is the difference between ICollection and IList?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "ICollection: Basic collection operations (Add, Remove, Count, Contains). IList: Extends ICollection with index-based access (Insert, RemoveAt, IndexOf, this[index]). IList is ordered, ICollection may not be.",
+      "hasCode": false
+    },
+    {
+      "id": 23,
+      "question": "How does List<T> manage capacity internally?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "List<T> uses an internal array. When Count reaches Capacity, it doubles the capacity (creates new array, copies elements). Default capacity: 4. Use TrimExcess() to reduce memory if needed.",
+      "hasCode": false
+    },
+    {
+      "id": 24,
+      "question": "What are custom comparers and how to use them?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "Custom comparers implement IComparer<T> or IEqualityComparer<T> for custom sorting/equality logic. Use in Sort(), Distinct(), Dictionary constructor, etc.",
+      "hasCode": false
+    },
+    {
+      "id": 25,
+      "question": "Write code for a custom IComparer",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "```csharp\npublic class CaseInsensitiveComparer : IComparer<string>\n{\n    public int Compare(string x, string y)\n    {\n        return string.Compare(x, y, StringComparison.OrdinalIgnoreCase);\n    }\n}\n\n// Usage\nList<string> names = new List<string> { \"apple\", \"Banana\", \"cherry\" };\nnames.Sort(new CaseInsensitiveComparer());\n// Result: apple, Banana, cherry (case-insensitive order)\n```",
+      "hasCode": true
+    },
+    {
+      "id": 26,
+      "question": "What is the difference between Dictionary and Hashtable?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "Dictionary<TKey, TValue>: Generic, type-safe, better performance. Hashtable: Non-generic, stores objects, requires boxing/unboxing. Prefer Dictionary for type safety and performance.",
+      "hasCode": false
+    },
+    {
+      "id": 27,
+      "question": "How to choose between List, Dictionary, and HashSet?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "List: When you need ordered collection, index access, or duplicates. Dictionary: When you need fast key-based lookups. HashSet: When you need uniqueness and set operations, don't care about order.",
+      "hasCode": false
+    },
+    {
+      "id": 28,
+      "question": "What are read-only collections and their benefits?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "ReadOnlyCollection<T>, IReadOnlyList<T>, IReadOnlyDictionary<T> provide immutable views. Benefits: thread safety, API contracts that prevent modification, better intent communication.",
+      "hasCode": false
+    },
+    {
+      "id": 29,
+      "question": "Write code demonstrating read-only collections",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "```csharp\nList<int> mutableList = new List<int> { 1, 2, 3 };\nIReadOnlyList<int> readOnlyList = mutableList.AsReadOnly();\n\n// Can read but not modify\nint first = readOnlyList[0]; // OK\n// readOnlyList.Add(4); // Compile error\n\n// Original list can still be modified\nmutableList.Add(4); // readOnlyList reflects this change\n```",
+      "hasCode": true
+    },
+    {
+      "id": 30,
+      "question": "What is the yield keyword and how does it work with collections?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "yield return creates iterator methods that generate sequences lazily. The compiler generates a state machine. Benefits: deferred execution, memory efficiency for large sequences.",
+      "hasCode": false
+    },
+    {
+      "id": 31,
+      "question": "Write code using yield return with custom collection",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\npublic static IEnumerable<int> GetEvenNumbers(int max)\n{\n    for (int i = 0; i <= max; i += 2)\n    {\n        yield return i; // Execution pauses here until next iteration\n    }\n}\n\n// Usage - numbers are generated on demand\nforeach (int num in GetEvenNumbers(1000000))\n{\n    if (num > 100) break; // Only generates up to 102\n}\n```",
+      "hasCode": true
+    },
+    {
+      "id": 32,
+      "question": "What are the performance characteristics of common collections?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "List: Access O(1), Search O(n), Insert/Delete O(n). Dictionary: Access O(1), Insert/Delete O(1). HashSet: Contains O(1). LinkedList: Insert/Delete O(1) if you have node reference. SortedDictionary: All operations O(log n).",
+      "hasCode": false
+    },
+    {
+      "id": 33,
+      "question": "How to implement a custom collection class?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "Implement IEnumerable<T> and optionally ICollection<T>. Use yield return for iteration. Consider thread safety, performance, and appropriate interfaces based on use case.",
+      "hasCode": false
+    },
+    {
+      "id": 34,
+      "question": "Write a custom collection implementing IEnumerable<T>",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\npublic class CustomCollection<T> : IEnumerable<T>\n{\n    private List<T> _items = new List<T>();\n\n    public void Add(T item) => _items.Add(item);\n\n    public IEnumerator<T> GetEnumerator()\n    {\n        foreach (T item in _items)\n        {\n            yield return item;\n        }\n    }\n\n    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();\n}\n\n// Usage with collection initializer\nvar collection = new CustomCollection<int> { 1, 2, 3 };\n```",
+      "hasCode": true
+    },
+    {
+      "id": 35,
+      "question": "What is the difference between Any() and Count() > 0?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "Any() stops at first matching element, more efficient. Count() > 0 iterates entire collection. Use Any() for existence checks, Count() when you need actual count.",
+      "hasCode": false
+    },
+    {
+      "id": 36,
+      "question": "What are collection expressions in C# 12?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "C# 12 introduces spread operator and simplified syntax: [] for arrays, [..collection] to spread elements. Works with any collection type that has Add() method and implements IEnumerable.",
+      "hasCode": false
+    },
+    {
+      "id": 37,
+      "question": "How to handle collection modifications during iteration?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "Modifying collection during foreach throws InvalidOperationException. Solutions: iterate over ToList() copy, use for loop backwards, collect changes and apply after iteration.",
+      "hasCode": false
+    },
+    {
+      "id": 38,
+      "question": "What is the difference between ToList() and ToArray()?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "ToList() creates List<T> (mutable, dynamic size). ToArray() creates array (fixed size, slightly better performance for iteration). Both create new collections with copied elements.",
+      "hasCode": false
+    },
+    {
+      "id": 39,
+      "question": "How to implement deep copy for collections?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "For value types: new List<T>(original). For reference types: need to clone each element. Options: implement ICloneable, use serialization, manual copying, or use libraries like AutoMapper.",
+      "hasCode": false
+    },
+    {
+      "id": 40,
+      "question": "Write code for deep copying a collection of custom objects",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\npublic class Person : ICloneable\n{\n    public string Name { get; set; }\n    public int Age { get; set; }\n    \n    public object Clone() => new Person { Name = this.Name, Age = this.Age };\n}\n\n// Deep copy\nList<Person> original = new List<Person> { new Person { Name = \"John\", Age = 30 } };\nList<Person> copy = original.Select(p => (Person)p.Clone()).ToList();\n```",
+      "hasCode": true
+    },
+    {
+      "id": 41,
+      "question": "What are the best practices for using collections?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "1. Choose the right collection type for your scenario\n2. Prefer generic collections over non-generic\n3. Use collection initializers for readability\n4. Consider capacity for large lists\n5. Use read-only interfaces for API contracts\n6. Be aware of thread safety requirements\n7. Use LINQ for complex operations",
+      "hasCode": false
+    },
+    {
+      "id": 42,
+      "question": "What is the difference between First() and Single()?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "First(): Returns first element, throws if empty. Single(): Returns only element, throws if empty or multiple elements. Use First() when expecting multiple, Single() when expecting exactly one.",
+      "hasCode": false
+    },
+    {
+      "id": 43,
+      "question": "How to handle null collections safely?",
+      "category": "collections",
+      "difficulty": "intermediate",
+      "answer": "Use null-coalescing: collection ?? Enumerable.Empty<T>(). Use ?. operator: collection?.Count. Initialize collections in constructors. Use readonly fields for immutable collections.",
+      "hasCode": false
+    },
+    {
+      "id": 44,
+      "question": "What is the difference between Dictionary and Lookup?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "Dictionary: One key maps to one value. Lookup: One key maps to collection of values (one-to-many). Lookup is immutable and created via ToLookup() method.",
+      "hasCode": false
+    },
+    {
+      "id": 45,
+      "question": "Write code demonstrating Lookup usage",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\nList<Person> people = new List<Person>\n{\n    new Person { Name = \"John\", City = \"NYC\" },\n    new Person { Name = \"Jane\", City = \"NYC\" },\n    new Person { Name = \"Bob\", City = \"LA\" }\n};\n\nILookup<string, Person> lookup = people.ToLookup(p => p.City);\n\n// Get all people in NYC\nforeach (Person person in lookup[\"NYC\"])\n{\n    Console.WriteLine(person.Name); // John, Jane\n}\n```",
+      "hasCode": true
+    },
+    {
+      "id": 46,
+      "question": "What are the thread-safe alternatives to common collections?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "List<T> → ConcurrentBag<T>, Dictionary<T> → ConcurrentDictionary<T>, Queue<T> → ConcurrentQueue<T>, Stack<T> → ConcurrentStack<T>. Or use lock statements with regular collections.",
+      "hasCode": false
+    },
+    {
+      "id": 47,
+      "question": "How to implement a priority queue in C#?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "Use PriorityQueue<TElement, TPriority> in .NET 6+. For older versions: use SortedDictionary with timestamps, or implement with heap data structure.",
+      "hasCode": false
+    },
+    {
+      "id": 48,
+      "question": "Write code using PriorityQueue",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "```csharp\nPriorityQueue<string, int> queue = new PriorityQueue<string, int>();\n\n// Enqueue with priority\nqueue.Enqueue(\"Low priority\", 3);\nqueue.Enqueue(\"High priority\", 1);\nqueue.Enqueue(\"Medium priority\", 2);\n\n// Dequeue in priority order\nwhile (queue.Count > 0)\n{\n    string item = queue.Dequeue();\n    Console.WriteLine(item); // High, Medium, Low\n}\n```",
+      "hasCode": true
+    },
+    {
+      "id": 49,
+      "question": "What are the memory considerations for large collections?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "1. Prefer arrays for fixed-size data\n2. Use capacity constructors to avoid resizing\n3. Consider linked lists for frequent insertions\n4. Use structs for small value types\n5. Implement IDisposable for unmanaged resources\n6. Use streaming for very large datasets",
+      "hasCode": false
+    },
+    {
+      "id": 50,
+      "question": "How to optimize collection performance in hot paths?",
+      "category": "collections",
+      "difficulty": "advanced",
+      "answer": "1. Pre-size collections with capacity\n2. Use arrays for maximum performance\n3. Avoid LINQ in tight loops\n4. Use for instead of foreach for arrays\n5. Consider Span<T> for stack allocation\n6. Use structs to avoid heap allocation\n7. Pool collections for reuse",
+      "hasCode": false
+    }
+  ]
+}

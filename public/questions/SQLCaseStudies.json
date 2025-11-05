@@ -1,0 +1,2104 @@
+{
+  "sqlQuestions": [
+    {
+      "id": 1,
+      "question": "When would you use a LEFT JOIN vs INNER JOIN?",
+      "answer": "Use LEFT JOIN when you want all records from the left table and matching records from the right table (NULLs for non-matching). Use INNER JOIN when you only want records that have matches in both tables.",
+      "difficulty": "beginner",
+      "category": "joins"
+    },
+    {
+      "id": 2,
+      "question": "What is a self-join and when is it used?",
+      "answer": "A self-join is when a table is joined with itself. It's used for hierarchical data (employee-manager relationships), comparing rows within the same table, or finding relationships between rows in the same table.",
+      "difficulty": "intermediate",
+      "category": "joins"
+    },
+    {
+      "id": 3,
+      "question": "How does a FULL OUTER JOIN work?",
+      "answer": "FULL OUTER JOIN returns all records when there's a match in either left or right table. It combines LEFT and RIGHT JOIN results, showing NULLs for non-matching rows on both sides.",
+      "difficulty": "intermediate",
+      "category": "joins"
+    },
+    {
+      "id": 4,
+      "question": "What are the trade-offs of using indexes?",
+      "answer": "Benefits: Faster queries. Trade-offs: Slower INSERT/UPDATE/DELETE operations, additional storage space, maintenance overhead during data modifications.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 5,
+      "question": "When should you avoid creating indexes?",
+      "answer": "Avoid indexes on: small tables, columns with low selectivity, frequently updated columns, tables with heavy write operations, or when index maintenance overhead outweighs query benefits.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 6,
+      "question": "How do you choose which columns to index?",
+      "answer": "Index columns used in WHERE clauses, JOIN conditions, ORDER BY, GROUP BY. Prioritize high-selectivity columns, foreign keys, and consider composite indexes for multiple column queries.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 7,
+      "question": "What are the different normal forms?",
+      "answer": "1NF: Atomic values, 2NF: No partial dependencies, 3NF: No transitive dependencies, BCNF: Stronger 3NF, 4NF: No multi-valued dependencies, 5NF: No join dependencies.",
+      "difficulty": "intermediate",
+      "category": "normalization"
+    },
+    {
+      "id": 8,
+      "question": "When is denormalization appropriate?",
+      "answer": "Denormalization is appropriate for: read-heavy workloads, reporting databases, data warehouses, when join performance is critical, or when simplifying complex queries.",
+      "difficulty": "intermediate",
+      "category": "normalization"
+    },
+    {
+      "id": 9,
+      "question": "What problems does normalization solve?",
+      "answer": "Normalization solves: data redundancy, update anomalies (insertion, deletion, modification), inconsistent data, and improves data integrity.",
+      "difficulty": "beginner",
+      "category": "normalization"
+    },
+    {
+      "id": 10,
+      "question": "What tools help analyze query performance?",
+      "answer": "SQL Server: Execution plans, Query Store, Profiler, Extended Events. PostgreSQL: EXPLAIN ANALYZE, pg_stat_statements. MySQL: EXPLAIN, Performance Schema. Oracle: AWR reports, SQL Monitor.",
+      "difficulty": "intermediate",
+      "category": "performance"
+    },
+    {
+      "id": 11,
+      "question": "How do you read an execution plan?",
+      "answer": "Read from right to left, bottom to top. Look for: table scans (bad), index seeks (good), high cost operations, missing indexes, sort/hash operations, and estimated vs actual rows.",
+      "difficulty": "advanced",
+      "category": "performance"
+    },
+    {
+      "id": 12,
+      "question": "What are common query performance pitfalls?",
+      "answer": "N+1 queries, missing indexes, table scans, implicit conversions, functions on indexed columns in WHERE clauses, correlated subqueries, unnecessary DISTINCT/GROUP BY, and parameter sniffing issues.",
+      "difficulty": "intermediate",
+      "category": "performance"
+    },
+    {
+      "id": 13,
+      "question": "What are the advantages of stored procedures?",
+      "answer": "Performance (compiled and cached), security (permission management), maintainability (centralized logic), reduced network traffic, and code reusability.",
+      "difficulty": "intermediate",
+      "category": "stored procedures"
+    },
+    {
+      "id": 14,
+      "question": "How do you handle parameters in stored procedures?",
+      "answer": "Define parameters with @ prefix, specify data types, set default values if needed, use INPUT/OUTPUT directions, and validate parameters within the procedure.",
+      "difficulty": "beginner",
+      "category": "stored procedures"
+    },
+    {
+      "id": 15,
+      "question": "What are the security benefits of stored procedures?",
+      "answer": "Can grant execute permissions without direct table access, prevent SQL injection through parameterization, hide database schema details, and enforce data access rules.",
+      "difficulty": "intermediate",
+      "category": "stored procedures"
+    },
+    {
+      "id": 16,
+      "question": "How do databases implement atomicity?",
+      "answer": "Through transaction logs, write-ahead logging (WAL), undo/redo logs, and two-phase commit protocol. Changes are either fully committed or fully rolled back.",
+      "difficulty": "advanced",
+      "category": "transactions"
+    },
+    {
+      "id": 17,
+      "question": "What is transaction isolation?",
+      "answer": "Transaction isolation defines how transaction integrity is visible to other transactions. Levels include: Read Uncommitted, Read Committed, Repeatable Read, Serializable, and Snapshot.",
+      "difficulty": "intermediate",
+      "category": "transactions"
+    },
+    {
+      "id": 18,
+      "question": "How does durability ensure data persistence?",
+      "answer": "Durability ensures committed transactions survive system failures through: transaction logs, write-ahead logging, database checkpoints, and recovery processes that replay logs after crashes.",
+      "difficulty": "advanced",
+      "category": "transactions"
+    },
+    {
+      "id": 19,
+      "question": "Can HAVING be used without GROUP BY?",
+      "answer": "Yes, HAVING can be used without GROUP BY when filtering on aggregate functions applied to all rows (e.g., SELECT COUNT(*) FROM table HAVING COUNT(*) > 10).",
+      "difficulty": "intermediate",
+      "category": "aggregation"
+    },
+    {
+      "id": 20,
+      "question": "Why can't WHERE use aggregate functions?",
+      "answer": "WHERE clause executes before aggregation, so it filters individual rows. Aggregate functions operate on groups of rows, which is why HAVING is used after grouping.",
+      "difficulty": "beginner",
+      "category": "aggregation"
+    },
+    {
+      "id": 21,
+      "question": "What is the order of execution for WHERE and HAVING?",
+      "answer": "WHERE executes before GROUP BY (filters rows), then GROUP BY groups rows, then HAVING executes after GROUP BY (filters groups), then SELECT, ORDER BY, and LIMIT.",
+      "difficulty": "intermediate",
+      "category": "aggregation"
+    },
+    {
+      "id": 22,
+      "question": "Why is NULL different from zero or empty string?",
+      "answer": "NULL represents unknown or missing data, while zero is a numeric value and empty string is a known string value. NULL propagates through operations and requires special handling with IS NULL/IS NOT NULL.",
+      "difficulty": "beginner",
+      "category": "null handling"
+    },
+    {
+      "id": 23,
+      "question": "How do aggregate functions handle NULL?",
+      "answer": "Most aggregate functions (COUNT, SUM, AVG, etc.) ignore NULL values. COUNT(*) counts all rows including NULLs, while COUNT(column) counts non-NULL values only.",
+      "difficulty": "beginner",
+      "category": "null handling"
+    },
+    {
+      "id": 24,
+      "question": "What is the three-valued logic in SQL?",
+      "answer": "SQL uses TRUE, FALSE, and UNKNOWN (for NULL comparisons). Any comparison with NULL returns UNKNOWN, which is treated as FALSE in WHERE clauses.",
+      "difficulty": "intermediate",
+      "category": "null handling"
+    },
+    {
+      "id": 25,
+      "question": "What is the OVER clause?",
+      "answer": "The OVER clause defines a window or set of rows for window functions to operate over. It can include PARTITION BY, ORDER BY, and ROWS/RANGE frames.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 26,
+      "question": "How do PARTITION BY and ORDER BY work in window functions?",
+      "answer": "PARTITION BY divides the result set into partitions (like GROUP BY but without collapsing rows). ORDER BY defines the order within each partition for ranking and running calculations.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 27,
+      "question": "What are common use cases for window functions?",
+      "answer": "Running totals, moving averages, ranking (ROW_NUMBER, RANK), cumulative sums, comparing rows to group aggregates, and calculating percentages of totals.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 28,
+      "question": "What are dirty reads, non-repeatable reads, and phantom reads?",
+      "answer": "Dirty read: reading uncommitted data. Non-repeatable read: different values when re-reading same row. Phantom read: different rows when re-executing same query.",
+      "difficulty": "advanced",
+      "category": "isolation levels"
+    },
+    {
+      "id": 29,
+      "question": "How does each isolation level prevent concurrency issues?",
+      "answer": "Read Uncommitted: allows all. Read Committed: prevents dirty reads. Repeatable Read: prevents dirty and non-repeatable reads. Serializable: prevents all concurrency issues.",
+      "difficulty": "advanced",
+      "category": "isolation levels"
+    },
+    {
+      "id": 30,
+      "question": "What are the performance implications of different isolation levels?",
+      "answer": "Higher isolation levels (Serializable) have more locking and lower concurrency. Read Uncommitted has best performance but risks data integrity. Read Committed offers good balance.",
+      "difficulty": "advanced",
+      "category": "isolation levels"
+    },
+    {
+      "id": 31,
+      "question": "When would you choose UNION over UNION ALL?",
+      "answer": "Use UNION when you need distinct results and want to remove duplicates. Use UNION ALL when you want all rows including duplicates, as it's faster due to no duplicate removal.",
+      "difficulty": "beginner",
+      "category": "set operations"
+    },
+    {
+      "id": 32,
+      "question": "What are the performance differences?",
+      "answer": "UNION ALL is faster because it doesn't remove duplicates. UNION requires sorting and duplicate elimination, which adds overhead especially with large datasets.",
+      "difficulty": "intermediate",
+      "category": "set operations"
+    },
+    {
+      "id": 33,
+      "question": "What are the requirements for using UNION?",
+      "answer": "All SELECT statements must have same number of columns, compatible data types in corresponding positions, and same column order. Column names from first query are used.",
+      "difficulty": "beginner",
+      "category": "set operations"
+    },
+    {
+      "id": 34,
+      "question": "What are parameterized queries?",
+      "answer": "Parameterized queries use placeholders for values instead of concatenating strings. They prevent SQL injection, improve performance through plan reuse, and handle data type conversion automatically.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 35,
+      "question": "How do ORMs help prevent SQL injection?",
+      "answer": "ORMs use parameterized queries internally, escape user input automatically, provide type-safe queries, and abstract raw SQL construction, reducing injection vulnerabilities.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 36,
+      "question": "What are other security best practices for SQL?",
+      "answer": "Principle of least privilege, input validation, stored procedures, encryption of sensitive data, regular security updates, audit logging, and network security measures.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 37,
+      "question": "How does a clustered index affect table storage?",
+      "answer": "A clustered index determines the physical order of data in the table. The table data is stored in the leaf nodes of the clustered index, making the table itself the index.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 38,
+      "question": "When would you use a composite index?",
+      "answer": "Use composite indexes for queries that filter or sort on multiple columns, when the combined columns have better selectivity, or for covering indexes that include all required columns.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 39,
+      "question": "What are filtered indexes and when are they useful?",
+      "answer": "Filtered indexes include only a subset of rows using a WHERE clause. Useful for: sparse data, heterogeneous data, foreign keys with mostly NULLs, or partitioning-like scenarios.",
+      "difficulty": "advanced",
+      "category": "indexes"
+    },
+    {
+      "id": 40,
+      "question": "Which operation can be rolled back?",
+      "answer": "DELETE and UPDATE can be rolled back within a transaction. TRUNCATE can also be rolled back in some databases but is typically not logged and operates faster.",
+      "difficulty": "intermediate",
+      "category": "ddl dml"
+    },
+    {
+      "id": 41,
+      "question": "How do these operations affect identity columns?",
+      "answer": "DELETE doesn't reset identity seed. TRUNCATE resets identity seed to initial value. UPDATE can change identity values but requires SET IDENTITY_INSERT ON.",
+      "difficulty": "intermediate",
+      "category": "ddl dml"
+    },
+    {
+      "id": 42,
+      "question": "When would you use each operation?",
+      "answer": "DELETE: remove specific rows with filtering. TRUNCATE: remove all rows quickly. UPDATE: modify existing data. Choose based on need for filtering, speed, and logging.",
+      "difficulty": "beginner",
+      "category": "ddl dml"
+    },
+    {
+      "id": 43,
+      "question": "How do recursive CTEs work?",
+      "answer": "Recursive CTEs have: anchor member (base case), UNION ALL, and recursive member. They repeatedly execute the recursive member, adding rows until no more results are returned.",
+      "difficulty": "advanced",
+      "category": "cte"
+    },
+    {
+      "id": 44,
+      "question": "What are the advantages of CTEs over subqueries?",
+      "answer": "CTEs are more readable, reusable within the same query, support recursion, and can be referenced multiple times. They also help break complex queries into logical parts.",
+      "difficulty": "intermediate",
+      "category": "cte"
+    },
+    {
+      "id": 45,
+      "question": "Can CTEs be used in multiple places in a query?",
+      "answer": "Yes, a CTE defined in the WITH clause can be referenced multiple times in the main query. This avoids repeating complex subqueries and improves maintainability.",
+      "difficulty": "intermediate",
+      "category": "cte"
+    },
+    {
+      "id": 46,
+      "question": "How can you identify duplicates using window functions?",
+      "answer": "Use ROW_NUMBER() OVER (PARTITION BY duplicate_columns ORDER BY any_column) and select rows where row_number > 1. This identifies all duplicate rows beyond the first occurrence.",
+      "difficulty": "intermediate",
+      "category": "data quality"
+    },
+    {
+      "id": 47,
+      "question": "What is the most efficient way to remove duplicates?",
+      "answer": "For large datasets: use ROW_NUMBER() with DELETE or CREATE TABLE AS with DISTINCT. For small datasets: DELETE with self-join or use DISTINCT in new table creation.",
+      "difficulty": "intermediate",
+      "category": "data quality"
+    },
+    {
+      "id": 48,
+      "question": "How do you prevent duplicates from being inserted?",
+      "answer": "Use UNIQUE constraints, PRIMARY KEY constraints, unique indexes, application-level checks, MERGE/UPSERT operations, or check EXISTS before INSERT.",
+      "difficulty": "beginner",
+      "category": "data quality"
+    },
+    {
+      "id": 49,
+      "question": "When should you use CHAR instead of VARCHAR?",
+      "answer": "Use CHAR for fixed-length data (codes, flags, fixed-length identifiers) where values are consistently the same length. Use VARCHAR for variable-length data to save storage.",
+      "difficulty": "beginner",
+      "category": "data types"
+    },
+    {
+      "id": 50,
+      "question": "What are the storage implications of each?",
+      "answer": "CHAR always uses declared length (padding with spaces). VARCHAR uses only actual data length + overhead. CHAR can be faster for fixed-length data but wastes space for variable data.",
+      "difficulty": "intermediate",
+      "category": "data types"
+    },
+    {
+      "id": 51,
+      "question": "How does performance compare between CHAR and VARCHAR?",
+      "answer": "CHAR can be slightly faster for fixed-length comparisons and full table scans. VARCHAR saves storage and I/O for variable-length data. Modern databases optimize both well.",
+      "difficulty": "intermediate",
+      "category": "data types"
+    },
+    {
+      "id": 52,
+      "question": "What is partial dependency in 2NF?",
+      "answer": "Partial dependency occurs when a non-key column depends on only part of a composite primary key. 2NF requires all non-key columns to depend on the entire primary key.",
+      "difficulty": "advanced",
+      "category": "normalization"
+    },
+    {
+      "id": 53,
+      "question": "What is transitive dependency in 3NF?",
+      "answer": "Transitive dependency occurs when a non-key column depends on another non-key column rather than directly on the primary key. 3NF eliminates these transitive dependencies.",
+      "difficulty": "advanced",
+      "category": "normalization"
+    },
+    {
+      "id": 54,
+      "question": "When is denormalization acceptable?",
+      "answer": "Acceptable for: reporting databases, data warehouses, read-heavy applications, performance-critical queries, when joins are expensive, or when data doesn't change frequently.",
+      "difficulty": "intermediate",
+      "category": "normalization"
+    },
+    {
+      "id": 55,
+      "question": "What is the syntax for starting and committing transactions?",
+      "answer": "BEGIN TRANSACTION (or START TRANSACTION) to start, COMMIT to save changes, ROLLBACK to undo. Some databases use autocommit mode by default.",
+      "difficulty": "beginner",
+      "category": "transactions"
+    },
+    {
+      "id": 56,
+      "question": "How do savepoints work?",
+      "answer": "Savepoints allow partial rollback within a transaction. Use SAVEPOINT name to create, ROLLBACK TO SAVEPOINT name to rollback to that point, while keeping the transaction active.",
+      "difficulty": "intermediate",
+      "category": "transactions"
+    },
+    {
+      "id": 57,
+      "question": "What happens if a transaction fails?",
+      "answer": "Failed transactions are automatically rolled back by the database. This ensures atomicity - either all operations succeed or none do. Errors typically trigger automatic rollback.",
+      "difficulty": "intermediate",
+      "category": "transactions"
+    },
+    {
+      "id": 58,
+      "question": "What window function syntax is used for running totals?",
+      "answer": "SUM(column) OVER (ORDER BY date_column ROWS UNBOUNDED PRECEDING) or SUM(column) OVER (ORDER BY date_column RANGE UNBOUNDED PRECEDING) for running totals.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 59,
+      "question": "How do you handle performance with large datasets?",
+      "answer": "Use appropriate frame specifications (ROWS vs RANGE), ensure proper indexing on ORDER BY columns, consider partitioning, and test with realistic data volumes.",
+      "difficulty": "advanced",
+      "category": "window functions"
+    },
+    {
+      "id": 60,
+      "question": "What are alternatives to window functions for running totals?",
+      "answer": "Correlated subqueries, self-joins with inequality conditions, or application-level calculation. However, window functions are typically most efficient and readable.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 61,
+      "question": "When is EXISTS more efficient than IN?",
+      "answer": "EXISTS is often more efficient with large subquery results because it stops at first match (short-circuit). IN must materialize the full subquery result and remove duplicates.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 62,
+      "question": "Can you use NOT IN and NOT EXISTS interchangeably?",
+      "answer": "Not exactly. NOT IN returns unexpected results with NULL values in subquery (returns no rows if any NULL exists). NOT EXISTS handles NULLs correctly and is generally safer.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 63,
+      "question": "How do these operators handle NULL values?",
+      "answer": "IN: NULL IN (1,2,NULL) returns NULL. NOT IN: returns NULL if any value is NULL. EXISTS: unaffected by NULLs. NOT EXISTS: unaffected by NULLs.",
+      "difficulty": "advanced",
+      "category": "subqueries"
+    },
+    {
+      "id": 64,
+      "question": "What are the different types of locks?",
+      "answer": "Shared locks (read), Exclusive locks (write), Update locks (intent to update), Intent locks (hierarchy indication), Schema locks (DDL operations), and Bulk update locks.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 65,
+      "question": "How can you detect and resolve deadlocks?",
+      "answer": "Use database monitoring tools, deadlock graphs, trace flags. Resolve by: retry logic in applications, accessing tables in consistent order, reducing transaction time, or using lower isolation levels.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 66,
+      "question": "What strategies prevent deadlocks?",
+      "answer": "Access objects in same order, use lower isolation levels, keep transactions short, avoid user interaction in transactions, use lock timeouts, and design with minimal locking contention.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 67,
+      "question": "What is a correlated subquery?",
+      "answer": "A correlated subquery references columns from the outer query. It executes once for each row in the outer query, which can be inefficient for large datasets.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 68,
+      "question": "When should you avoid using subqueries?",
+      "answer": "Avoid when they can be rewritten as JOINs (usually more efficient), with large datasets (correlated subqueries), or when they cause performance issues. Test alternatives like JOINs or CTEs.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 69,
+      "question": "How can subqueries be optimized?",
+      "answer": "Rewrite as JOINs when possible, ensure proper indexing, avoid correlated subqueries for large datasets, use EXISTS instead of IN for existence checks, and test with actual execution plans.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 70,
+      "question": "What is the difference between OFFSET and keyset pagination?",
+      "answer": "OFFSET uses row numbers and skips previous rows (slow for large offsets). Keyset pagination uses WHERE clauses with indexed columns (fast, but requires ordered unique column).",
+      "difficulty": "intermediate",
+      "category": "pagination"
+    },
+    {
+      "id": 71,
+      "question": "How do you handle performance with large offsets?",
+      "answer": "Use keyset pagination instead of OFFSET, cache pages, or use seek method with WHERE conditions. OFFSET becomes increasingly slow as offset grows.",
+      "difficulty": "intermediate",
+      "category": "pagination"
+    },
+    {
+      "id": 72,
+      "question": "What are the syntax differences between database systems?",
+      "answer": "LIMIT/OFFSET (MySQL, PostgreSQL), TOP (SQL Server), ROWNUM (Oracle), FETCH FIRST (ANSI SQL). Keyset pagination uses WHERE conditions consistently across databases.",
+      "difficulty": "intermediate",
+      "category": "pagination"
+    },
+    {
+      "id": 73,
+      "question": "How do constraints ensure data integrity?",
+      "answer": "Constraints enforce rules: PRIMARY KEY (unique identity), FOREIGN KEY (referential integrity), UNIQUE (unique values), CHECK (domain integrity), NOT NULL (mandatory values).",
+      "difficulty": "beginner",
+      "category": "constraints"
+    },
+    {
+      "id": 74,
+      "question": "What is the difference between PRIMARY KEY and UNIQUE constraint?",
+      "answer": "PRIMARY KEY: unique, not NULL, one per table, creates clustered index by default. UNIQUE: unique, allows NULLs, multiple per table, creates non-clustered index.",
+      "difficulty": "beginner",
+      "category": "constraints"
+    },
+    {
+      "id": 75,
+      "question": "When would you use a CHECK constraint?",
+      "answer": "Use CHECK constraints to enforce domain rules: value ranges (age >= 0), specific formats (email validation), business rules (end_date > start_date), or conditional requirements.",
+      "difficulty": "intermediate",
+      "category": "constraints"
+    },
+    {
+      "id": 76,
+      "question": "When would you use each ranking function?",
+      "answer": "ROW_NUMBER: unique sequential numbers. RANK: same rank for ties with gaps. DENSE_RANK: same rank for ties without gaps. NTILE: divides into buckets.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 77,
+      "question": "How do these functions handle ties?",
+      "answer": "ROW_NUMBER: always unique numbers (arbitrary order for ties). RANK: same rank, skip numbers. DENSE_RANK: same rank, no gaps. NTILE: distributes ties into same bucket when possible.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 78,
+      "question": "What are performance considerations?",
+      "answer": "Ranking functions require sorting. Ensure proper indexing on ORDER BY columns. Large partitions may need significant memory/tempdb. Consider filtering early with CTEs.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 79,
+      "question": "What are materialized views?",
+      "answer": "Materialized views store query results physically and can be refreshed periodically. They improve performance for complex queries but require storage and maintenance.",
+      "difficulty": "advanced",
+      "category": "views"
+    },
+    {
+      "id": 80,
+      "question": "How do views improve security?",
+      "answer": "Views can restrict column access (vertical security), row access (horizontal security), hide complex logic, and provide abstraction layer without granting direct table access.",
+      "difficulty": "intermediate",
+      "category": "views"
+    },
+    {
+      "id": 81,
+      "question": "What are the performance implications of views?",
+      "answer": "Simple views have minimal overhead. Complex views may impact performance if not optimized. Materialized views improve read performance but have maintenance overhead.",
+      "difficulty": "intermediate",
+      "category": "views"
+    },
+    {
+      "id": 82,
+      "question": "What are the different hierarchical data models?",
+      "answer": "Adjacency list (parent_id), Path enumeration (materialized path), Nested sets (left/right pointers), Closure table (separate relationship table), and XML/JSON native storage.",
+      "difficulty": "advanced",
+      "category": "hierarchical data"
+    },
+    {
+      "id": 83,
+      "question": "How do recursive CTEs work with hierarchies?",
+      "answer": "Recursive CTEs traverse hierarchies by: anchor member (root nodes), recursive member (join to find children), repeating until no more levels. Efficient for adjacency lists.",
+      "difficulty": "advanced",
+      "category": "hierarchical data"
+    },
+    {
+      "id": 84,
+      "question": "What are performance considerations for hierarchical queries?",
+      "answer": "Adjacency lists: good for inserts, slow for deep queries. Nested sets: fast queries, slow updates. Closure table: balanced performance. Index appropriately for common operations.",
+      "difficulty": "advanced",
+      "category": "hierarchical data"
+    },
+    {
+      "id": 85,
+      "question": "When should you use table variables vs temp tables?",
+      "answer": "Table variables: small datasets, simple operations, within stored procedures. Temp tables: larger datasets, complex operations, need indexing, or when statistics are important.",
+      "difficulty": "intermediate",
+      "category": "temporary objects"
+    },
+    {
+      "id": 86,
+      "question": "How do they differ in scope and lifetime?",
+      "answer": "Table variables: batch/scoped, automatically cleaned up. Temp tables: session-scoped (## for global), persist until dropped or connection closes, can be shared in some cases.",
+      "difficulty": "intermediate",
+      "category": "temporary objects"
+    },
+    {
+      "id": 87,
+      "question": "What are the performance differences?",
+      "answer": "Table variables: no statistics, assumed 1 row, can cause poor plans for large data. Temp tables: have statistics, better for larger datasets, can be indexed.",
+      "difficulty": "intermediate",
+      "category": "temporary objects"
+    },
+    {
+      "id": 88,
+      "question": "What is index selectivity?",
+      "answer": "Selectivity measures how unique index values are. High selectivity = many unique values (good for filtering). Low selectivity = few unique values (poor for filtering).",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 89,
+      "question": "How do you choose between clustered and non-clustered indexes?",
+      "answer": "Clustered: one per table, for range queries, often on PK. Non-clustered: multiple, for specific queries, covering indexes. Choose based on query patterns and data distribution.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 90,
+      "question": "What is a covering index?",
+      "answer": "A covering index includes all columns required by a query, allowing the query to be satisfied entirely from the index without accessing the base table (index-only scan).",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 91,
+      "question": "What are the performance implications of triggers?",
+      "answer": "Triggers add overhead to DML operations, run within transaction context, can cause locking issues, and may have cascading effects. Keep trigger logic efficient and minimal.",
+      "difficulty": "intermediate",
+      "category": "triggers"
+    },
+    {
+      "id": 92,
+      "question": "When should you avoid using triggers?",
+      "answer": "Avoid for complex business logic, when same logic can be in application layer, for performance-critical bulk operations, or when they cause unexpected side effects.",
+      "difficulty": "intermediate",
+      "category": "triggers"
+    },
+    {
+      "id": 93,
+      "question": "How do INSTEAD OF triggers work?",
+      "answer": "INSTEAD OF triggers replace the original DML operation. They execute instead of INSERT/UPDATE/DELETE, allowing custom logic and working on complex views that aren't normally updatable.",
+      "difficulty": "advanced",
+      "category": "triggers"
+    },
+    {
+      "id": 94,
+      "question": "What is BULK INSERT?",
+      "answer": "BULK INSERT efficiently loads large amounts of data from files into tables. It minimizes logging, uses bulk update locks, and can bypass some constraints for performance.",
+      "difficulty": "intermediate",
+      "category": "bulk operations"
+    },
+    {
+      "id": 95,
+      "question": "How do you minimize logging during bulk operations?",
+      "answer": "Use bulk-logged recovery model, table locking, disable indexes during load, use minimal logging operations (BULK INSERT, SELECT INTO), and batch large inserts.",
+      "difficulty": "advanced",
+      "category": "bulk operations"
+    },
+    {
+      "id": 96,
+      "question": "What are best practices for large data imports?",
+      "answer": "Batch imports, disable constraints/indexes during load, use bulk operations, monitor transaction log size, rebuild indexes after load, and test with representative data volumes.",
+      "difficulty": "intermediate",
+      "category": "bulk operations"
+    },
+    {
+      "id": 97,
+      "question": "Why are correlated subqueries often slower?",
+      "answer": "Correlated subqueries execute once for each row in the outer query, causing O(n*m) complexity. They prevent set-based operations and often can't use indexes efficiently.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 98,
+      "question": "How can you rewrite correlated subqueries as JOINs?",
+      "answer": "Replace with LEFT JOIN + IS NOT NULL for EXISTS, use window functions for row comparisons, or break into CTEs. Test alternatives with execution plans.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 99,
+      "question": "When are correlated subqueries necessary?",
+      "answer": "Necessary for: row-by-row operations that can't be expressed as JOINs, complex calculations per row, or when window functions aren't available or sufficient.",
+      "difficulty": "intermediate",
+      "category": "subqueries"
+    },
+    {
+      "id": 100,
+      "question": "What is the difference between full, differential, and transaction log backups?",
+      "answer": "Full: complete database backup. Differential: changes since last full backup. Transaction log: all transactions since last log backup. Used together for point-in-time recovery.",
+      "difficulty": "intermediate",
+      "category": "backup recovery"
+    },
+    {
+      "id": 101,
+      "question": "What are RTO and RPO?",
+      "answer": "RTO (Recovery Time Objective): maximum acceptable downtime. RPO (Recovery Point Objective): maximum acceptable data loss. Drive backup strategy and technology choices.",
+      "difficulty": "intermediate",
+      "category": "backup recovery"
+    },
+    {
+      "id": 102,
+      "question": "How do you test backup recovery?",
+      "answer": "Regularly restore backups to test environment, verify data consistency, measure recovery time, document procedures, and simulate disaster scenarios to ensure readiness.",
+      "difficulty": "intermediate",
+      "category": "backup recovery"
+    },
+    {
+      "id": 103,
+      "question": "How do you implement a many-to-many relationship?",
+      "answer": "Use junction table with foreign keys to both parent tables. The junction table typically has composite primary key and may include additional relationship attributes.",
+      "difficulty": "beginner",
+      "category": "database design"
+    },
+    {
+      "id": 104,
+      "question": "What is a self-referencing relationship?",
+      "answer": "A self-referencing relationship occurs when a table has a foreign key that references its own primary key. Used for hierarchical data like employee-manager relationships.",
+      "difficulty": "intermediate",
+      "category": "database design"
+    },
+    {
+      "id": 105,
+      "question": "How do foreign keys enforce relationships?",
+      "answer": "Foreign keys ensure referential integrity by: preventing orphan records, cascading updates/deletes (optional), and ensuring values exist in referenced table. They also improve query performance.",
+      "difficulty": "beginner",
+      "category": "database design"
+    },
+    {
+      "id": 106,
+      "question": "What tools are used for database performance monitoring?",
+      "answer": "SQL Server: DMVs, Profiler, Extended Events, Query Store. PostgreSQL: pg_stat_statements, EXPLAIN ANALYZE. MySQL: Performance Schema, Slow Query Log. Commercial: SolarWinds, Redgate.",
+      "difficulty": "intermediate",
+      "category": "performance monitoring"
+    },
+    {
+      "id": 107,
+      "question": "How do you identify bottleneck queries?",
+      "answer": "Look for: high execution count, long duration, high CPU/IO, blocking queries, missing indexes, table scans, parameter sniffing issues, and queries with poor execution plans.",
+      "difficulty": "intermediate",
+      "category": "performance monitoring"
+    },
+    {
+      "id": 108,
+      "question": "What are wait statistics?",
+      "answer": "Wait statistics show what resources queries are waiting for (CPU, IO, locks, memory, etc.). Help identify system bottlenecks and guide performance tuning efforts.",
+      "difficulty": "advanced",
+      "category": "performance monitoring"
+    },
+    {
+      "id": 109,
+      "question": "What are the different partitioning strategies?",
+      "answer": "Range partitioning (by date ranges), List partitioning (by discrete values), Hash partitioning (even distribution), and Composite partitioning (combining methods).",
+      "difficulty": "advanced",
+      "category": "partitioning"
+    },
+    {
+      "id": 110,
+      "question": "How does partitioning improve query performance?",
+      "answer": "Partition elimination (reading only relevant partitions), parallel operations per partition, maintenance operations on subsets, and better index management for large tables.",
+      "difficulty": "advanced",
+      "category": "partitioning"
+    },
+    {
+      "id": 111,
+      "question": "What are the maintenance considerations for partitioned tables?",
+      "answer": "Partition switching, splitting/merging partitions, updating statistics per partition, index maintenance, and monitoring partition usage and distribution.",
+      "difficulty": "advanced",
+      "category": "partitioning"
+    },
+    {
+      "id": 112,
+      "question": "When should you use NVARCHAR?",
+      "answer": "Use NVARCHAR when storing Unicode data (multiple languages, special characters, emojis). Use VARCHAR for single-language data to save storage space.",
+      "difficulty": "beginner",
+      "category": "data types"
+    },
+    {
+      "id": 113,
+      "question": "What are the storage differences?",
+      "answer": "VARCHAR: 1 byte per character (typically). NVARCHAR: 2 bytes per character (UTF-16) or 1-4 bytes (UTF-8 in some databases). NVARCHAR uses more storage but supports Unicode.",
+      "difficulty": "intermediate",
+      "category": "data types"
+    },
+    {
+      "id": 114,
+      "question": "How does character encoding affect these data types?",
+      "answer": "Character encoding determines how characters are stored. ASCII/Latin-1 for VARCHAR, UTF-8/UTF-16 for NVARCHAR. Encoding affects storage size, sorting, and comparison behavior.",
+      "difficulty": "advanced",
+      "category": "data types"
+    },
+    {
+      "id": 115,
+      "question": "How do statistics affect query optimization?",
+      "answer": "Statistics provide data distribution information to the query optimizer. Accurate statistics help choose optimal execution plans, while outdated statistics can cause poor performance.",
+      "difficulty": "advanced",
+      "category": "query optimization"
+    },
+    {
+      "id": 116,
+      "question": "When should you update statistics?",
+      "answer": "After large data changes, after index rebuilds, when query performance degrades, or automatically via database settings. Some databases have auto-update statistics enabled.",
+      "difficulty": "intermediate",
+      "category": "query optimization"
+    },
+    {
+      "id": 117,
+      "question": "What information do statistics contain?",
+      "answer": "Histogram of value distribution, density information, number of rows, number of unique values, and information about correlated columns in multi-column statistics.",
+      "difficulty": "advanced",
+      "category": "query optimization"
+    },
+    {
+      "id": 118,
+      "question": "What are temporal tables?",
+      "answer": "Temporal tables automatically track historical data changes with system-time period columns. They maintain full history of changes and allow point-in-time queries.",
+      "difficulty": "advanced",
+      "category": "temporal data"
+    },
+    {
+      "id": 119,
+      "question": "How do triggers help with auditing?",
+      "answer": "Triggers can capture before/after images of changed data, log to audit tables, record user information, and enforce business rules for data changes.",
+      "difficulty": "intermediate",
+      "category": "temporal data"
+    },
+    {
+      "id": 120,
+      "question": "What are the performance considerations for audit trails?",
+      "answer": "Audit trails add overhead to DML operations. Consider: asynchronous logging, minimal captured data, indexed audit tables, and periodic archiving/purging of old audit data.",
+      "difficulty": "intermediate",
+      "category": "temporal data"
+    },
+    {
+      "id": 121,
+      "question": "Can HAVING be used without aggregate functions?",
+      "answer": "Yes, but it's equivalent to WHERE in that case. HAVING without aggregates filters groups after grouping, while WHERE filters rows before grouping.",
+      "difficulty": "intermediate",
+      "category": "aggregation"
+    },
+    {
+      "id": 122,
+      "question": "What is the execution order of WHERE, GROUP BY, and HAVING?",
+      "answer": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT. WHERE filters rows, GROUP BY groups them, HAVING filters groups.",
+      "difficulty": "intermediate",
+      "category": "aggregation"
+    },
+    {
+      "id": 123,
+      "question": "When would you filter in WHERE vs HAVING?",
+      "answer": "Use WHERE for row-level conditions that don't depend on aggregates. Use HAVING for conditions involving aggregate functions or filtering based on group properties.",
+      "difficulty": "intermediate",
+      "category": "aggregation"
+    },
+    {
+      "id": 124,
+      "question": "What are the benefits of connection pooling?",
+      "answer": "Reduces connection overhead, improves performance, limits concurrent connections, manages connection lifetime, and provides better resource utilization.",
+      "difficulty": "intermediate",
+      "category": "connection management"
+    },
+    {
+      "id": 125,
+      "question": "How do you configure connection pool settings?",
+      "answer": "Set min/max pool size, connection timeout, lifetime, validation queries, and idle settings. Balance between resource usage and performance requirements.",
+      "difficulty": "intermediate",
+      "category": "connection management"
+    },
+    {
+      "id": 126,
+      "question": "What are common connection pool issues?",
+      "answer": "Connection leaks, pool exhaustion, stale connections, timeout issues, and resource contention. Monitor pool usage and implement proper connection disposal.",
+      "difficulty": "intermediate",
+      "category": "connection management"
+    },
+    {
+      "id": 127,
+      "question": "What is transactional replication?",
+      "answer": "Transactional replication copies transactions from publisher to subscriber in near real-time. Used for: reporting, offloading queries, and distributing data to multiple locations.",
+      "difficulty": "advanced",
+      "category": "replication"
+    },
+    {
+      "id": 128,
+      "question": "How does snapshot replication work?",
+      "answer": "Snapshot replication takes a point-in-time snapshot and replicates entire dataset. Used for: initial synchronization, small datasets, or when real-time sync isn't needed.",
+      "difficulty": "advanced",
+      "category": "replication"
+    },
+    {
+      "id": 129,
+      "question": "What are the use cases for each replication type?",
+      "answer": "Transactional: real-time reporting, high availability. Snapshot: initial setup, small/static data. Merge: bidirectional replication. Peer-to-peer: multi-master scenarios.",
+      "difficulty": "advanced",
+      "category": "replication"
+    },
+    {
+      "id": 130,
+      "question": "What is the principle of least privilege?",
+      "answer": "Grant minimum permissions necessary for users/processes to perform required tasks. Reduces security risk, limits damage from breaches, and improves auditability.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 131,
+      "question": "How do you implement row-level security?",
+      "answer": "Use security policies, views with WHERE clauses, application-level filtering, or database features like SQL Server Row-Level Security. Filter rows based on user context.",
+      "difficulty": "advanced",
+      "category": "security"
+    },
+    {
+      "id": 132,
+      "question": "What are database encryption options?",
+      "answer": "TDE (Transparent Data Encryption), column-level encryption, always encrypted, backup encryption, and SSL/TLS for network encryption. Choose based on data sensitivity and performance needs.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 133,
+      "question": "How many clustered indexes can a table have?",
+      "answer": "One clustered index per table (except for rare cases like indexed views). The table data is physically ordered by the clustered index key.",
+      "difficulty": "beginner",
+      "category": "indexes"
+    },
+    {
+      "id": 134,
+      "question": "When should you create a clustered index?",
+      "answer": "On columns used for range queries, frequently accessed in order, used for table scans, or as the primary key. Choose a narrow, ever-increasing key for best performance.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 135,
+      "question": "How do these indexes affect insert performance?",
+      "answer": "Clustered indexes can cause page splits if not sequential, affecting insert performance. Non-clustered indexes add overhead to inserts but don't affect physical order.",
+      "difficulty": "intermediate",
+      "category": "indexes"
+    },
+    {
+      "id": 136,
+      "question": "What is horizontal vs vertical sharding?",
+      "answer": "Horizontal sharding: splitting rows across databases. Vertical sharding: splitting columns across databases. Horizontal is more common for scaling read/write operations.",
+      "difficulty": "advanced",
+      "category": "sharding"
+    },
+    {
+      "id": 137,
+      "question": "How do you handle cross-shard queries?",
+      "answer": "Use query routers, federation, or application-level aggregation. Cross-shard queries are complex and may require fetching from multiple shards then combining results.",
+      "difficulty": "advanced",
+      "category": "sharding"
+    },
+    {
+      "id": 138,
+      "question": "What are the challenges of database sharding?",
+      "answer": "Data distribution, cross-shard queries, transaction consistency, rebalancing shards, backup/restore complexity, and application awareness of sharding strategy.",
+      "difficulty": "advanced",
+      "category": "sharding"
+    },
+    {
+      "id": 139,
+      "question": "What is the difference between scalar and table-valued functions?",
+      "answer": "Scalar functions return single value, can be used in SELECT list. Table-valued functions return table, can be used in FROM clause. TVFs can be inline (better performance) or multi-statement.",
+      "difficulty": "intermediate",
+      "category": "functions"
+    },
+    {
+      "id": 140,
+      "question": "How do you create user-defined functions?",
+      "answer": "Use CREATE FUNCTION syntax, specify parameters, return type, and function body. Can be deterministic or non-deterministic. Consider performance implications of function usage.",
+      "difficulty": "intermediate",
+      "category": "functions"
+    },
+    {
+      "id": 141,
+      "question": "What are the performance considerations for functions?",
+      "answer": "Scalar functions in WHERE clauses can prevent index usage, cause row-by-row processing. Inline TVFs generally perform better. Avoid functions on indexed columns in predicates.",
+      "difficulty": "intermediate",
+      "category": "functions"
+    },
+    {
+      "id": 142,
+      "question": "What tools are available for database migrations?",
+      "answer": "Flyway, Liquibase, DbUp, Entity Framework Migrations, Redgate SQL Compare, and native tools like SQL Server Data Tools. Choose based on team workflow and database platform.",
+      "difficulty": "intermediate",
+      "category": "migrations"
+    },
+    {
+      "id": 143,
+      "question": "How do you handle schema changes in production?",
+      "answer": "Use migration scripts, version control, rollback plans, test thoroughly, apply during maintenance windows, and consider zero-downtime deployment strategies when possible.",
+      "difficulty": "intermediate",
+      "category": "migrations"
+    },
+    {
+      "id": 144,
+      "question": "What is version control for databases?",
+      "answer": "Treating database schema as code: storing migration scripts in version control, tracking changes, enabling team collaboration, and automating deployment processes.",
+      "difficulty": "intermediate",
+      "category": "migrations"
+    },
+    {
+      "id": 145,
+      "question": "When would you use APPLY instead of JOIN?",
+      "answer": "Use APPLY with table-valued functions, when the right side depends on the left side (correlated subquery scenario), or for more complex join conditions that can't be expressed with standard JOINs.",
+      "difficulty": "advanced",
+      "category": "operators"
+    },
+    {
+      "id": 146,
+      "question": "How do these operators work with table-valued functions?",
+      "answer": "CROSS APPLY: like INNER JOIN with TVF. OUTER APPLY: like LEFT JOIN with TVF. TVF executes for each row from left table, using values from that row as parameters.",
+      "difficulty": "advanced",
+      "category": "operators"
+    },
+    {
+      "id": 147,
+      "question": "What are performance considerations?",
+      "answer": "APPLY can be efficient for small left tables but may perform poorly with large datasets. Evaluate with execution plans and consider alternatives like JOINs or CTEs.",
+      "difficulty": "advanced",
+      "category": "operators"
+    },
+    {
+      "id": 148,
+      "question": "How do you detect deadlocks?",
+      "answer": "Use SQL Server: deadlock graphs, trace flags, Extended Events. PostgreSQL: deadlock_timeout, log_lock_waits. MySQL: SHOW ENGINE INNODB STATUS. Monitor and set up alerts.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 149,
+      "question": "What is deadlock priority?",
+      "answer": "Deadlock priority determines which transaction is chosen as deadlock victim when deadlock occurs. Can be set to LOW, NORMAL, HIGH, or numeric values (-10 to 10).",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 150,
+      "question": "How does transaction isolation level affect deadlocks?",
+      "answer": "Higher isolation levels (Repeatable Read, Serializable) increase deadlock likelihood due to more locking. Read Committed has fewer deadlocks but may have concurrency issues.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 151,
+      "question": "How are database snapshots created?",
+      "answer": "Use CREATE DATABASE SNAPSHOT syntax. Snapshots are read-only, point-in-time views of source database. Use sparse files for storage efficiency.",
+      "difficulty": "advanced",
+      "category": "snapshots"
+    },
+    {
+      "id": 152,
+      "question": "What are the storage requirements for snapshots?",
+      "answer": "Snapshots initially use minimal storage (sparse files). Storage grows as source database changes. Monitor snapshot size and recreate if it becomes too large.",
+      "difficulty": "advanced",
+      "category": "snapshots"
+    },
+    {
+      "id": 153,
+      "question": "How do snapshots differ from backups?",
+      "answer": "Snapshots: point-in-time read-only views, fast creation, dependent on source DB. Backups: independent copies, can be restored elsewhere, slower to create but more durable.",
+      "difficulty": "intermediate",
+      "category": "snapshots"
+    },
+    {
+      "id": 154,
+      "question": "What is database compression?",
+      "answer": "Database compression reduces storage space for data and indexes. Types: row compression, page compression, Unicode compression. Can improve I/O performance but may increase CPU usage.",
+      "difficulty": "advanced",
+      "category": "storage"
+    },
+    {
+      "id": 155,
+      "question": "How do you manage database file growth?",
+      "answer": "Set appropriate initial size and growth increments, enable instant file initialization, monitor space usage, plan for growth, and use multiple filegroups for large databases.",
+      "difficulty": "intermediate",
+      "category": "storage"
+    },
+    {
+      "id": 156,
+      "question": "What are filegroups and how do they help?",
+      "answer": "Filegroups group database files for administrative purposes. Benefits: partial backup/restore, improved performance through file placement, and better manageability of large databases.",
+      "difficulty": "intermediate",
+      "category": "storage"
+    },
+    {
+      "id": 157,
+      "question": "What are common use cases for LAG and LEAD?",
+      "answer": "Time series analysis (previous/next values), calculating differences between consecutive rows, detecting changes, and comparing current row with previous/next rows in ordered sets.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 158,
+      "question": "How do you handle boundary conditions?",
+      "answer": "Use default values for first/last rows, specify offset, and consider partition boundaries. LAG/LEAD return NULL at boundaries unless default value is provided.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 159,
+      "question": "Can you specify custom offsets?",
+      "answer": "Yes, LAG/LEAD accept offset parameter (number of rows to look back/forward). Default is 1. Can also specify default value for when offset goes beyond partition boundaries.",
+      "difficulty": "intermediate",
+      "category": "window functions"
+    },
+    {
+      "id": 160,
+      "question": "What is the buffer pool?",
+      "answer": "Buffer pool is memory area where database pages are cached. Reduces physical I/O by keeping frequently accessed data in memory. Key performance component.",
+      "difficulty": "advanced",
+      "category": "memory"
+    },
+    {
+      "id": 161,
+      "question": "How does query caching work?",
+      "answer": "Query execution plans are cached to avoid recompilation. Cache key includes query text, parameters, and context. Cache can be cleared manually or automatically when outdated.",
+      "difficulty": "advanced",
+      "category": "memory"
+    },
+    {
+      "id": 162,
+      "question": "When should you use application-level caching?",
+      "answer": "For relatively static data, expensive calculations, reducing database load, or when data can be stale for short periods. Consider cache invalidation strategies and memory usage.",
+      "difficulty": "intermediate",
+      "category": "memory"
+    },
+    {
+      "id": 163,
+      "question": "How do sequences differ from identity columns?",
+      "answer": "Sequences: database objects independent of tables, can be shared across tables, support caching, more flexible. Identity: table-specific, simpler, but less flexible.",
+      "difficulty": "intermediate",
+      "category": "sequences"
+    },
+    {
+      "id": 164,
+      "question": "What are the advantages of sequences?",
+      "answer": "Shared across multiple tables, can be reset, support caching for performance, can have custom increment, and aren't tied to specific table structure.",
+      "difficulty": "intermediate",
+      "category": "sequences"
+    },
+    {
+      "id": 165,
+      "question": "How do you create and use sequences?",
+      "answer": "CREATE SEQUENCE seq_name START WITH 1 INCREMENT BY 1. Use NEXT VALUE FOR seq_name to get next value. Can set cache size for performance.",
+      "difficulty": "intermediate",
+      "category": "sequences"
+    },
+    {
+      "id": 166,
+      "question": "What is optimistic concurrency control?",
+      "answer": "Optimistic concurrency assumes conflicts are rare. Allows concurrent reads, detects conflicts at commit time using version stamps/timestamps. Better for read-heavy workloads.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 167,
+      "question": "How does row versioning work?",
+      "answer": "Database maintains versions of rows. Readers see committed version without blocking writers. Uses tempdb or similar for version store. Enables snapshot isolation.",
+      "difficulty": "advanced",
+      "category": "concurrency"
+    },
+    {
+      "id": 168,
+      "question": "What are dirty reads and phantom reads?",
+      "answer": "Dirty read: reading uncommitted data. Phantom read: different rows returned when re-querying due to other transactions inserting/deleting rows. Prevented by higher isolation levels.",
+      "difficulty": "intermediate",
+      "category": "concurrency"
+    },
+    {
+      "id": 169,
+      "question": "When would you use UNION instead of JOIN?",
+      "answer": "Use UNION to combine results from similar tables (vertical combination). Use JOIN to combine columns from related tables (horizontal combination). Different purposes.",
+      "difficulty": "beginner",
+      "category": "set operations"
+    },
+    {
+      "id": 170,
+      "question": "What are the column requirements for UNION?",
+      "answer": "All SELECTs must have same number of columns, compatible data types in corresponding positions. Column names come from first SELECT. Use NULL or default values if needed.",
+      "difficulty": "beginner",
+      "category": "set operations"
+    },
+    {
+      "id": 171,
+      "question": "How do UNION and UNION ALL differ in performance?",
+      "answer": "UNION ALL is faster - just concatenates results. UNION removes duplicates requiring sort and distinct operation. Use UNION ALL when duplicates are acceptable or impossible.",
+      "difficulty": "intermediate",
+      "category": "set operations"
+    },
+    {
+      "id": 172,
+      "question": "What key metrics should you monitor?",
+      "answer": "CPU usage, memory pressure, disk I/O, query performance, blocking, deadlocks, connection counts, cache hit ratios, and wait statistics.",
+      "difficulty": "intermediate",
+      "category": "monitoring"
+    },
+    {
+      "id": 173,
+      "question": "How do you set up database alerts?",
+      "answer": "Use database mail, SQL Server Agent alerts, monitoring tools, or custom scripts. Alert on: high CPU, low disk space, long-running queries, deadlocks, and failed jobs.",
+      "difficulty": "intermediate",
+      "category": "monitoring"
+    },
+    {
+      "id": 174,
+      "question": "What tools are available for database monitoring?",
+      "answer": "SQL Server: DMVs, Extended Events, Profiler. Third-party: SolarWinds, Redgate, Idera. Cloud: Azure Monitor, AWS CloudWatch. Open-source: Prometheus, Grafana.",
+      "difficulty": "intermediate",
+      "category": "monitoring"
+    },
+    {
+      "id": 175,
+      "question": "How do foreign key constraints affect performance?",
+      "answer": "FKs add overhead to DML operations (checking referential integrity) but can improve query performance through better join planning and maintaining data integrity.",
+      "difficulty": "intermediate",
+      "category": "constraints"
+    },
+    {
+      "id": 176,
+      "question": "What is the cost of CHECK constraints?",
+      "answer": "Minimal overhead during DML operations. Much more efficient than application-level checks. Help maintain data integrity and can improve query optimization.",
+      "difficulty": "intermediate",
+      "category": "constraints"
+    },
+    {
+      "id": 177,
+      "question": "When should you disable constraints?",
+      "answer": "During bulk data loads, schema changes, or data migration. Re-enable and validate afterwards. Disabling constraints can improve performance but risks data integrity.",
+      "difficulty": "intermediate",
+      "category": "constraints"
+    },
+    {
+      "id": 178,
+      "question": "What are full-text indexes?",
+      "answer": "Specialized indexes for text search that support linguistic searching, proximity searches, and ranking. More powerful than LIKE operator for text search scenarios.",
+      "difficulty": "intermediate",
+      "category": "full-text search"
+    },
+    {
+      "id": 179,
+      "question": "How do CONTAINS and FREETEXT differ?",
+      "answer": "CONTAINS: precise matching with operators (AND, OR, NEAR). FREETEXT: linguistic matching for meaning, matches inflectional forms and synonyms. CONTAINS is more precise, FREETEXT is more flexible.",
+      "difficulty": "intermediate",
+      "category": "full-text search"
+    },
+    {
+      "id": 180,
+      "question": "What are the limitations of SQL full-text search?",
+      "answer": "Not as powerful as dedicated search engines (Elasticsearch), maintenance overhead, language dependency, and may not scale as well for very large text corpora.",
+      "difficulty": "intermediate",
+      "category": "full-text search"
+    },
+    {
+      "id": 181,
+      "question": "When should you use CTEs vs temp tables?",
+      "answer": "CTEs: readability, recursion, simple reuse. Temp tables: complex operations, need indexing, large datasets, multiple references across batches, or when statistics are important.",
+      "difficulty": "intermediate",
+      "category": "cte"
+    },
+    {
+      "id": 182,
+      "question": "Can CTEs be indexed?",
+      "answer": "No, CTEs cannot be directly indexed. However, you can create indexes on underlying tables used in the CTE. For complex CTEs, consider temp tables with indexes.",
+      "difficulty": "intermediate",
+      "category": "cte"
+    },
+    {
+      "id": 183,
+      "question": "What are recursive CTEs?",
+      "answer": "CTEs that reference themselves, used for hierarchical data traversal. Consist of anchor member (base case) and recursive member, joined with UNION ALL.",
+      "difficulty": "advanced",
+      "category": "cte"
+    },
+    {
+      "id": 184,
+      "question": "What is Always On Availability Groups?",
+      "answer": "SQL Server high availability feature providing database mirroring at database group level. Supports read-only replicas, automatic failover, and disaster recovery.",
+      "difficulty": "advanced",
+      "category": "high availability"
+    },
+    {
+      "id": 185,
+      "question": "How does database mirroring work?",
+      "answer": "Synchronizes database between principal and mirror servers. Can be synchronous (high safety) or asynchronous (high performance). Requires witness for automatic failover.",
+      "difficulty": "advanced",
+      "category": "high availability"
+    },
+    {
+      "id": 186,
+      "question": "What are the differences between high availability and disaster recovery?",
+      "answer": "HA: minimizes downtime, local redundancy. DR: protects against site failure, geographic separation. HA solutions often used for DR with proper configuration.",
+      "difficulty": "intermediate",
+      "category": "high availability"
+    },
+    {
+      "id": 187,
+      "question": "How do collations affect string comparison?",
+      "answer": "Collations define sorting rules, case sensitivity, accent sensitivity, and character set. Different collations can yield different results for same string comparison.",
+      "difficulty": "intermediate",
+      "category": "collation"
+    },
+    {
+      "id": 188,
+      "question": "What is the difference between case-sensitive and case-insensitive collations?",
+      "answer": "Case-sensitive: 'A' != 'a'. Case-insensitive: 'A' = 'a'. Choose based on application requirements. Case-insensitive is more common for user-facing data.",
+      "difficulty": "beginner",
+      "category": "collation"
+    },
+    {
+      "id": 189,
+      "question": "How do you change database collation?",
+      "answer": "Complex operation requiring database rebuild. For SQL Server: use ALTER DATABASE with COLLATE, but may require recreating objects. Test thoroughly in non-production first.",
+      "difficulty": "advanced",
+      "category": "collation"
+    },
+    {
+      "id": 190,
+      "question": "What is migration-based database versioning?",
+      "answer": "Storing database changes as sequential migration scripts in version control. Each migration moves database from one version to next. Enables reproducible deployments.",
+      "difficulty": "intermediate",
+      "category": "version control"
+    },
+    {
+      "id": 191,
+      "question": "How do you handle database refactoring?",
+      "answer": "Use evolutionary database design: small, safe changes; backward compatibility; versioned migrations; and tools for automated deployment and rollback.",
+      "difficulty": "intermediate",
+      "category": "version control"
+    },
+    {
+      "id": 192,
+      "question": "What tools support database version control?",
+      "answer": "Flyway, Liquibase, DbUp, RoundhousE, and Redgate SQL Source Control. Integrated with CI/CD pipelines for automated database deployments.",
+      "difficulty": "intermediate",
+      "category": "version control"
+    },
+    {
+      "id": 193,
+      "question": "How do these operations affect identity seed?",
+      "answer": "DELETE: doesn't reset identity. TRUNCATE: resets identity to seed. DBCC CHECKIDENT: can reset identity manually. Consider RESEED for specific requirements.",
+      "difficulty": "intermediate",
+      "category": "ddl dml"
+    },
+    {
+      "id": 194,
+      "question": "Can TRUNCATE be used on tables with foreign keys?",
+      "answer": "No, TRUNCATE cannot be used on tables referenced by foreign key constraints, even if referenced tables are empty. Must use DELETE or drop constraints temporarily.",
+      "difficulty": "intermediate",
+      "category": "ddl dml"
+    },
+    {
+      "id": 195,
+      "question": "What are the transaction log implications?",
+      "answer": "DELETE: fully logged, can be slow for large tables. TRUNCATE: minimally logged, faster. Both operations can be rolled back within transactions.",
+      "difficulty": "intermediate",
+      "category": "ddl dml"
+    },
+    {
+      "id": 196,
+      "question": "What is the difference between row and page compression?",
+      "answer": "Row compression: reduces metadata overhead. Page compression: includes row compression plus prefix and dictionary compression. Page compression saves more space but uses more CPU.",
+      "difficulty": "advanced",
+      "category": "compression"
+    },
+    {
+      "id": 197,
+      "question": "How does compression affect performance?",
+      "answer": "Reduces I/O (more data per page) but increases CPU usage (compression/decompression). Generally improves performance for I/O-bound workloads, may hurt CPU-bound workloads.",
+      "difficulty": "advanced",
+      "category": "compression"
+    },
+    {
+      "id": 198,
+      "question": "When should you use data compression?",
+      "answer": "For large tables, data warehouse scenarios, archival data, or when I/O is bottleneck. Avoid for heavily updated tables or when CPU is already constrained.",
+      "difficulty": "intermediate",
+      "category": "compression"
+    },
+    {
+      "id": 199,
+      "question": "How do synonyms improve database abstraction?",
+      "answer": "Synonyms provide alternative names for database objects. Enable location transparency, simplify complex names, and facilitate schema changes without breaking applications.",
+      "difficulty": "intermediate",
+      "category": "synonyms"
+    },
+    {
+      "id": 200,
+      "question": "Can synonyms reference objects in other databases?",
+      "answer": "Yes, synonyms can reference objects in different databases on same server or even on linked servers. Provides unified access layer across distributed databases.",
+      "difficulty": "intermediate",
+      "category": "synonyms"
+    },
+    {
+      "id": 201,
+      "question": "What are the security implications of synonyms?",
+      "answer": "Synonyms inherit permissions of underlying object. Users need permissions on actual objectveu, not just synonym. Can help hide object location but don't provide additional security.",
+      "difficulty": "intermediate",
+      "category": "synonyms"
+    },
+    {
+      "id": 202,
+      "question": "What is Transparent Data Encryption?",
+      "answer": "TDE encrypts database files at rest. Protects against physical theft of database files. Doesn't encrypt data in memory or during transmission. Requires certificate management.",
+      "difficulty": "advanced",
+      "category": "encryption"
+    },
+    {
+      "id": 203,
+      "question": "How does column-level encryption work?",
+      "answer": "Encrypts specific columns using symmetric or asymmetric keys. More granular than TDE but requires application changes to handle encryption/decryption. Better for specific sensitive data.",
+      "difficulty": "intermediate",
+      "category": "encryption"
+    },
+    {
+      "id": 204,
+      "question": "What are the key management considerations?",
+      "answer": "Secure key storage, key rotation policies, backup of encryption keys, access controls, and recovery procedures. Lost keys mean lost data.",
+      "difficulty": "advanced",
+      "category": "encryption"
+    },
+    {
+      "id": 205,
+      "question": "When is dynamic SQL necessary?",
+      "answer": "For dynamic schema names, conditional WHERE clauses, building queries based on user input, or when query structure isn't known at compile time.",
+      "difficulty": "intermediate",
+      "category": "dynamic sql"
+    },
+    {
+      "id": 206,
+      "question": "How do you prevent SQL injection in dynamic SQL?",
+      "answer": "Use parameterized queries with sp_executesql, avoid string concatenation with user input, validate/sanitize input, use QUOTENAME for object names, and follow principle of least privilege.",
+      "difficulty": "intermediate",
+      "category": "dynamic sql"
+    },
+    {
+      "id": 207,
+      "question": "What are the performance implications?",
+      "answer": "Dynamic SQL can cause plan cache pollution, recompilation overhead, and may not benefit from parameter sniffing. Use parameterized dynamic SQL and test with realistic data.",
+      "difficulty": "intermediate",
+      "category": "dynamic sql"
+    },
+    {
+      "id": 208,
+      "question": "What are common query hints?",
+      "answer": "NOLOCK, READPAST, INDEX, FORCE ORDER, OPTIMIZE FOR, RECOMPILE, MAXDOP. Use sparingly as they override optimizer decisions and may cause maintenance issues.",
+      "difficulty": "advanced",
+      "category": "query hints"
+    },
+    {
+      "id": 209,
+      "question": "When should you avoid using hints?",
+      "answer": "Avoid when database upgrades are planned, when data distribution changes, or when better solutions exist (indexing, statistics updates, query rewriting). Hints can become outdated.",
+      "difficulty": "intermediate",
+      "category": "query hints"
+    },
+    {
+      "id": 210,
+      "question": "How do hints affect query optimization?",
+      "answer": "Hints override optimizer decisions, which can help in specific scenarios but may prevent adaptive optimization and cause suboptimal plans as data or environment changes.",
+      "difficulty": "advanced",
+      "category": "query hints"
+    },
+    {
+      "id": 211,
+      "question": "How do you set up linked servers?",
+      "answer": "Use sp_addlinkedserver for setup, sp_addlinkedsrvlogin for security. Configure provider options, collation compatibility, and test connectivity. Monitor for performance issues.",
+      "difficulty": "advanced",
+      "category": "linked servers"
+    },
+    {
+      "id": 212,
+      "question": "What are the performance considerations?",
+      "answer": "Linked server queries may perform poorly due to: data transfer over network, lack of statistics on remote data, and suboptimal join strategies. Use OPENQUERY for better performance.",
+      "difficulty": "advanced",
+      "category": "linked servers"
+    },
+    {
+      "id": 213,
+      "question": "How do linked servers handle security?",
+      "answer": "Can use current security context (delegation) or fixed credentials. Delegation requires Kerberos setup. Fixed credentials may have broader access than desired.",
+      "difficulty": "advanced",
+      "category": "linked servers"
+    },
+    {
+      "id": 214,
+      "question": "How do you detect database corruption?",
+      "answer": "Use DBCC CHECKDB, monitor for 823/824 errors, checksum pages, and implement monitoring alerts. Regular integrity checks are essential for early detection.",
+      "difficulty": "advanced",
+      "category": "corruption"
+    },
+    {
+      "id": 215,
+      "question": "What is DBCC CHECKDB?",
+      "answer": "Comprehensive database integrity checker. Verifies allocation, structural integrity, and logical consistency. Should be run regularly as part of maintenance plans.",
+      "difficulty": "intermediate",
+      "category": "corruption"
+    },
+    {
+      "id": 216,
+      "question": "How do you recover from corruption?",
+      "answer": "Restore from backup, use page-level restore, DBCC REPAIR (last resort), or work with Microsoft Support. Recovery strategy depends on corruption extent and backup availability.",
+      "difficulty": "advanced",
+      "category": "corruption"
+    },
+    {
+      "id": 217,
+      "question": "Which function is ANSI standard?",
+      "answer": "COALESCE is ANSI standard, while ISNULL is SQL Server specific. COALESCE works across databases and handles multiple parameters more flexibly.",
+      "difficulty": "intermediate",
+      "category": "functions"
+    },
+    {
+      "id": 218,
+      "question": "How do these functions handle multiple parameters?",
+      "answer": "COALESCE: returns first non-NULL from parameter list. ISNULL: takes exactly two parameters. COALESCE is more flexible for multiple fallback values.",
+      "difficulty": "intermediate",
+      "category": "functions"
+    },
+    {
+      "id": 219,
+      "question": "What are the data type differences?",
+      "answer": "ISNULL uses data type of first parameter. COALESCE uses data type with highest precedence. COALESCE may require explicit casting in some cases.",
+      "difficulty": "advanced",
+      "category": "functions"
+    },
+    {
+      "id": 220,
+      "question": "What is Page Life Expectancy?",
+      "answer": "PLE measures how long pages stay in buffer pool in seconds. Low PLE indicates memory pressure. General guideline: PLE should be above 300 seconds, but depends on workload.",
+      "difficulty": "advanced",
+      "category": "memory"
+    },
+    {
+      "id": 221,
+      "question": "How do you monitor buffer cache hit ratio?",
+      "answer": "Use performance counters, DMVs like sys.dm_os_performance_counters. Target: >90% for OLTP, >95% for data warehouses. Low ratio indicates need for more memory or better indexing.",
+      "difficulty": "advanced",
+      "category": "memory"
+    },
+    {
+      "id": 222,
+      "question": "What are key memory counters?",
+      "answer": "Page Life Expectancy, Buffer Cache Hit Ratio, Memory Grants Pending, Page Reads/Sec, Checkpoint Pages/Sec. Monitor these to identify memory bottlenecks.",
+      "difficulty": "advanced",
+      "category": "memory"
+    },
+    {
+      "id": 223,
+      "question": "How do filegroups improve performance?",
+      "answer": "By distributing I/O across multiple disks, placing indexes on separate filegroups, and enabling partial database availability. Also helps with backup/restore strategies.",
+      "difficulty": "intermediate",
+      "category": "storage"
+    },
+    {
+      "id": 224,
+      "question": "How do you implement partial database restore?",
+      "answer": "Restore primary filegroup first, then restore other filegroups as needed. Useful for large databases where only specific data needs quick availability.",
+      "difficulty": "advanced",
+      "category": "storage"
+    },
+    {
+      "id": 225,
+      "question": "What is the best practice for filegroup usage?",
+      "answer": "Separate data and indexes, use multiple files per filegroup on different drives, place read-only data on separate filegroup, and plan for growth and maintenance.",
+      "difficulty": "intermediate",
+      "category": "storage"
+    },
+    {
+      "id": 226,
+      "question": "What is SQL Server Audit?",
+      "answer": "Built-in auditing feature that tracks server and database-level events. Provides comprehensive auditing capabilities with low performance impact compared to triggers.",
+      "difficulty": "intermediate",
+      "category": "auditing"
+    },
+    {
+      "id": 227,
+      "question": "How do you audit data changes?",
+      "answer": "Use Change Data Capture, triggers, temporal tables, or SQL Server Audit. Each has different performance characteristics and audit detail levels.",
+      "difficulty": "intermediate",
+      "category": "auditing"
+    },
+    {
+      "id": 228,
+      "question": "What are the performance impacts of auditing?",
+      "answer": "Varies by method: triggers have highest per-transaction cost, CDC moderate, temporal tables low overhead. Test with representative workload and monitor performance.",
+      "difficulty": "intermediate",
+      "category": "auditing"
+    },
+    {
+      "id": 229,
+      "question": "When should you use Unicode data types?",
+      "answer": "When storing multilingual data, special characters, emojis, or when database serves international users. Also when migrating data between different character sets.",
+      "difficulty": "beginner",
+      "category": "data types"
+    },
+    {
+      "id": 230,
+      "question": "What are the storage requirements?",
+      "answer": "NVARCHAR uses 2 bytes per character (UTF-16) in SQL Server, 1-4 bytes in other databases. VARCHAR uses 1 byte per character typically. Unicode types use more storage.",
+      "difficulty": "intermediate",
+      "category": "data types"
+    },
+    {
+      "id": 231,
+      "question": "How do these types affect string functions?",
+      "answer": "Unicode functions (NCHAR, UNICODE) work with Unicode data. Some string functions may behave differently with Unicode, especially for length calculations and comparisons.",
+      "difficulty": "intermediate",
+      "category": "data types"
+    },
+    {
+      "id": 232,
+      "question": "What tasks should be included in maintenance plans?",
+      "answer": "Backups, index reorganize/rebuild, update statistics, integrity checks, and cleanup tasks. Schedule based on database usage patterns and business requirements.",
+      "difficulty": "intermediate",
+      "category": "maintenance"
+    },
+    {
+      "id": 233,
+      "question": "How do you schedule maintenance tasks?",
+      "answer": "Use SQL Server Agent, Windows Task Scheduler, or third-party tools. Schedule during low-usage periods, consider overlapping tasks, and monitor for completion/failures.",
+      "difficulty": "intermediate",
+      "category": "maintenance"
+    },
+    {
+      "id": 234,
+      "question": "What are best practices for database maintenance?",
+      "answer": "Regular backups, index maintenance, statistics updates, integrity checks, monitoring, documentation, and testing recovery procedures. Automate where possible.",
+      "difficulty": "intermediate",
+      "category": "maintenance"
+    },
+    {
+      "id": 235,
+      "question": "How do snapshots use sparse files?",
+      "answer": "Snapshots use sparse files that initially consume minimal space. As source database changes, original pages are copied to snapshot, growing the sparse file.",
+      "difficulty": "advanced",
+      "category": "snapshots"
+    },
+    {
+      "id": 236,
+      "question": "What are the performance implications of snapshots?",
+      "answer": "Source database performance degrades as snapshot grows due to copy-on-write operations. Monitor snapshot size and recreate if performance impact becomes significant.",
+      "difficulty": "advanced",
+      "category": "snapshots"
+    },
+    {
+      "id": 237,
+      "question": "When would you use a copy instead of a snapshot?",
+      "answer": "Use copy for: long-term testing, development environments, or when snapshot performance impact is unacceptable. Copies are independent but take longer to create.",
+      "difficulty": "intermediate",
+      "category": "snapshots"
+    },
+    {
+      "id": 238,
+      "question": "What is vertical vs horizontal scaling?",
+      "answer": "Vertical scaling: adding resources to single server (more CPU, memory). Horizontal scaling: adding more servers (sharding, replication). Each has different cost/benefit tradeoffs.",
+      "difficulty": "intermediate",
+      "category": "scaling"
+    },
+    {
+      "id": 239,
+      "question": "How does read scaling work?",
+      "answer": "Using read-only replicas to distribute read workload. Implemented through replication, log shipping, or Always On Availability Groups. Improves read performance without affecting writes.",
+      "difficulty": "advanced",
+      "category": "scaling"
+    },
+    {
+      "id": 240,
+      "question": "What are the limitations of database scaling?",
+      "answer": "Application changes needed, increased complexity, potential consistency issues, higher licensing costs, and operational overhead. Not all applications scale linearly.",
+      "difficulty": "intermediate",
+      "category": "scaling"
+    },
+    {
+      "id": 241,
+      "question": "Which method is more secure?",
+      "answer": "sp_executesql is generally more secure when used with parameters as it prevents SQL injection. EXEC with string concatenation is vulnerable to injection attacks.",
+      "difficulty": "intermediate",
+      "category": "dynamic sql"
+    },
+    {
+      "id": 242,
+      "question": "How does each method handle query plans?",
+      "answer": "sp_executesql promotes plan reuse with parameterized queries. EXEC typically generates new plans unless same literal string is used. sp_executesql is more efficient for repeated execution.",
+      "difficulty": "advanced",
+      "category": "dynamic sql"
+    },
+    {
+      "id": 243,
+      "question": "When should you use sp_executesql?",
+      "answer": "For parameterized dynamic SQL, when same query structure is executed with different parameters, or when security is concern. Provides better performance and security than EXEC.",
+      "difficulty": "intermediate",
+      "category": "dynamic sql"
+    },
+    {
+      "id": 244,
+      "question": "What is Resource Governor?",
+      "answer": "SQL Server feature that limits resource consumption (CPU, memory) by workload groups. Helps prevent runaway queries and ensures resource availability for critical workloads.",
+      "difficulty": "advanced",
+      "category": "resource governance"
+    },
+    {
+      "id": 245,
+      "question": "How do you configure resource pools?",
+      "answer": "Create resource pools with MIN/MAX CPU and memory settings. Assign workload groups to pools. Use classifier function to route sessions to appropriate groups.",
+      "difficulty": "advanced",
+      "category": "resource governance"
+    },
+    {
+      "id": 246,
+      "question": "What are workload groups?",
+      "answer": "Workload groups define resource limits and policies for similar queries. Sessions are classified into groups based on login, application name, or other criteria.",
+      "difficulty": "advanced",
+      "category": "resource governance"
+    },
+    {
+      "id": 247,
+      "question": "How do checkpoints affect recovery time?",
+      "answer": "Checkpoints write dirty pages to disk. More frequent checkpoints mean faster recovery (less redo from log) but may impact performance during checkpoint operation.",
+      "difficulty": "advanced",
+      "category": "checkpoints"
+    },
+    {
+      "id": 248,
+      "question": "What triggers a checkpoint?",
+      "answer": "Automatic: based on recovery interval, log growth, or manual CHECKPOINT command. Also triggered by backup operations, database shutdown, and other maintenance activities.",
+      "difficulty": "advanced",
+      "category": "checkpoints"
+    },
+    {
+      "id": 249,
+      "question": "How do you configure checkpoint frequency?",
+      "answer": "Set recovery interval (minutes) server configuration. Lower values mean more frequent checkpoints. Balance between recovery time objectives and performance impact.",
+      "difficulty": "advanced",
+      "category": "checkpoints"
+    },
+    {
+      "id": 250,
+      "question": "What criteria determine what data to archive?",
+      "answer": "Age of data, business value, regulatory requirements, access patterns, and performance considerations. Archive rarely accessed historical data to improve performance.",
+      "difficulty": "intermediate",
+      "category": "archiving"
+    },
+    {
+      "id": 251,
+      "question": "How do you maintain referential integrity when archiving?",
+      "answer": "Use foreign keys with ON DELETE rules, archive related tables together, or use soft deletion with archival flags. Consider impact on queries and reporting.",
+      "difficulty": "advanced",
+      "category": "archiving"
+    },
+    {
+      "id": 252,
+      "question": "What are the performance benefits of archiving?",
+      "answer": "Smaller indexes, faster backups, improved query performance, reduced memory requirements, and better maintenance operation times. Especially beneficial for large tables.",
+      "difficulty": "intermediate",
+      "category": "archiving"
+    },
+    {
+      "id": 253,
+      "question": "What is involved in logical database design?",
+      "answer": "Identifying entities, attributes, relationships, normalization, and business rules. Focuses on what data is stored without considering physical implementation details.",
+      "difficulty": "intermediate",
+      "category": "database design"
+    },
+    {
+      "id": 254,
+      "question": "What considerations are part of physical design?",
+      "answer": "Storage, indexing, partitioning, data types, security, and performance optimization. Implements logical design with specific database technology considerations.",
+      "difficulty": "intermediate",
+      "category": "database design"
+    },
+    {
+      "id": 255,
+      "question": "How do these designs relate to each other?",
+      "answer": "Logical design is conceptual blueprint, physical design is implementation. Physical design should support logical design while considering performance, security, and maintainability.",
+      "difficulty": "intermediate",
+      "category": "database design"
+    },
+    {
+      "id": 256,
+      "question": "What is automatic vs manual failover?",
+      "answer": "Automatic failover: system detects failure and switches automatically. Manual failover: requires administrator intervention. Automatic provides higher availability but requires careful configuration.",
+      "difficulty": "advanced",
+      "category": "high availability"
+    },
+    {
+      "id": 257,
+      "question": "How do you test failover procedures?",
+      "answer": "Regularly simulate failures, measure recovery time, verify data consistency, document procedures, and train staff. Testing ensures readiness for actual failures.",
+      "difficulty": "intermediate",
+      "category": "high availability"
+    },
+    {
+      "id": 258,
+      "question": "What are RTO and RPO in failover planning?",
+      "answer": "RTO (Recovery Time Objective): maximum acceptable downtime. RPO (Recovery Point Objective): maximum acceptable data loss. Drive technology choices and testing requirements.",
+      "difficulty": "intermediate",
+      "category": "high availability"
+    },
+    {
+      "id": 259,
+      "question": "How do you add a default constraint to an existing table?",
+      "answer": "ALTER TABLE table_name ADD CONSTRAINT constraint_name DEFAULT default_value FOR column_name. Can also add during column creation with DEFAULT clause.",
+      "difficulty": "beginner",
+      "category": "constraints"
+    },
+    {
+      "id": 260,
+      "question": "Can default constraints reference functions?",
+      "answer": "Yes, default constraints can use deterministic functions like GETDATE(), NEWID(), or user-defined functions. Cannot reference non-deterministic functions or other columns.",
+      "difficulty": "intermediate",
+      "category": "constraints"
+    },
+    {
+      "id": 261,
+      "question": "What happens if you insert NULL into a column with default constraint?",
+      "answer": "If explicit NULL is inserted, default constraint is not applied (NULL is stored). If column is omitted from INSERT, default value is used. Default only applies when no value is provided.",
+      "difficulty": "intermediate",
+      "category": "constraints"
+    },
+    {
+      "id": 262,
+      "question": "What metrics should be included in a baseline?",
+      "answer": "Query performance, resource usage (CPU, memory, I/O), wait statistics, index usage, and growth trends. Capture during normal operation for comparison.",
+      "difficulty": "intermediate",
+      "category": "performance"
+    },
+    {
+      "id": 263,
+      "question": "How often should you update performance baselines?",
+      "answer": "After significant changes (schema, data volume, application version), quarterly for stable systems, or when performance patterns change. Keep historical baselines for trend analysis.",
+      "difficulty": "intermediate",
+      "category": "performance"
+    },
+    {
+      "id": 264,
+      "question": "How do baselines help with capacity planning?",
+      "answer": "Identify growth trends, predict resource needs, justify hardware upgrades, and plan for seasonal variations. Essential for proactive performance management.",
+      "difficulty": "intermediate",
+      "category": "performance"
+    },
+    {
+      "id": 265,
+      "question": "What are fixed database roles?",
+      "answer": "Predefined roles like db_owner, db_datareader, db_datawriter, db_ddladmin, etc. Provide convenient way to assign common permission sets. Custom roles can also be created.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 266,
+      "question": "How do you create custom database roles?",
+      "answer": "CREATE ROLE role_name, then grant specific permissions. Assign users to roles. Useful for application-specific security models and simplifying permission management.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 267,
+      "question": "What is the principle of least privilege?",
+      "answer": "Grant minimum permissions necessary for users/processes to perform required tasks. Reduces security risk, limits damage from breaches, and improves auditability.",
+      "difficulty": "intermediate",
+      "category": "security"
+    },
+    {
+      "id": 268,
+      "question": "What are common wait types?",
+      "answer": "PAGEIOLATCH_* (disk I/O), LCK_* (locking), CXPACKET (parallelism), SOS_SCHEDULER_YIELD (CPU pressure), WRITELOG (transaction log). Indicate different resource bottlenecks.",
+      "difficulty": "advanced",
+      "category": "wait statistics"
+    },
+    {
+      "id": 269,
+      "question": "How do you interpret wait statistics?",
+      "answer": "Identify top wait types, correlate with resource usage, look for patterns over time. High waits indicate bottlenecks. Use DMVs like sys.dm_os_wait_stats.",
+      "difficulty": "advanced",
+      "category": "wait statistics"
+    },
+    {
+      "id": 270,
+      "question": "What tools help analyze wait stats?",
+      "answer": "SQL Server: DMVs, sp_BlitzFirst, Wait Stats Library. Third-party: SolarWinds, Idera, Redgate. Open-source: First Responder Kit.",
+      "difficulty": "advanced",
+      "category": "wait statistics"
+    },
+    {
+      "id": 271,
+      "question": "What makes a computed column persisted?",
+      "answer": "A computed column is persisted when defined with PERSISTED keyword and calculation is deterministic. Stored physically rather than calculated on read.",
+      "difficulty": "intermediate",
+      "category": "computed columns"
+    },
+    {
+      "id": 272,
+      "question": "Can computed columns be indexed?",
+      "answer": "Yes, if deterministic and precise (no float operations). Persisted computed columns can always be indexed. Useful for indexing expressions or calculated values.",
+      "difficulty": "intermediate",
+      "category": "computed columns"
+    },
+    {
+      "id": 273,
+      "question": "What are the performance implications?",
+      "answer": "Non-persisted: calculated on read (CPU cost). Persisted: storage cost but faster reads. Indexed: improves query performance but adds maintenance overhead.",
+      "difficulty": "intermediate",
+      "category": "computed columns"
+    },
+    {
+      "id": 274,
+      "question": "What is Change Data Capture?",
+      "answer": "CDC captures DML changes (insert, update, delete) from tables. Useful for ETL processes, auditing, and synchronizing systems. Lower overhead than triggers.",
+      "difficulty": "advanced",
+      "category": "change tracking"
+    },
+    {
+      "id": 275,
+      "question": "How do temporal tables work?",
+      "answer": "Temporal tables automatically maintain history with system-time period columns. Allow querying data as of specific time. Built-in feature with standard SQL syntax.",
+      "difficulty": "advanced",
+      "category": "change tracking"
+    },
+    {
+      "id": 276,
+      "question": "What are the trade-offs of different change tracking methods?",
+      "answer": "Triggers: most flexible but highest overhead. CDC: moderate overhead, requires Enterprise edition. Temporal tables: low overhead, standard syntax but less flexible than triggers.",
+      "difficulty": "advanced",
+      "category": "change tracking"
+    },
+    {
+      "id": 277,
+      "question": "What are the high availability differences?",
+      "answer": "Always On: database-level, multiple secondaries, read-scale. Failover Cluster: instance-level, shared storage. Log Shipping: warm standby, manual failover. Each suits different scenarios.",
+      "difficulty": "advanced",
+      "category": "high availability"
+    },
+    {
+      "id": 278,
+      "question": "How does each handle data latency?",
+      "answer": "Always On: synchronous (no data loss) or asynchronous (potential loss). Failover Cluster: no latency (shared storage). Log Shipping: latency depends on backup/restore frequency.",
+      "difficulty": "advanced",
+      "category": "high availability"
+    },
+    {
+      "id": 279,
+      "question": "What are the licensing considerations?",
+      "answer": "Always On requires Enterprise edition for multiple secondaries. Failover Cluster requires Windows Server licensing. Log Shipping works with all editions. Consider cost vs feature requirements.",
+      "difficulty": "intermediate",
+      "category": "high availability"
+    },
+    {
+      "id": 280,
+      "question": "What causes parameter sniffing?",
+      "answer": "When query plan is compiled with specific parameter values that don't represent typical data distribution. Subsequent executions with different parameters may perform poorly.",
+      "difficulty": "advanced",
+      "category": "parameter sniffing"
+    },
+    {
+      "id": 281,
+      "question": "How does OPTION (RECOMPILE) help?",
+      "answer": "Forces recompilation with current parameter values, generating optimal plan for those values. Solves parameter sniffing but adds compilation overhead.",
+      "difficulty": "advanced",
+      "category": "parameter sniffing"
+    },
+    {
+      "id": 282,
+      "question": "What is the OPTIMIZE FOR hint?",
+      "answer": "OPTIMIZE FOR instructs optimizer to use specific parameter values for plan generation. Can specify known good values or UNKNOWN for generic plan.",
+      "difficulty": "advanced",
+      "category": "parameter sniffing"
+    },
+    {
+      "id": 283,
+      "question": "When are sparse columns beneficial?",
+      "answer": "When most rows have NULL in the column (high NULL percentage). Sparse columns reduce storage for NULL values but increase storage and overhead for non-NULL values.",
+      "difficulty": "advanced",
+      "category": "data types"
+    },
+    {
+      "id": 284,
+      "question": "What are the storage savings?",
+      "answer": "Sparse columns use zero bytes for NULLs (vs 4 bytes for fixed-length non-sparse NULLs). Non-NULL values require 4 extra bytes. Beneficial when NULL percentage > 60-70%.",
+      "difficulty": "advanced",
+      "category": "data types"
+    },
+    {
+      "id": 285,
+      "question": "What are the limitations of sparse columns?",
+      "answer": "Cannot have default values, rules, or be compressed. Increased overhead for non-NULL values. Not all data types support sparse storage. Test with actual data patterns.",
+      "difficulty": "advanced",
+      "category": "data types"
+    },
+    {
+      "id": 286,
+      "question": "What is auto-update statistics?",
+      "answer": "Database automatically updates statistics when they become outdated (based on modification counter). Enabled by default. Ensures optimizer has current data distribution information.",
+      "difficulty": "intermediate",
+      "category": "statistics"
+    },
+    {
+      "id": 287,
+      "question": "How do you update statistics manually?",
+      "answer": "UPDATE STATISTICS table_name [index_name]. Can specify sample rate, fullscan, or resample. Use sp_updatestats for all statistics in database.",
+      "difficulty": "intermediate",
+      "category": "statistics"
+    },
+    {
+      "id": 288,
+      "question": "What happens when statistics are outdated?",
+      "answer": "Poor query plans, incorrect cardinality estimates, slow queries, and suboptimal join strategies. Outdated statistics are common cause of sudden performance degradation.",
+      "difficulty": "intermediate",
+      "category": "statistics"
+    },
+    {
+      "id": 289,
+      "question": "What are system databases?",
+      "answer": "master: system configuration. model: template for new databases. msdb: SQL Agent jobs. tempdb: temporary objects. resource: system objects. Distribution: replication metadata.",
+      "difficulty": "intermediate",
+      "category": "system databases"
+    },
+    {
+      "id": 290,
+      "question": "How do instance-level settings affect databases?",
+      "answer": "Max memory, parallelism settings, security modes, default locations, and trace flags affect all databases on instance. Configure based on workload requirements.",
+      "difficulty": "intermediate",
+      "category": "system databases"
+    },
+    {
+      "id": 291,
+      "question": "Can you have multiple instances on one server?",
+      "answer": "Yes, multiple named instances can run on same server. Each has separate system databases, configuration, and services. Default instance uses server name.",
+      "difficulty": "intermediate",
+      "category": "system databases"
+    },
+    {
+      "id": 292,
+      "question": "How does Query Store capture performance data?",
+      "answer": "Query Store automatically captures query texts, execution plans, runtime statistics, and wait statistics. Data is persisted across server restarts for historical analysis.",
+      "difficulty": "advanced",
+      "category": "query store"
+    },
+    {
+      "id": 293,
+      "question": "What is plan forcing?",
+      "answer": "Manually selecting which execution plan should be used for a query. Useful when optimizer chooses poor plan. Done through Query Store interface.",
+      "difficulty": "advanced",
+      "category": "query store"
+    },
+    {
+      "id": 293,
+      "question": "How do you use Query Store for performance troubleshooting?",
+      "answer": "Identify regressed queries, compare plan performance, force better plans, analyze wait statistics, and track performance trends over time.",
+      "difficulty": "advanced",
+      "category": "query store"
+    },
+    {
+      "id": 294,
+      "question": "When should you use filtered indexes?",
+      "answer": "For queries that target specific data subsets, sparse data, partitioned data, or when index on full table would be too large. Reduces index size and maintenance overhead.",
+      "difficulty": "advanced",
+      "category": "indexes"
+    },
+    {
+      "id": 295,
+      "question": "How do filtered indexes improve performance?",
+      "answer": "Smaller index size, faster maintenance, better statistics for filtered data, and covering index scenarios for specific query patterns.",
+      "difficulty": "advanced",
+      "category": "indexes"
+    },
+    {
+      "id": 296,
+      "question": "What are the maintenance considerations?",
+      "answer": "Filtered indexes are maintained only when relevant data changes. Still require monitoring and rebuilding. Query optimizer must choose filtered index when appropriate.",
+      "difficulty": "advanced",
+      "category": "indexes"
+    },
+    {
+      "id": 297,
+      "question": "What are RTO and RPO?",
+      "answer": "RTO (Recovery Time Objective): maximum acceptable downtime. RPO (Recovery Point Objective): maximum acceptable data loss. Fundamental to disaster recovery planning.",
+      "difficulty": "intermediate",
+      "category": "disaster recovery"
+    },
+    {
+      "id": 298,
+      "question": "How do you create a disaster recovery plan?",
+      "answer": "Identify critical systems, define RTO/RPO, document procedures, assign responsibilities, establish backup strategies, and test regularly. Include communication and escalation plans.",
+      "difficulty": "intermediate",
+      "category": "disaster recovery"
+    },
+    {
+      "id": 299,
+      "question": "What are the key components of DR testing?",
+      "answer": "Failover procedures, data verification, performance validation, documentation updates, and team training. Test should simulate real failure scenarios as closely as possible.",
+      "difficulty": "intermediate",
+      "category": "disaster recovery"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{"data":[
+  { 
+    "id": 1, 
+    "question": "What is Redux and what problem does it solve?", 
+    "category": "redux",
+    "difficulty": "beginner",
+    "followUps": [
+      "When should you use Redux vs local state?",
+      "What are the main benefits of using Redux?",
+      "What types of applications benefit most from Redux?"
+    ],
+    "answer": "Redux is a predictable state container for JavaScript apps. It solves: 1) State management complexity in large applications, 2) Prop drilling through multiple components, 3) Difficult-to-debug state changes, 4) Inconsistent state updates across components. Provides centralized state management with unidirectional data flow."
+  },
+  { 
+    "id": 2, 
+    "question": "Explain the three principles of Redux.", 
+    "category": "redux",
+    "difficulty": "beginner",
+    "followUps": [
+      "Why is having a single source of truth important?",
+      "How does the read-only state principle work?",
+      "What are the benefits of using pure functions for state changes?"
+    ],
+    "answer": "1) Single Source of Truth: Entire app state stored in one store. 2) State is Read-Only: State can only be changed by emitting actions. 3) Changes are Made with Pure Functions: Reducers are pure functions that take previous state and action, return new state. These principles ensure predictable state updates."
+  },
+  { 
+    "id": 3, 
+    "question": "What are Actions, Reducers, and Store in Redux?", 
+    "category": "redux",
+    "difficulty": "beginner",
+    "followUps": [
+      "What is the structure of a Redux action?",
+      "How do reducers handle multiple action types?",
+      "What methods does the Redux store provide?"
+    ],
+    "answer": "Actions: Plain objects describing what happened { type: 'ADD_TODO', payload }. Reducers: Pure functions that specify how state changes (previousState, action) => newState. Store: Object that holds application state, allows access via getState(), updates via dispatch(action), registers listeners via subscribe(listener)."
+  },
+  { 
+    "id": 4, 
+    "question": "How do you make API calls with Redux and Axios?", 
+    "category": "redux-axios",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What middleware is needed for async actions?",
+      "How do you handle loading states during API calls?",
+      "What is the typical flow for API calls in Redux?"
+    ],
+    "answer": "Use Redux Thunk or Redux Saga for async operations. With Thunk: Create async action creators that return functions. Use Axios in thunk to make API call, then dispatch success/failure actions. Example: fetchUser = (id) => async (dispatch) => { try { const response = await axios.get(/users/${id}); dispatch({ type: 'USER_FETCHED', payload: response.data }); } catch (error) { dispatch({ type: 'USER_FETCH_ERROR', error }); } }"
+  },
+  { 
+    "id": 5, 
+    "question": "What is Redux Thunk and when to use it?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "How does Redux Thunk differ from regular action creators?",
+      "What arguments does a thunk function receive?",
+      "When should you use thunks vs other middleware?"
+    ],
+    "answer": "Redux Thunk is middleware that allows action creators to return functions instead of actions. Use it for: 1) Async operations (API calls), 2) Conditional dispatching, 3) Complex synchronous logic. Thunks receive dispatch and getState as arguments, can dispatch multiple actions, handle async operations."
+  },
+  { 
+    "id": 6, 
+    "question": "How do you handle loading states in Redux with Axios?", 
+    "category": "redux-axios",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What actions are typically dispatched for loading states?",
+      "How do you structure state for API calls?",
+      "How do components access loading states?"
+    ],
+    "answer": "Create loading state in Redux store. Dispatch actions: 1) API_START before Axios call, 2) API_SUCCESS on response, 3) API_FAILURE on error. Example state: { loading: false, data: null, error: null }. In components, show loading spinner when loading is true, data/error based on state."
+  },
+  { 
+    "id": 7, 
+    "question": "What is the difference between mapStateToProps and mapDispatchToProps?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "How do these functions connect components to Redux?",
+      "What are the modern alternatives to these functions?",
+      "How do you optimize mapStateToProps performance?"
+    ],
+    "answer": "mapStateToProps: Extracts data from Redux store as props. mapDispatchToProps: Binds action creators to dispatch as props. mapStateToProps = (state) => ({ todos: state.todos }). mapDispatchToProps = (dispatch) => ({ addTodo: (text) => dispatch(addTodo(text)) }). With hooks, use useSelector and useDispatch instead."
+  },
+  { 
+    "id": 8, 
+    "question": "How do you configure Axios interceptors for Redux?", 
+    "category": "redux-axios",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What are common use cases for request interceptors?",
+      "How do response interceptors handle errors?",
+      "How do interceptors integrate with Redux actions?"
+    ],
+    "answer": "Axios interceptors handle requests/responses globally. Configure: axios.interceptors.request.use((config) => { // Add auth token, headers; return config; }); axios.interceptors.response.use((response) => response, (error) => { // Handle errors globally, dispatch Redux action for auth errors; return Promise.reject(error); }); Use with Redux to automatically handle common scenarios."
+  },
+  { 
+    "id": 9, 
+    "question": "What is Redux Toolkit and why use it?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What problems does Redux Toolkit solve?",
+      "How does createSlice reduce boilerplate?",
+      "What is included in Redux Toolkit by default?"
+    ],
+    "answer": "Redux Toolkit is official, opinionated toolset for efficient Redux development. Includes: createSlice (reducers + actions), configureStore (store setup with good defaults), createAsyncThunk (async actions), createEntityAdapter (normalized state). Reduces boilerplate, follows best practices, includes Redux Thunk and Redux DevTools by default."
+  },
+  { 
+    "id": 10, 
+    "question": "How do you handle authentication with Redux and Axios?", 
+    "category": "redux-axios",
+    "difficulty": "intermediate",
+    "followUps": [
+      "Where should auth tokens be stored?",
+      "How do you handle token expiration?",
+      "What's the best way to structure auth state in Redux?"
+    ],
+    "answer": "Store auth token in Redux state. Use Axios interceptor to add token to requests: axios.interceptors.request.use((config) => { const token = store.getState().auth.token; if (token) config.headers.Authorization = Bearer ${token}; return config; }); Handle token refresh, logout on 401 responses. Dispatch login/logout actions to update auth state."
+  },
+  { 
+    "id": 11, 
+    "question": "What are Redux middleware and how do they work?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What is the middleware chain?",
+      "How do you create custom middleware?",
+      "What are some common middleware examples?"
+    ],
+    "answer": "Middleware provides extension point between dispatching action and moment it reaches reducer. It's a function that returns a function that returns a function (currying). Signature: store => next => action => { ... }. Examples: Redux Thunk, Redux Logger, Redux Saga. Can modify, log, delay, or stop actions."
+  },
+  { 
+    "id": 12, 
+    "question": "How do you handle errors with Axios in Redux?", 
+    "category": "redux-axios",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What error information should be stored in state?",
+      "How do you display errors to users?",
+      "How do you clear errors from state?"
+    ],
+    "answer": "Catch errors in async actions, dispatch error actions. Use try/catch with Axios: try { const response = await axios.get(url); dispatch(successAction(response.data)); } catch (error) { dispatch(errorAction(error.response?.data || error.message)); }. Store errors in Redux state, display in components, clear errors on new requests."
+  },
+  { 
+    "id": 13, 
+    "question": "What is the difference between Redux and React Context?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "When should you choose Context over Redux?",
+      "What are the performance implications of each?",
+      "Can Redux and Context be used together?"
+    ],
+    "answer": "Redux: External library, predictable state container, middleware support, DevTools, time-travel debugging. Context: Built-in React, simpler for small apps, no middleware, can cause unnecessary re-renders. Use Redux for complex state, async logic, large apps. Use Context for theme, auth, simple prop drilling solutions."
+  },
+  { 
+    "id": 14, 
+    "question": "How do you cancel Axios requests in Redux?", 
+    "category": "redux-axios",
+    "difficulty": "advanced",
+    "followUps": [
+      "What is the difference between CancelToken and AbortController?",
+      "When should you cancel requests?",
+      "How do you handle cancelled request errors?"
+    ],
+    "answer": "Use Axios CancelToken or AbortController. Create cancel token source: const source = axios.CancelToken.source(); Pass to request: axios.get(url, { cancelToken: source.token }). In Redux, store cancel function and call it on component unmount or new request: useEffect(() => { return () => { source.cancel(); } }, []);"
+  },
+  { 
+    "id": 15, 
+    "question": "What is Redux Persist and how to use it?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What state should and shouldn't be persisted?",
+      "How do you handle state migration?",
+      "What storage engines can Redux Persist use?"
+    ],
+    "answer": "Redux Persist persists Redux store to storage (localStorage). Setup: import { persistStore, persistReducer } from 'redux-persist'; import storage from 'redux-persist/lib/storage'; const persistConfig = { key: 'root', storage }; const persistedReducer = persistReducer(persistConfig, rootReducer);. Use to maintain state across page refreshes."
+  },
+  { 
+    "id": 16, 
+    "question": "How do you handle file uploads with Redux and Axios?", 
+    "category": "redux-axios",
+    "difficulty": "intermediate",
+    "followUps": [
+      "How do you track upload progress?",
+      "What headers are needed for file uploads?",
+      "How do you handle multiple file uploads?"
+    ],
+    "answer": "Use FormData with Axios: const formData = new FormData(); formData.append('file', file); formData.append('metadata', JSON.stringify(metadata)); axios.post('/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' }, onUploadProgress: (progressEvent) => { // Dispatch progress update to Redux } }). Track upload progress in Redux state, show progress bar in UI."
+  },
+  { 
+    "id": 17, 
+    "question": "What are Redux selectors and why use them?", 
+    "category": "redux",
+    "difficulty": "intermediate",
+    "followUps": [
+      "What is Reselect library?",
+      "How do memoized selectors improve performance?",
+      "What are derived data examples?"
+    ],
+    "answer": "Selectors are functions that extract and compute derived data from Redux state. Benefits: 1) Encapsulate state structure, 2) Compute derived data, 3) Improve performance with memoization (Reselect). Example: const getVisibleTodos = createSelector([getTodos, getVisibilityFilter], (todos, filter) => todos.filter(todo => todo.completed === (filter === 'COMPLETED')));"
+  },
+  { 
+    "id": 18, 
+    "question": "How do you configure multiple Axios instances with Redux?", 
+    "category": "redux-axios",
+    "difficulty": "advanced",
+    "followUps": [
+      "When would you need multiple Axios instances?",
+      "How do you manage different base URLs?",
+      "How do different instances handle authentication?"
+    ],
+    "answer": "Create multiple Axios instances for different APIs: const apiClient = axios.create({ baseURL: '/api', timeout: 5000 }); const authClient = axios.create({ baseURL: '/auth' }); Configure each with different interceptors, headers. Use in Redux actions based on API endpoint needs. Helps with microservices architecture, different authentication methods."
+  },
+  { 
+    "id": 19, 
+    "question": "What is the Redux DevTools and how to use it?", 
+    "category": "redux",
+    "difficulty": "beginner",
+    "followUps": [
+      "What debugging features does DevTools provide?",
+      "How do you set up DevTools with Redux Toolkit?",
+      "What is time-travel debugging?"
+    ],
+    "answer": "Redux DevTools browser extension for debugging Redux. Features: 1) Inspect every state/action, 2) Time-travel debugging, 3) Action replay, 4) Hot reloading. Setup: const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); With Redux Toolkit, included by default in configureStore()."
+  },
+  { 
+    "id": 20, 
+    "question": "How do you handle optimistic updates with Redux and Axios?", 
+    "category": "redux-axios",
+    "difficulty": "advanced",
+    "followUps": [
+      "What are the risks of optimistic updates?",
+      "How do you implement rollback functionality?",
+      "When should you avoid optimistic updates?"
+    ],
+    "answer": "Optimistic UI: Update UI immediately, revert if API fails. In Redux: 1) Dispatch optimistic action immediately, 2) Make Axios call, 3) On success, dispatch confirmation, 4) On failure, dispatch rollback action with original data. Store previous state for rollback. Example: Like button - show liked immediately, revert if API fails."
+  }
+]}

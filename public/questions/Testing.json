@@ -1,0 +1,19 @@
+{
+  "data": [
+    { 
+      "id": 1, 
+      "question": "What is the difference between `==` and `.Equals()` in C#?", 
+      "category": "csharp",
+      "difficulty": "intermediate",
+      "tags": ["operators", "equality", "comparison"],
+      "followUps": [
+        "When would you use == over .Equals()?",
+        "How does == behave with string interning?",
+        "Can you override == for custom types?"
+      ],
+      "answer": "`==` is an operator that compares references for reference types and values for value types. `.Equals()` is a virtual method that typically compares values. For reference types, `==` checks if they reference the same object, while `.Equals()` can be overridden to compare object contents.",
+      "example": "string a = \"hello\";\nstring b = \"hello\";\n// == compares references\nbool same = (a == b); // true\n// .Equals() compares values\nbool equal = a.Equals(b); // true",
+      "note": "For string types, == is overloaded to perform value comparison, which is a special case in C#."
+    }
+  ]
+}

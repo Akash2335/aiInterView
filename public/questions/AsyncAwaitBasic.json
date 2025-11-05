@@ -1,0 +1,312 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "What is the difference between async and await in C#?",
+      "category": "async-await",
+      "difficulty": "beginner",
+      "answer": "async is a modifier that enables the await keyword in a method and indicates that a method contains asynchronous operations. await is an operator that suspends the method execution until the awaited task completes, without blocking the thread. async enables the method to be non-blocking, while await handles the waiting for asynchronous operations to complete."
+    },
+    {
+      "id": 2,
+      "question": "Explain the Task class and its purpose in asynchronous programming.",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Task represents an asynchronous operation that can be awaited. Task<T> represents an operation that returns a value of type T. Tasks provide a way to write non-blocking code, manage asynchronous operations, handle exceptions, and coordinate multiple concurrent operations. They can represent I/O-bound or CPU-bound work and are managed by the ThreadPool."
+    },
+    {
+      "id": 3,
+      "question": "What is the difference between Task.Run and Task.Factory.StartNew?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Task.Run is a simplified version that uses the default task scheduler and is optimized for common scenarios. Task.Factory.StartNew provides more configuration options like task creation options, scheduler, and state. Task.Run is generally preferred for CPU-bound work as it's simpler and less error-prone, while Task.Factory.StartNew offers more control for advanced scenarios."
+    },
+    {
+      "id": 4,
+      "question": "How does async/await work under the hood?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "The compiler transforms async methods into state machines. When await is encountered, the method returns an incomplete task to the caller. The remainder of the method becomes a continuation that executes when the awaited task completes. The state machine handles saving local variables, control flow, and exception propagation. SynchronizationContext helps marshal continuations back to the original context (like UI thread)."
+    },
+    {
+      "id": 5,
+      "question": "What is the difference between ConfigureAwait(true) and ConfigureAwait(false)?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "ConfigureAwait(true) (default) captures the current SynchronizationContext and marshals the continuation back to it. ConfigureAwait(false) doesn't capture the context, executing the continuation on any available thread pool thread. Use ConfigureAwait(false) in library code to avoid deadlocks and improve performance. In UI apps, use the default to ensure UI updates happen on the UI thread."
+    },
+    {
+      "id": 6,
+      "question": "How do you handle exceptions in async methods?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Exceptions in async methods are captured and stored in the returned Task. Use try/catch around await expressions or check Task.Exception property. For async void methods, exceptions are raised on the SynchronizationContext and can crash the app. Use Task.WhenAll and catch AggregateException to handle multiple task exceptions. AggregateException contains all exceptions from multiple failed tasks."
+    },
+    {
+      "id": 7,
+      "question": "What is the difference between async void and async Task?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "async Task represents an asynchronous operation that can be awaited and has a result. async void is fire-and-forget and cannot be awaited. Use async void only for event handlers. async Task allows proper exception handling and composition, while async void exceptions can crash the application and provide no way to know when the operation completes."
+    },
+    {
+      "id": 8,
+      "question": "How do you cancel asynchronous operations?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Use CancellationTokenSource to create CancellationToken objects. Pass the token to async methods that support cancellation. Check token.IsCancellationRequested periodically or call token.ThrowIfCancellationRequested(). Use Task.Delay with cancellation token for polling operations. Cancel the operation by calling Cancel() on the CancellationTokenSource."
+    },
+    {
+      "id": 9,
+      "question": "What is the difference between Task.Wait and await?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Task.Wait() is a blocking call that synchronously waits for the task to complete, potentially causing deadlocks and thread pool starvation. await is non-blocking and returns control to the caller while waiting. Use await in async methods to avoid blocking. Only use Task.Wait() in synchronous contexts when absolutely necessary, and be aware of deadlock risks."
+    },
+    {
+      "id": 10,
+      "question": "How do you run multiple async operations concurrently?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Use Task.WhenAll to wait for all tasks to complete, returning when all are done. Use Task.WhenAny to wait for any task to complete, returning the first finished task. Start tasks without awaiting them immediately, store them in a collection, then use WhenAll/WhenAny. This allows true concurrent execution rather than sequential awaiting."
+    },
+    {
+      "id": 11,
+      "question": "What is ValueTask and when should you use it?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "ValueTask is a value type alternative to Task that avoids heap allocations when operations complete synchronously. Use ValueTask for hot paths where synchronous completion is common, like caching scenarios. Avoid ValueTask when the result may be awaited multiple times or when using certain patterns like async method builders. ValueTask provides better performance for frequently called methods."
+    },
+    {
+      "id": 12,
+      "question": "How do you write async methods that return values?",
+      "category": "async-await",
+      "difficulty": "beginner",
+      "answer": "Async methods that return values use Task<T> as the return type. For example, async Task<int> GetNumberAsync() returns a Task<int> that can be awaited to get the int value. The compiler automatically wraps the return value in a Task. Use Task for void-returning async operations and Task<T> for operations that return a value of type T."
+    },
+    {
+      "id": 13,
+      "question": "What is the difference between I/O-bound and CPU-bound async operations?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "I/O-bound operations (file I/O, network calls) don't use CPU threads while waiting - they use I/O completion ports. CPU-bound operations (calculations, processing) require dedicated threads. Use async/await directly for I/O-bound work. For CPU-bound work, use Task.Run to offload to thread pool. I/O-bound async methods are more efficient as they don't tie up threads during waits."
+    },
+    {
+      "id": 14,
+      "question": "How do you prevent async method deadlocks?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "Deadlocks occur when async code blocks on a task while holding a synchronization context. Prevent by: using ConfigureAwait(false) in library code, avoiding Task.Wait() and Task.Result in async contexts, using async all the way, and not mixing blocking and async code. In UI apps, ensure you don't block the UI thread while waiting for async operations."
+    },
+    {
+      "id": 15,
+      "question": "What is the purpose of TaskCompletionSource?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "TaskCompletionSource<T> allows you to create a Task that you can manually control - setting its result, exception, or cancellation. Use it to bridge between callback-based async patterns and Task-based async. Common uses: wrapping event-based APIs, implementing async wrappers for synchronous code, creating tasks that complete based on external events. Call SetResult, SetException, or SetCanceled to complete the task."
+    },
+    {
+      "id": 16,
+      "question": "How do you implement timeout for async operations?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Use Task.WhenAny with the original task and Task.Delay to implement timeouts. Combine with CancellationTokenSource for proper cancellation. Example: var completedTask = await Task.WhenAny(originalTask, Task.Delay(timeout)); if (completedTask != originalTask) throw new TimeoutException(). Alternatively, use CancellationTokenSource.CancelAfter(timeout) for automatic cancellation after specified time."
+    },
+    {
+      "id": 17,
+      "question": "What is the difference between async and parallel programming?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Async programming is about not blocking threads while waiting for operations (especially I/O), enabling better scalability. Parallel programming is about using multiple threads to execute CPU-bound work simultaneously. Use async for I/O-bound work and parallel for CPU-bound work. They can be combined: use Parallel for CPU work inside async methods, but be careful about thread pool exhaustion."
+    },
+    {
+      "id": 18,
+      "question": "How do you write async constructors in C#?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Constructors cannot be async. Alternatives: use async factory methods (static async Task<T> CreateAsync()), implement an InitializeAsync method, or use lazy initialization. The factory method pattern is most common: public static async Task<MyClass> CreateAsync() { var data = await LoadDataAsync(); return new MyClass(data); }. This ensures the object is fully initialized before use."
+    },
+    {
+      "id": 19,
+      "question": "What are async streams (IAsyncEnumerable) and how do you use them?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "IAsyncEnumerable<T> allows async iteration over sequences. Create using async iterator methods with yield return. Consume with await foreach. Benefits: efficient streaming of large datasets, no need to load everything into memory, natural async data production. Example: async IAsyncEnumerable<int> GetNumbersAsync() { for (int i = 0; i < 10; i++) { await Task.Delay(100); yield return i; } }"
+    },
+    {
+      "id": 20,
+      "question": "How do you test async methods?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Most testing frameworks (xUnit, NUnit, MSTest) support async test methods. Mark test methods as async Task and use await. For mocking, setup mocks to return Task.FromResult for synchronous completion or custom tasks for async scenarios. Common pitfalls: not awaiting async calls in tests, deadlocks in test runners, improper use of Task.Run in tests. Always use async/await in test methods for reliable testing."
+    },
+    {
+      "id": 21,
+      "question": "What is the difference between Task.Delay and Thread.Sleep?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Task.Delay is non-blocking and asynchronous - it returns a task that completes after specified time without blocking the thread. Thread.Sleep is synchronous and blocks the current thread. Use Task.Delay in async methods to create delays without blocking. Use Thread.Sleep only in synchronous contexts. Task.Delay is more efficient as it doesn't consume thread pool resources during the wait."
+    },
+    {
+      "id": 22,
+      "question": "How do you handle async operations in loops?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Use await inside the loop for sequential execution: foreach (var item in items) { await ProcessAsync(item); }. For concurrent execution, start tasks and use Task.WhenAll: var tasks = items.Select(ProcessAsync); await Task.WhenAll(tasks). Control parallelism with SemaphoreSlim or libraries like Parallel.ForEachAsync. Be careful with memory when creating many tasks - consider batching for large collections."
+    },
+    {
+      "id": 24,
+      "question": "How do you implement retry logic for async operations?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Implement retry logic using loops with try/catch and Task.Delay for delays between attempts. Use exponential backoff: gradually increase delay between retries. Consider using Polly library for advanced retry policies. Example: for (int i = 0; i < maxRetries; i++) { try { return await operationAsync(); } catch { if (i == maxRetries - 1) throw; await Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, i))); } }"
+    },
+    {
+      "id": 25,
+      "question": "What are the performance considerations for async/await?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "Async/await has overhead from state machine allocation and context switching, but benefits outweigh costs for I/O-bound work. Performance benefits: better scalability, reduced thread pool starvation, efficient resource usage. Anti-patterns: using async for CPU-bound work without Task.Run, excessive async method calls for trivial operations, not using ConfigureAwait(false) in library code, blocking on async code causing deadlocks."
+    },
+    {
+      "id": 26,
+      "question": "How do you convert callback-based APIs to async/await?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "Use TaskCompletionSource to wrap callback-based APIs. Create a TaskCompletionSource, pass a callback that calls SetResult or SetException, then return the Task. Example: public static Task<int> ReadAsync(Stream stream, byte[] buffer) { var tcs = new TaskCompletionSource<int>(); stream.BeginRead(buffer, 0, buffer.Length, iar => { try { tcs.SetResult(stream.EndRead(iar)); } catch (Exception ex) { tcs.SetException(ex); } }, null); return tcs.Task; }"
+    },
+    {
+      "id": 27,
+      "question": "What is the difference between async/await and the TPL (Task Parallel Library)?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "TPL provides the Task infrastructure and parallel programming features. Async/await is language support built on top of TPL for writing asynchronous code more easily. Use TPL directly for complex parallel processing (Parallel.ForEach, dataflow blocks). Use async/await for I/O-bound operations and simpler async scenarios. They work together seamlessly - async methods return Tasks, and TPL operations can be awaited."
+    },
+    {
+      "id": 28,
+      "question": "How do you handle async operations in ASP.NET Core?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Use async/await in controllers and services for I/O operations (database calls, HTTP requests). Benefits: improved scalability, better thread pool utilization, higher request throughput. Avoid blocking calls, use async all the way from controllers to data access. Common pitfalls: blocking on async code, not using ConfigureAwait(false) in libraries, async void methods, not properly handling exceptions in async actions."
+    },
+    {
+      "id": 29,
+      "question": "What is the purpose of the Async suffix convention?",
+      "category": "async-await",
+      "difficulty": "beginner",
+      "answer": "The Async suffix convention indicates that a method is asynchronous and should be awaited. Use Async suffix for methods that return Task or Task<T>. Exceptions: method overrides, interface implementations where the base method doesn't have the suffix, event handlers. This convention makes async APIs discoverable and helps avoid accidental synchronous usage of async methods."
+    },
+    {
+      "id": 30,
+      "question": "How do you implement async lazy initialization?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "AsyncLazy<T> combines Lazy<T> with Task<T> to support asynchronous initialization. Implementation: private Lazy<Task<T>> _lazyTask; public AsyncLazy(Func<Task<T>> taskFactory) { _lazyTask = new Lazy<Task<T>>(() => taskFactory()); } public Task<T> Value => _lazyTask.Value;. This ensures the initialization happens only once, is thread-safe, and supports async operations during initialization."
+    },
+    {
+      "id": 31,
+      "question": "What is the difference between Task.ContinueWith and await?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "ContinueWith is a TPL method that schedules a continuation when a task completes. await is language support that makes continuations more readable. ContinueWith gives more control over scheduling and execution context but is more verbose. await automatically handles exception propagation and synchronization context. Prefer await for most scenarios as it's more readable and less error-prone."
+    },
+    {
+      "id": 32,
+      "question": "How do you handle async operations in console applications?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "In console apps, use async Task Main() instead of void Main. This allows awaiting async operations directly. Console apps don't have SynchronizationContext, so ConfigureAwait(false) has no effect - continuations run on thread pool threads. Unlike UI apps, there's no main thread to marshal back to, making deadlocks less likely but requiring careful handling of application lifetime."
+    },
+    {
+      "id": 34,
+      "question": "How do you implement async disposable pattern?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "IAsyncDisposable interface defines async disposal: ValueTask DisposeAsync(). Use with await using statement for automatic async disposal. Benefits: allows async cleanup operations (closing network connections, flushing streams) without blocking. Example: public async ValueTask DisposeAsync() { await _stream.DisposeAsync(); }. The await using statement ensures DisposeAsync is called even if exceptions occur."
+    },
+    {
+      "id": 36,
+      "question": "How do you handle async operations in LINQ queries?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "LINQ doesn't directly support await in query expressions. Alternatives: use Task.WhenAll with Select for parallel execution, use libraries like System.Linq.Async for async LINQ, or convert to lists and process sequentially. Example: var results = await Task.WhenAll(collection.Select(async item => await ProcessAsync(item))). For sequential processing, use foreach with await inside the loop."
+    },
+    {
+      "id": 37,
+      "question": "What is the purpose of Task.Yield and when should you use it?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "Task.Yield forces an async method to yield control back to the caller, allowing other pending work to execute. It returns an awaitable that completes immediately but schedules the continuation. Use in long-running synchronous code within async methods to prevent blocking. Difference from Task.Delay(0): Task.Yield always forces yielding, while Task.Delay(0) may continue synchronously. Use sparingly as it can hurt performance if overused."
+    },
+    {
+      "id": 38,
+      "question": "How do you implement async event handlers?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Async event handlers should be async void methods. Use try/catch blocks to handle exceptions since they can't be caught by the caller. Follow the naming convention: async void OnEventAsync(object sender, EventArgs e). Best practices: always handle exceptions, consider using a central error handler, be aware that multiple event handlers may run concurrently, and document that the handler is async."
+    },
+    {
+      "id": 39,
+      "question": "What is the difference between async/await and reactive extensions (Rx)?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "Async/await is for single asynchronous operations with a clear start and end. Rx (Reactive Extensions) is for streams of events or data over time. Use async/await for request-response patterns. Use Rx for event streams, complex event processing, and combining multiple event sources. They can be combined: convert observables to tasks with FirstAsync(), and convert tasks to observables with Observable.FromAsync()."
+    },
+    {
+      "id": 40,
+      "question": "How do you debug async code effectively?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Use Visual Studio's Parallel Stacks and Tasks windows to view async operations. Enable 'Show external code' to see async state machines. Use DebuggerStepThrough attribute carefully. Challenges: tracking execution flow across await boundaries, identifying deadlocks, understanding task states. Use logging with correlation IDs to track async operations. Configure debugger to break on first-chance exceptions to catch async exceptions early."
+    },
+    {
+      "id": 41,
+      "question": "What is the role of SynchronizationContext in async/await?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "SynchronizationContext represents a context for executing code, like a UI thread or ASP.NET request context. By default, await captures the current context and marshals continuations back to it. UI apps have a context that ensures UI updates happen on the UI thread. ASP.NET has a context that preserves HttpContext. Console apps and thread pool threads have null context. ConfigureAwait(false) ignores the context."
+    },
+    {
+      "id": 43,
+      "question": "What is the difference between async/await and background threads?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Background threads (Thread, ThreadPool) are for CPU-bound work that runs in parallel. Async/await is primarily for I/O-bound work that doesn't need threads while waiting. Use threads for long-running CPU work. Use async/await for I/O operations. Async methods may use thread pool threads briefly but release them during waits. Threads consume resources continuously. Async provides better scalability for I/O work."
+    },
+    {
+      "id": 45,
+      "question": "What is the purpose of Task.FromResult and when to use it?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Task.FromResult creates a completed task with a result. Use it when implementing async interface methods that have synchronous results, or in tests to mock async methods. It's more efficient than async methods for synchronous operations as it avoids state machine overhead. However, for hot paths consider ValueTask for better performance. Don't use Task.FromResult for truly asynchronous operations - use proper async methods instead."
+    },
+    {
+      "id": 46,
+      "question": "How do you implement async semaphores for resource limiting?",
+      "category": "async-await",
+      "difficulty": "advanced",
+      "answer": "Use SemaphoreSlim with WaitAsync for async resource limiting. Example: private SemaphoreSlim _semaphore = new SemaphoreSlim(10); public async Task AccessResourceAsync() { await _semaphore.WaitAsync(); try { await DoWorkAsync(); } finally { _semaphore.Release(); } }. This limits to 10 concurrent operations. Alternatives: using channels (System.Threading.Channels) for producer-consumer patterns, or custom solutions with TaskCompletionSource."
+    },
+    {
+      "id": 47,
+      "question": "What is the difference between async/await and promises in JavaScript?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Both provide syntactic sugar for asynchronous programming. C# async/await is built on Tasks, JavaScript on Promises. Syntax is similar but C# has Task<T> vs JavaScript Promise. Error handling: both use try/catch but C# has AggregateException for multiple failures. C# has more features like ValueTask, ConfigureAwait, and better integration with the type system. The concepts are analogous but implementations differ."
+    },
+    {
+      "id": 48,
+      "question": "How do you handle async operations in Windows Forms or WPF?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "In UI apps, async methods automatically marshal back to the UI thread after await (unless ConfigureAwait(false) is used). Update UI by capturing the context and using Dispatcher.Invoke or Control.Invoke if needed. Deadlock risks: calling Task.Result or Task.Wait on UI thread, mixing blocking and async code. Use async event handlers and avoid blocking calls. The UI context ensures thread-safe UI updates."
+    },
+    {
+      "id": 49,
+      "question": "What is the purpose of Task.Run in async methods?",
+      "category": "async-await",
+      "difficulty": "intermediate",
+      "answer": "Task.Run offloads work to the thread pool. Use it in async methods for CPU-bound work that would block the current thread (like UI thread). Don't use it for I/O-bound work - use direct async calls instead. Performance: adds overhead but prevents blocking. Exception handling: exceptions are captured in the returned task and can be caught with await. Use judiciously to avoid thread pool starvation."
+    }
+  ]
+}

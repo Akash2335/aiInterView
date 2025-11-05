@@ -1,0 +1,834 @@
+[
+  {
+    "id": 1,
+    "question": "How to retrieve the second-highest salary of an employee?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);"
+  },
+  {
+    "id": 2,
+    "question": "How to get the nth highest salary in SQL?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT salary FROM (SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rank FROM employees) AS ranked_salaries WHERE rank = N;"
+  },
+  {
+    "id": 3,
+    "question": "How do you fetch all employees whose salary is greater than the average salary?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);"
+  },
+  {
+    "id": 4,
+    "question": "Write a query to display the current date and time in SQL.",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT CURRENT_TIMESTAMP;"
+  },
+  {
+    "id": 5,
+    "question": "How to find duplicate records in a table?",
+    "category": "Data Analysis",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT column_name, COUNT(*) FROM table_name GROUP BY column_name HAVING COUNT(*) > 1;"
+  },
+  {
+    "id": 6,
+    "question": "How can you delete duplicate rows in SQL?",
+    "category": "Data Manipulation",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "WITH CTE AS (SELECT column_name, ROW_NUMBER() OVER (PARTITION BY column_name ORDER BY column_name) AS row_num FROM table_name) DELETE FROM CTE WHERE row_num > 1;"
+  },
+  {
+    "id": 7,
+    "question": "How to get the common records from two tables?",
+    "category": "Joins & Sets",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM table1 INTERSECT SELECT * FROM table2;"
+  },
+  {
+    "id": 8,
+    "question": "How to retrieve the last 10 records from a table?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees ORDER BY employee_id DESC LIMIT 10;"
+  },
+  {
+    "id": 9,
+    "question": "How do you fetch the top 5 employees with the highest salaries?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees ORDER BY salary DESC LIMIT 5;"
+  },
+  {
+    "id": 10,
+    "question": "How to calculate the total salary of all employees?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT SUM(salary) FROM employees;"
+  },
+  {
+    "id": 11,
+    "question": "How to write a query to find all employees who joined in the year 2020?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE YEAR(join_date) = 2020;"
+  },
+  {
+    "id": 12,
+    "question": "Write a query to find employees whose name starts with 'A'.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE name LIKE 'A%';"
+  },
+  {
+    "id": 13,
+    "question": "How can you find the employees who do not have a manager?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE manager_id IS NULL;"
+  },
+  {
+    "id": 14,
+    "question": "How to find the department with the highest number of employees?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT department_id, COUNT(*) FROM employees GROUP BY department_id ORDER BY COUNT(*) DESC LIMIT 1;"
+  },
+  {
+    "id": 15,
+    "question": "How to get the count of employees in each department?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT department_id, COUNT(*) FROM employees GROUP BY department_id;"
+  },
+  {
+    "id": 16,
+    "question": "Write a query to fetch employees having the highest salary in each department.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT department_id, employee_id, salary FROM employees AS e WHERE salary = (SELECT MAX(salary) FROM employees WHERE department_id = e.department_id);"
+  },
+  {
+    "id": 17,
+    "question": "How to write a query to update the salary of all employees by 10%?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "UPDATE employees SET salary = salary * 1.1;"
+  },
+  {
+    "id": 18,
+    "question": "How can you find employees whose salary is between 50,000 and 1,00,000?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000;"
+  },
+  {
+    "id": 19,
+    "question": "How to find the youngest employee in the organization?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees ORDER BY birth_date DESC LIMIT 1;"
+  },
+  {
+    "id": 20,
+    "question": "How to fetch the first and last record from a table?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "(SELECT * FROM employees ORDER BY employee_id ASC LIMIT 1) UNION ALL (SELECT * FROM employees ORDER BY employee_id DESC LIMIT 1);"
+  },
+  {
+    "id": 21,
+    "question": "Write a query to find all employees who report to a specific manager.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE manager_id = ?;"
+  },
+  {
+    "id": 22,
+    "question": "How can you find the total number of departments in the company?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT COUNT(DISTINCT department_id) FROM employees;"
+  },
+  {
+    "id": 23,
+    "question": "How to find the department with the lowest average salary?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT department_id, AVG(salary) FROM employees GROUP BY department_id ORDER BY AVG(salary) ASC LIMIT 1;"
+  },
+  {
+    "id": 24,
+    "question": "How to delete all employees from a department in one query?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "DELETE FROM employees WHERE department_id = ?;"
+  },
+  {
+    "id": 25,
+    "question": "How to display all employees who have been in the company for more than 5 years?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE DATEDIFF(CURDATE(), join_date) > 1825;"
+  },
+  {
+    "id": 26,
+    "question": "How to find the second-largest value from a table?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT MAX(column_name) FROM table_name WHERE column_name < (SELECT MAX(column_name) FROM table_name);"
+  },
+  {
+    "id": 27,
+    "question": "How to write a query to remove all records from a table but keep the table structure?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "TRUNCATE TABLE table_name;"
+  },
+  {
+    "id": 28,
+    "question": "Write a query to get all employee records in XML format.",
+    "category": "Advanced SQL",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT employee_id, name, department_id FROM employees FOR XML AUTO;"
+  },
+  {
+    "id": 29,
+    "question": "How to get the current month's name from SQL?",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT MONTHNAME(CURDATE());"
+  },
+  {
+    "id": 30,
+    "question": "How to convert a string to lowercase in SQL?",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT LOWER('STRING_VALUE');"
+  },
+  {
+    "id": 31,
+    "question": "How to find all employees who do not have any subordinates?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT * FROM employees WHERE employee_id NOT IN (SELECT manager_id FROM employees WHERE manager_id IS NOT NULL);"
+  },
+  {
+    "id": 32,
+    "question": "Write a query to calculate the total sales per customer in a sales table.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT customer_id, SUM(sales_amount) FROM sales GROUP BY customer_id;"
+  },
+  {
+    "id": 33,
+    "question": "How to write a query to check if a table is empty?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT CASE WHEN EXISTS (SELECT 1 FROM table_name) THEN 'Not Empty' ELSE 'Empty' END;"
+  },
+  {
+    "id": 34,
+    "question": "How to find the second highest salary for each department?",
+    "category": "Window Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT department_id, salary FROM (SELECT department_id, salary, DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank FROM employees) AS ranked_salaries WHERE rank = 2;"
+  },
+  {
+    "id": 35,
+    "question": "Write a query to fetch employees whose salary is a multiple of 10,000.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE salary % 10000 = 0;"
+  },
+  {
+    "id": 36,
+    "question": "How to fetch records where a column has null values?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE column_name IS NULL;"
+  },
+  {
+    "id": 37,
+    "question": "How to write a query to find the total number of employees in each job title?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT job_title, COUNT(*) FROM employees GROUP BY job_title;"
+  },
+  {
+    "id": 38,
+    "question": "Write a query to fetch all employees whose names end with 'n'.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE name LIKE '%n';"
+  },
+  {
+    "id": 39,
+    "question": "How to find all employees who work in both departments 101 and 102?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT employee_id FROM employees WHERE department_id IN (101, 102) GROUP BY employee_id HAVING COUNT(DISTINCT department_id) = 2;"
+  },
+  {
+    "id": 40,
+    "question": "Write a query to fetch the details of employees with the same salary.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT * FROM employees WHERE salary IN (SELECT salary FROM employees GROUP BY salary HAVING COUNT(*) > 1);"
+  },
+  {
+    "id": 41,
+    "question": "How to update salaries of employees based on their department?",
+    "category": "Data Manipulation",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "UPDATE employees SET salary = CASE WHEN department_id = 101 THEN salary * 1.10 WHEN department_id = 102 THEN salary * 1.05 ELSE salary END;"
+  },
+  {
+    "id": 42,
+    "question": "How to write a query to list all employees without a department?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE department_id IS NULL;"
+  },
+  {
+    "id": 43,
+    "question": "Write a query to find the maximum salary and minimum salary in each department.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT department_id, MAX(salary), MIN(salary) FROM employees GROUP BY department_id;"
+  },
+  {
+    "id": 44,
+    "question": "How to list all employees hired in the last 6 months?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE hire_date > ADDDATE(CURDATE(), INTERVAL -6 MONTH);"
+  },
+  {
+    "id": 45,
+    "question": "Write a query to display department-wise total and average salary.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT department_id, SUM(salary) AS total_salary, AVG(salary) AS avg_salary FROM employees GROUP BY department_id;"
+  },
+  {
+    "id": 46,
+    "question": "How to find employees who joined the company in the same month and year as their manager?",
+    "category": "Joins & Sets",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT e.employee_id, e.name FROM employees e JOIN employees m ON e.manager_id = m.employee_id WHERE MONTH(e.join_date) = MONTH(m.join_date) AND YEAR(e.join_date) = YEAR(m.join_date);"
+  },
+  {
+    "id": 47,
+    "question": "Write a query to count the number of employees whose names start and end with the same letter.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT COUNT(*) FROM employees WHERE LEFT(name, 1) = RIGHT(name, 1);"
+  },
+  {
+    "id": 48,
+    "question": "How to retrieve employee names and salaries in a single string?",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT CONCAT(name, ' earns ', salary) AS employee_info FROM employees;"
+  },
+  {
+    "id": 49,
+    "question": "How to find employees whose salary is higher than their manager's salary?",
+    "category": "Joins & Sets",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT e.employee_id, e.name FROM employees e JOIN employees m ON e.manager_id = m.employee_id WHERE e.salary > m.salary;"
+  },
+  {
+    "id": 50,
+    "question": "Write a query to get employees who belong to departments with less than 3 employees.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT * FROM employees WHERE department_id IN (SELECT department_id FROM employees GROUP BY department_id HAVING COUNT(*) < 3);"
+  },
+  {
+    "id": 51,
+    "question": "How to write a query to find employees with the same first name?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE first_name IN (SELECT first_name FROM employees GROUP BY first_name HAVING COUNT(*) > 1);"
+  },
+  {
+    "id": 52,
+    "question": "How to write a query to delete employees who have been in the company for more than 15 years?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "DELETE FROM employees WHERE DATEDIFF(CURDATE(), join_date) > 5475;"
+  },
+  {
+    "id": 53,
+    "question": "Write a query to list all employees working under the same manager.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE manager_id = ?;"
+  },
+  {
+    "id": 54,
+    "question": "How to find the top 3 highest-paid employees in each department?",
+    "category": "Window Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT * FROM (SELECT *, DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank FROM employees) AS ranked_employees WHERE rank <= 3;"
+  },
+  {
+    "id": 55,
+    "question": "Write a query to list all employees with more than 5 years of experience in each department.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE DATEDIFF(CURDATE(), join_date) > 1825;"
+  },
+  {
+    "id": 56,
+    "question": "How to list all employees in departments that have not hired anyone in the past 2 years?",
+    "category": "SQL Queries",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT * FROM employees WHERE department_id IN (SELECT department_id FROM employees GROUP BY department_id HAVING MAX(hire_date) < ADDDATE(CURDATE(), INTERVAL -2 YEAR));"
+  },
+  {
+    "id": 57,
+    "question": "Write a query to find all employees who earn more than the average salary of their department.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT * FROM employees e WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id);"
+  },
+  {
+    "id": 58,
+    "question": "How to list all managers who have more than 5 subordinates?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT * FROM employees WHERE employee_id IN (SELECT manager_id FROM employees GROUP BY manager_id HAVING COUNT(*) > 5);"
+  },
+  {
+    "id": 59,
+    "question": "Write a query to display employee names and hire dates in the format 'Name - MM/DD/YYYY'.",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT CONCAT(name, ' - ', DATE_FORMAT(hire_date, '%m/%d/%Y')) AS employee_info FROM employees;"
+  },
+  {
+    "id": 60,
+    "question": "How to find employees whose salary is in the top 10%?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT * FROM employees WHERE salary >= (SELECT PERCENTILE_CONT(0.9) WITHIN GROUP (ORDER BY salary ASC) FROM employees);"
+  },
+  {
+    "id": 61,
+    "question": "Write a query to display employees grouped by their age brackets (e.g., 20-30, 31-40, etc.).",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT CASE WHEN age BETWEEN 20 AND 30 THEN '20-30' WHEN age BETWEEN 31 AND 40 THEN '31-40' ELSE '41+' END AS age_bracket, COUNT(*) FROM employees GROUP BY age_bracket;"
+  },
+  {
+    "id": 62,
+    "question": "How to find the average salary of the top 5 highest-paid employees in each department?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT department_id, AVG(salary) FROM (SELECT department_id, salary, DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank FROM employees) AS ranked_employees WHERE rank <= 5 GROUP BY department_id;"
+  },
+  {
+    "id": 63,
+    "question": "How to calculate the percentage of employees in each department?",
+    "category": "Aggregate Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT department_id, (COUNT(*) * 100.0 / (SELECT COUNT(*) FROM employees)) AS percentage FROM employees GROUP BY department_id;"
+  },
+  {
+    "id": 64,
+    "question": "Write a query to find all employees whose email contains the domain '@example.com'.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE email LIKE '%@example.com';"
+  },
+  {
+    "id": 65,
+    "question": "How to retrieve the year-to-date sales for each customer?",
+    "category": "Aggregate Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT customer_id, SUM(sales_amount) FROM sales WHERE sale_date BETWEEN '2024-01-01' AND CURDATE() GROUP BY customer_id;"
+  },
+  {
+    "id": 66,
+    "question": "Write a query to display the hire date and day of the week for each employee.",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT name, hire_date, DAYNAME(hire_date) AS day_of_week FROM employees;"
+  },
+  {
+    "id": 67,
+    "question": "How to find all employees who are older than 30 years?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE DATEDIFF(CURDATE(), birth_date) / 365 > 30;"
+  },
+  {
+    "id": 68,
+    "question": "Write a query to display employees grouped by their salary range (e.g., 0-20K, 20K-50K).",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT CASE WHEN salary BETWEEN 0 AND 20000 THEN '0-20K' WHEN salary BETWEEN 20001 AND 50000 THEN '20K-50K' ELSE '50K+' END AS salary_range, COUNT(*) FROM employees GROUP BY salary_range;"
+  },
+  {
+    "id": 69,
+    "question": "How to list all employees who do not have a bonus?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE bonus IS NULL;"
+  },
+  {
+    "id": 70,
+    "question": "Write a query to display the highest, lowest, and average salary for each job role.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT job_role, MAX(salary) AS highest_salary, MIN(salary) AS lowest_salary, AVG(salary) AS avg_salary FROM employees GROUP BY job_role;"
+  },
+  {
+    "id": 71,
+    "question": "What is the difference between WHERE and HAVING clause?",
+    "category": "SQL Fundamentals",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "WHERE filters rows before grouping, HAVING filters groups after GROUP BY. WHERE cannot use aggregate functions, HAVING can."
+  },
+  {
+    "id": 72,
+    "question": "Explain different types of JOINs in SQL.",
+    "category": "Joins & Sets",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "INNER JOIN: Returns matching rows, LEFT JOIN: All left table + matching right, RIGHT JOIN: All right table + matching left, FULL OUTER JOIN: All rows from both tables, CROSS JOIN: Cartesian product."
+  },
+  {
+    "id": 73,
+    "question": "What is the difference between UNION and UNION ALL?",
+    "category": "Joins & Sets",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "UNION removes duplicates, UNION ALL keeps all records including duplicates. UNION ALL is faster as it doesn't remove duplicates."
+  },
+  {
+    "id": 74,
+    "question": "How to create an index in SQL?",
+    "category": "Performance",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "CREATE INDEX index_name ON table_name (column1, column2);"
+  },
+  {
+    "id": 75,
+    "question": "What is a stored procedure and how to create one?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "A stored procedure is a prepared SQL code. CREATE PROCEDURE procedure_name AS BEGIN SQL statements END;"
+  },
+  {
+    "id": 76,
+    "question": "How to prevent SQL injection attacks?",
+    "category": "Security",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "Use parameterized queries, input validation, stored procedures, and avoid dynamic SQL with user input."
+  },
+  {
+    "id": 77,
+    "question": "What is normalization and its types?",
+    "category": "Database Design",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "Normalization organizes data to reduce redundancy. 1NF: Atomic values, 2NF: No partial dependency, 3NF: No transitive dependency, BCNF: Stronger 3NF."
+  },
+  {
+    "id": 78,
+    "question": "How to find employees with the 3rd highest salary without using LIMIT?",
+    "category": "SQL Queries",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT salary FROM employees e1 WHERE 2 = (SELECT COUNT(DISTINCT salary) FROM employees e2 WHERE e2.salary > e1.salary);"
+  },
+  {
+    "id": 79,
+    "question": "What is the difference between DELETE, TRUNCATE and DROP?",
+    "category": "Data Manipulation",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "DELETE: Removes rows with WHERE, can rollback. TRUNCATE: Removes all rows, faster, cannot rollback. DROP: Deletes table structure and data."
+  },
+  {
+    "id": 80,
+    "question": "How to calculate running total in SQL?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT employee_id, salary, SUM(salary) OVER (ORDER BY employee_id) AS running_total FROM employees;"
+  },
+  {
+    "id": 81,
+    "question": "What are window functions in SQL?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "Window functions perform calculations across a set of table rows related to current row. Examples: ROW_NUMBER(), RANK(), DENSE_RANK(), LEAD(), LAG(), SUM() OVER()."
+  },
+  {
+    "id": 82,
+    "question": "What is a correlated subquery?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "A subquery that depends on outer query for its values. Executed once for each row processed by outer query."
+  },
+  {
+    "id": 83,
+    "question": "How to find consecutive login days for users?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "WITH LoginGroups AS (SELECT user_id, login_date, DATE_SUB(login_date, INTERVAL ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date) DAY) AS grp FROM logins) SELECT user_id, MIN(login_date), MAX(login_date), COUNT(*) FROM LoginGroups GROUP BY user_id, grp HAVING COUNT(*) >= 3;"
+  },
+  {
+    "id": 84,
+    "question": "What is the difference between RANK() and DENSE_RANK()?",
+    "category": "Window Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "RANK() leaves gaps when there are ties (1,2,2,4), DENSE_RANK() doesn't leave gaps (1,2,2,3)."
+  },
+  {
+    "id": 85,
+    "question": "How to pivot data in SQL?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "Using CASE statements or PIVOT operator: SELECT department, SUM(CASE WHEN year=2020 THEN sales END) as sales_2020, SUM(CASE WHEN year=2021 THEN sales END) as sales_2021 FROM sales GROUP BY department;"
+  },
+  {
+    "id": 86,
+    "question": "What is ACID properties in databases?",
+    "category": "Database Fundamentals",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "Atomicity: All or nothing, Consistency: Valid state transition, Isolation: Concurrent transactions don't interfere, Durability: Committed changes persist."
+  },
+  {
+    "id": 87,
+    "question": "How to find employees with same salary using self join?",
+    "category": "Joins & Sets",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT e1.name, e2.name, e1.salary FROM employees e1 JOIN employees e2 ON e1.salary = e2.salary AND e1.employee_id < e2.employee_id;"
+  },
+  {
+    "id": 88,
+    "question": "What is query optimization and how to improve it?",
+    "category": "Performance",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "Use indexes, avoid SELECT *, use WHERE instead of HAVING for filtering, use EXISTS instead of IN for subqueries, avoid functions on indexed columns in WHERE."
+  },
+  {
+    "id": 89,
+    "question": "What is the difference between CHAR and VARCHAR?",
+    "category": "Data Types",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "CHAR is fixed length, pads with spaces. VARCHAR is variable length, uses only required space. CHAR is faster for fixed length data."
+  },
+  {
+    "id": 90,
+    "question": "What is a transaction and how to use it?",
+    "category": "Database Fundamentals",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "A transaction is a unit of work. BEGIN TRANSACTION; SQL statements; COMMIT; (or ROLLBACK; on error)"
+  },
+  {
+    "id": 91,
+    "question": "How to find customers who purchased all products?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT customer_id FROM purchases GROUP BY customer_id HAVING COUNT(DISTINCT product_id) = (SELECT COUNT(*) FROM products);"
+  },
+  {
+    "id": 92,
+    "question": "What is the difference between IN and EXISTS?",
+    "category": "SQL Fundamentals",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "IN checks against a list of values, EXISTS checks if subquery returns any rows. EXISTS is generally faster for large datasets."
+  },
+  {
+    "id": 93,
+    "question": "What is a view and why use it?",
+    "category": "Database Objects",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "A view is a virtual table based on SQL query. Used for security (hide columns), simplicity (complex queries), and consistency (reusable logic)."
+  },
+  {
+    "id": 94,
+    "question": "What is database indexing and how it works?",
+    "category": "Performance",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "Indexing creates a data structure (B-tree) that allows faster data retrieval. It works like a book index, pointing to data locations without scanning entire table."
+  },
+  {
+    "id": 95,
+    "question": "How to calculate median salary in SQL?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT AVG(salary) FROM (SELECT salary, ROW_NUMBER() OVER (ORDER BY salary) as row_num, COUNT(*) OVER() as total FROM employees) WHERE row_num IN (FLOOR((total+1)/2), FLOOR((total+2)/2));"
+  },
+  {
+    "id": 96,
+    "question": "How to find employees with no projects assigned?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "SELECT * FROM employees WHERE employee_id NOT IN (SELECT DISTINCT employee_id FROM projects);"
+  },
+    {
+    "id": 98,
+    "question": "How to find employees with the same manager and same department?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "SELECT e1.employee_id, e1.name, e1.manager_id, e1.department_id FROM employees e1 JOIN employees e2 ON e1.manager_id = e2.manager_id AND e1.department_id = e2.department_id WHERE e1.employee_id != e2.employee_id;"
+  },
+  {
+    "id": 99,
+    "question": "How to calculate the cumulative distribution of salaries in each department?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT department_id, employee_id, salary, CUME_DIST() OVER (PARTITION BY department_id ORDER BY salary) AS cumulative_dist FROM employees;"
+  },
+  {
+    "id": 100,
+    "question": "How to find gaps in sequential employee IDs?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "WITH NumberSeries AS (SELECT LEVEL AS expected_id FROM DUAL CONNECT BY LEVEL <= (SELECT MAX(employee_id) FROM employees)) SELECT expected_id FROM NumberSeries WHERE expected_id NOT IN (SELECT employee_id FROM employees) AND expected_id < (SELECT MAX(employee_id) FROM employees);"
+  },
+  {
+    "id": 101,
+    "question": "How to calculate moving average of salary over 3 months?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT employee_id, salary_date, salary, AVG(salary) OVER (ORDER BY salary_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg FROM salary_history;"
+  },
+  {
+    "id": 102,
+    "question": "How to find employees who have changed departments more than once?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT employee_id FROM (SELECT employee_id, department_id, LAG(department_id) OVER (PARTITION BY employee_id ORDER BY change_date) AS prev_dept FROM department_history) WHERE department_id != prev_dept GROUP BY employee_id HAVING COUNT(*) > 1;"
+  },
+  {
+    "id": 103,
+    "question": "How to calculate year-over-year growth percentage for each department?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT department_id, year, total_salary, ((total_salary - LAG(total_salary) OVER (PARTITION BY department_id ORDER BY year)) / LAG(total_salary) OVER (PARTITION BY department_id ORDER BY year)) * 100 AS growth_percentage FROM (SELECT department_id, YEAR(join_date) as year, SUM(salary) as total_salary FROM employees GROUP BY department_id, YEAR(join_date));"
+  },
+  {
+    "id": 104,
+    "question": "How to find the mode (most frequent) salary in each department?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "WITH SalaryFreq AS (SELECT department_id, salary, COUNT(*) as frequency, RANK() OVER (PARTITION BY department_id ORDER BY COUNT(*) DESC) as freq_rank FROM employees GROUP BY department_id, salary) SELECT department_id, salary, frequency FROM SalaryFreq WHERE freq_rank = 1;"
+  },
+  {
+    "id": 105,
+    "question": "How to find employees with overlapping project dates?",
+    "category": "Advanced SQL",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "SELECT e1.employee_id, e1.project_id as project1, e2.project_id as project2 FROM employee_projects e1 JOIN employee_projects e2 ON e1.employee_id = e2.employee_id AND e1.project_id < e2.project_id WHERE e1.start_date <= e2.end_date AND e1.end_date >= e2.start_date;"
+  }
+]

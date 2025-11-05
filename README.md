@@ -1,70 +1,209 @@
-# Getting Started with Create React App
+# AI-Powered Technical Interview Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Overview
 
-## Available Scripts
+A modern, interactive technical interview platform that uses AI to conduct realistic coding interviews with real-time feedback, speech recognition, and video recording capabilities.
 
-In the project directory, you can run:
+## 📁 Project Structure
 
-### `npm start`
+```
+D:.
+├── 📄 Root Files
+│   ├── App.jsx                 # Main application component
+│   ├── App.css                 # Global styles
+│   ├── index.js                # Application entry point
+│   ├── index.css               # Base styles
+│   └── credentials.json        # API credentials
+│
+├── 🔧 Core Components
+│   ├── CameraRecorder.jsx      # Video recording functionality
+│   ├── DraggableCamera.jsx     # Movable camera interface
+│   ├── InterviewInterface.jsx  # Main interview interface
+│   ├── initFaceObserver.jsx    # Face detection initialization
+│   ├── loadModels.jsx          # AI model loading
+│   └── ProtectedRoute.jsx      # Authentication protection
+│
+├── 📦 Components/
+│   ├── 🎯 Core UI
+│   │   ├── LanguageSelection.jsx    # Technology selection
+│   │   ├── Login.jsx                # User authentication
+│   │   ├── Register.jsx             # User registration
+│   │   ├── ModernQADisplay.jsx      # Question/Answer display
+│   │   └── ProgressBar.jsx          # Interview progress
+│   │
+│   ├── 🎙️ Interview Features
+│   │   ├── AIFeedback.jsx           # Real-time AI feedback
+│   │   ├── Microphone.jsx           # Speech recognition
+│   │   ├── TranscriptDisplay.jsx    # Speech-to-text display
+│   │   └── HoverButtons.jsx         # Contextual controls
+│   │
+│   ├── 🎮 Controls
+│   │   ├── InterviewControls/ControlButtons.jsx  # Main controls
+│   │   └── Question/QuestionPanel.jsx            # Question display
+│   │
+│   ├── 📊 Analytics
+│   │   └── AnalyticsDashboard.jsx   # Performance metrics
+│   │
+│   └── 🎨 UI Components
+│       ├── AICorner.jsx             # AI assistant interface
+│       ├── KeyboardShortcuts.jsx    # Hotkey guide
+│       ├── TabColorManager.jsx      # Dynamic tab styling
+│       └── UltimateJsonViewer.jsx   # Data visualization
+│
+├── ⚡ Hooks/
+│   ├── useSpeechRecognition.jsx     # Speech-to-text hook
+│   ├── useInterviewAnalytics.jsx    # Analytics tracking
+│   ├── useInterviewHistory.jsx      # Session history
+│   ├── useInterviewQuestionsAnswer.jsx # Q&A management
+│   └── MouseFollower.jsx            # Cursor effects
+│
+├── 📄 Pages/
+│   ├── Header.jsx                   # Navigation header
+│   ├── Footer.jsx                   # Application footer
+│   └── Arrow.jsx                    # UI navigation elements
+│
+└── 🔧 Utils/
+    ├── AuthProvider.jsx             # Authentication context
+    ├── exportUtils.jsx              # Data export functionality
+    ├── questionUtils.jsx            # Question management
+    └── speechUtils.jsx              # Speech processing utilities
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🎯 Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🤖 AI-Powered Interviews
+- **Real-time AI Feedback**: Get instant feedback on your answers
+- **Speech Recognition**: Convert spoken answers to text
+- **Face Detection**: Monitor engagement and attention
+- **Smart Questioning**: Adaptive question difficulty based on performance
 
-### `npm test`
+### 🎥 Recording & Analysis
+- **Video Recording**: Record your interview sessions
+- **Draggable Camera**: Flexible camera positioning
+- **Transcript Generation**: Automatic speech-to-text conversion
+- **Performance Analytics**: Track improvement over time
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🎨 User Experience
+- **Dark/Light Mode**: Full theme support
+- **Responsive Design**: Works on all device sizes
+- **Keyboard Shortcuts**: Efficient navigation
+- **Progress Tracking**: Visual progress indicators
 
-### `npm run build`
+### 🔒 Security & Authentication
+- **Protected Routes**: Secure interview sessions
+- **User Registration**: Personal account creation
+- **Session Management**: Secure authentication flow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Technology Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend**: React.js with modern hooks
+- **Styling**: Tailwind CSS with custom animations
+- **AI/ML**: Face detection and speech recognition APIs
+- **State Management**: React Context API
+- **Animation**: Framer Motion for smooth interactions
+- **Icons**: Lucide React icon library
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Getting Started
 
-### `npm run eject`
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure API credentials in `credentials.json`
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📱 Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. **Authentication**
+- Register a new account or login
+- Access protected interview features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. **Technology Selection**
+- Choose from multiple tech stacks:
+  - C# & .NET
+  - React.js
+  - AWS Cloud
+  - SQL & Database Design
+  - CI/CD & DevOps
 
-## Learn More
+### 3. **Interview Modes**
+- **Learning Mode**: Practice with guided answers
+- **Interview Mode**: Simulated real interviews
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. **During Interview**
+- Speak your answers (automatic transcription)
+- Receive real-time AI feedback
+- Record video responses
+- Track progress with visual indicators
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 5. **Post-Interview**
+- Review performance analytics
+- Export session data
+- Track improvement over time
 
-### Code Splitting
+## 🎮 Keyboard Shortcuts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `Space` - Start/stop recording
+- `Escape` - Reset interview
+- `Tab` - Toggle shortcuts panel
+- `Ctrl+S` - Save progress
+- `Ctrl+E` - Export data
 
-### Analyzing the Bundle Size
+## 🔧 Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Environment Setup
+Create a `credentials.json` file with your API keys:
 
-### Making a Progressive Web App
+```json
+{
+  "speechRecognition": "your-api-key",
+  "faceDetection": "your-api-key",
+  "aiService": "your-api-key"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Customization
+- Modify question banks in `utils/questionUtils.jsx`
+- Adjust AI feedback parameters in `Components/AIFeedback.jsx`
+- Customize themes in `App.css` and component styles
 
-### Advanced Configuration
+## 📊 Analytics & Reporting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The platform provides comprehensive analytics:
+- Answer accuracy metrics
+- Speaking pace analysis
+- Technical knowledge assessment
+- Progress tracking over time
+- Exportable session reports
 
-### Deployment
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
-### `npm run build` fails to minify
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+For support and questions:
+- Check the documentation
+- Open an issue on GitHub
+- Contact the development team
+
+---
+
+**Built with ❤️ for developers preparing for technical interviews**

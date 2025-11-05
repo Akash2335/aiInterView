@@ -1,0 +1,354 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are the main advantages of .NET Core over .NET Framework?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": ".NET Core offers cross-platform support (Windows, Linux, macOS), better performance, side-by-side versioning, microservices-friendly architecture, built-in dependency injection, and cloud-optimized deployment. It's open-source and has faster release cycles with Long-Term Support (LTS) versions."
+    },
+    {
+      "id": 2,
+      "question": "Can you migrate existing .NET Framework applications to .NET Core?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Yes, but it requires careful planning. Use the .NET Upgrade Assistant tool, analyze dependencies for compatibility, replace Windows-specific APIs with cross-platform alternatives, and test thoroughly. Some technologies like WCF server and Web Forms have limited support and may need architectural changes."
+    },
+    {
+      "id": 3,
+      "question": "What is .NET 5+ and how does it unify the platforms?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": ".NET 5+ is the unified platform that combines .NET Framework, .NET Core, and Xamarin into a single .NET platform. It provides a consistent runtime, base class libraries, and development experience across all application types including web, desktop, mobile, cloud, and IoT."
+    },
+    {
+      "id": 4,
+      "question": "What is the order of middleware execution?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Middleware executes in the order they are added: Exception/Error Handling → HTTPS Redirection → Static Files → Routing → Authentication → Authorization → Custom Middleware → Endpoints. The response flows back through the pipeline in reverse order."
+    },
+    {
+      "id": 5,
+      "question": "How do you create custom middleware?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Create a class with InvokeAsync method or use inline middleware with app.Use(). Class-based middleware can implement IMiddleware interface or follow convention with InvokeAsync method that takes HttpContext and RequestDelegate parameters."
+    },
+    {
+      "id": 6,
+      "question": "What are some common built-in middleware components?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Common middleware includes: ExceptionHandler for error handling, HSTS for security, HTTPS Redirection, StaticFiles for static content, Routing, CORS for cross-origin requests, Authentication, Authorization, and ResponseCompression."
+    },
+    {
+      "id": 7,
+      "question": "What are the different service lifetimes?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Three service lifetimes: Transient (new instance every request), Scoped (single instance per request), and Singleton (single instance for application lifetime). Choose based on state management needs and resource usage patterns."
+    },
+    {
+      "id": 8,
+      "question": "How do you register services in the DI container?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Use services.Add[Lifetime]<Service, Implementation>() in Program.cs or Startup.ConfigureServices. Common methods: AddTransient, AddScoped, AddSingleton. Also supports factory methods and instance registration."
+    },
+    {
+      "id": 9,
+      "question": "What are the benefits of using dependency injection?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Benefits include: loose coupling, improved testability, better maintainability, centralized configuration, lifecycle management, and easier implementation of cross-cutting concerns through constructor injection."
+    },
+    {
+      "id": 10,
+      "question": "When would you use Kestrel vs IIS?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Use Kestrel for cross-platform deployments, high-performance scenarios, and containerized applications. Use IIS when you need Windows-specific features, existing IIS infrastructure, or advanced management tools. Often used together with Kestrel behind IIS as reverse proxy."
+    },
+    {
+      "id": 11,
+      "question": "What are the performance benefits of Kestrel?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Kestrel offers better performance due to: lightweight design, async I/O operations, reduced overhead compared to IIS, optimized HTTP/2 support, and efficient memory usage. It's designed specifically for .NET applications without legacy constraints."
+    },
+    {
+      "id": 12,
+      "question": "Can Kestrel be used in production without a reverse proxy?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Yes, Kestrel can be used directly in production, especially for internal applications or when deployed behind a load balancer. However, using a reverse proxy like IIS, Nginx, or Apache provides additional security, static file serving, and request buffering benefits."
+    },
+    {
+      "id": 13,
+      "question": "How do you access configuration values in code?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Inject IConfiguration interface and use GetValue<T>, GetSection(), or indexer access. For strongly-typed access, use IOptions<T> pattern with Configure<T>() service registration and inject IOptions<T>, IOptionsSnapshot<T>, or IOptionsMonitor<T>."
+    },
+    {
+      "id": 14,
+      "question": "What is the configuration hierarchy?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Configuration sources are loaded in this order (later sources override earlier): appsettings.json → appsettings.{Environment}.json → User Secrets → Environment Variables → Command-line arguments. Use ConfigurationBuilder to customize the hierarchy."
+    },
+    {
+      "id": 15,
+      "question": "How do you use environment-specific configuration?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Create appsettings.{Environment}.json files (e.g., appsettings.Development.json, appsettings.Production.json). Set ASPNETCORE_ENVIRONMENT variable to control which environment is active. Use IWebHostEnvironment to check environment at runtime."
+    },
+    {
+      "id": 16,
+      "question": "What is the difference between authentication and authorization?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Authentication verifies who you are (identity), while authorization determines what you're allowed to do (permissions). Authentication happens first to establish identity, then authorization checks if that identity has access to requested resources."
+    },
+    {
+      "id": 17,
+      "question": "How do you implement JWT authentication?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Use AddAuthentication().AddJwtBearer() in services configuration. Configure token validation parameters (issuer, audience, signing key). Use [Authorize] attribute on controllers/actions. Handle token generation in login endpoint and validation in middleware."
+    },
+    {
+      "id": 18,
+      "question": "What are authorization policies and how do you use them?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Authorization policies define access rules using requirements and handlers. Create policies with services.AddAuthorization(), then apply with [Authorize(Policy = \"PolicyName\")]. Policies can check roles, claims, custom requirements, or complex business logic."
+    },
+    {
+      "id": 19,
+      "question": "What are the different types of filters?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Five filter types: Authorization (run first), Resource (after auth), Action (before/after action execution), Exception (handle exceptions), and Result (before/after action results). Each serves specific purposes in the request pipeline."
+    },
+    {
+      "id": 20,
+      "question": "How do you create a custom action filter?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Implement IActionFilter interface or inherit from ActionFilterAttribute. Override OnActionExecuting (before action) and OnActionExecuted (after action). Register globally, per controller, or per action. Use for logging, validation, or modifying action behavior."
+    },
+    {
+      "id": 21,
+      "question": "What is the order of filter execution?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Filters execute in this order: Authorization → Resource → Action → Exception → Result. Within each type, order is determined by Scope (Global → Controller → Action) and then by Order property. 'Before' methods run in forward order, 'After' methods in reverse."
+    },
+    {
+      "id": 22,
+      "question": "What are the different log levels?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Six log levels: Trace (most verbose), Debug, Information, Warning, Error, Critical (most severe). Configure minimum level in appsettings.json. Use appropriate level for different types of messages to balance detail and performance."
+    },
+    {
+      "id": 23,
+      "question": "How do you implement structured logging?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Use message templates with named placeholders: logger.LogInformation(\"User {UserId} accessed {Resource}\", userId, resourceName). This creates structured logs that can be queried and analyzed by logging systems like Serilog, Application Insights, or ELK stack."
+    },
+    {
+      "id": 24,
+      "question": "What logging providers are available?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Built-in providers: Console, Debug, EventSource, EventLog (Windows). Popular third-party: Serilog, NLog, log4net. Cloud providers: Azure Application Insights, AWS CloudWatch. Configure multiple providers simultaneously for different destinations."
+    },
+    {
+      "id": 25,
+      "question": "What is the Developer Exception Page?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "A detailed error page shown in Development environment that displays exception details, stack trace, query string, cookies, and headers. Enabled with app.UseDeveloperExceptionPage(). Should never be enabled in production due to security risks."
+    },
+    {
+      "id": 26,
+      "question": "How do you create custom exception handling middleware?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Create middleware that catches exceptions, logs them, and returns appropriate responses. Use try-catch in InvokeAsync method. Register early in pipeline. Can create different handlers for different exception types and return standardized error responses."
+    },
+    {
+      "id": 27,
+      "question": "What is the Problem Details specification?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "RFC 7807 standard for machine-readable error responses. Includes type (URI identifying problem), title, status, detail, and instance. In .NET Core, use ProducesErrorResponseType or ProblemDetails service for consistent API error responses."
+    },
+    {
+      "id": 28,
+      "question": "What is the minimal hosting model?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Introduced in .NET 6, it simplifies startup by using top-level statements in Program.cs without Startup class. Uses WebApplicationBuilder to configure services and middleware directly. Reduces boilerplate code while maintaining all functionality."
+    },
+    {
+      "id": 29,
+      "question": "How do you migrate from Startup class to Program.cs?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Move services from Startup.ConfigureServices to WebApplicationBuilder.Services. Move middleware from Startup.Configure to WebApplication app. Use builder.Configuration for configuration. The migration is straightforward and maintains same functionality."
+    },
+    {
+      "id": 30,
+      "question": "What are WebApplicationBuilder and WebApplication?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "WebApplicationBuilder replaces HostBuilder for web apps, providing simplified configuration (builder.Services, builder.Configuration). WebApplication replaces IWebHost, allowing direct middleware configuration (app.MapGet, app.UseRouting). Together they enable minimal APIs."
+    },
+    {
+      "id": 31,
+      "question": "When should you use each lifetime?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Use Transient for stateless, lightweight services. Use Scoped for request-specific data like DbContext. Use Singleton for application-wide shared state, configuration, or cached data. Avoid captive dependencies (singletons depending on scoped services)."
+    },
+    {
+      "id": 32,
+      "question": "What are captive dependencies?",
+      "category": "dotnet-core",
+      "difficulty": "advanced",
+      "answer": "When a longer-lived service (Singleton) depends on a shorter-lived service (Scoped/Transient). This can cause memory leaks or incorrect behavior as the dependency outlives its intended scope. Resolve by using factory patterns or same lifetime."
+    },
+    {
+      "id": 33,
+      "question": "How do lifetimes affect performance?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Singleton has best performance (created once). Transient has overhead of creating instances repeatedly. Scoped balances performance and isolation. Choose based on usage patterns - Singleton for heavy initialization, Transient for lightweight services."
+    },
+    {
+      "id": 34,
+      "question": "How do you create a background service?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Implement IHostedService or inherit from BackgroundService. Override ExecuteAsync method. Register with services.AddHostedService<T>(). Use cancellation token for graceful shutdown. Handle exceptions and implement proper disposal."
+    },
+    {
+      "id": 35,
+      "question": "What is the difference between IHostedService and BackgroundService?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "IHostedService is the base interface with StartAsync and StopAsync methods. BackgroundService is abstract base class that implements IHostedService and provides ExecuteAsync method for long-running tasks. Prefer BackgroundService for most scenarios."
+    },
+    {
+      "id": 36,
+      "question": "When would you use hosted services?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Use for: periodic tasks (cron jobs), queue processing, cache warming, data synchronization, health monitoring, or any long-running background work that needs to start/stop with the application and use dependency injection."
+    },
+    {
+      "id": 37,
+      "question": "What are the different types of health checks?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Basic (simple response), Database (DbContext check), External endpoint (HTTP checks), Custom (implement IHealthCheck), Memory check, Disk space check. Can be categorized as Liveness (app running), Readiness (ready for requests), and Startup (initialized)."
+    },
+    {
+      "id": 38,
+      "question": "How do you create custom health checks?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Implement IHealthCheck interface with CheckHealthAsync method. Return HealthCheckResult with status (Healthy, Degraded, Unhealthy). Register with services.AddHealthChecks().AddCheck<MyHealthCheck>(). Can include tags, timeout, and custom logic."
+    },
+    {
+      "id": 39,
+      "question": "How do health checks work with load balancers?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Load balancers periodically call health check endpoints (/health/live, /health/ready) to determine instance health. Unhealthy instances are removed from rotation. Configure proper status codes and response times for your load balancer's requirements."
+    },
+    {
+      "id": 40,
+      "question": "How do you configure the options pattern?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Create options class, bind configuration section with services.Configure<MyOptions>(Configuration.GetSection(\"MySection\")), inject IOptions<MyOptions> in consumers. Supports validation with DataAnnotations and post-configuration with IPostConfigureOptions."
+    },
+    {
+      "id": 41,
+      "question": "What is the difference between IOptions and IConfiguration?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "IConfiguration provides weakly-typed access to configuration hierarchy. IOptions provides strongly-typed access to specific configuration sections with validation and lifetime management. Use IConfiguration for dynamic access, IOptions for structured configuration."
+    },
+    {
+      "id": 42,
+      "question": "How do you validate options?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Use DataAnnotations on options classes, then call services.AddOptions<MyOptions>().ValidateDataAnnotations(). Or implement IValidateOptions<MyOptions> for custom validation. Invalid options throw OptionsValidationException on application startup."
+    },
+    {
+      "id": 43,
+      "question": "When would you use each interface?",
+      "category": "dotnet-core",
+      "difficulty": "advanced",
+      "answer": "Use IOptions for singleton services that don't need configuration updates. Use IOptionsSnapshot for scoped services that need current configuration per request. Use IOptionsMonitor for singleton services that need to react to configuration changes."
+    },
+    {
+      "id": 44,
+      "question": "How do they handle configuration changes?",
+      "category": "dotnet-core",
+      "difficulty": "advanced",
+      "answer": "IOptions doesn't detect changes. IOptionsSnapshot reloads configuration per request. IOptionsMonitor supports change notifications and can retrieve current options anytime. IOptionsMonitor is preferred for scenarios requiring configuration updates."
+    },
+    {
+      "id": 45,
+      "question": "What are the performance implications?",
+      "category": "dotnet-core",
+      "difficulty": "advanced",
+      "answer": "IOptions has best performance (cached). IOptionsSnapshot has overhead of creating options per request. IOptionsMonitor has overhead of change tracking. Choose based on needs: IOptions for static config, IOptionsSnapshot for request-specific, IOptionsMonitor for dynamic config."
+    },
+    {
+      "id": 46,
+      "question": "What is the difference between IMemoryCache and IDistributedCache?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "IMemoryCache stores data in application memory (fast, single server). IDistributedCache uses external storage like Redis, SQL Server (shared across servers, survives restarts). Choose based on scalability needs and data persistence requirements."
+    },
+    {
+      "id": 47,
+      "question": "How do you configure Redis caching?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Install Microsoft.Extensions.Caching.StackExchangeRedis, then services.AddStackExchangeRedisCache(options => options.Configuration = \"connectionString\"). Use IDistributedCache interface. Configure connection resilience and serialization as needed."
+    },
+    {
+      "id": 48,
+      "question": "What are cache expiration policies?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Absolute expiration (fixed time), Sliding expiration (resets on access), and combinations. Set via MemoryCacheEntryOptions. Also consider cache size limits, priority, and post-eviction callbacks for complex caching scenarios."
+    },
+    {
+      "id": 49,
+      "question": "How do you create custom tag helpers?",
+      "category": "dotnet-core",
+      "difficulty": "intermediate",
+      "answer": "Create class inheriting from TagHelper, override Process/ProcessAsync methods. Use [HtmlTargetElement] to specify target elements. Register in _ViewImports.cshtml with @addTagHelper *. Can create element, attribute, or conditional tag helpers."
+    },
+    {
+      "id": 50,
+      "question": "What are some built-in tag helpers?",
+      "category": "dotnet-core",
+      "difficulty": "beginner",
+      "answer": "Common built-in tag helpers: Form, Input, Label, Validation Message/Summary, Select, Anchor, Image, Script, Link, Environment, Cache. They provide server-side processing while maintaining HTML-like syntax in views."
+    }
+  ]
+}

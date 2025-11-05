@@ -1,0 +1,704 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "What is LINQ and what are its main benefits?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "LINQ (Language Integrated Query) is a set of features that extends C# with query capabilities. Benefits: Type safety, IntelliSense support, compile-time error checking, unified query syntax across different data sources, and integration with .NET languages."
+    },
+    {
+      "id": 2,
+      "question": "Explain the difference between LINQ query syntax and method syntax.",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Query syntax uses SQL-like keywords (from, where, select). Method syntax uses extension methods (Where, Select, OrderBy). Both compile to same expression trees. Query syntax is often more readable for complex queries, method syntax is more flexible."
+    },
+    {
+      "id": 3,
+      "question": "What are the different types of LINQ providers?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "LINQ to Objects (in-memory collections), LINQ to SQL (SQL Server databases), LINQ to Entities (Entity Framework), LINQ to XML (XML documents), LINQ to DataSet (ADO.NET DataSets), and custom LINQ providers."
+    },
+    {
+      "id": 4,
+      "question": "Explain deferred execution vs immediate execution in LINQ.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Deferred execution: Query is not executed when defined, but when enumerated. Immediate execution: Query executes immediately when called. Methods causing immediate execution: ToList(), ToArray(), Count(), First(), Single(), etc."
+    },
+    {
+      "id": 5,
+      "question": "What is the difference between IEnumerable and IQueryable?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "IEnumerable: In-memory collection, queries execute locally using LINQ to Objects. IQueryable: Represents a query that can be executed remotely, builds expression trees that can be translated to other languages (like SQL)."
+    },
+    {
+      "id": 6,
+      "question": "How does LINQ query translation work in Entity Framework?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "EF Core converts LINQ queries to SQL commands. It analyzes expression trees, translates C# operations to SQL equivalents, handles navigation properties, and optimizes the generated SQL. Some C# functions can't be translated and cause runtime errors."
+    },
+    {
+      "id": 7,
+      "question": "What are lambda expressions in LINQ?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Lambda expressions are anonymous functions used in LINQ method syntax. Syntax: (parameters) => expression. Example: .Where(x => x.Age > 18). They provide concise way to write inline functions for filtering, projection, and other operations."
+    },
+    {
+      "id": 8,
+      "question": "Explain the Select and Where methods in LINQ.",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Where: Filters sequence based on predicate. Select: Projects each element into new form (transformation). Example: numbers.Where(n => n > 5).Select(n => n * 2). Where for filtering, Select for transformation."
+    },
+    {
+      "id": 9,
+      "question": "What are the different joining operations in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Join (inner join), GroupJoin (left outer join), Zip (pairs elements by position). Join syntax: from a in collectionA join b in collectionB on a.id equals b.id. GroupJoin groups related elements together."
+    },
+    {
+      "id": 10,
+      "question": "How do you handle null values in LINQ queries?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use null-coalescing operator (??), DefaultIfEmpty() for left joins, Where(x => x != null) to filter nulls, conditional checks in Select. Be careful with null reference exceptions in lambda expressions."
+    },
+    {
+      "id": 11,
+      "question": "What is the difference between First() and FirstOrDefault()?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "First() throws exception if no elements found. FirstOrDefault() returns default value (null for reference types, zero for value types) if no elements found. Use First() when you expect at least one element, FirstOrDefault() when empty result is possible."
+    },
+    {
+      "id": 12,
+      "question": "Explain the GroupBy operation in LINQ.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "GroupBy groups elements by a key selector. Returns IGrouping<TKey, TElement> where each group has a Key and collection of elements. Can be used with query syntax: group element by key or method syntax: .GroupBy(x => x.Key)."
+    },
+    {
+      "id": 13,
+      "question": "What are the different aggregation methods in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Count(), Sum(), Average(), Min(), Max(), Aggregate(). Aggregate is most flexible - applies accumulator function. Example: numbers.Aggregate(0, (acc, num) => acc + num) for custom aggregation logic."
+    },
+    {
+      "id": 14,
+      "question": "How does OrderBy work and what's the difference with ThenBy?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "OrderBy performs primary sorting. ThenBy performs secondary sorting when primary keys are equal. OrderByDescending/ThenByDescending for descending order. Multiple ThenBy calls for multi-level sorting."
+    },
+    {
+      "id": 15,
+      "question": "What is the difference between Any() and All()?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Any() returns true if any element satisfies condition (or if collection has any elements when no condition). All() returns true only if all elements satisfy condition. Both use short-circuit evaluation."
+    },
+    {
+      "id": 16,
+      "question": "Explain the SelectMany method and its use cases.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "SelectMany flattens collections of collections into single sequence. Useful for working with nested collections. Example: departments.SelectMany(d => d.Employees) gets all employees from all departments. Equivalent to multiple from clauses in query syntax."
+    },
+    {
+      "id": 17,
+      "question": "What are the different set operations in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Distinct() - removes duplicates, Union() - combines unique elements from both sequences, Intersect() - common elements, Except() - elements in first but not in second. All have overloads for custom equality comparers."
+    },
+    {
+      "id": 18,
+      "question": "How do you perform paging with LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use Skip() and Take() methods. Example: .Skip((pageNumber - 1) * pageSize).Take(pageSize). Always order results before paging for consistent pages. Common pattern for server-side paging in web applications."
+    },
+    {
+      "id": 19,
+      "question": "What is the difference between Single() and SingleOrDefault()?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Single() expects exactly one element, throws if zero or multiple elements. SingleOrDefault() returns default if zero elements, throws if multiple elements. Use when you expect exactly one result and want to enforce it."
+    },
+    {
+      "id": 20,
+      "question": "Explain the let keyword in LINQ query syntax.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "let introduces a new range variable that holds intermediate results. Improves readability by storing complex expressions. Example: from p in products let discount = p.Price * 0.1 where discount > 5 select new { p.Name, discount }."
+    },
+    {
+      "id": 21,
+      "question": "What are expression trees and how do they relate to LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Expression trees represent code as data structure. IQueryable uses expression trees to build queries that can be translated to other languages (SQL). LINQ to Objects uses delegates, LINQ to SQL/Entities uses expression trees."
+    },
+    {
+      "id": 22,
+      "question": "How do you handle exceptions in LINQ queries?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use try-catch around the enumeration, not query definition. Handle specific exceptions like InvalidOperationException for First/Single on empty collections. Validate data before querying when possible. Use defensive programming with *OrDefault methods."
+    },
+    {
+      "id": 23,
+      "question": "What is the difference between ToList() and ToArray()?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Both cause immediate execution. ToList() returns List<T> (mutable, better for adding/removing). ToArray() returns T[] (fixed size, slightly better performance for iteration). Choose based on how result will be used."
+    },
+    {
+      "id": 24,
+      "question": "Explain the Zip method in LINQ.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Zip combines two sequences by merging corresponding elements using a specified function. Stops when either sequence ends. Example: numbers.Zip(names, (n, name) => $\"{name}: {n}\"). Useful for parallel processing of related sequences."
+    },
+    {
+      "id": 25,
+      "question": "How do you perform case-insensitive string comparisons in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use StringComparison.OrdinalIgnoreCase in methods like Equals, or use ToUpper()/ToLower() (be careful with culture). Example: .Where(s => s.Name.Equals(\"test\", StringComparison.OrdinalIgnoreCase)). For LINQ to Entities, use EF.Functions.Collate for database-level case insensitivity."
+    },
+    {
+      "id": 26,
+      "question": "What are the performance considerations with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Avoid multiple enumeration of same query, use AsEnumerable()/AsQueryable() appropriately, be mindful of N+1 queries in EF, use projection (Select) to limit data, consider compiled queries for repeated execution, profile and optimize hot paths."
+    },
+    {
+      "id": 27,
+      "question": "Explain the AsEnumerable() and AsQueryable() methods.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "AsEnumerable() switches to LINQ to Objects (client-side evaluation). AsQueryable() converts to IQueryable for provider-based evaluation. Use AsEnumerable() when you need client-side operations not supported by provider. Use carefully to avoid performance issues."
+    },
+    {
+      "id": 28,
+      "question": "How do you create custom LINQ extension methods?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Create static class with static methods, first parameter with 'this' keyword for the type being extended. Example: public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> source) => source.Where(x => x != null);"
+    },
+    {
+      "id": 29,
+      "question": "What is the difference between Contains and Any for existence checks?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Contains checks for specific value, Any checks with predicate. Contains is optimized for some collections (HashSet), Any is more flexible. Use Contains for simple value checks, Any for conditional checks."
+    },
+    {
+      "id": 30,
+      "question": "Explain the DefaultIfEmpty method and its use in left joins.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "DefaultIfEmpty returns sequence with single default value if source is empty. Essential for left joins: from a in A join b in B on a.id equals b.id into temp from b in temp.DefaultIfEmpty(). Provides default values for unmatched records."
+    },
+    {
+      "id": 31,
+      "question": "How do you handle dynamic LINQ queries?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use System.Linq.Dynamic.Core library for string-based queries, build expression trees manually, or use predicate builders. Useful for dynamic filtering, sorting based on user input. Example: .Where(\"Age > 18 && Name.Contains(\\\"John\\\")\")"
+    },
+    {
+      "id": 32,
+      "question": "What are the different ways to combine multiple conditions in Where?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Use && and || operators in single Where, chain multiple Where calls (AND logic), use Union for OR logic across separate conditions. Example: .Where(x => x.Age > 18 && x.Name.StartsWith(\"A\")) or .Where(cond1).Where(cond2)."
+    },
+    {
+      "id": 33,
+      "question": "Explain the difference between Cast and OfType methods.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Cast<T>() attempts to cast all elements to T, throws if any element can't be cast. OfType<T>() returns only elements that can be cast to T, silently filters out others. Use OfType() for safe filtering by type."
+    },
+    {
+      "id": 34,
+      "question": "How do you perform date range queries with LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use DateTime comparisons in Where clauses. Example: .Where(x => x.CreatedDate >= startDate && x.CreatedDate <= endDate). For EF Core, use DbFunctions or EF.Functions for database-specific date operations. Be mindful of time zones and UTC conversions."
+    },
+    {
+      "id": 35,
+      "question": "What is LINQ to XML and how is it used?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "LINQ to XML provides LINQ queries over XML documents. Uses XDocument, XElement classes. Example: from el in doc.Descendants(\"book\") where (int)el.Element(\"price\") > 10 select el. Provides strongly-typed XML manipulation."
+    },
+    {
+      "id": 36,
+      "question": "How do you optimize LINQ queries for performance?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use appropriate indexing, avoid N+1 queries, use projection to select only needed columns, use AsNoTracking() in EF for read-only queries, consider compiled queries, use Any() instead of Count() > 0 for existence checks, batch operations when possible."
+    },
+    {
+      "id": 37,
+      "question": "Explain the Aggregate method with examples.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Aggregate applies accumulator function over sequence. Example: numbers.Aggregate(1, (acc, num) => acc * num) multiplies all numbers. Can be used for custom aggregations like building strings, complex calculations, or custom data transformations."
+    },
+    {
+      "id": 38,
+      "question": "What are the different partitioning operators in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Skip() - skips specified number of elements, Take() - takes specified number of elements, SkipWhile() - skips while condition is true, TakeWhile() - takes while condition is true. Useful for paging, batch processing, and conditional partitioning."
+    },
+    {
+      "id": 39,
+      "question": "How do you handle many-to-many relationships in LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use join through junction table or navigate through collection properties in EF. Example: from s in Students from c in s.Courses select new { s.Name, c.Title }. EF Core 5+ supports implicit junction tables with many-to-many configurations."
+    },
+    {
+      "id": 40,
+      "question": "Explain the difference between Select and SelectMany with examples.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Select transforms each element: [1,2,3].Select(x => x * 2) → [2,4,6]. SelectMany flattens collections: [[1,2],[3,4]].SelectMany(x => x) → [1,2,3,4]. Select returns same number of elements, SelectMany can change count."
+    },
+    {
+      "id": 41,
+      "question": "What are the element access methods in LINQ?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "First/FirstOrDefault, Last/LastOrDefault, Single/SingleOrDefault, ElementAt/ElementAtOrDefault. Last requires materialized collection (not IQueryable). ElementAt for index-based access. Use *OrDefault versions for safe access."
+    },
+    {
+      "id": 42,
+      "question": "How do you perform case-sensitive distinct operations?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use custom IEqualityComparer with Distinct(). Example: .Distinct(StringComparer.Ordinal) for case-sensitive string distinct. Can create custom comparers for complex types by implementing IEqualityComparer<T> interface."
+    },
+    {
+      "id": 43,
+      "question": "Explain the use of into keyword in LINQ query syntax.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "into creates temporary identifier for group or join result, allows continuing query. Used with group or join...into. Example: from p in products group p by p.category into g select new { category = g.Key, Count = g.Count() }."
+    },
+    {
+      "id": 44,
+      "question": "What are the different ways to convert LINQ results to collections?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "ToList(), ToArray(), ToDictionary(), ToLookup(), ToHashSet(). ToDictionary creates key-value pairs, ToLookup creates one-to-many dictionary, ToHashSet creates set with unique elements. All cause immediate execution."
+    },
+    {
+      "id": 45,
+      "question": "How do you handle complex sorting with multiple criteria?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Chain OrderBy().ThenBy().ThenByDescending() etc. For dynamic sorting, use System.Linq.Dynamic.Core or build expression trees. Example: .OrderBy(x => x.LastName).ThenBy(x => x.FirstName).ThenByDescending(x => x.Age)"
+    },
+    {
+      "id": 46,
+      "question": "What is the difference between Union and Concat?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Concat combines two sequences including duplicates. Union combines sequences removing duplicates. Example: [1,2].Concat([2,3]) → [1,2,2,3]. [1,2].Union([2,3]) → [1,2,3]. Union uses equality comparer, Concat is simple concatenation."
+    },
+    {
+      "id": 47,
+      "question": "How do you perform bulk updates with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "LINQ is primarily for querying, not updates. For bulk updates: iterate and update in loop (inefficient), use EF Core ExecuteUpdate (EF7+), use raw SQL, or use libraries like EFCore.BulkExtensions. Avoid individual UPDATE statements for large datasets."
+    },
+    {
+      "id": 48,
+      "question": "Explain the SequenceEqual method.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "SequenceEqual checks if two sequences are equal (same elements in same order). Uses default equality comparer or custom comparer. Example: list1.SequenceEqual(list2). For unordered comparison, use HashSet or sort first then compare."
+    },
+    {
+      "id": 49,
+      "question": "What are the different quantifier operations in LINQ?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Any() - at least one element satisfies condition, All() - all elements satisfy condition, Contains() - sequence contains specific element. All return boolean and use short-circuit evaluation for performance."
+    },
+    {
+      "id": 50,
+      "question": "How do you handle pagination with total count in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Execute query twice: once with Count() for total, once with Skip/Take for data. Use Future queries (EF6) or separate async calls. Example: var total = query.Count(); var data = query.Skip().Take().ToList(); Return both in response."
+    },
+    {
+      "id": 51,
+      "question": "Explain the difference between Join and GroupJoin.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Join creates flat result with matched pairs (SQL INNER JOIN). GroupJoin creates hierarchical result with groups (SQL LEFT JOIN). Join: one result per match. GroupJoin: one result per left element with collection of matches."
+    },
+    {
+      "id": 52,
+      "question": "What are the different string operations supported in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Contains, StartsWith, EndsWith, Length, IndexOf, Substring (careful with EF translation), ToUpper/ToLower. For EF Core, use EF.Functions.Like for SQL LIKE pattern matching. Some string methods may not translate to SQL."
+    },
+    {
+      "id": 53,
+      "question": "How do you handle transactions with LINQ to SQL?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use TransactionScope or DbContext.Database.BeginTransaction(). Wrap multiple operations in transaction for atomicity. Example: using var transaction = context.Database.BeginTransaction(); try { /* operations */ transaction.Commit(); }"
+    },
+    {
+      "id": 54,
+      "question": "Explain the use of AsNoTracking in Entity Framework.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "AsNoTracking tells EF not to track changes to entities, improving performance for read-only scenarios. Reduces memory usage and prevents accidental updates. Use .AsNoTracking() in LINQ queries when you don't need to update entities."
+    },
+    {
+      "id": 55,
+      "question": "What are the different ways to load related data in EF Core?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Eager loading: Include()/ThenInclude(), Explicit loading: Entry().Collection().Load(), Lazy loading: virtual navigation properties, Split queries: AsSplitQuery(), Raw SQL: FromSql(). Choose based on use case and performance requirements."
+    },
+    {
+      "id": 56,
+      "question": "How do you handle concurrency conflicts in LINQ to SQL?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use row version/timestamp columns, handle DbUpdateConcurrencyException, implement retry logic, use optimistic concurrency with ConcurrencyCheck attribute or IsConcurrencyToken in EF configuration."
+    },
+    {
+      "id": 57,
+      "question": "Explain the difference between IQueryable and IEnumerable in EF Core.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "IQueryable builds expression trees for database execution. IEnumerable executes locally after data is retrieved. Switching to IEnumerable (via AsEnumerable()) brings data to client for further processing. Use IQueryable to push filtering to database."
+    },
+    {
+      "id": 58,
+      "question": "What are compiled queries and when to use them?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Compiled queries are pre-compiled LINQ queries that improve performance for frequently executed queries. EF Core: context.Set<T>().AsNoTracking().Where(x => x.id == id).Compile(). Use for hot path queries with parameters."
+    },
+    {
+      "id": 59,
+      "question": "How do you handle NULL comparisons in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use == null or != null, but be careful with database translation. For nullable value types, use HasValue and Value properties. Example: .Where(x => x.Age.HasValue && x.Age.Value > 18). Use null-coalescing for default values."
+    },
+    {
+      "id": 60,
+      "question": "Explain the use of TakeWhile and SkipWhile with examples.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "TakeWhile takes elements while condition is true: [1,2,3,4].TakeWhile(x => x < 3) → [1,2]. SkipWhile skips elements while condition is true: [1,2,3,4].SkipWhile(x => x < 3) → [3,4]. Stops at first false condition."
+    },
+    {
+      "id": 61,
+      "question": "What are the different join types available in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Inner join (join), Left outer join (join...into...DefaultIfEmpty()), Cross join (multiple from clauses without join condition), Group join (join...into). LINQ doesn't have explicit RIGHT OUTER or FULL OUTER joins, but can be simulated."
+    },
+    {
+      "id": 62,
+      "question": "How do you perform mathematical operations in LINQ queries?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use standard math operators (+, -, *, /, %) in Select or Where. For complex math, consider client-side evaluation with AsEnumerable(). EF Core supports basic math operations in SQL translation. Use Math class methods carefully as not all translate to SQL."
+    },
+    {
+      "id": 63,
+      "question": "Explain the difference between ToDictionary and ToLookup.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "ToDictionary creates one-to-one mapping (throws on duplicate keys). ToLookup creates one-to-many mapping (allows duplicate keys). Dictionary<TKey, TValue> vs ILookup<TKey, TElement>. Use ToLookup for grouping-like results."
+    },
+    {
+      "id": 64,
+      "question": "What are the different ways to handle dynamic ordering?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use System.Linq.Dynamic.Core for string-based ordering, build expression trees with OrderBy/ThenBy, use switch statement for predefined sorts. Example: .OrderBy($\"{sortBy} {sortOrder}\") with Dynamic LINQ."
+    },
+    {
+      "id": 65,
+      "question": "How do you optimize LINQ queries for large datasets?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use server-side filtering, pagination, projection to select only needed columns, avoid N+1 queries, use async operations, consider stored procedures for complex queries, use appropriate indexes, monitor query performance."
+    },
+    {
+      "id": 66,
+      "question": "Explain the use of let with multiple variables.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Multiple let clauses can be used to compute multiple intermediate values. Example: from p in products let discount = p.Price * 0.1 let finalPrice = p.Price - discount where finalPrice > 50 select new { p.Name, finalPrice }."
+    },
+    {
+      "id": 67,
+      "question": "What are the different collection generation methods?",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "Range(start, count) - generates sequence of numbers, Repeat(element, count) - repeats element, Empty<T>() - returns empty sequence. Useful for test data, sequences, and as placeholders. Example: Enumerable.Range(1, 10) generates 1-10."
+    },
+    {
+      "id": 68,
+      "question": "How do you handle cultural string comparisons in LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use StringComparison with culture-specific options: CurrentCulture, InvariantCulture, Ordinal. For EF Core, string comparisons are typically culture-insensitive at database level. For client-side, use appropriate StringComparison enum value."
+    },
+    {
+      "id": 69,
+      "question": "Explain the difference between Select and Select with index.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Select has overload that includes element index: .Select((x, index) => new { x, index }). Useful when you need position information. Index is zero-based. Not supported in query syntax, only method syntax."
+    },
+    {
+      "id": 70,
+      "question": "What are the different ways to handle NULL in aggregations?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use DefaultIfEmpty() to provide default for empty collections, use null-coalescing in aggregations, filter nulls with Where before aggregating. Example: numbers.DefaultIfEmpty(0).Sum() ensures sum returns 0 instead of exception."
+    },
+    {
+      "id": 71,
+      "question": "How do you perform recursive queries with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use recursive methods, common table expressions (CTE) with raw SQL in EF, or iterative approaches. LINQ doesn't directly support recursion. For hierarchical data, consider storing materialized paths or using specialized libraries."
+    },
+    {
+      "id": 72,
+      "question": "Explain the use of AsParallel for PLINQ.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "AsParallel() enables parallel execution of LINQ queries (PLINQ). Uses multiple threads for CPU-bound operations. Example: numbers.AsParallel().Where(x => IsPrime(x)). Use for expensive computations, not for I/O operations. Be careful with thread safety."
+    },
+    {
+      "id": 73,
+      "question": "What are the different equality comparers in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Built-in: StringComparer for strings, EqualityComparer<T>.Default for general use. Custom: implement IEqualityComparer<T> interface. Used in Distinct, Union, Intersect, Except, GroupBy, Join operations for custom equality logic."
+    },
+    {
+      "id": 74,
+      "question": "How do you handle database functions in LINQ queries?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use EF.Functions for database-specific functions (Like, DateDiff, etc.). Use DbFunctions for canonical functions. Some functions may require client evaluation (AsEnumerable()). Check EF Core documentation for supported functions."
+    },
+    {
+      "id": 75,
+      "question": "Explain the difference between ThenBy and ThenByDescending.",
+      "category": "linq",
+      "difficulty": "beginner",
+      "answer": "ThenBy continues sorting in ascending order after OrderBy. ThenByDescending continues in descending order. Can mix both: .OrderBy(x => x.category).ThenByDescending(x => x.Price).ThenBy(x => x.Name)"
+    },
+    {
+      "id": 76,
+      "question": "What are the different ways to handle database NULL in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use nullable types (int?), null-coalescing operator (??), conditional checks, DefaultIfEmpty for joins. EF Core handles database NULL mapping to .NET nullable types. Use HasValue and Value for nullable value types."
+    },
+    {
+      "id": 77,
+      "question": "How do you perform full-text search with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use EF.Functions.FreeText or EF.Functions.Contains for SQL Server full-text search. For other databases, use database-specific functions or consider dedicated search engines (Elasticsearch). Client-side: use Contains, but limited for large datasets."
+    },
+    {
+      "id": 78,
+      "question": "Explain the use of ToHashSet and its benefits.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "ToHashSet() creates HashSet<T> with unique elements using hash-based lookup. Fast contains checks (O(1)), no duplicates. Accepts optional IEqualityComparer. Useful when you need set operations or fast lookups on the result."
+    },
+    {
+      "id": 79,
+      "question": "What are the different ways to handle database views with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Map views as DbSet in DbContext, use Key attribute or Fluent API to configure. Can query views like tables but usually read-only. For complex views, consider defining query types or keyless entity types in EF Core."
+    },
+    {
+      "id": 80,
+      "question": "How do you perform bulk inserts with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "LINQ doesn't support bulk inserts directly. Use AddRange() followed by SaveChanges() (inefficient for large data), EF Core 7+ BulkInsert, third-party bulk extensions, or SqlBulkCopy. For large datasets, avoid individual INSERT statements."
+    },
+    {
+      "id": 81,
+      "question": "Explain the difference between AsEnumerable and ToList.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "AsEnumerable switches to LINQ to Objects but doesn't execute query immediately. ToList executes query immediately and materializes results to list. AsEnumerable is deferred, ToList is immediate. Use AsEnumerable for client-side operations after database filtering."
+    },
+    {
+      "id": 82,
+      "question": "What are the different ways to handle database transactions?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Implicit transactions (SaveChanges), explicit transactions (BeginTransaction), TransactionScope. Use explicit transactions for multiple operations that need atomicity. Configure isolation levels based on concurrency requirements."
+    },
+    {
+      "id": 83,
+      "question": "How do you handle JSON data in LINQ queries?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "EF Core 7+ supports JSON columns with LINQ queries. Use .Property(\"JsonColumn.Name\") for navigation. For older versions, use client-side JSON parsing with AsEnumerable(). Consider database JSON functions for complex queries."
+    },
+    {
+      "id": 84,
+      "question": "Explain the use of GroupBy with multiple keys.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "GroupBy can use anonymous types for composite keys. Example: .GroupBy(x => new { x.category, x.Year }). Creates groups based on combination of properties. Each group key has properties matching the anonymous type."
+    },
+    {
+      "id": 85,
+      "question": "What are the different ways to handle database functions in queries?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use EF.Functions for database-specific functions, DbFunctions for canonical functions, define user-defined functions with HasDbFunction, use FromSql for complex SQL functions. Some functions may require client evaluation."
+    },
+    {
+      "id": 86,
+      "question": "How do you perform spatial queries with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use NetTopologySuite with EF Core for spatial data. Support for Distance, Contains, Intersects etc. Configure DbContext to use spatial types, then use spatial methods in LINQ queries. Requires database spatial support (SQL Server, PostGIS)."
+    },
+    {
+      "id": 87,
+      "question": "Explain the difference between Count and LongCount.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Count returns int (max ~2 billion), LongCount returns long for larger counts. Use LongCount when expecting results beyond int range. Both have overloads with predicates. Example: .LongCount(x => x.Age > 18)"
+    },
+    {
+      "id": 88,
+      "question": "What are the different ways to handle inheritance in LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "TPH (Table per Hierarchy), TPT (Table per Type), TPC (Table per Concrete Class) in EF Core. Use OfType<T>() to filter by derived type. Configure inheritance mapping with Fluent API or attributes."
+    },
+    {
+      "id": 89,
+      "question": "How do you perform date-only comparisons in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use DateTime.Date property to compare dates without time: .Where(x => x.CreatedDate.Date == targetDate.Date). For EF Core, use DbFunctions.TruncateTime or EF.Functions.DateDiffDay. Be mindful of timezone issues."
+    },
+    {
+      "id": 90,
+      "question": "Explain the use of AsAsyncEnumerable for async streaming.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "AsAsyncEnumerable enables async enumeration of query results. Useful for large datasets to avoid loading all data into memory at once. Use with await foreach. Example: await foreach (var item in query.AsAsyncEnumerable()) { }"
+    },
+    {
+      "id": 91,
+      "question": "What are the different ways to handle soft deletes in LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use global query filters in EF Core: modelBuilder.Entity<T>().HasQueryFilter(x => !x.IsDeleted). Apply filter automatically to all queries. Override SaveChanges to set IsDeleted instead of actual delete. Use IgnoreQueryFilters() to include deleted records."
+    },
+    {
+      "id": 92,
+      "question": "How do you perform complex projections with LINQ?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Use Select with anonymous types or custom DTOs. Can include nested projections, calculations, conditional logic. Example: .Select(x => new { x.Name, DiscountedPrice = x.Price * 0.9, category = x.category.Name })"
+    },
+    {
+      "id": 93,
+      "question": "Explain the difference between ToList and ToListAsync.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "ToList executes synchronously, blocking the thread. ToListAsync executes asynchronously, freeing the thread during database operation. Prefer ToListAsync in web applications to improve scalability and responsiveness."
+    },
+    {
+      "id": 94,
+      "question": "What are the different ways to handle database sequences?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use HasSequence in Fluent API, ValueGeneratedOnAdd for identity columns, UseSequenceHiLo for hi-lo pattern. For custom sequence values, use FromSql or database-generated values. EF Core manages most sequence scenarios automatically."
+    },
+    {
+      "id": 95,
+      "question": "How do you perform cross-database queries with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "LINQ doesn't directly support cross-database queries. Options: use database links (SQL Server linked servers), materialize data from one database and query locally, use separate queries and join in memory, or use database-specific federation features."
+    },
+    {
+      "id": 96,
+      "question": "Explain the use of TagWith for query tagging.",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "TagWith adds a comment to generated SQL query. Useful for debugging, logging, and identifying queries in SQL profiler. Example: .TagWith(\"GetActiveUsers\"). Helps correlate LINQ queries with their SQL counterparts in logs."
+    },
+    {
+      "id": 97,
+      "question": "What are the different ways to handle database timeouts?",
+      "category": "linq",
+      "difficulty": "intermediate",
+      "answer": "Set CommandTimeout on DbContext, use cancellation tokens with async methods, implement retry logic with Polly, optimize slow queries, use database monitoring to identify bottlenecks. Set timeout: context.Database.SetCommandTimeout(300)"
+    },
+    {
+      "id": 98,
+      "question": "How do you perform recursive tree queries with LINQ?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use common table expressions (CTE) with FromSql, iterative approaches with while loops, or store materialized paths. EF Core 8+ supports recursive CTE with raw SQL. For client-side, use recursive methods but be careful with performance."
+    },
+    {
+      "id": 99,
+      "question": "Explain the difference between AsSplitQuery and AsSingleQuery.",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "AsSingleQuery (default) uses JOINs for related data - single SQL query. AsSplitQuery uses separate queries for each Include - multiple roundtrips but avoids Cartesian explosion. Use AsSplitQuery for queries with multiple collections."
+    },
+    {
+      "id": 100,
+      "question": "What are the best practices for LINQ query performance?",
+      "category": "linq",
+      "difficulty": "advanced",
+      "answer": "Use projection to select only needed columns, filter early with Where, use appropriate indexes, avoid N+1 queries, use AsNoTracking for read-only, use async operations, monitor query performance, use compiled queries for hot paths, test with realistic data volumes."
+    }
+  ]
+}

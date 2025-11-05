@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "Who you are & Your Focus",
+	  "category":"Personale",
+      "answer": "Hello, my name is Akash Bharati. I'm a Full-Stack Developer with over 3 years of professional experience, specializing in building secure, scalable, and user-centric web applications. My core expertise lies in the .NET Core ecosystem for robust backend services and the React/Redux stack for dynamic frontends, with hands-on experience in deploying and managing solutions on AWS cloud."
+    },
+    {
+      "id": 2,
+      "question": "The \"What\" and \"So What\"",
+	  "category":"Personale",
+      "answer": "In my current role at 3i Infotech, I've been deeply involved in developing and integrating enterprise-level systems. For instance, I led the integration of a Fusion ERP system with our .NET Core APIs, which automated real-time data sync for invoices and shipments. This directly reduced manual reconciliation efforts by 30%. I also architected the secure JWT authentication and Role-Based Access Control, ensuring the protection of sensitive customer data.\n\nBeyond new features, I've taken ownership of system performance and reliability. By optimizing complex SQL queries, stored procedures, and functions, I was able to boost performance for high-volume transactions by 25%. Furthermore, I've resolved over 100 client-reported issues, which significantly improved system stability and client satisfaction."
+    },
+    {
+      "id": 3,
+	  "category":"Personale",
+      "question": "Personal Project & Full-Stack Depth (Showing Initiative & Broader Skills)",
+      "answer": "To further solidify my full-stack capabilities, I recently independently built 'QKart,' a complete e-commerce platform. This project allowed me to integrate technologies like Node.js, MongoDB, and modern frontend practices. I implemented features like a recommendation system and integrated Stripe and PayPal, which improved checkout conversion. I also containerized and deployed the entire application on AWS, giving me practical, end-to-end experience in cloud deployment and DevOps principles."
+    },
+    {
+      "id": 4,
+	  "category":"Personale",
+      "question": "Why you're here",
+      "answer": "I am passionate about tackling complex problems and am idicularly interested in roles where I can leverage my full-stack and cloud skills to build efficient, high-impact solutions. I've been following your company's work in [*Mention a specific area, e.g., the product/tech stack*], and I am very excited about the opportunity to contribute my experience in .NET, React, and AWS to your team."
+    }
+  ]
+}

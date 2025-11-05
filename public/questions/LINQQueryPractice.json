@@ -1,0 +1,562 @@
+[
+  {
+    "id": 1,
+    "question": "How to retrieve the second-highest salary of an employee?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var secondHighest = employees.Where(e => e.Salary < employees.Max(x => x.Salary)).Max(e => e.Salary);"
+  },
+  {
+    "id": 2,
+    "question": "How to get the nth highest salary in SQL?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var nthHighest = employees.OrderByDescending(e => e.Salary).Select((e, i) => new { e.Salary, Rank = i + 1 }).FirstOrDefault(x => x.Rank == n)?.Salary;"
+  },
+  {
+    "id": 3,
+    "question": "How do you fetch all employees whose salary is greater than the average salary?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var aboveAvg = employees.Where(e => e.Salary > employees.Average(x => x.Salary));"
+  },
+  {
+    "id": 4,
+    "question": "Write a query to display the current date and time in SQL.",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "DateTime currentTime = DateTime.Now;"
+  },
+  {
+    "id": 5,
+    "question": "How to find duplicate records in a table?",
+    "category": "Data Analysis",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var duplicates = employees.GroupBy(e => e.ColumnName).Where(g => g.Count() > 1).Select(g => new { ColumnName = g.Key, Count = g.Count() });"
+  },
+  {
+    "id": 6,
+    "question": "How can you delete duplicate rows in SQL?",
+    "category": "Data Manipulation",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var uniqueEmployees = employees.GroupBy(e => e.ColumnName).Select(g => g.First());"
+  },
+  {
+    "id": 7,
+    "question": "How to get the common records from two tables?",
+    "category": "Joins & Sets",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var commonRecords = table1.Intersect(table2);"
+  },
+  {
+    "id": 8,
+    "question": "How to retrieve the last 10 records from a table?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var last10 = employees.OrderByDescending(e => e.EmployeeId).Take(10);"
+  },
+  {
+    "id": 9,
+    "question": "How do you fetch the top 5 employees with the highest salaries?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var top5 = employees.OrderByDescending(e => e.Salary).Take(5);"
+  },
+  {
+    "id": 10,
+    "question": "How to calculate the total salary of all employees?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var totalSalary = employees.Sum(e => e.Salary);"
+  },
+  {
+    "id": 11,
+    "question": "How to write a query to find all employees who joined in the year 2020?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var employees2020 = employees.Where(e => e.JoinDate.Year == 2020);"
+  },
+  {
+    "id": 12,
+    "question": "Write a query to find employees whose name starts with 'A'.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var employeesA = employees.Where(e => e.Name.StartsWith(\"A\"));"
+  },
+  {
+    "id": 13,
+    "question": "How can you find the employees who do not have a manager?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var noManager = employees.Where(e => e.ManagerId == null);"
+  },
+  {
+    "id": 14,
+    "question": "How to find the department with the highest number of employees?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var topDept = employees.GroupBy(e => e.DepartmentId).OrderByDescending(g => g.Count()).First();"
+  },
+  {
+    "id": 15,
+    "question": "How to get the count of employees in each department?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var deptCounts = employees.GroupBy(e => e.DepartmentId).Select(g => new { DeptId = g.Key, Count = g.Count() });"
+  },
+  {
+    "id": 16,
+    "question": "Write a query to fetch employees having the highest salary in each department.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var maxSalaries = employees.GroupBy(e => e.DepartmentId).SelectMany(g => g.Where(e => e.Salary == g.Max(x => x.Salary)));"
+  },
+  {
+    "id": 17,
+    "question": "How to write a query to update the salary of all employees by 10%?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "employees.ToList().ForEach(e => e.Salary *= 1.1m);"
+  },
+  {
+    "id": 18,
+    "question": "How can you find employees whose salary is between 50,000 and 1,00,000?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var salaryRange = employees.Where(e => e.Salary >= 50000 && e.Salary <= 100000);"
+  },
+  {
+    "id": 19,
+    "question": "How to find the youngest employee in the organization?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var youngest = employees.OrderByDescending(e => e.BirthDate).First();"
+  },
+  {
+    "id": 20,
+    "question": "How to fetch the first and last record from a table?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var firstLast = employees.OrderBy(e => e.EmployeeId).Take(1).Concat(employees.OrderByDescending(e => e.EmployeeId).Take(1));"
+  },
+  {
+    "id": 21,
+    "question": "Write a query to find all employees who report to a specific manager.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var managerEmployees = employees.Where(e => e.ManagerId == managerId);"
+  },
+  {
+    "id": 22,
+    "question": "How can you find the total number of departments in the company?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var deptCount = employees.Select(e => e.DepartmentId).Distinct().Count();"
+  },
+  {
+    "id": 23,
+    "question": "How to find the department with the lowest average salary?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var lowestAvgDept = employees.GroupBy(e => e.DepartmentId).OrderBy(g => g.Average(e => e.Salary)).First();"
+  },
+  {
+    "id": 24,
+    "question": "How to delete all employees from a department in one query?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "employees = employees.Where(e => e.DepartmentId != deptId).ToList();"
+  },
+  {
+    "id": 25,
+    "question": "How to display all employees who have been in the company for more than 5 years?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var experienced = employees.Where(e => (DateTime.Now - e.JoinDate).TotalDays > 1825);"
+  },
+  {
+    "id": 26,
+    "question": "How to find the second-largest value from a table?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var secondLargest = employees.Select(e => e.ColumnName).Distinct().OrderByDescending(x => x).Skip(1).First();"
+  },
+  {
+    "id": 27,
+    "question": "How to write a query to remove all records from a table but keep the table structure?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "employees.Clear();"
+  },
+  {
+    "id": 28,
+    "question": "Write a query to get all employee records in XML format.",
+    "category": "Advanced SQL",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var xml = new XElement(\"Employees\", employees.Select(e => new XElement(\"Employee\", new XAttribute(\"Id\", e.EmployeeId), new XElement(\"Name\", e.Name), new XElement(\"Department\", e.DepartmentId))));"
+  },
+  {
+    "id": 29,
+    "question": "How to get the current month's name from SQL?",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "string monthName = DateTime.Now.ToString(\"MMMM\");"
+  },
+  {
+    "id": 30,
+    "question": "How to convert a string to lowercase in SQL?",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "string lower = \"STRING_VALUE\".ToLower();"
+  },
+  {
+    "id": 31,
+    "question": "How to find all employees who do not have any subordinates?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var noSubordinates = employees.Where(e => !employees.Any(x => x.ManagerId == e.EmployeeId));"
+  },
+  {
+    "id": 32,
+    "question": "Write a query to calculate the total sales per customer in a sales table.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var salesPerCustomer = sales.GroupBy(s => s.CustomerId).Select(g => new { CustomerId = g.Key, TotalSales = g.Sum(s => s.SalesAmount) });"
+  },
+  {
+    "id": 33,
+    "question": "How to write a query to check if a table is empty?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "bool isEmpty = !employees.Any();"
+  },
+  {
+    "id": 34,
+    "question": "How to find the second highest salary for each department?",
+    "category": "Window Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var secondHighestByDept = employees.GroupBy(e => e.DepartmentId).SelectMany(g => g.OrderByDescending(e => e.Salary).Select((e, i) => new { e, Rank = i + 1 }).Where(x => x.Rank == 2));"
+  },
+  {
+    "id": 35,
+    "question": "Write a query to fetch employees whose salary is a multiple of 10,000.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var multipleOf10k = employees.Where(e => e.Salary % 10000 == 0);"
+  },
+  {
+    "id": 36,
+    "question": "How to fetch records where a column has null values?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var nullRecords = employees.Where(e => e.ColumnName == null);"
+  },
+  {
+    "id": 37,
+    "question": "How to write a query to find the total number of employees in each job title?",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var jobTitleCounts = employees.GroupBy(e => e.JobTitle).Select(g => new { JobTitle = g.Key, Count = g.Count() });"
+  },
+  {
+    "id": 38,
+    "question": "Write a query to fetch all employees whose names end with 'n'.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var namesEndWithN = employees.Where(e => e.Name.EndsWith(\"n\"));"
+  },
+  {
+    "id": 39,
+    "question": "How to find all employees who work in both departments 101 and 102?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var bothDepts = employees.Where(e => e.DepartmentId == 101 || e.DepartmentId == 102).GroupBy(e => e.EmployeeId).Where(g => g.Select(x => x.DepartmentId).Distinct().Count() == 2);"
+  },
+  {
+    "id": 40,
+    "question": "Write a query to fetch the details of employees with the same salary.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var sameSalary = employees.GroupBy(e => e.Salary).Where(g => g.Count() > 1).SelectMany(g => g);"
+  },
+  {
+    "id": 41,
+    "question": "How to update salaries of employees based on their department?",
+    "category": "Data Manipulation",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "employees.ToList().ForEach(e => e.Salary *= e.DepartmentId switch { 101 => 1.10m, 102 => 1.05m, _ => 1m });"
+  },
+  {
+    "id": 42,
+    "question": "How to write a query to list all employees without a department?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var noDepartment = employees.Where(e => e.DepartmentId == null);"
+  },
+  {
+    "id": 43,
+    "question": "Write a query to find the maximum salary and minimum salary in each department.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var salaryStats = employees.GroupBy(e => e.DepartmentId).Select(g => new { DeptId = g.Key, MaxSalary = g.Max(e => e.Salary), MinSalary = g.Min(e => e.Salary) });"
+  },
+  {
+    "id": 44,
+    "question": "How to list all employees hired in the last 6 months?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var recentHires = employees.Where(e => e.HireDate >= DateTime.Now.AddMonths(-6));"
+  },
+  {
+    "id": 45,
+    "question": "Write a query to display department-wise total and average salary.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var deptSalaryStats = employees.GroupBy(e => e.DepartmentId).Select(g => new { DeptId = g.Key, TotalSalary = g.Sum(e => e.Salary), AvgSalary = g.Average(e => e.Salary) });"
+  },
+  {
+    "id": 46,
+    "question": "How to find employees who joined the company in the same month and year as their manager?",
+    "category": "Joins & Sets",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var sameJoinAsManager = from e in employees join m in employees on e.ManagerId equals m.EmployeeId where e.JoinDate.Month == m.JoinDate.Month && e.JoinDate.Year == m.JoinDate.Year select e;"
+  },
+  {
+    "id": 47,
+    "question": "Write a query to count the number of employees whose names start and end with the same letter.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var sameStartEnd = employees.Count(e => e.Name.Length > 0 && e.Name[0] == e.Name[e.Name.Length - 1]);"
+  },
+  {
+    "id": 48,
+    "question": "How to retrieve employee names and salaries in a single string?",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var employeeInfo = employees.Select(e => $\"{e.Name} earns {e.Salary}\");"
+  },
+  {
+    "id": 49,
+    "question": "How to find employees whose salary is higher than their manager's salary?",
+    "category": "Joins & Sets",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var higherThanManager = from e in employees join m in employees on e.ManagerId equals m.EmployeeId where e.Salary > m.Salary select e;"
+  },
+  {
+    "id": 50,
+    "question": "Write a query to get employees who belong to departments with less than 3 employees.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var smallDeptEmployees = employees.Where(e => employees.Count(x => x.DepartmentId == e.DepartmentId) < 3);"
+  },
+  {
+    "id": 51,
+    "question": "How to write a query to find employees with the same first name?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var sameFirstName = employees.GroupBy(e => e.FirstName).Where(g => g.Count() > 1).SelectMany(g => g);"
+  },
+  {
+    "id": 52,
+    "question": "How to write a query to delete employees who have been in the company for more than 15 years?",
+    "category": "Data Manipulation",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "employees = employees.Where(e => (DateTime.Now - e.JoinDate).TotalDays <= 5475).ToList();"
+  },
+  {
+    "id": 53,
+    "question": "Write a query to list all employees working under the same manager.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var sameManager = employees.Where(e => e.ManagerId == managerId);"
+  },
+  {
+    "id": 54,
+    "question": "How to find the top 3 highest-paid employees in each department?",
+    "category": "Window Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var top3ByDept = employees.GroupBy(e => e.DepartmentId).SelectMany(g => g.OrderByDescending(e => e.Salary).Take(3));"
+  },
+  {
+    "id": 55,
+    "question": "Write a query to list all employees with more than 5 years of experience in each department.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var experiencedByDept = employees.Where(e => (DateTime.Now - e.JoinDate).TotalDays > 1825).GroupBy(e => e.DepartmentId);"
+  },
+  {
+    "id": 56,
+    "question": "How to list all employees in departments that have not hired anyone in the past 2 years?",
+    "category": "SQL Queries",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "var oldHireDepts = employees.Where(e => employees.Where(x => x.DepartmentId == e.DepartmentId).Max(x => x.HireDate) < DateTime.Now.AddYears(-2));"
+  },
+  {
+    "id": 57,
+    "question": "Write a query to find all employees who earn more than the average salary of their department.",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var aboveDeptAvg = from e in employees let deptAvg = employees.Where(x => x.DepartmentId == e.DepartmentId).Average(x => x.Salary) where e.Salary > deptAvg select e;"
+  },
+  {
+    "id": 58,
+    "question": "How to list all managers who have more than 5 subordinates?",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var managersWithManySubs = employees.Where(e => employees.Count(x => x.ManagerId == e.EmployeeId) > 5);"
+  },
+  {
+    "id": 59,
+    "question": "Write a query to display employee names and hire dates in the format 'Name - MM/DD/YYYY'.",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var formattedInfo = employees.Select(e => $\"{e.Name} - {e.HireDate:MM/dd/yyyy}\");"
+  },
+  {
+    "id": 60,
+    "question": "How to find employees whose salary is in the top 10%?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "var top10Percent = employees.OrderByDescending(e => e.Salary).Take((int)(employees.Count() * 0.1));"
+  },
+  {
+    "id": 61,
+    "question": "Write a query to display employees grouped by their age brackets (e.g., 20-30, 31-40, etc.).",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var ageBrackets = employees.GroupBy(e => e.Age switch { >= 20 and <= 30 => \"20-30\", >= 31 and <= 40 => \"31-40\", _ => \"41+\" }).Select(g => new { Bracket = g.Key, Count = g.Count() });"
+  },
+  {
+    "id": 62,
+    "question": "How to find the average salary of the top 5 highest-paid employees in each department?",
+    "category": "Window Functions",
+    "difficulty": "Hard",
+    "beginner": false,
+    "answer": "var avgTop5ByDept = employees.GroupBy(e => e.DepartmentId).Select(g => new { DeptId = g.Key, AvgSalary = g.OrderByDescending(e => e.Salary).Take(5).Average(e => e.Salary) });"
+  },
+  {
+    "id": 63,
+    "question": "How to calculate the percentage of employees in each department?",
+    "category": "Aggregate Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var deptPercentages = employees.GroupBy(e => e.DepartmentId).Select(g => new { DeptId = g.Key, Percentage = (g.Count() * 100.0) / employees.Count() });"
+  },
+  {
+    "id": 64,
+    "question": "Write a query to find all employees whose email contains the domain '@example.com'.",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var exampleEmails = employees.Where(e => e.Email.Contains(\"@example.com\"));"
+  },
+  {
+    "id": 65,
+    "question": "How to retrieve the year-to-date sales for each customer?",
+    "category": "Aggregate Functions",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var ytdSales = sales.Where(s => s.SaleDate.Year == DateTime.Now.Year).GroupBy(s => s.CustomerId).Select(g => new { CustomerId = g.Key, TotalSales = g.Sum(s => s.SalesAmount) });"
+  },
+  {
+    "id": 66,
+    "question": "Write a query to display the hire date and day of the week for each employee.",
+    "category": "SQL Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var hireDayInfo = employees.Select(e => new { e.Name, e.HireDate, DayOfWeek = e.HireDate.DayOfWeek });"
+  },
+  {
+    "id": 67,
+    "question": "How to find all employees who are older than 30 years?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var over30 = employees.Where(e => (DateTime.Now - e.BirthDate).TotalDays / 365 > 30);"
+  },
+  {
+    "id": 68,
+    "question": "Write a query to display employees grouped by their salary range (e.g., 0-20K, 20K-50K).",
+    "category": "SQL Queries",
+    "difficulty": "Medium",
+    "beginner": false,
+    "answer": "var salaryRanges = employees.GroupBy(e => e.Salary switch { <= 20000 => \"0-20K\", <= 50000 => \"20K-50K\", _ => \"50K+\" }).Select(g => new { Range = g.Key, Count = g.Count() });"
+  },
+  {
+    "id": 69,
+    "question": "How to list all employees who do not have a bonus?",
+    "category": "SQL Queries",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var noBonus = employees.Where(e => e.Bonus == null);"
+  },
+  {
+    "id": 70,
+    "question": "Write a query to display the highest, lowest, and average salary for each job role.",
+    "category": "Aggregate Functions",
+    "difficulty": "Easy",
+    "beginner": true,
+    "answer": "var jobRoleStats = employees.GroupBy(e => e.JobRole).Select(g => new { JobRole = g.Key, Highest = g.Max(e => e.Salary), Lowest = g.Min(e => e.Salary), Average = g.Average(e => e.Salary) });"
+  }
+]

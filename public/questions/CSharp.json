@@ -1,0 +1,601 @@
+  {"data":[{ 
+    "id": 1, 
+    "question": "What is the difference between `==` and `.Equals()` in C#?", 
+    "category": "csharp",
+    "answer": "`==` is an operator that compares references for reference types and values for value types. `.Equals()` is a virtual method that typically compares values. For reference types, `==` checks if they reference the same object, while `.Equals()` can be overridden to compare object contents."
+  },
+  { 
+    "id": 2, 
+    "question": "Explain boxing and unboxing with examples.", 
+    "category": "csharp",
+    "answer": "Boxing is converting a value type to object type (heap allocation). Unboxing is converting object type back to value type. Example: int i = 123; object o = i; (boxing) | int j = (int)o; (unboxing)"
+  },
+  { 
+    "id": 3, 
+    "question": "What are delegates and events in C#?", 
+    "category": "csharp",
+    "answer": "Delegates are type-safe function pointers that define method signatures. Events are special delegates that follow publisher-subscriber pattern for loose coupling. Delegates enable callback mechanisms and events provide encapsulation."
+  },
+  { 
+    "id": 4, 
+    "question": "How does garbage collection work in .NET?", 
+    "category": "csharp",
+    "answer": "GC automatically manages memory by reclaiming unused objects. It uses generational approach (Gen 0,1,2), mark-and-sweep algorithm, and compacting. Managed heap divided into small/large object heaps. Finalizers run before object destruction."
+  },
+  { 
+    "id": 5, 
+    "question": "What are extension methods and when would you use them?", 
+    "category": "csharp",
+    "answer": "Extension methods allow adding methods to existing types without modification. Defined as static methods in static classes with 'this' modifier. Used for utility methods, fluent interfaces, and extending sealed classes."
+  },
+  { 
+    "id": 6, 
+    "question": "Explain async/await and Task Parallel Library.", 
+    "category": "csharp",
+    "answer": "Async/await simplifies asynchronous programming. 'async' marks method as asynchronous, 'await' suspends execution until task completes. TPL provides Task-based async pattern, parallel loops (Parallel.For), and PLINQ for parallel LINQ queries."
+  },
+  { 
+    "id": 7, 
+    "question": "What are the different types of collections in C#?", 
+    "category": "csharp",
+    "answer": "List<T> (dynamic arrays), Dictionary<TKey,TValue> (key-value pairs), HashSet<T> (unique elements), Queue<T> (FIFO), Stack<T> (LIFO), LinkedList<T> (node-based), ObservableCollection<T> (notifications). Also arrays and specialized collections."
+  },
+  { 
+    "id": 8, 
+    "question": "How does dependency injection work in C#?", 
+    "category": "csharp",
+    "answer": "DI is a pattern where dependencies are provided to classes rather than created internally. Uses IServiceCollection in ASP.NET Core with AddTransient, AddScoped, AddSingleton lifetimes. Promotes loose coupling and testability."
+  },
+  { 
+    "id": 9, 
+    "question": "What are attributes and reflection in C#?", 
+    "category": "csharp",
+    "answer": "Attributes add metadata to code elements. Reflection inspects and manipulates types at runtime using System.Type, MethodInfo, PropertyInfo. Used for serialization, ORM, dependency injection, and custom annotations."
+  },
+  { 
+    "id": 10, 
+    "question": "Explain LINQ and its different types.", 
+    "category": "csharp",
+    "answer": "LINQ (Language Integrated Query) provides query capabilities in C#. Types: LINQ to Objects (in-memory), LINQ to SQL (database), LINQ to XML, LINQ to Entities (Entity Framework). Uses query syntax (from-where-select) or method syntax (Where-Select)."
+  },
+  { 
+    "id": 11, 
+    "question": "What is the difference between value types and reference types?", 
+    "category": "csharp",
+    "answer": "Value types store data directly (structs, enums, primitives), allocated on stack. Reference types store references to data (classes, interfaces, delegates), allocated on heap. Value types use copy semantics, reference types use reference semantics."
+  },
+  { 
+    "id": 12, 
+    "question": "What are C# interfaces and abstract classes?", 
+    "category": "csharp",
+    "answer": "Interfaces define contracts without implementation (multiple inheritance). Abstract classes provide partial implementation and cannot be instantiated. Use interfaces for polymorphism across unrelated types, abstract classes for shared base functionality."
+  },
+  { 
+    "id": 13, 
+    "question": "What are C# generics and constraints?", 
+    "category": "csharp",
+    "answer": "Generics provide type-safe, reusable code. Constraints: where T : class (reference type), struct (value type), new() (default constructor), BaseClass (specific base), Interface (implements interface). Enables compile-time type safety."
+  },
+  { 
+    "id": 14, 
+    "question": "What are C# records and when to use them?", 
+    "category": "csharp",
+    "answer": "Records are reference types with value-based equality. Auto-generates Equals, GetHashCode, ToString, and copy constructors. Use for immutable data models, DTOs, when equality is based on property values rather than reference."
+  },
+  { 
+    "id": 15, 
+    "question": "What are C# pattern matching features?", 
+    "category": "csharp",
+    "answer": "Pattern matching includes: type patterns (is string s), property patterns, tuple patterns, positional patterns (with deconstruction), switch expressions, relational patterns (> 0), and combinators (and, or, not). Simplifies conditional logic."
+  },
+  { 
+    "id": 16, 
+    "question": "Explain the using statement and IDisposable interface.", 
+    "category": "csharp",
+    "answer": "Using statement ensures proper disposal of unmanaged resources. Automatically calls Dispose() on IDisposable objects. Syntax: using (var resource = new Resource()) { }. Ensures cleanup even if exceptions occur."
+  },
+  { 
+    "id": 17, 
+    "question": "What are nullable value types in C#?", 
+    "category": "csharp",
+    "answer": "Nullable<T> or T? allows value types to hold null values. Useful for database integration where columns can be null. Use HasValue to check for value, Value to get underlying value. Null-coalescing operator (??) provides default values."
+  },
+  { 
+    "id": 18, 
+    "question": "Explain the yield keyword and iterators.", 
+    "category": "csharp",
+    "answer": "Yield return creates stateful iterators that generate sequences on-demand. Maintains state between calls, efficient for large sequences. Used in methods returning IEnumerable<T> or IEnumerator<T>. Provides deferred execution."
+  },
+  { 
+    "id": 19, 
+    "question": "What are expression trees in C#?", 
+    "category": "csharp",
+    "answer": "Expression trees represent code as data in tree structure. Enable runtime code analysis and transformation. Used in LINQ providers (Entity Framework) to translate C# expressions to SQL queries. Created with Expression<TDelegate>."
+  },
+  { 
+    "id": 20, 
+    "question": "Explain the volatile keyword in C#.", 
+    "category": "csharp",
+    "answer": "Volatile ensures field access is not optimized by compiler and reads/writes are atomic. Prevents caching issues in multithreading. Ensures most recent value is always read from main memory, not thread cache."
+  },
+  { 
+    "id": 21, 
+    "question": "What are the different access modifiers in C#?", 
+    "category": "csharp",
+    "answer": "public: Accessible anywhere, private: Only within containing type, protected: Within type and derived types, internal: Within same assembly, protected internal: Within assembly or derived types, private protected: Within containing assembly and derived types."
+  },
+  { 
+    "id": 22, 
+    "question": "Explain covariance and contravariance in C#.", 
+    "category": "csharp",
+    "answer": "Covariance: Preserves assignment compatibility (IEnumerable<Derived> to IEnumerable<Base>). Contravariance: Reverses assignment compatibility (Action<Base> to Action<Derived>). Supported in delegates and generic interfaces with in/out modifiers."
+  },
+  { 
+    "id": 23, 
+    "question": "What are anonymous types in C#?", 
+    "category": "csharp",
+    "answer": "Anonymous types are compiler-generated types with read-only properties. Created with new { Property = value } syntax. Used primarily in LINQ queries for temporary projections. Immutable and reference-based equality."
+  },
+  { 
+    "id": 24, 
+    "question": "Explain the dynamic keyword in C#.", 
+    "category": "csharp",
+    "answer": "Dynamic enables late binding - type resolution at runtime instead of compile time. Bypasses static type checking. Useful for COM interop, dynamic languages integration, and reflection scenarios. Performance overhead compared to static typing."
+  },
+  { 
+    "id": 25, 
+    "question": "What are string interpolation and verbatim strings?", 
+    "category": "csharp",
+    "answer": "String interpolation: $\"Hello {name}\" - embeds expressions in strings. Verbatim strings: @\"C:\\path\\file\" - ignores escape sequences, handles multiline strings. Both improve string readability and maintainability."
+  },
+  { 
+    "id": 26, 
+    "question": "Explain the lock statement and thread synchronization.", 
+    "category": "csharp",
+    "answer": "Lock provides mutual exclusion for critical sections. Syntax: lock (syncObject) { }. Ensures only one thread executes code block at a time. Uses Monitor.Enter/Monitor.Exit internally. Prevents race conditions in multithreaded code."
+  },
+  { 
+    "id": 27, 
+    "question": "What are partial classes and methods?", 
+    "category": "csharp",
+    "answer": "Partial classes split class definition across multiple files. Useful for code generation scenarios (Windows Forms, WPF). Partial methods: declaration in one part, implementation optional in another. No return type, implicitly private."
+  },
+  { 
+    "id": 28, 
+    "question": "Explain exception handling in C#.", 
+    "category": "csharp",
+    "answer": "try: Code that might throw exceptions, catch: Handles specific exceptions, finally: Cleanup code always executed, throw: Throws exceptions. Use specific exceptions, avoid empty catch blocks, and use exception filters (when clause)."
+  },
+  { 
+    "id": 29, 
+    "question": "What are the different types of exceptions?", 
+    "category": "csharp",
+    "answer": "System.Exception base class. SystemException: Framework exceptions (NullReference, Argument). ApplicationException: Custom application exceptions. Derived exceptions should end with 'Exception' suffix and implement standard constructors."
+  },
+  { 
+    "id": 30, 
+    "question": "Explain the difference between throw and throw ex.", 
+    "category": "csharp",
+    "answer": "throw; preserves original stack trace. throw ex; resets stack trace from throw point. Always use throw; in catch blocks to maintain exception context. throw ex; loses original exception source information."
+  },
+  { 
+    "id": 31, 
+    "question": "What are static classes and members?", 
+    "category": "csharp",
+    "answer": "Static classes cannot be instantiated, contain only static members. Static members belong to type rather than instance. Shared across all instances. Static constructors initialize static members before first use."
+  },
+  { 
+    "id": 32, 
+    "question": "Explain the sealed keyword in C#.", 
+    "category": "csharp",
+    "answer": "Sealed prevents class inheritance or method overriding. Applied to classes (cannot be derived) or methods (cannot be overridden in derived classes). Improves performance and security by limiting extensibility."
+  },
+  { 
+    "id": 33, 
+    "question": "What are indexers in C#?", 
+    "category": "csharp",
+    "answer": "Indexers allow objects to be indexed like arrays. Defined with this[parameters] syntax. Can be overloaded with different parameter types. Used in collections, custom containers to provide array-like access syntax."
+  },
+  { 
+    "id": 34, 
+    "question": "Explain operator overloading in C#.", 
+    "category": "csharp",
+    "answer": "Operator overloading defines custom behavior for operators on user-defined types. Use public static operator methods. Can overload arithmetic, comparison, conversion operators. Should be intuitive and follow mathematical conventions."
+  },
+  { 
+    "id": 35, 
+    "question": "What are structs and when to use them?", 
+    "category": "csharp",
+    "answer": "Structs are value types, allocated on stack. Suitable for small data structures (16 bytes or less), immutable behavior, frequent instantiation. Cannot inherit, but can implement interfaces. No default constructor, careful with boxing."
+  },
+  { 
+    "id": 36, 
+    "question": "Explain the ref, out, and in parameters.", 
+    "category": "csharp",
+    "answer": "ref: Pass by reference, variable must be initialized. out: Output parameter, variable need not be initialized. in: Read-only reference, cannot be modified. All enable passing variables by reference rather than by value."
+  },
+  { 
+    "id": 37, 
+    "question": "What are tuples and value tuples?", 
+    "category": "csharp",
+    "answer": "Tuples are lightweight data structures grouping multiple values. System.Tuple (reference type) and System.ValueTuple (value type). Value tuples support named elements: (int id, string name) tuple = (1, \"John\");"
+  },
+  { 
+    "id": 38, 
+    "question": "Explain the nameof operator.", 
+    "category": "csharp",
+    "answer": "nameof returns string representation of variable, type, or member names. Provides refactoring-safe names. Useful in validation, logging, INotifyPropertyChanged. nameof(customer.Name) returns \"Name\"."
+  },
+  { 
+    "id": 39, 
+    "question": "What are local functions in C#?", 
+    "category": "csharp",
+    "answer": "Local functions are methods defined within other methods. Can access variables from containing method. Useful for helper methods, iterator methods, async methods. Improve encapsulation and readability."
+  },
+  { 
+    "id": 40, 
+    "question": "Explain the switch expression in C# 8.0+.", 
+    "category": "csharp",
+    "answer": "Switch expression provides concise syntax for pattern matching. Returns a value: var result = input switch { 1 => \"One\", 2 => \"Two\", _ => \"Unknown\" }; Supports property patterns, tuple patterns, and when guards."
+  },
+  { 
+    "id": 41, 
+    "question": "What are init-only properties?", 
+    "category": "csharp",
+    "answer": "Init-only properties can be set only during object initialization. Use init accessor instead of set. Provides immutability after construction. Useful for creating immutable objects with flexible initialization syntax."
+  },
+  { 
+    "id": 42, 
+    "question": "Explain the with expression for records.", 
+    "category": "csharp",
+    "answer": "With expression creates new record instance with modified properties. Non-destructive mutation. var newPerson = person with { Name = \"Jane\" }; Creates copy with specified changes, original remains unchanged."
+  },
+  { 
+    "id": 43, 
+    "question": "What are global using directives?", 
+    "category": "csharp",
+    "answer": "Global using directives apply to entire project without repeating in each file. Define in any file: global using System.Collections.Generic; Improves code cleanliness and reduces boilerplate."
+  },
+  { 
+    "id": 44, 
+    "question": "Explain file-scoped namespace declarations.", 
+    "category": "csharp",
+    "answer": "File-scoped namespaces declare namespace once for entire file. namespace MyApp; instead of namespace MyApp { ... }. Reduces indentation and improves readability for files with single namespace."
+  },
+  { 
+    "id": 45, 
+    "question": "What are required properties?", 
+    "category": "csharp",
+    "answer": "Required properties must be initialized during object construction. Mark with [Required] attribute or required modifier. Compiler enforces initialization. Improves object initialization safety."
+  },
+  { 
+    "id": 46, 
+    "question": "Explain raw string literals.", 
+    "category": "csharp",
+    "answer": "Raw string literals handle complex string content without escaping. Start and end with at least three double quotes: \"\"\"...\"\"\". Preserves indentation, new lines, and special characters. Great for JSON, XML, SQL."
+  },
+  { 
+    "id": 47, 
+    "question": "What are primary constructors?", 
+    "category": "csharp",
+    "answer": "Primary constructors allow concise class/struct definition with parameters. class Person(string name) { }. Parameters available throughout class body. Simplifies boilerplate code for constructor parameters."
+  },
+  { 
+    "id": 48, 
+    "question": "Explain the Memory<T> and Span<T> types.", 
+    "category": "csharp",
+    "answer": "Memory<T> and Span<T> provide high-performance memory access without allocation. Span<T> is stack-only ref struct, Memory<T> can be stored on heap. Used for zero-copy operations on arrays, strings, and unmanaged memory."
+  },
+  { 
+    "id": 49, 
+    "question": "What are interface default methods?", 
+    "category": "csharp",
+    "answer": "Interfaces can provide default method implementations. Enables adding functionality to interfaces without breaking existing implementations. Use when you need to extend interfaces in backward-compatible way."
+  },
+  { 
+    "id": 50, 
+    "question": "Explain the IAsyncDisposable interface.", 
+    "category": "csharp",
+    "answer": "IAsyncDisposable provides asynchronous resource cleanup. Define DisposeAsync() method. Use with await using statement for proper async disposal. Essential for types with async cleanup operations."
+  },
+  { 
+    "id": 51, 
+    "question": "What are source generators in C#?", 
+    "category": "csharp",
+    "answer": "Source generators analyze code and generate additional source files during compilation. Used for reducing boilerplate, performance optimization, metaprogramming. Implement ISourceGenerator interface."
+  },
+  { 
+    "id": 52, 
+    "question": "Explain the nullable reference types feature.", 
+    "category": "csharp",
+    "answer": "Nullable reference types provide compiler warnings for potential null references. Enable with <Nullable>enable</Nullable>. ? indicates nullable reference types. Improves null safety and reduces NullReferenceExceptions."
+  },
+  { 
+    "id": 53, 
+    "question": "What are caller argument expression attribute?", 
+    "category": "csharp",
+    "answer": "[CallerArgumentExpression] captures argument expression as string. Useful for validation and assertion messages: Validate(condition, [CallerArgumentExpression(\"condition\")] string expression = \"\")."
+  },
+  { 
+    "id": 54, 
+    "question": "Explain the unmanaged constraint.", 
+    "category": "csharp",
+    "answer": "unmanaged constraint restricts type parameters to unmanaged types (primitive, enum, struct with only unmanaged fields). Enables low-level memory operations and interop with unmanaged code."
+  },
+  { 
+    "id": 55, 
+    "question": "What are function pointers?", 
+    "category": "csharp",
+    "answer": "Function pointers enable calling methods with delegate-like syntax but without allocation. Use delegate* syntax. Unmanaged function pointers for interop scenarios. High-performance alternative to delegates in hot paths."
+  },
+  { 
+    "id": 56, 
+    "question": "Explain the skip locals init feature.", 
+    "category": "csharp",
+    "answer": "[SkipLocalsInit] prevents compiler from zero-initializing local variables. Performance optimization for stack-allocated buffers. Use carefully as variables may contain garbage values."
+  },
+  { 
+    "id": 57, 
+    "question": "What are module initializers?", 
+    "category": "csharp",
+    "answer": "Module initializers run code before any other type access in assembly. Mark method with [ModuleInitializer] attribute. Useful for assembly-level setup, registration, or verification."
+  },
+  { 
+    "id": 58, 
+    "question": "Explain the covariant return types.", 
+    "category": "csharp",
+    "answer": "Covariant return types allow overriding methods to return more derived types. class Base { public virtual Base Create() } class Derived { public override Derived Create() }. Enables more specific return types in overrides."
+  },
+  { 
+    "id": 59, 
+    "question": "What are record structs?", 
+    "category": "csharp",
+    "answer": "Record structs provide value-type records with value-based equality. record struct Point(int X, int Y); Combines benefits of structs (stack allocation) with records (value equality, deconstruction)."
+  },
+  { 
+    "id": 60, 
+    "question": "Explain the required member syntax.", 
+    "category": "csharp",
+    "answer": "Required members must be initialized via object initializer or constructor. public required string Name { get; set; }. Compiler ensures all required properties are set during object creation."
+  },
+  { 
+    "id": 61, 
+    "question": "What are collection expressions?", 
+    "category": "csharp",
+    "answer": "Collection expressions provide unified syntax for creating collections. Use [] for lists, spans, arrays. var list = [1, 2, 3]; var span = [4, 5, 6].AsSpan(); Simplifies collection initialization across different types."
+  },
+  { 
+    "id": 62, 
+    "question": "Explain the primary constructors for non-record types.", 
+    "category": "csharp",
+    "answer": "Primary constructors now work with regular classes and structs. class Person(string name) { public string Name { get; } = name; }. Parameters captured as private fields unless used in members."
+  },
+  { 
+    "id": 63, 
+    "question": "What are inline arrays?", 
+    "category": "csharp",
+    "answer": "Inline arrays provide fixed-size buffers in structs without unsafe code. [System.Runtime.CompilerServices.InlineArray(10)] struct Buffer { public int _element0; }. High-performance fixed-size collections."
+  },
+  { 
+    "id": 64, 
+    "question": "Explain the params Span<T> feature.", 
+    "category": "csharp",
+    "answer": "params now works with Span<T> enabling variable number of arguments without array allocation. void Process(params Span<string> items). Performance improvement over params arrays."
+  },
+  { 
+    "id": 65, 
+    "question": "What are ref fields in ref structs?", 
+    "category": "csharp",
+    "answer": "Ref structs can contain ref fields enabling more complex stack-only data structures. ref struct Buffer { public ref int Data; }. Advanced feature for high-performance scenarios."
+  },
+  { 
+    "id": 66, 
+    "question": "Explain the semaphore and mutex in threading.", 
+    "category": "csharp",
+    "answer": "Semaphore limits concurrent access to resource pool. Mutex provides mutual exclusion across process boundaries. SemaphoreSlim for async scenarios. Used for advanced thread synchronization beyond lock statement."
+  },
+  { 
+    "id": 67, 
+    "question": "What are thread-local storage and AsyncLocal?", 
+    "category": "csharp",
+    "answer": "Thread-local storage provides data isolation per thread. [ThreadStatic] for static fields. AsyncLocal<T> maintains data across async await boundaries. Useful for context propagation in async code."
+  },
+  { 
+    "id": 68, 
+    "question": "Explain the Interlocked class for atomic operations.", 
+    "category": "csharp",
+    "answer": "Interlocked provides atomic operations without locking. Methods: Increment, Decrement, Exchange, CompareExchange. High-performance thread-safe operations for simple state changes."
+  },
+  { 
+    "id": 69, 
+    "question": "What are memory barriers and volatile operations?", 
+    "category": "csharp",
+    "answer": "Memory barriers enforce ordering of memory operations. Thread.MemoryBarrier(), Volatile.Read/Write. Advanced threading concept for lock-free programming and ensuring visibility across threads."
+  },
+  { 
+    "id": 70, 
+    "question": "Explain the Task Completion Source pattern.", 
+    "category": "csharp",
+    "answer": "TaskCompletionSource<T> creates tasks controlled manually. SetResult, SetException, SetCanceled methods. Useful for bridging async patterns, event-based APIs to task-based async."
+  },
+  { 
+    "id": 71, 
+    "question": "What are cancellation tokens in async programming?", 
+    "category": "csharp",
+    "answer": "CancellationToken enables cooperative cancellation of async operations. Pass to async methods, check IsCancellationRequested, throw OperationCanceledException. Use CancellationTokenSource to create and cancel tokens."
+  },
+  { 
+    "id": 72, 
+    "question": "Explain the ValueTask and ValueTask<T> types.", 
+    "category": "csharp",
+    "answer": "ValueTask is performance optimization for async methods that often complete synchronously. Avoids Task allocation for hot paths. Use when method frequently returns cached results or completes immediately."
+  },
+  { 
+    "id": 73, 
+    "question": "What are the different task continuation options?", 
+    "category": "csharp",
+    "answer": "Task continuations: ContinueWith with TaskContinuationOptions (OnlyOnRanToCompletion, NotOnFaulted). Prefer async/await over ContinueWith for better exception handling and synchronization context awareness."
+  },
+  { 
+    "id": 74, 
+    "question": "Explain the parallel class and PLINQ.", 
+    "category": "csharp",
+    "answer": "Parallel class provides parallel loops (For, ForEach, Invoke). PLINQ parallelizes LINQ queries with AsParallel(). Use for CPU-bound operations. Be careful with shared state and thread safety."
+  },
+  { 
+    "id": 75, 
+    "question": "What are dataflow blocks in TPL Dataflow?", 
+    "category": "csharp",
+    "answer": "TPL Dataflow provides actor-based programming model. Blocks: ActionBlock, TransformBlock, BufferBlock, BroadcastBlock. Enables building reactive pipelines with message passing between components."
+  },
+  { 
+    "id": 76, 
+    "question": "Explain the channel library for producer-consumer scenarios.", 
+    "category": "csharp",
+    "answer": "System.Threading.Channels provides high-performance producer-consumer patterns. Channel.CreateUnbounded/Bounded<T>(). Writer/Reader for async message passing. Modern alternative to BlockingCollection."
+  },
+  { 
+    "id": 77, 
+    "question": "What are the different memory management techniques?", 
+    "category": "csharp",
+    "answer": "GC generations, large object heap, finalizers, IDisposable, using statement, weak references, ArrayPool for buffer reuse, stackalloc for stack allocation, Span<T> for zero-copy operations."
+  },
+  { 
+    "id": 78, 
+    "question": "Explain the difference between deep copy and shallow copy.", 
+    "category": "csharp",
+    "answer": "Shallow copy duplicates top-level object, references point to same objects. Deep copy duplicates entire object graph. Implement with ICloneable, copy constructors, or serialization. Records provide built-in copy with with expressions."
+  },
+  { 
+    "id": 79, 
+    "question": "What are the different serialization formats in .NET?", 
+    "category": "csharp",
+    "answer": "JSON (System.Text.Json, Newtonsoft.Json), XML (XmlSerializer, DataContractSerializer), Binary (BinaryFormatter), Protobuf (Google.Protobuf). Choose based on performance, interoperability, and human readability needs."
+  },
+  { 
+    "id": 80, 
+    "question": "Explain the System.Text.Json library features.", 
+    "category": "csharp",
+    "answer": "High-performance JSON serialization. JsonSerializer, Utf8JsonReader/Writer, source generators for AOT. Custom converters, naming policies, ignore conditions. Modern replacement for Newtonsoft.Json."
+  },
+  { 
+    "id": 81, 
+    "question": "What are source generators for JSON serialization?", 
+    "category": "csharp",
+    "answer": "JSON source generators eliminate reflection for serialization. [JsonSerializable] attribute generates optimized serialization code at compile time. Improves performance and supports AOT compilation."
+  },
+  { 
+    "id": 82, 
+    "question": "Explain the difference between HttpClient and IHttpClientFactory.", 
+    "category": "csharp",
+    "answer": "HttpClient can cause socket exhaustion if not reused properly. IHttpClientFactory manages HttpClient lifetime, provides named/clients, handles resilience, and integrates with dependency injection."
+  },
+  { 
+    "id": 83, 
+    "question": "What are the different logging providers in .NET?", 
+    "category": "csharp",
+    "answer": "Console, Debug, EventSource, EventLog, Azure App Service, Application Insights, Serilog, NLog. Use ILogger<T> with logging levels (Trace, Debug, Information, Warning, Error, Critical)."
+  },
+  { 
+    "id": 84, 
+    "question": "Explain the configuration providers in ASP.NET Core.", 
+    "category": "csharp",
+    "answer": "JSON files (appsettings.json), environment variables, command line arguments, user secrets, Azure Key Vault, INI files, XML files. Hierarchical configuration with environment-specific overrides."
+  },
+  { 
+    "id": 85, 
+    "question": "What are the options pattern and IOptions<T>?", 
+    "category": "csharp",
+    "answer": "Options pattern provides strongly-typed access to configuration. IOptions<T>, IOptionsSnapshot<T>, IOptionsMonitor<T>. Configure in DI: services.Configure<MyOptions>(Configuration.GetSection(\"MySection\"));"
+  },
+  { 
+    "id": 86, 
+    "question": "Explain the difference between transient, scoped, and singleton services.", 
+    "category": "csharp",
+    "answer": "Transient: New instance every request. Scoped: Single instance per request. Singleton: Single instance for application lifetime. Choose based on service state, thread safety, and resource usage requirements."
+  },
+  { 
+    "id": 87, 
+    "question": "What are hosted services in ASP.NET Core?", 
+    "category": "csharp",
+    "answer": "Hosted services run background tasks in ASP.NET Core applications. Implement IHostedService or BackgroundService. Used for periodic tasks, message processing, cache warming. Lifetime managed by dependency injection."
+  },
+  { 
+    "id": 88, 
+    "question": "Explain the health checks in ASP.NET Core.", 
+    "category": "csharp",
+    "answer": "Health checks monitor application and dependency status. services.AddHealthChecks().AddCheck<MyHealthCheck>(). Map endpoints with MapHealthChecks. Used by load balancers and monitoring systems."
+  },
+  { 
+    "id": 89, 
+    "question": "What are the different authentication schemes?", 
+    "category": "csharp",
+    "answer": "JWT Bearer, Cookie, OAuth2, OpenID Connect, Windows, Certificate. Configure with services.AddAuthentication().AddJwtBearer(). Use [Authorize] attribute with policies and requirements."
+  },
+  { 
+    "id": 90, 
+    "question": "Explain the authorization policies and requirements.", 
+    "category": "csharp",
+    "answer": "Authorization policies combine requirements. services.AddAuthorization(options => options.AddPolicy(\"AdminOnly\", policy => policy.RequireRole(\"Admin\"))). Custom requirements implement IAuthorizationRequirement and AuthorizationHandler<T>."
+  },
+  { 
+    "id": 91, 
+    "question": "What are the different types of middleware in ASP.NET Core?", 
+    "category": "csharp",
+    "answer": "Built-in: Authentication, Authorization, CORS, Routing, Static Files, Response Caching, Session. Custom middleware via Use, Run, Map. Middleware order is critical for proper request processing."
+  },
+  { 
+    "id": 92, 
+    "question": "Explain the endpoint routing in ASP.NET Core.", 
+    "category": "csharp",
+    "answer": "Endpoint routing separates route matching and endpoint execution. MapGet, MapPost, MapControllers. Provides better performance and flexibility. Endpoint metadata enables features like CORS, authorization per endpoint."
+  },
+  { 
+    "id": 93, 
+    "question": "What are minimal APIs in .NET 6+?", 
+    "category": "csharp",
+    "answer": "Minimal APIs provide simplified syntax for HTTP APIs. app.MapGet(\"/hello\", () => \"Hello World\"); Reduces boilerplate for simple APIs. Includes parameter binding, response formatting, and OpenAPI support."
+  },
+  { 
+    "id": 94, 
+    "question": "Explain the difference between ActionResult and IActionResult.", 
+    "category": "csharp",
+    "answer": "IActionResult is interface representing action result. ActionResult<T> is return type that can be specific type or action result. Provides compile-time and runtime type safety for API responses."
+  },
+  { 
+    "id": 95, 
+    "question": "What are API controllers and their features?", 
+    "category": "csharp",
+    "answer": "API controllers handle HTTP requests. [ApiController] enables automatic model validation, binding source inference, problem details. [Route], [HttpGet], [FromBody] attributes. Convention-based status code returns."
+  },
+  { 
+    "id": 96, 
+    "question": "Explain the model binding and validation in ASP.NET Core.", 
+    "category": "csharp",
+    "answer": "Model binding maps request data to action parameters. [FromQuery], [FromRoute], [FromBody]. Validation with DataAnnotations [Required], [StringLength]. Automatic 400 responses with validation errors."
+  },
+  { 
+    "id": 97, 
+    "question": "What are filters in ASP.NET Core?", 
+    "category": "csharp",
+    "answer": "Filters run code before/after specific stages in request pipeline. Types: Authorization, Resource, Action, Exception, Result. Implement IFilterMetadata or specific filter interfaces. Global, per-controller, or per-action scope."
+  },
+  { 
+    "id": 98, 
+    "question": "Explain the response caching in ASP.NET Core.", 
+    "category": "csharp",
+    "answer": "Response caching stores responses for subsequent requests. [ResponseCache] attribute with Duration, Location, VaryBy* properties. Use ResponseCachingMiddleware. Client-side and server-side caching strategies."
+  },
+  { 
+    "id": 99, 
+    "question": "What are tag helpers in ASP.NET Core MVC?", 
+    "category": "csharp",
+    "answer": "Tag helpers transform HTML elements on server. Built-in: Form, Input, Label, Validation. Custom tag helpers inherit from TagHelper. Provide HTML-friendly development experience with IntelliSense."
+  },
+  { 
+    "id": 100, 
+    "question": "Explain the view components in ASP.NET Core.", 
+    "category": "csharp",
+    "answer": "View components render reusable chunks of UI with logic. InvokeAsync returns IViewComponentResult. More powerful than partial views. Used for dynamic navigation, shopping carts, sidebar content."
+  }
+]}

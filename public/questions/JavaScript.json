@@ -1,0 +1,1436 @@
+[
+  {
+    "id": 1,
+    "question": "1. Is javascript a dynamically typed language or a statically typed?",
+    "answer": "Javascript is a dynamically typed language. It means all type checks are done at run time (When program is executing). So, we can just assign anything to the variable and it works fine. Typescript is a statically typed language. All checks are performed at compile time.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "question": "2. What are the different datatypes in javascript?",
+    "answer": "Primitive datatypes: String, number, boolean, null, undefined, Bigint, symbol. Non-Primitive datatypes: Object, Array, Date.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "question": "3. What is Hoisting in javascript?",
+    "answer": "In other scripting/server side languages, variables or functions must be declared before using it. In javascript, variables and functions can be used before declaring it. The javascript compiler moves all the declarations of variables and functions on top. so there will not be any error. This is called hoisting.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 4,
+    "question": "4. What are the various things hoisted in javascript?",
+    "answer": "Function declarations: Fully hoisted. var - Hoisted. Arrow functions: Not hoisted. Anonymous Function expressions: Not hoisted. let - Hoisted but not initialized. (Temporal dead zone). const - Hoisted but not initialized. (Temporal dead zone). class declarations - Hoisted but not initialized.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 5,
+    "question": "5. What is temporal dead zone?",
+    "answer": "It is a specific time period in the execution of javascript code where the variables declared with let and const exists but cannot be accessed until the value is assigned. Any attempt to access them result in reference errors.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 6,
+    "question": "6. What are the differences let, var and const?",
+    "answer": "Scope: Variables declared with var are function scoped (available through out the function where its declared) or global scoped (if defined outside the function). Variables declared with let and const are block scoped. Reassignment: var and let can be reassigned. const cannot be reassigned. Hoisting: var gets hoisted and initialized with undefined. let and const - gets hoisted to the top of the scope but does not get assigned any value (temporal dead zone).",
+    "difficulty": "easy"
+  },
+  {
+    "id": 7,
+    "question": "7. List out some key features of ES6?",
+    "answer": "Arrow functions, let and const, Template literals, Default parameters, Destructuring, Spread and rest operators, Promises, Modules, Classes, Enhanced object literals.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 8,
+    "question": "8. What are limitations of arrow functions in javascript?",
+    "answer": "Arrow functions are introduced in ES6. They are simple and shorter way to write functions in javascript. Limitations: Arrow function does not have their own this. Instead, they inherit this from the surrounding code at the time the function is defined. Arrow functions cannot be used as constructors. Using them with the new keyword to create instances throws a TypeError. Arrow functions cannot be used as generator functions.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 9,
+    "question": "9. What's the spread operator in javascript?",
+    "answer": "Spread operator is used to spread or expand the elements of an iterable like array or string into individual elements. Uses: Concatenating arrays, Copying arrays or objects, Passing array of values as individual arguments to a function.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 10,
+    "question": "10. What is rest operator in javascript?",
+    "answer": "Rest operator is used to condense multiple elements into single array or object. This is useful when we dont know how many parameters a function may receive and you want to capture all of them as an array.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 11,
+    "question": "11. What is destructuring?",
+    "answer": "It is introduced in Es6. It allows us to assign the object properties and array values to distinct variables.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 12,
+    "question": "12. What are the differences between Map and Set?",
+    "answer": "Map is the collection of key value pairs. Set is a collection of unique values. Map is two dimensional. Set is one dimensional.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 13,
+    "question": "13. What are modules in javascript?",
+    "answer": "Modules allows us to break down the large piece of code into smaller parts. Modules helps us to write more reusable and maintenable code. Modules can be imported and exported using import and export statements.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 14,
+    "question": "14. What is the difference between 'Pass by Value' and 'Pass by Reference'?",
+    "answer": "Primitive datatypes such as string, number, boolean, null and undefined are passed by value. Non-primitive datatypes such as object, arrays or functions are passed by reference. In Pass by value, parameters passed as an arguments creates their own copy. In Pass by reference, parameters passed as an arguments does not creates their own copy.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 15,
+    "question": "15. What is the difference between map and filter?",
+    "answer": "Both map and filter are useful in JavaScript when working with an arrays. map transforms each element of an array and creates a new array which contains the transformed elements. whereas filter will creates a new array with only those elements which satisfies the specified condition.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 16,
+    "question": "16. What is the difference between map() and forEach()?",
+    "answer": "map method is used to transform the elements of an array. Whereas forEach method is used to loop through the elements of an array. map method will return a new array with the transformed values. forEach method does not return a new array.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 17,
+    "question": "17. What is the difference between for-in and for-of?",
+    "answer": "for-in iterates over the enumerable property keys of an object. for-of is used to iterate over the values of an iterable object. Examples of iterable objects are array, string, nodelists etc.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 18,
+    "question": "18. What is difference between find vs findIndex?",
+    "answer": "find: It will return the first element of array that passes specified condition. findIndex: It will return the index of first element of an array that passes the specified condition.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 19,
+    "question": "19. What is the difference between Pure and Impure functions?",
+    "answer": "Pure Functions: Pure functions are the functions which will return same output for same arguments passed to the function. This will not have any side effects. Impure Functions: Impure functions are the functions which will return inconsistent output for same arguments passed to the function. This will have side effects.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 20,
+    "question": "20. What are the differences between call(), apply() and bind()?",
+    "answer": "Call method will invokes the function immediately with the given this value and allow us to pass the arguments one by one with comma separator. Apply method will invokes the function immediately with given this value and allow us to pass the arguments as an array. Bind method will return a new function with the given this value and arguments which can be invoked later.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 21,
+    "question": "21. Different ways to create object in javascript?",
+    "answer": "Object literal, Object constructor, Object.Create(), Object.assign()",
+    "difficulty": "easy"
+  },
+  {
+    "id": 22,
+    "question": "22. Whats the difference between Object.keys, values and entries?",
+    "answer": "Object.keys(): This will return the array of keys. Object.values(): This will return the array of values. Object.entries(): This will return array of [key,value] pairs.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 23,
+    "question": "23. Whats the difference between Object.freeze() vs Object.seal()?",
+    "answer": "Object.freeze: Will make the object immutable (prevents the addition of new propeties and prevents modification of existing properties). Object.Seal(): Will prevent the addition of new properties but we can modify existing properties.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 24,
+    "question": "24. What is a polyfill in javascript?",
+    "answer": "A polyfill is a piece of code which provides the modern functionality to the older browsers that does not natively support it.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 25,
+    "question": "25. What is prototype in javascript?",
+    "answer": "If we want to add properties at later stage to a function which can be accessible across all the instances. Then we will be using prototype.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 26,
+    "question": "26. What is generator function in javascript?",
+    "answer": "A generator function is a function which can be paused and resumed at any point during execution. They are defined by using function* and it contains one or more yield expressions.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 27,
+    "question": "27. What is IIFE?",
+    "answer": "IIFE means immediately invoked function expression. functions which are executed immediately once they are mounted to the stack is called iife.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 28,
+    "question": "28. What is CORS?",
+    "answer": "CORS means cross origin resource sharing. It is a security feature that allows the webapplications from one domain to request the resources like Api's/scripts from another domain.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 29,
+    "question": "29. What are the difference between typescript and javascript?",
+    "answer": "Typescript is the superset of javascript and has all the object oriented features. Javascript is a dynamically typed language whereas typescript is a statically typed language. Typescript is better suited for large scale applications where as javascript is suited for small scale applications.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 30,
+    "question": "30. What is authentication vs authorization?",
+    "answer": "Authentication: Its the process of verifying who the user is. Authorization: Its the process of verifying what they have access to.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 31,
+    "question": "31. Difference between null and undefined?",
+    "answer": "Null: If we assign null to a variable, it means it will not have any value. Undefined: means the variable has been declared but not assigned any value yet.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 32,
+    "question": "32. What is the difference between == and === in javascript?",
+    "answer": "== will check for equality of values where as === willl check for equality as well as datatypes.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 33,
+    "question": "33. Slice vs Splice in javascript?",
+    "answer": "Slice: If we want to create an array that is subset of existing array with out changing the original array, then we will use slice. Splice: If we want to add/delete/replace the existing elements in the array, then we will use splice.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 34,
+    "question": "34. What is setTimeOut in javascript?",
+    "answer": "setTimeOut is used to call a function or evaluate an expression after a specific number of milliseconds.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 35,
+    "question": "35. What is setInterval in javascript?",
+    "answer": "setInterval method is used to call a function or evaluate an expression at specific intervals.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 36,
+    "question": "36. What are Promises in javascript?",
+    "answer": "Promise is an object which represents the eventual completion or failure of an asynchronous operation in javascript.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 37,
+    "question": "37. Differences between Promise.all, allSettled, any, race?",
+    "answer": "Promise.all: Will wait for all of the promises to resolve or any one of the promise reject. Promise.allSettled: Will wait for all the promises to settle (either fulfilled or rejected). Promise.any: Will return if any one of the promise fulfills or rejects when all the promises are rejected. Promise.race: Will return as soon as when any one of the promise is settled.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 38,
+    "question": "38. What is a callstack in javascript?",
+    "answer": "Callstack will maintain the order of execution of execution contexts.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 39,
+    "question": "39. What is a closure?",
+    "answer": "A function along with its outer environment together forms a closure. Each and every function in javascript has access to its outer lexical environment means access to the variables and functions present in the environments of its parents.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 40,
+    "question": "40. What are callbacks in javascript?",
+    "answer": "A callback is a function which is passed as an argument to another function which can be executed later in the code.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 41,
+    "question": "41. What are Higher Order Functions in javascript?",
+    "answer": "A function which takes another function as an argument or returns a function as an output.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 42,
+    "question": "42. What is the main difference between Local Storage and Session storage?",
+    "answer": "LocalStorage is the same as SessionStorage but it persists the data even when the browser is closed and reopened and on reload(i.e it has no expiration time) whereas in sessionStorage data gets cleared when the page session ends.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 43,
+    "question": "43. What is the difference between Indexeddb and sessionstorage?",
+    "answer": "IndexedDb: It is used for storing large amount of structured data. It uses object oriented storage model. Persist data beyond the duration of page session. SessionStorage: Limited storage, around 5mb of data. Simple key-value storage. Available only for the duration of page session.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 44,
+    "question": "44. Possible followup questions on local storage?",
+    "answer": "Various scenarios about localStorage behavior including persistence, cross-tab access, storage limits, and synchronous nature.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 45,
+    "question": "45. Possible followup questions on session storage?",
+    "answer": "Various scenarios about sessionStorage behavior including tab-specific storage, persistence, and limitations.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 46,
+    "question": "46. What are cookies?",
+    "answer": "Cookies are used to store information about the user in the webpages. Cookies are stored as key value pairs and hold 4kb of data.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 47,
+    "question": "47. Interview questions on this keyword?",
+    "answer": "Various scenarios about 'this' keyword behavior in different contexts including global scope, functions, objects, arrow functions, and strict mode.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 48,
+    "question": "48. What are Interceptors?",
+    "answer": "Interceptors allows us to modify the request or response before its sent to the server or received from the server.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 49,
+    "question": "49. What is eval()?",
+    "answer": "eval function evaluates javascript code represented as a string. The string can be javascript expression, variable, statement or a sequence of statements.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 50,
+    "question": "50. What is the difference between Shallow copy and deep copy?",
+    "answer": "Shallow copy: A shallow copy creates a new object or array and copies the references of the original elements. Deep copy: A deep copy creates a new object or array that has its own copies of the properties of the original object.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 51,
+    "question": "51. What are the difference between undeclared and undefined variables?",
+    "answer": "undeclared: These variables does not exist in the program and they are not declared. undefined: These variables are declared in the program but are not assigned any value.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 52,
+    "question": "52. What is event bubbling?",
+    "answer": "Event bubbling is a type of event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors (parents) of the target element in the same nesting hierarchy till it reaches the outermost DOM element.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 53,
+    "question": "53. What is event capturing?",
+    "answer": "Event capturing is a type of event propagation where the event is first captured by the outermost element, and then successively triggers on the descendants (children) of the target element in the same nesting hierarchy till it reaches the innermost DOM element.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 54,
+    "question": "54. What are the various array methods in javascript?",
+    "answer": "toString(), join(), at(), pop(), push(), shift(), unshift(), concat(), copyWithin(), flat(), fill() and many more.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 55,
+    "question": "55. What are the differences between some and every in javascript?",
+    "answer": "some(): will check if atleast one of the element in the array satisfies the specified condition. every(): will check if all the elements of the array satisfies the specified condition.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 56,
+    "question": "56. What are the different types of errors in javascript?",
+    "answer": "Syntax errors, Reference errors, Type errors, Range errors, Eval or Evaluation errors, URI errors.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 57,
+    "question": "57. What is tree shaking in javascript?",
+    "answer": "It is one of the optimization technique in javascript which removes the unused code from the bundle during the build process.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 58,
+    "question": "58. What is prototype inheritance in javascript?",
+    "answer": "Prototype inheritance in javascript is the linking of prototypes of a parent object to a child object so that we can share and utilize the properties of a parent class using a child class.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 59,
+    "question": "59. What are the differences between fetch and axios?",
+    "answer": "fetch is inbuilt webapi method present in most of the modern browsers where as axios is a third party library is built on top of XMLHttpRequest object. axios performs automatic parsing of response data where as in fetch we need to manually parse the response data.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 60,
+    "question": "60. What are DRY, KISS, YAGNI, SOLID Principles?",
+    "answer": "DRY: Do not repeat yourself. KISS: Keep it simple stupid. YAGNI: You are not going to need it. SOLID: Single responsibility, Open/Closed principle, Liskov Substitution, Interface segregation, Dependency inversion.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 61,
+    "question": "61. What is Babel?",
+    "answer": "Babel is a javascript compiler which is used to convert the modern javascript code into the version that is understandable by all the modern and older browsers.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 62,
+    "question": "62. What are the main advantages of arrow functions?",
+    "answer": "Arrow functions allow us to write shorter and concise syntax and reduces the size of code. It increases the readability of the code. Arrow functions will solve the common pain points of this binding in traditional funtional expressions.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 63,
+    "question": "63. What is clearInterval in javascript?",
+    "answer": "This method takes the interval ID returned by setInterval as an argument and stops the corresponding interval from executing further.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 64,
+    "question": "64. What are webworkers and give an example?",
+    "answer": "Webworkers allows us to run the javascript code in the background with out blocking the main thread of the web application.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 65,
+    "question": "65. What are the differences between ^ and ~ symbol in package.json?",
+    "answer": "Caret (^) allows updates to the most recent minor version. Tilde (~) allows updates to the most recent patch version.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 66,
+    "question": "66. Plain javascript basic questions?",
+    "answer": "Write code to change style of div, Write code to add class to div",
+    "difficulty": "easy"
+  },
+  {
+    "id": 67,
+    "question": "67. Is javascript synchronous or asynchronous and single threaded or multithreaded?",
+    "answer": "Javascript is a synchronous single threaded language. However, javascript has can handle asynchronous operations using mechanisms like callbacks, promises and async/await.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 68,
+    "question": "68. Output based questions",
+    "answer": "Various output prediction questions testing JavaScript fundamentals.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 69,
+    "question": "69. Problem solving questions",
+    "answer": "Various algorithmic and problem solving questions in JavaScript.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 70,
+    "question": "70. Reactjs Interview questions",
+    "answer": "Questions about React fundamentals and concepts.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 71,
+    "question": "71. What is React?",
+    "answer": "React is an opensource component based JavaScript library which is used to develop interactive user interfaces.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 72,
+    "question": "72. What are the features of React?",
+    "answer": "Jsx, Virtual dom, one way data binding, Uses reusable components to develop the views, Supports server side rendering.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 73,
+    "question": "73. What is JSX?",
+    "answer": "JSX means javascript xml. It allows the user to write the code similar to html in their javascript files. This jsx will be transpiled into javascript that interacts with the browser when the application is built.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 74,
+    "question": "74. What is DOM?",
+    "answer": "DOM means document object model. It is like a tree like structure that represents the elements of a webpage.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 75,
+    "question": "75. What is Virtual Dom?",
+    "answer": "When ever any underlying data changes or whenever user enters something in textbox then entire UI is rerendered in a virtual dom representation. Now this virtual dom is compared with the original dom and creates a changeset which will be applied on the real dom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 76,
+    "question": "76. What is state in Reactjs?",
+    "answer": "State is an object which holds the data related to a component that may change over the lifetime of a component. When the state changes, the component re-renders.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 77,
+    "question": "77. What is the purpose of callback function as an argument of setState()?",
+    "answer": "If we want to execute some logic once state is updated and component is rerendered then we can add it in callback function.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 78,
+    "question": "78. What are props?",
+    "answer": "Props are inputs to the component. They are used to send data from parent component to child component. Props are immutable, so they cannot be modified directly within the child component.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 79,
+    "question": "79. What are the differences between State and Props in react?",
+    "answer": "Both props and state are used to manage the data of a component. State is used to hold the data of a component whereas props are used to send data from one component to another component. State is mutable but props are immutable.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 80,
+    "question": "80. What is props drilling?",
+    "answer": "Props drilling is the process of sending the data from one component to the component thats needs the data from several interconnected components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 81,
+    "question": "81. What are the disadvantages of props drilling and How we can avoid props drilling?",
+    "answer": "Disadvantages: Code complexity, Reduced maintainability, Increased risk of errors, Performance overhead. We can avoid props drilling using context api or Redux or by using any state management libraries.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 82,
+    "question": "82. What is useReducer hook?",
+    "answer": "It is an alternative to useState hook which is used when state of the component is complex and requires more than one state variable.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 83,
+    "question": "83. What is useMemo?",
+    "answer": "useMemo is useful for performance optimization in react. It is used to cache the result of a function between re-renders.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 84,
+    "question": "84. What is useCallback?",
+    "answer": "useCallback caches the function defination between the re-renders. It takes two arguments: the callback function and an array of dependencies.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 85,
+    "question": "85. What are the differences between useMemo and useCallback?",
+    "answer": "Both useMemo and useCallback are useful for performance optimization. useMemo will cache the result of the function between re-renders whereas useCallback will cache the function itself between re-renders.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 86,
+    "question": "86. Which lifecycle hooks in class component are replaced with useEffect in functional components?",
+    "answer": "componentDidMount(): equivalent to useEffect with empty array. componentDidUpdate(): equivalent to useEffect with array of dependencies. componentDidUnmount(): equivalent to useEffect with return statement.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 87,
+    "question": "87. What is component life cycle of React class component?",
+    "answer": "React life cycle consists of 3 phases: mounting, updating, unmounting. Mounting includes constructor, getDerivedStateFromProps, render, componentDidMount. Updating includes shouldComponentUpdate, getSnapshotBeforeUpdate, componentDidUpdate. Unmounting includes componentWillUnmount.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 88,
+    "question": "88. What are keys in React?",
+    "answer": "Keys are used to uniquely identify the elements in the list. react will use this to indentify, which elements in the list have been added, removed or updated.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 89,
+    "question": "89. What are fragments in react?",
+    "answer": "React fragments allows us to wrap or group multiple elements without adding extra nodes to the dom.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 90,
+    "question": "90. What are Pure components in React?",
+    "answer": "A component which renders the same output for the same props and state is called as pure component. It internally implements shouldComponentUpdate lifecycle method and performs a shallow comparision on the props and state of the component.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 91,
+    "question": "91. What are the differences between controlled and uncontrolled components?",
+    "answer": "Controlled components: In controlled components, the form data is handled by the react component. We use event handlers to update the state. React state is the source of truth. Uncontrolled components: In uncontrolled components, the form data is handled by the dom. We use Ref's to update the state. Dom is the source of truth.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 92,
+    "question": "92. What are Ref's in React?",
+    "answer": "ref's are the way to access the dom elements created in the render method. they are helpful when we want to update the component whith out using state and props and prevents triggering rerender.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 93,
+    "question": "93. What is meant by forward ref?",
+    "answer": "In React, forwardref is a technique which is used to send the ref from parent component to one of its children. This is helpful when we want to access the child component dom node from the parent component.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 94,
+    "question": "94. What are Error boundaries?",
+    "answer": "Error boundaries are one of the feature in react which allows the developers to catch the errors during the rendering of component tree, log those erros and handle those errors without crashing the entire application by displaying a fallback ui.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 95,
+    "question": "95. What are Higher order components in react?",
+    "answer": "Higher order component is a function which takes the component as an argument and returns a new component that wraps the original component.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 96,
+    "question": "96. What is Lazy loading in React?",
+    "answer": "It is a technique used to improve the performance of a webapplication by splitting the code into smaller chunks and loading them only when its required intead of loading on initial load.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 97,
+    "question": "97. What is suspense in React?",
+    "answer": "The lazy loaded components are wrapped by Suspense. The Suspense component receives a fallback prop which is displayed until the lazy loaded component in rendered.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 98,
+    "question": "98. What are custom hooks?",
+    "answer": "Custom hooks helps us to extract and reuse the stateful logic between components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 99,
+    "question": "99. What is context api in react?",
+    "answer": "Context api is a feature in react by using which we can share the data across the application with out having to pass the data manually through every level of component tree. It solves the problem of props drilling in react.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 100,
+    "question": "100. Give an example of context api usage?",
+    "answer": "Example: Once user loggedin, I wanted to share the user information between the components. We need to create a context using createContext method, wrap the root level component with provider and pass the data, then use useContext to consume the data.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 101,
+    "question": "101. What is Strict mode in react?",
+    "answer": "It identifies the commonly occured bugs in the development time itself. Checks if there are any depricated apis usage. Checks for deprecated lifecycle methods. Checks if Duplicate keys in list. Warns about Possible memory leaks.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 102,
+    "question": "102. What are the different ways to pass data from child component to parent component in react?",
+    "answer": "There are 4 common ways to send data from child component to parent component: Callback functions, useRef, Context API, Redux.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 103,
+    "question": "103. How do you optimize your react application?",
+    "answer": "Code Splitting, Lazy Loading, Caching and Memoization, Optimized Rendering, Virtualization, Server-Side Rendering (SSR), Bundle Analysis, Performance Monitoring, Optimize rendering with keys, CDN Integration.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 104,
+    "question": "104. What are Portals in react?",
+    "answer": "Portals are the way to render the child components outside of the parent's dom hierarchy. We mainly need portals when a React parent component has a hidden value of overflow property or z-index style, and we need a child component to openly come out of the current tree hierarchy.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 105,
+    "question": "105. What are synthetic events in react?",
+    "answer": "Synthetic events are the wrapper around native browser events. By using this react will remove browser inconsistencies and provides a unified api interface for event handling. They optimise the performance by event pooling and reusing event objects.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 106,
+    "question": "106. What are the difference between Package.json and Package.lock.json?",
+    "answer": "Package.json: is a metadata file that contains information about your project and the list of dependencies required for your project to run. Package.lock.json: is a file that npm generates after installing packages for your project containing detailed description of the dependencies installed.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 107,
+    "question": "107. What are the differences between client side and server side rendering?",
+    "answer": "Rendering location: In csr, rendering occurs on the client side. In ssr, rendering occurs on server side. Initial Load time: csr has slow initial load time. ssr has faster initial load times. Subsequent interactions: csr involves dynamic updates. ssr requires full page reload. Seo: Ssr is seo friendly when compared to csr.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 108,
+    "question": "108. What is react-router?",
+    "answer": "React-router is a javascript library which is used to implement routing in react applications. It allows us to navigate between views or pages with out refreshing the page.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 109,
+    "question": "109. What are protected routes in react?",
+    "answer": "By using the protected routes, we can define which users/user roles have access to specific routes or components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 110,
+    "question": "110. What is the difference between useEffect and useLayoutEffect?",
+    "answer": "useEffect is asynchronous where as useLayoutEffect is synchronous. useLayoutEffect runs after browser calculation of dom measurements and before browser repaints the screen whereas useEffect runs parallely.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 111,
+    "question": "111. Practical question: How to send data from child to parent using callback functions?",
+    "answer": "Define a function in the parent component that takes data as an argument. Pass this function as a prop to the child component. When an event occurs in the child component, call this function with the data to be passed to the parent.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 112,
+    "question": "112. Practical question: How to send the data from child component to parent using useRef?",
+    "answer": "It is used to store the data without re-rendering the components. It will not trigger any event by itself whenever the data is updated.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 113,
+    "question": "113. Practical question: Create a increment decrement counter using useReducer hook in react?",
+    "answer": "Create initial state, reducer function that handles increment and decrement actions, and use useReducer hook to manage state.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 114,
+    "question": "114. Practical question: create a custom hook for increment/decrement counter?",
+    "answer": "Create a custom hook that returns counter state, increment and decrement functions, then utilize this hook in components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 115,
+    "question": "115. Machine coding question: Dynamic checkbox counter",
+    "answer": "Display 4 checkboxes with different names and a button named selectall. User can select each checkbox. Select all button click will check all checkboxes. Button should be disabled once all checkboxes are selected. Display selected checkboxes count and names in ui.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 116,
+    "question": "116. Create a nested circles based on user input",
+    "answer": "Create App component and circle component. We will use recursion concept to achieve nested circles based on user input number.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 117,
+    "question": "117. What are the various design patterns in react?",
+    "answer": "Compound pattern, HOC Pattern, Render props pattern, Container/Presentational pattern.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 118,
+    "question": "118. What is compound pattern?",
+    "answer": "By using this compound pattern we will create multiple components that work together to perform a single task. We can achieve this using context api.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 119,
+    "question": "119. What is render props pattern?",
+    "answer": "With the Render Props pattern, we pass components as props to other components. The components that are passed as props can in turn receive props from that component.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 120,
+    "question": "120. What is Container/Presentational pattern?",
+    "answer": "It enforces separation of concerns by separating the view from the application logic. Presentational Component cares about how data is shown to the user. Container Component cares about what data is shown to the user.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 121,
+    "question": "121. What is React.memo?",
+    "answer": "React.memo is a Higher order component provided by react that memoizes the functional components. It caches the result of component's rendering and rerenders the component only when the props have changed.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 122,
+    "question": "122. Differences between dependencies and devdependencies?",
+    "answer": "dependencies: These are the packages that your project needs to run in production. devDependencies: These packages are only needed during the development phase.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 123,
+    "question": "123. What is the output of 3+2+'7'?",
+    "answer": "57",
+    "difficulty": "easy"
+  },
+  {
+    "id": 124,
+    "question": "124. What is the output of below logic? const a = 1<2<3; const b = 1>2>3; console.log(a,b)",
+    "answer": "true, false",
+    "difficulty": "medium"
+  },
+  {
+    "id": 125,
+    "question": "125. Guess the ouput? const p = { k: 1, l: 2 }; const q = { k: 1, l: 2 }; let isEqual = p==q; let isStartEqual = p=== q; console.log(isEqual, isStartEqual)",
+    "answer": "False, False",
+    "difficulty": "easy"
+  },
+  {
+    "id": 126,
+    "question": "126. Guess the output? a) 2+2 = ? b) '2'+'2' = ? c) 2+2-2 = ? d) '2'+'2'-'2' = ? e) 4+'2'+2+4+'25'+2+2 ?",
+    "answer": "a) 4, b) '22', c) 2, d) 20, e) '42242522'",
+    "difficulty": "medium"
+  },
+  {
+    "id": 127,
+    "question": "127. What is the output of below logic? let a = 'jscafe' a[0] = 'c' console.log(a)",
+    "answer": "jscafe",
+    "difficulty": "easy"
+  },
+  {
+    "id": 128,
+    "question": "128. Output of below logic? var x=10; function foo(){ var x = 5; console.log(x) } foo(); console.log(x)",
+    "answer": "5 and 10",
+    "difficulty": "easy"
+  },
+  {
+    "id": 129,
+    "question": "129. Guess the output? console.log('Start'); setTimeout(() => { console.log('Timeout'); }); Promise.resolve().then(() => console.log('Promise')); console.log('End');",
+    "answer": "Start, End, Promise, Timeout",
+    "difficulty": "hard"
+  },
+  {
+    "id": 130,
+    "question": "130. This code prints 6 everytime. How to print 1,2,3,4,5,6? function x(){ for(var i=1;i<=5;i++){ setTimeout(()=>{ console.log(i) },i*1000) } } x();",
+    "answer": "Either use let or closure to capture the current value of i in each iteration.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 131,
+    "question": "131. What will be the output or below code? function x(){ let a = 10; function d(){ console.log(a); } a = 500; return d; } var z = x(); z();",
+    "answer": "500 - Closures concept",
+    "difficulty": "hard"
+  },
+  {
+    "id": 132,
+    "question": "132. What's the output of below logic? getData1() getData(); function getData1(){ console.log('getData11') } var getData = () => { console.log('Hello') }",
+    "answer": "ReferenceError or TypeError depending on declaration",
+    "difficulty": "hard"
+  },
+  {
+    "id": 133,
+    "question": "133. Whats the output of below code? function func() { try { console.log(1) return } catch (e) { console.log(2) } finally { console.log(3) } console.log(4) } func()",
+    "answer": "1 & 3",
+    "difficulty": "medium"
+  },
+  {
+    "id": 134,
+    "question": "134. What's the output of below code? const nums = [1,2,3,4,5,6,7]; nums.forEach((n) => { if(n%2 === 0) { break; } console.log(n); });",
+    "answer": "SyntaxError - break cannot be used in forEach",
+    "difficulty": "medium"
+  },
+  {
+    "id": 135,
+    "question": "135. Whats the output of below code? let a = true; setTimeout(() => { a = false; }, 2000) while(a) { console.log(' -- inside whilee -- '); }",
+    "answer": "Infinite loop",
+    "difficulty": "hard"
+  },
+  {
+    "id": 136,
+    "question": "136. Whats the output of below code? setTimeout(() => console.log(1), 0); console.log(2); new Promise(res => { console.log(3) res(); }).then(() => console.log(4)); console.log(5);",
+    "answer": "2, 3, 5, 4, 1",
+    "difficulty": "hard"
+  },
+  {
+    "id": 137,
+    "question": "137. Output of below logic? async function foo() { console.log('A'); await Promise.resolve(); console.log('B'); await new Promise(resolve => setTimeout(resolve, 0)); console.log('C'); } console.log('D'); foo(); console.log('E')",
+    "answer": "D, A, E, B, C",
+    "difficulty": "hard"
+  },
+  {
+    "id": 138,
+    "question": "138. Guess the output? let output = (function(x){ delete x; return x; })(3); console.log(output);",
+    "answer": "3",
+    "difficulty": "medium"
+  },
+  {
+    "id": 139,
+    "question": "139. Guess the output of below code? for (var i = 0; i < 3; i++) { setTimeout(function () { console.log(i); }, 1000 + i); }",
+    "answer": "3, 3, 3",
+    "difficulty": "hard"
+  },
+  {
+    "id": 140,
+    "question": "140. Guess the output? let output = (function(x){ delete x; return x; })(3); console.log(output);",
+    "answer": "3",
+    "difficulty": "medium"
+  },
+  {
+    "id": 141,
+    "question": "141. Guess the output? let c=0; let id = setInterval(() => { console.log(c++) },10) setTimeout(() => { clearInterval(id) },2000)",
+    "answer": "Prints numbers from 0 to approximately 199 with 10ms intervals, then stops",
+    "difficulty": "medium"
+  },
+  {
+    "id": 142,
+    "question": "142. What would be the output of following code? function getName1(){ console.log(this.name); } Object.prototype.getName2 = () =>{ console.log(this.name) } let personObj = { name:'Tony', print:getName1 } personObj.print(); personObj.getName2();",
+    "answer": "Tony, undefined",
+    "difficulty": "hard"
+  },
+  {
+    "id": 143,
+    "question": "143. What would be the output of following code? function test() { console.log(a); console.log(foo()); var a = 1; function foo() { return 2; } } test();",
+    "answer": "undefined and 2",
+    "difficulty": "medium"
+  },
+  {
+    "id": 144,
+    "question": "144. What is the output of below logic? function job(){ return new Promise((resolve,reject)=>{ reject() }) } let promise = job(); promise.then(()=>{ console.log('1111111111') }).then(()=>{ console.log('22222222222') }).catch(()=>{ console.log('3333333333') }).then(()=>{ console.log('4444444444') })",
+    "answer": "3333333333, 4444444444",
+    "difficulty": "hard"
+  },
+  {
+    "id": 145,
+    "question": "145. Guess the output? var a = 1; function data() { if(!a) { var a = 10; } console.log(a); } data(); console.log(a);",
+    "answer": "10, 1",
+    "difficulty": "medium"
+  },
+  {
+    "id": 146,
+    "question": "146. Tests your array basics? function guessArray() { let a = [1, 2]; let b = [1, 2]; console.log(a == b); console.log(a === b); } guessArray();",
+    "answer": "false, false",
+    "difficulty": "easy"
+  },
+  {
+    "id": 147,
+    "question": "147. Test your basics on comparision? let a = 3; let b = new Number(3); let c = 3; console.log(a == b); console.log(a === b); console.log(b === c);",
+    "answer": "true, false, false",
+    "difficulty": "medium"
+  },
+  {
+    "id": 148,
+    "question": "148. Guess the output? var x = 23; (function(){ var x = 43; (function random(){ x++; console.log(x); var x = 21; })(); })();",
+    "answer": "NaN",
+    "difficulty": "hard"
+  },
+  {
+    "id": 149,
+    "question": "149. Answer below queries on typeOf operator in javascript?",
+    "answer": "typeof [1,2,3,4] -> object, typeof null -> object, typeof NaN -> number, typeof 1234n -> bigint, typeof 3.14 -> number, typeof Symbol() -> symbol, typeof 'John' -> string, typeof 33 -> number, typeof true -> boolean, typeof undefined -> undefined",
+    "difficulty": "easy"
+  },
+  {
+    "id": 150,
+    "question": "150. Can you find is there any security issue in the javascript code? const data = await fetch('api'); const div = document.getElementById('todo') div.innerHTML = data;",
+    "answer": "Cross-Site Scripting (XSS) vulnerability - data from API is directly assigned to innerHTML without sanitization",
+    "difficulty": "medium"
+  },
+  {
+    "id": 151,
+    "question": "151. Write a program to remove duplicates from an array?",
+    "answer": "Using Set: return Array.from(new Set(arr)); or using filter with indexOf",
+    "difficulty": "easy"
+  },
+  {
+    "id": 152,
+    "question": "152. Write a JavaScript function that takes an array of numbers and returns a new array with only the even numbers.",
+    "answer": "Use filter method: return arr.filter(num => num % 2 === 0);",
+    "difficulty": "easy"
+  },
+  {
+    "id": 153,
+    "question": "153. How to check whether a string is palindrome or not?",
+    "answer": "Compare characters from start and end moving towards center, or reverse string and compare with original",
+    "difficulty": "easy"
+  },
+  {
+    "id": 154,
+    "question": "154. Find the factorial of given number?",
+    "answer": "Use recursion: if (num == 0 || num == 1) return 1; else return num * findFactorial(num - 1);",
+    "difficulty": "easy"
+  },
+  {
+    "id": 155,
+    "question": "155. Program to find longest word in a given sentence?",
+    "answer": "Split sentence into words, iterate through words and track the longest one",
+    "difficulty": "easy"
+  },
+  {
+    "id": 156,
+    "question": "156. Write a JavaScript program to find the maximum number in an array.",
+    "answer": "Use Math.max with spread operator: Math.max(...arr) or iterate and compare",
+    "difficulty": "easy"
+  },
+  {
+    "id": 157,
+    "question": "157. Write a JavaScript function to check if a given number is prime.",
+    "answer": "Check divisibility from 2 to square root of the number",
+    "difficulty": "medium"
+  },
+  {
+    "id": 158,
+    "question": "158. Program to find Reverse of a string without using built-in method?",
+    "answer": "Iterate from end to start and build reversed string",
+    "difficulty": "easy"
+  },
+  {
+    "id": 159,
+    "question": "159. Find the smallest word in a given sentence?",
+    "answer": "Split sentence into words, iterate through words and track the smallest one",
+    "difficulty": "easy"
+  },
+  {
+    "id": 160,
+    "question": "160. Write a function sumOfThirds(arr), which takes an array arr as an argument. This function should return a sum of every third number in the array, starting from the first one.",
+    "answer": "Use for loop with step of 3: for (let i = 0; i < arr.length; i += 3) { sum += arr[i]; }",
+    "difficulty": "medium"
+  },
+  {
+    "id": 161,
+    "question": "161. Write a JavaScript function that returns the Fibonacci sequence up to a given number of terms.",
+    "answer": "Use iterative approach with array [0,1] and loop to calculate next Fibonacci numbers",
+    "difficulty": "medium"
+  },
+  {
+    "id": 162,
+    "question": "162. Find the max count of consecutive 1's in an array?",
+    "answer": "Iterate through array, track current consecutive count and max count",
+    "difficulty": "medium"
+  },
+  {
+    "id": 163,
+    "question": "163. Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them and sort [0,3,4,4,6,30,31]?",
+    "answer": "Use two pointers approach to merge sorted arrays efficiently",
+    "difficulty": "medium"
+  },
+  {
+    "id": 164,
+    "question": "164. Create a function which will accepts two arrays arr1 and arr2. The function should return true if every value in arr1 has its corresponding value squared in array2. The frequency of values must be same.",
+    "answer": "Use frequency counter pattern with objects to count occurrences",
+    "difficulty": "medium"
+  },
+  {
+    "id": 165,
+    "question": "165. Given two strings. Find if one string can be formed by rearranging the letters of other string.",
+    "answer": "Use frequency counter pattern with objects to count character frequencies",
+    "difficulty": "medium"
+  },
+  {
+    "id": 166,
+    "question": "166. Write logic to get unique objects from below array? I/P: [{name: 'sai'},{name:'Nang'},{name: 'sai'},{name:'Nang'},{name: '111111'}]; O/P: [{name: 'sai'},{name:'Nang'}{name: '111111'}]",
+    "answer": "Use Map or object to track seen names and filter duplicates",
+    "difficulty": "medium"
+  },
+  {
+    "id": 167,
+    "question": "167. Write a JavaScript program to find the largest element in a nested array.",
+    "answer": "Use recursive function to traverse nested arrays and find maximum",
+    "difficulty": "hard"
+  },
+  {
+    "id": 168,
+    "question": "168. Given a string, write a javascript function to count the occurrences of each character in the string.",
+    "answer": "Use object to store character counts: charCount[char] = (charCount[char] || 0) + 1;",
+    "difficulty": "easy"
+  },
+  {
+    "id": 169,
+    "question": "169. Write a javascript function that sorts an array of numbers in ascending order.",
+    "answer": "Implement quick sort, merge sort or use built-in sort method",
+    "difficulty": "medium"
+  },
+  {
+    "id": 170,
+    "question": "170. Write a javascript function that sorts an array of numbers in descending order.",
+    "answer": "Implement sorting algorithm with reverse comparison or sort ascending then reverse",
+    "difficulty": "medium"
+  },
+  {
+    "id": 171,
+    "question": "171. Write a javascript function that reverses the order of words in a sentence without using the built-in reverse() method.",
+    "answer": "Split sentence into words, then build reversed sentence by prepending words",
+    "difficulty": "medium"
+  },
+  {
+    "id": 172,
+    "question": "172. Implement a javascript function that flattens a nested array into a single-dimensional array.",
+    "answer": "Use recursive approach or iterative approach with stack",
+    "difficulty": "medium"
+  },
+  {
+    "id": 173,
+    "question": "173. Write a function which converts string input into an object? stringToObject('a.b.c', 'someValue'); output -> {a: {b: {c: 'someValue'}}}",
+    "answer": "Split string by dots, then recursively build nested object",
+    "difficulty": "hard"
+  },
+  {
+    "id": 174,
+    "question": "174. Given an array, return an array where the each value is the product of the next two items: E.g. [3, 4, 5] -> [20, 15, 12]",
+    "answer": "Handle edge cases and use modulo for circular reference",
+    "difficulty": "medium"
+  },
+  {
+    "id": 175,
+    "question": "175. Find the 2nd largest element from a given array? [100,20,112,22]",
+    "answer": "Track largest and second largest while iterating through array",
+    "difficulty": "medium"
+  },
+  {
+    "id": 176,
+    "question": "176. Program challenge: Find the pairs from given input? input1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]; input2 = 10; output = [[4, 6], [3, 7], [2, 8], [1, 9]]",
+    "answer": "Use Set to track seen numbers and find complements",
+    "difficulty": "medium"
+  },
+  {
+    "id": 177,
+    "question": "177. Write a javascript program to get below output from given input? I/P: abbcccddddeea O/P: 1a2b3c4d2e1a",
+    "answer": "Use run-length encoding algorithm",
+    "difficulty": "medium"
+  },
+  {
+    "id": 178,
+    "question": "178. What is React?",
+    "answer": "React is an opensource component based JavaScript library which is used to develop interactive user interfaces.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 179,
+    "question": "179. What are the features of React?",
+    "answer": "Jsx, Virtual dom, one way data binding, Uses reusable components to develop the views, Supports server side rendering.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 180,
+    "question": "180. What is JSX?",
+    "answer": "JSX means javascript xml. It allows the user to write the code similar to html in their javascript files.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 181,
+    "question": "181. What is DOM?",
+    "answer": "DOM means document object model. It is like a tree like structure that represents the elements of a webpage.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 182,
+    "question": "182. What is Virtual Dom?",
+    "answer": "Virtual DOM is a representation of the actual DOM. When state changes, React creates a new virtual DOM, compares it with previous one, and efficiently updates the actual DOM.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 183,
+    "question": "183. What is state in Reactjs?",
+    "answer": "State is an object which holds the data related to a component that may change over the lifetime of a component.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 184,
+    "question": "184. What is the purpose of callback function as an argument of setState()?",
+    "answer": "To execute code after the state has been updated and component has re-rendered.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 185,
+    "question": "185. What are props?",
+    "answer": "Props are inputs to components. They are used to pass data from parent to child components and are immutable.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 186,
+    "question": "186. What are the differences between State and Props in react?",
+    "answer": "State is mutable and managed within component, props are immutable and passed from parent.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 187,
+    "question": "187. What is props drilling?",
+    "answer": "Passing props through multiple levels of components to reach a deeply nested component.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 188,
+    "question": "188. What are the disadvantages of props drilling and How we can avoid props drilling?",
+    "answer": "Disadvantages: Code complexity, reduced maintainability. Avoid using: Context API, Redux, state management libraries.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 189,
+    "question": "189. What is useReducer hook?",
+    "answer": "Alternative to useState for complex state logic, uses reducer function similar to Redux.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 190,
+    "question": "190. What is useMemo?",
+    "answer": "Hook that memoizes expensive computations to optimize performance.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 191,
+    "question": "191. What is useCallback?",
+    "answer": "Hook that memoizes callback functions to prevent unnecessary re-renders.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 192,
+    "question": "192. What are the differences between useMemo and useCallback?",
+    "answer": "useMemo memoizes values, useCallback memoizes functions.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 193,
+    "question": "193. Which lifecycle hooks in class component are replaced with useEffect in functional components?",
+    "answer": "componentDidMount, componentDidUpdate, componentWillUnmount are replaced by useEffect.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 194,
+    "question": "194. What is component life cycle of React class component?",
+    "answer": "Three phases: Mounting, Updating, Unmounting with respective lifecycle methods.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 195,
+    "question": "195. What are keys in React?",
+    "answer": "Special attribute for identifying which items have changed, been added or removed.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 196,
+    "question": "196. What are fragments in react?",
+    "answer": "Allow grouping of elements without adding extra nodes to DOM.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 197,
+    "question": "197. What are Pure components in React?",
+    "answer": "Components that implement shouldComponentUpdate with shallow prop and state comparison.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 198,
+    "question": "198. What are the differences between controlled and uncontrolled components?",
+    "answer": "Controlled: Form data handled by React state. Uncontrolled: Form data handled by DOM.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 199,
+    "question": "199. What are Ref's in React?",
+    "answer": "Way to access DOM elements or React elements created in render method.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 200,
+    "question": "200. What is meant by forward ref?",
+    "answer": "Technique for passing ref through a component to one of its children.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 201,
+    "question": "201. What are Error boundaries?",
+    "answer": "React components that catch JavaScript errors anywhere in their child component tree.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 202,
+    "question": "202. What are Higher order components in react?",
+    "answer": "Functions that take a component and return a new component with enhanced functionality.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 203,
+    "question": "203. What is Lazy loading in React?",
+    "answer": "Technique for loading components only when they are needed.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 204,
+    "question": "204. What is suspense in React?",
+    "answer": "Component for handling loading states in lazy loaded components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 205,
+    "question": "205. What are custom hooks?",
+    "answer": "JavaScript functions that use React hooks and allow stateful logic to be reused.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 206,
+    "question": "206. What is context api in react?",
+    "answer": "Feature for sharing data across component tree without prop drilling.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 207,
+    "question": "207. Give an example of context api usage?",
+    "answer": "Creating UserContext for sharing user data across components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 208,
+    "question": "208. What is Strict mode in react?",
+    "answer": "Tool for highlighting potential problems in application during development.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 209,
+    "question": "209. What are the different ways to pass data from child component to parent component in react?",
+    "answer": "Callback functions, useRef, Context API, Redux.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 210,
+    "question": "210. How do you optimize your react application?",
+    "answer": "Code splitting, lazy loading, memoization, virtualization, SSR, bundle analysis.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 211,
+    "question": "211. What are Portals in react?",
+    "answer": "Way to render children into a DOM node that exists outside the DOM hierarchy of parent component.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 212,
+    "question": "212. What are synthetic events in react?",
+    "answer": "Cross-browser wrapper around browser's native event system.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 213,
+    "question": "213. What are the difference between Package.json and Package.lock.json?",
+    "answer": "Package.json defines dependencies, package-lock.json locks exact versions.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 214,
+    "question": "214. What are the differences between client side and server side rendering?",
+    "answer": "CSR renders in browser, SSR renders on server. Different performance and SEO characteristics.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 215,
+    "question": "215. What is react-router?",
+    "answer": "Library for handling routing in React applications.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 216,
+    "question": "216. What are protected routes in react?",
+    "answer": "Routes that require authentication/authorization to access.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 217,
+    "question": "217. What is the difference between useEffect and useLayoutEffect?",
+    "answer": "useEffect is asynchronous, useLayoutEffect is synchronous and runs before browser paint.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 218,
+    "question": "218. Practical question: How to send data from child to parent using callback functions?",
+    "answer": "Pass callback from parent to child, child calls callback with data.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 219,
+    "question": "219. Practical question: How to send the data from child component to parent using useRef?",
+    "answer": "Use ref to store data without triggering re-renders.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 220,
+    "question": "220. Practical question: Create a increment decrement counter using useReducer hook in react?",
+    "answer": "Implement reducer with increment/decrement actions and use useReducer hook.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 221,
+    "question": "221. Practical question: create a custom hook for increment/decrement counter?",
+    "answer": "Create hook that returns state and functions for counter operations.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 222,
+    "question": "222. Machine coding question: Dynamic checkbox counter",
+    "answer": "Implement checkbox selection with select all functionality and count display.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 223,
+    "question": "223. Create a nested circles based on user input",
+    "answer": "Use recursive component to render nested circles based on user input number.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 224,
+    "question": "224. What are the various design patterns in react?",
+    "answer": "Compound, HOC, Render props, Container/Presentational patterns.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 225,
+    "question": "225. What is compound pattern?",
+    "answer": "Pattern where multiple components work together to perform single task.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 226,
+    "question": "226. What is render props pattern?",
+    "answer": "Pattern where component receives function as prop that returns React elements.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 227,
+    "question": "227. What is Container/Presentational pattern?",
+    "answer": "Separation of logic (container) and presentation (presentational) components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 228,
+    "question": "228. What is React.memo?",
+    "answer": "Higher order component that memoizes functional components.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 229,
+    "question": "229. Differences between dependencies and devdependencies?",
+    "answer": "dependencies: production packages, devDependencies: development only packages.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 230,
+    "question": "230. What is the output of 3+2+'7'?",
+    "answer": "57",
+    "difficulty": "easy"
+  },
+  {
+    "id": 231,
+    "question": "231. What is the output of below logic? const a = 1<2<3; const b = 1>2>3; console.log(a,b)",
+    "answer": "true, false",
+    "difficulty": "medium"
+  },
+  {
+    "id": 232,
+    "question": "232. Guess the ouput? const p = { k: 1, l: 2 }; const q = { k: 1, l: 2 }; let isEqual = p==q; let isStartEqual = p=== q; console.log(isEqual, isStartEqual)",
+    "answer": "False, False",
+    "difficulty": "easy"
+  },
+  {
+    "id": 233,
+    "question": "233. Guess the output? a) 2+2 = ? b) '2'+'2' = ? c) 2+2-2 = ? d) '2'+'2'-'2' = ? e) 4+'2'+2+4+'25'+2+2 ?",
+    "answer": "a) 4, b) '22', c) 2, d) 20, e) '42242522'",
+    "difficulty": "medium"
+  },
+  {
+    "id": 234,
+    "question": "234. What is the output of below logic? let a = 'jscafe' a[0] = 'c' console.log(a)",
+    "answer": "jscafe",
+    "difficulty": "easy"
+  },
+  {
+    "id": 235,
+    "question": "235. Output of below logic? var x=10; function foo(){ var x = 5; console.log(x) } foo(); console.log(x)",
+    "answer": "5 and 10",
+    "difficulty": "easy"
+  },
+  {
+    "id": 236,
+    "question": "236. Guess the output? console.log('Start'); setTimeout(() => { console.log('Timeout'); }); Promise.resolve().then(() => console.log('Promise')); console.log('End');",
+    "answer": "Start, End, Promise, Timeout",
+    "difficulty": "hard"
+  },
+  {
+    "id": 237,
+    "question": "237. This code prints 6 everytime. How to print 1,2,3,4,5,6? function x(){ for(var i=1;i<=5;i++){ setTimeout(()=>{ console.log(i) },i*1000) } } x();",
+    "answer": "Use let instead of var or use closure to capture i value.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 238,
+    "question": "238. What will be the output or below code? function x(){ let a = 10; function d(){ console.log(a); } a = 500; return d; } var z = x(); z();",
+    "answer": "500",
+    "difficulty": "hard"
+  },
+  {
+    "id": 239,
+    "question": "239. What's the output of below logic? getData1() getData(); function getData1(){ console.log('getData11') } var getData = () => { console.log('Hello') }",
+    "answer": "getData11 then TypeError",
+    "difficulty": "hard"
+  }
+]

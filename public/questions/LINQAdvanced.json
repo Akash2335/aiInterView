@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "How does LINQ improve code readability?",
+    "category": "LINQ Fundamentals",
+    "difficulty": "Beginner",
+    "answer": "LINQ improves code readability by providing a declarative syntax that closely resembles natural language, making queries more intuitive and easier to understand compared to traditional iterative approaches with loops and conditional statements."
+  },
+  {
+    "id": 2,
+    "question": "What types of data sources can LINQ query?",
+    "category": "LINQ Fundamentals",
+    "difficulty": "Beginner",
+    "answer": "LINQ can query various data sources including: in-memory objects (LINQ to Objects), databases (LINQ to SQL, Entity Framework), XML documents (LINQ to XML), datasets, and any custom data source through custom LINQ providers."
+  },
+  {
+    "id": 3,
+    "question": "How does LINQ provide type safety?",
+    "category": "LINQ Fundamentals",
+    "difficulty": "Intermediate",
+    "answer": "LINQ provides type safety through compile-time type checking, IntelliSense support, and strong typing. The compiler can detect type mismatches, invalid method calls, and property access errors before runtime, reducing runtime exceptions."
+  },
+  {
+    "id": 4,
+    "question": "When would you choose query syntax over method syntax?",
+    "category": "LINQ Syntax",
+    "difficulty": "Beginner",
+    "answer": "Query syntax is often preferred for complex joins, grouping operations, or when the query resembles SQL and is more readable. Method syntax is better for simple queries, when using lambda expressions, or when chaining multiple operations."
+  },
+  {
+    "id": 5,
+    "question": "Can you mix query and method syntax in the same query?",
+    "category": "LINQ Syntax",
+    "difficulty": "Intermediate",
+    "answer": "Yes, you can mix syntaxes by enclosing query syntax in parentheses and then chaining method syntax operations, or by using method syntax within query syntax using the let clause or other contextual methods."
+  },
+  {
+    "id": 6,
+    "question": "Which syntax has better performance?",
+    "category": "LINQ Syntax",
+    "difficulty": "Intermediate",
+    "answer": "Both syntaxes have identical performance since query syntax is compiled into method syntax during compilation. The choice should be based on readability and maintainability rather than performance concerns."
+  },
+  {
+    "id": 7,
+    "question": "What is the difference between LINQ to Objects and LINQ to SQL?",
+    "category": "LINQ Providers",
+    "difficulty": "Intermediate",
+    "answer": "LINQ to Objects queries in-memory collections using IEnumerable, while LINQ to SQL translates queries into SQL and executes them on databases using IQueryable. LINQ to Objects processes data locally, while LINQ to SQL leverages database capabilities."
+  },
+  {
+    "id": 8,
+    "question": "Can you create custom LINQ providers?",
+    "category": "LINQ Providers",
+    "difficulty": "Advanced",
+    "answer": "Yes, custom LINQ providers can be created by implementing IQueryProvider and IQueryable<T> interfaces. This allows LINQ to work with custom data sources like web services, file systems, or other non-standard data stores."
+  },
+  {
+    "id": 9,
+    "question": "How does LINQ to XML work?",
+    "category": "LINQ Providers",
+    "difficulty": "Intermediate",
+    "answer": "LINQ to XML provides in-memory XML programming interface using XDocument, XElement, and XAttribute classes. It allows querying, filtering, and transforming XML data using LINQ syntax, making XML manipulation more intuitive and type-safe."
+  },
+  {
+    "id": 10,
+    "question": "What are some methods that cause immediate execution?",
+    "category": "Execution Behavior",
+    "difficulty": "Intermediate",
+    "answer": "Methods that cause immediate execution include: ToList(), ToArray(), ToDictionary(), Count(), Sum(), Average(), First(), FirstOrDefault(), Single(), SingleOrDefault(), Any(), All(), and aggregate functions that return scalar values."
+  },
+  {
+    "id": 11,
+    "question": "Why is deferred execution important for performance?",
+    "category": "Execution Behavior",
+    "difficulty": "Intermediate",
+    "answer": "Deferred execution improves performance by delaying query execution until results are actually needed, allowing query optimization, reducing memory usage, and enabling query composition where multiple operations can be combined before execution."
+  },
+  {
+    "id": 12,
+    "question": "How can you force immediate execution?",
+    "category": "Execution Behavior",
+    "difficulty": "Beginner",
+    "answer": "Immediate execution can be forced by: calling conversion methods like ToList(), ToArray(), ToDictionary(); using aggregation methods like Count(), Sum(); or accessing elements with First(), Single(), etc. Iterating with foreach also triggers execution."
+  },
+  {
+    "id": 13,
+    "question": "When should you use IQueryable over IEnumerable?",
+    "category": "Execution Behavior",
+    "difficulty": "Advanced",
+    "answer": "Use IQueryable when working with databases to build queries that are executed on the server side. Use IEnumerable for in-memory collections. IQueryable allows query composition and translation to SQL, while IEnumerable processes data locally."
+  },
+  {
+    "id": 14,
+    "question": "How does IQueryable build expression trees?",
+    "category": "Execution Behavior",
+    "difficulty": "Advanced",
+    "answer": "IQueryable builds expression trees by capturing LINQ operations as expression objects rather than executable code. These expression trees can be analyzed, optimized, and translated into other query languages like SQL by LINQ providers."
+  },
+  {
+    "id": 15,
+    "question": "What happens when you convert IQueryable to IEnumerable?",
+    "category": "Execution Behavior",
+    "difficulty": "Intermediate",
+    "answer": "Converting IQueryable to IEnumerable using AsEnumerable() switches from server-side to client-side evaluation. Remaining operations in the query will execute locally in memory rather than being translated to SQL and executed on the database server."
+  },
+  {
+    "id": 16,
+    "question": "What happens when a LINQ method cannot be translated to SQL?",
+    "category": "LINQ to SQL",
+    "difficulty": "Intermediate",
+    "answer": "When a LINQ method cannot be translated to SQL, Entity Framework throws a runtime exception. Common causes include using unsupported .NET methods, complex calculations, or custom functions that don't have SQL equivalents."
+  },
+  {
+    "id": 17,
+    "question": "How can you check what SQL is generated from a LINQ query?",
+    "category": "LINQ to SQL",
+    "difficulty": "Intermediate",
+    "answer": "You can check generated SQL by: using SQL Server Profiler, Entity Framework logging, ToQueryString() method in EF Core, debugging tools, or by enabling logging in DbContext to output SQL statements to the console or log files."
+  },
+  {
+    "id": 18,
+    "question": "What are some common translation failures?",
+    "category": "LINQ to SQL",
+    "difficulty": "Intermediate",
+    "answer": "Common translation failures include: using unsupported string methods, complex mathematical operations, custom CLR methods, certain date operations, client-side evaluation in middle of query, and operations that require specific database functions not supported by the provider."
+  },
+  {
+    "id": 19,
+    "question": "What is the syntax for lambda expressions?",
+    "category": "Lambda Expressions",
+    "difficulty": "Beginner",
+    "answer": "Lambda expression syntax: (parameters) => expression. Example: x => x > 5 for single parameter, (x, y) => x + y for multiple parameters. For multiple statements, use braces: (x) => { return x * 2; }"
+  },
+  {
+    "id": 20,
+    "question": "How are lambda expressions different from anonymous methods?",
+    "category": "Lambda Expressions",
+    "difficulty": "Intermediate",
+    "answer": "Lambda expressions are more concise syntax for anonymous methods. They don't require explicit parameter types (type inference), can be converted to expression trees, and have more compact syntax. Anonymous methods use delegate keyword and explicit parameter types."
+  },
+  {
+    "id": 21,
+    "question": "Can lambda expressions have multiple parameters?",
+    "category": "Lambda Expressions",
+    "difficulty": "Beginner",
+    "answer": "Yes, lambda expressions can have multiple parameters by enclosing them in parentheses: (param1, param2) => expression. Example: (x, y) => x + y. Single parameters can omit parentheses: x => x * 2."
+  },
+  {
+    "id": 22,
+    "question": "What is the difference between Select and SelectMany?",
+    "category": "LINQ Methods",
+    "difficulty": "Intermediate",
+    "answer": "Select transforms each element and returns a collection of the same count. SelectMany flattens nested collections - it projects each element to a sequence and concatenates them into a single sequence, changing the element count."
+  },
+  {
+    "id": 23,
+    "question": "Can you chain multiple Where clauses?",
+    "category": "LINQ Methods",
+    "difficulty": "Beginner",
+    "answer": "Yes, you can chain multiple Where clauses and they will be combined with AND logic. Each Where adds additional filtering conditions. This is equivalent to using && operator in a single Where clause but can be more readable for complex conditions."
+  },
+  {
+    "id": 24,
+    "question": "How does Select handle null values?",
+    "category": "LINQ Methods",
+    "difficulty": "Intermediate",
+    "answer": "Select will include null values in the result if the transformation returns null. If you want to filter out nulls, you need to use Where before Select or use Select with null-conditional operators and then Where to remove nulls."
+  },
+  {
+    "id": 25,
+    "question": "How do you perform a left outer join in LINQ?",
+    "category": "Joins",
+    "difficulty": "Advanced",
+    "answer": "Left outer join can be performed using join...into followed by DefaultIfEmpty(): from left in leftTable join right in rightTable on left.Key equals right.Key into temp from result in temp.DefaultIfEmpty() select new { left, result }"
+  },
+  {
+    "id": 26,
+    "question": "What is the difference between Join and GroupJoin?",
+    "category": "Joins",
+    "difficulty": "Intermediate",
+    "answer": "Join creates a flat result with one output element for each matching pair. GroupJoin groups the right sequence elements for each left element, creating hierarchical results where each left element is paired with a collection of matching right elements."
+  },
+  {
+    "id": 27,
+    "question": "When would you use Zip instead of Join?",
+    "category": "Joins",
+    "difficulty": "Intermediate",
+    "answer": "Use Zip when you want to combine elements from two sequences based on their position (index), rather than a key. Join matches elements by key values, while Zip pairs elements by their order in the sequences, useful for parallel processing of related data."
+  },
+  {
+    "id": 28,
+    "question": "What is the null-conditional operator and how is it used in LINQ?",
+    "category": "Null Handling",
+    "difficulty": "Intermediate",
+    "answer": "The null-conditional operator (?.) and (?[]) safely access members and elements without throwing NullReferenceException. In LINQ, it's used in Select and Where to handle potential nulls: customers.Select(c => c?.Address?.City).Where(city => city != null)"
+  },
+  {
+    "id": 29,
+    "question": "How does DefaultIfEmpty handle null collections?",
+    "category": "Null Handling",
+    "difficulty": "Intermediate",
+    "answer": "DefaultIfEmpty() returns a sequence containing a single default value (null for reference types, default for value types) if the source sequence is empty. This prevents exceptions in operations like joins and ensures queries always return at least one element."
+  },
+  {
+    "id": 30,
+    "question": "What are best practices for null handling in LINQ?",
+    "category": "Null Handling",
+    "difficulty": "Intermediate",
+    "answer": "Best practices include: using null-conditional operators, filtering nulls with Where, using DefaultIfEmpty for joins, using null-coalescing operator (??) for default values, and being cautious with aggregate functions that might throw on empty collections."
+  },
+  {
+    "id": 31,
+    "question": "When would you use FirstOrDefault over First?",
+    "category": "Element Operations",
+    "difficulty": "Beginner",
+    "answer": "Use FirstOrDefault when the sequence might be empty and you want to avoid InvalidOperationException. It returns default(T) (null for reference types, zero for value types) instead of throwing when no elements are found. Use First when you expect at least one element."
+  },
+  {
+    "id": 32,
+    "question": "What exception does First() throw on empty collections?",
+    "category": "Element Operations",
+    "difficulty": "Beginner",
+    "answer": "First() throws InvalidOperationException with message 'Sequence contains no elements' when called on an empty collection. This helps catch logical errors where code assumes data exists when it doesn't."
+  },
+  {
+    "id": 33,
+    "question": "What default value does FirstOrDefault return?",
+    "category": "Element Operations",
+    "difficulty": "Beginner",
+    "answer": "FirstOrDefault returns default(T) which is null for reference types, 0 for numeric value types, false for bool, and struct default for custom value types. You can provide a custom default value using DefaultIfEmpty(customDefault).First()."
+  },
+  {
+    "id": 34,
+    "question": "How do you access the Key property in GroupBy results?",
+    "category": "Grouping",
+    "difficulty": "Intermediate",
+    "answer": "In GroupBy results, each group has a Key property representing the grouping criteria. Access it in query syntax: from g in grouped select g.Key, or in method syntax: grouped.Select(g => g.Key). The grouped elements are accessed via the group itself."
+  },
+  {
+    "id": 35,
+    "question": "Can you group by multiple properties?",
+    "category": "Grouping",
+    "difficulty": "Intermediate",
+    "answer": "Yes, group by multiple properties using anonymous types: group item by new { item.Property1, item.Property2 } or using tuples: group item by (item.Property1, item.Property2). This creates composite keys for grouping."
+  },
+  {
+    "id": 36,
+    "question": "What is the difference between GroupBy and Distinct?",
+    "category": "Grouping",
+    "difficulty": "Intermediate",
+    "answer": "GroupBy groups elements by key and returns groups with keys and elements. Distinct returns unique elements from a sequence without grouping. GroupBy preserves all original data in groups, while Distinct only returns unique values."
+  },
+  {
+    "id": 37,
+    "question": "How does Aggregate differ from Sum?",
+    "category": "Aggregation",
+    "difficulty": "Advanced",
+    "answer": "Aggregate is a general-purpose method that applies a custom accumulator function, while Sum is a specific aggregation for numeric values. Aggregate can perform any accumulation logic (concatenation, custom calculations), while Sum only adds numbers."
+  },
+  {
+    "id": 38,
+    "question": "What happens when you call Average on an empty collection?",
+    "category": "Aggregation",
+    "difficulty": "Intermediate",
+    "answer": "Calling Average on an empty collection throws InvalidOperationException. To avoid this, check if the collection has elements first: collection.Any() ? collection.Average() : 0, or use DefaultIfEmpty(0) before Average."
+  },
+  {
+    "id": 39,
+    "question": "Can you use custom aggregation logic?",
+    "category": "Aggregation",
+    "difficulty": "Advanced",
+    "answer": "Yes, use Aggregate method for custom aggregation: collection.Aggregate(seed, (acc, item) => operation). Example: numbers.Aggregate(1, (product, n) => product * n) calculates product. You can implement any custom accumulation logic."
+  },
+  {
+    "id": 40,
+    "question": "How do you sort in descending order?",
+    "category": "Sorting",
+    "difficulty": "Beginner",
+    "answer": "Use OrderByDescending for primary descending sort or ThenByDescending for subsequent sorts. In query syntax: orderby property descending. Example: products.OrderByDescending(p => p.Price) or from p in products orderby p.Price descending select p"
+  },
+  {
+    "id": 41,
+    "question": "Can you chain multiple ThenBy calls?",
+    "category": "Sorting",
+    "difficulty": "Beginner",
+    "answer": "Yes, you can chain multiple ThenBy or ThenByDescending calls to sort by multiple criteria. Example: products.OrderBy(p => p.Category).ThenBy(p => p.Price).ThenByDescending(p => p.Name). Each ThenBy applies additional sort criteria."
+  },
+  {
+    "id": 42,
+    "question": "What is the performance impact of multiple sorts?",
+    "category": "Sorting",
+    "difficulty": "Intermediate",
+    "answer": "Multiple sorts (OrderBy followed by ThenBy) are efficient as they create a composite comparer. However, chaining separate OrderBy calls (without ThenBy) will re-sort the entire collection each time, which is less efficient for large datasets."
+  },
+  {
+    "id": 43,
+    "question": "What does Any() return on an empty collection?",
+    "category": "Quantifiers",
+    "difficulty": "Beginner",
+    "answer": "Any() returns false on an empty collection since there are no elements. Any(predicate) also returns false as no elements satisfy the condition. This makes Any() useful for checking if a collection has any elements at all."
+  },
+  {
+    "id": 44,
+    "question": "What does All() return on an empty collection?",
+    "category": "Quantifiers",
+    "difficulty": "Intermediate",
+    "answer": "All(predicate) returns true on an empty collection. This is a mathematical property of universal quantification - if there are no elements, all elements (zero of them) satisfy any condition. This is called vacuous truth."
+  },
+  {
+    "id": 45,
+    "question": "How do these methods use short-circuit evaluation?",
+    "category": "Quantifiers",
+    "difficulty": "Intermediate",
+    "answer": "Any stops evaluating once it finds the first matching element. All stops once it finds the first non-matching element. This improves performance by not processing the entire collection when the result is determined early."
+  },
+  {
+    "id": 46,
+    "question": "How is SelectMany different from nested Select?",
+    "category": "Projection",
+    "difficulty": "Advanced",
+    "answer": "Nested Select returns a collection of collections (IEnumerable<IEnumerable<T>>), while SelectMany flattens the result into a single sequence (IEnumerable<T>). SelectMany is equivalent to Select followed by flattening the nested collections."
+  },
+  {
+    "id": 47,
+    "question": "When would you use SelectMany in real-world scenarios?",
+    "category": "Projection",
+    "difficulty": "Intermediate",
+    "answer": "Use SelectMany for: flattening child collections (customers.SelectMany(c => c.Orders)), cross joins, combining multiple data sources, or when you need to work with individual elements from nested collections rather than the collections themselves."
+  },
+  {
+    "id": 48,
+    "question": "Can SelectMany change the number of elements?",
+    "category": "Projection",
+    "difficulty": "Intermediate",
+    "answer": "Yes, SelectMany can change the element count. It returns one output element for each element in all the projected sequences. If each source element projects to multiple elements, the result will have more elements than the source."
+  },
+  {
+    "id": 49,
+    "question": "How does Distinct handle custom objects?",
+    "category": "Set Operations",
+    "difficulty": "Intermediate",
+    "answer": "Distinct uses the default equality comparer (Equals and GetHashCode) for custom objects. To control distinctness, override Equals and GetHashCode, or provide a custom IEqualityComparer. For anonymous types, Distinct works automatically as they implement proper equality."
+  },
+  {
+    "id": 50,
+    "question": "What is the difference between Union and Concat?",
+    "category": "Set Operations",
+    "difficulty": "Intermediate",
+    "answer": "Concat combines two sequences, including duplicates, in the order they appear. Union combines sequences and removes duplicates (like mathematical set union). Concat preserves all elements, Union ensures unique elements."
+  },
+  {
+    "id": 51,
+    "question": "When would you use Intersect vs Except?",
+    "category": "Set Operations",
+    "difficulty": "Intermediate",
+    "answer": "Use Intersect to find common elements between two sequences. Use Except to find elements in the first sequence that are not in the second sequence. Intersect returns shared elements, Except returns elements unique to the first sequence."
+  },
+  {
+    "id": 52,
+    "question": "Why is ordering important before paging?",
+    "category": "Paging",
+    "difficulty": "Intermediate",
+    "answer": "Ordering is crucial before paging to ensure consistent results across pages. Without explicit ordering, database may return rows in arbitrary order, causing inconsistent paging results and potential duplicate or missing records across pages."
+  },
+  {
+    "id": 53,
+    "question": "How do you calculate total pages?",
+    "category": "Paging",
+    "difficulty": "Beginner",
+    "answer": "Calculate total pages using: totalPages = (int)Math.Ceiling(totalCount / (double)pageSize). Example: var totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize); This ensures proper rounding up for partial pages."
+  },
+  {
+    "id": 54,
+    "question": "What are performance considerations for large datasets?",
+    "category": "Paging",
+    "difficulty": "Advanced",
+    "answer": "For large datasets: use server-side paging (Skip/Take on IQueryable), avoid counting total records frequently, use keyset pagination for better performance, and ensure proper indexing on sorted columns. Client-side paging should be avoided for large datasets."
+  },
+  {
+    "id": 55,
+    "question": "When would you use Single() over First()?",
+    "category": "Element Operations",
+    "difficulty": "Intermediate",
+    "answer": "Use Single() when you expect exactly one element and want to enforce this constraint - it throws if there are zero or multiple matches. Use First() when you want the first matching element and don't care if there are more matches."
+  },
+  {
+    "id": 56,
+    "question": "What happens if multiple elements match in SingleOrDefault?",
+    "category": "Element Operations",
+    "difficulty": "Intermediate",
+    "answer": "SingleOrDefault throws InvalidOperationException when multiple elements match, even though it allows zero matches (returning default). This ensures data integrity when you expect at most one element but find multiple."
+  },
+  {
+    "id": 57,
+    "question": "What are common use cases for Single?",
+    "category": "Element Operations",
+    "difficulty": "Intermediate",
+    "answer": "Common use cases for Single: retrieving entities by primary key, looking up unique configuration values, getting current user session, or any scenario where you expect exactly one result and multiple results indicate a data integrity issue."
+  },
+  {
+    "id": 58,
+    "question": "How does let improve query readability?",
+    "category": "Query Syntax",
+    "difficulty": "Intermediate",
+    "answer": "The let clause allows you to store intermediate results in variables within a query, making complex queries more readable by breaking them into named steps. It avoids repeating expressions and makes the query logic clearer."
+  },
+  {
+    "id": 59,
+    "question": "Can you use multiple let clauses?",
+    "category": "Query Syntax",
+    "difficulty": "Intermediate",
+    "answer": "Yes, you can use multiple let clauses in a single query. Each let can reference previous let variables, allowing you to build complex calculations step by step and improve query organization and readability."
+  },
+  {
+    "id": 60,
+    "question": "Is let available in method syntax?",
+    "category": "Query Syntax",
+    "difficulty": "Intermediate",
+    "answer": "No, let is not directly available in method syntax. However, you can achieve similar results using Select to project intermediate results or by breaking the query into multiple steps with temporary variables."
+  },
+  {
+    "id": 61,
+    "question": "How do expression trees enable IQueryable?",
+    "category": "Expression Trees",
+    "difficulty": "Advanced",
+    "answer": "Expression trees represent LINQ queries as data structures that can be analyzed at runtime. IQueryable uses expression trees to capture the entire query, which can then be translated to other query languages like SQL by LINQ providers."
+  },
+  {
+    "id": 62,
+    "question": "Can you create expression trees manually?",
+    "category": "Expression Trees",
+    "difficulty": "Advanced",
+    "answer": "Yes, you can create expression trees manually using the Expression class methods: Expression.Constant(), Expression.Parameter(), Expression.Lambda(), etc. This allows dynamic query building at runtime for advanced scenarios."
+  },
+  {
+    "id": 63,
+    "question": "What is the difference between Expression and Func?",
+    "category": "Expression Trees",
+    "difficulty": "Advanced",
+    "answer": "Expression<Func<T>> represents the query as an expression tree that can be analyzed and translated. Func<T> is a compiled delegate that executes immediately. Expression trees enable query translation, while delegates execute code directly."
+  },
+  {
+    "id": 64,
+    "question": "Where should you place try-catch blocks for LINQ?",
+    "category": "Error Handling",
+    "difficulty": "Intermediate",
+    "answer": "Place try-catch blocks around the point of query execution: when calling methods that cause immediate execution (ToList, First, etc.) or when iterating results. Don't wrap the entire query definition, as deferred execution means exceptions occur later."
+  },
+  {
+    "id": 65,
+    "question": "What exceptions are common in LINQ operations?",
+    "category": "Error Handling",
+    "difficulty": "Intermediate",
+    "answer": "Common exceptions: InvalidOperationException (empty collections with First/Single), ArgumentNullException (null collections), NotSupportedException (unsupported methods in LINQ to SQL), NullReferenceException (null elements in operations)."
+  },
+  {
+    "id": 66,
+    "question": "How do you handle null reference exceptions in lambdas?",
+    "category": "Error Handling",
+    "difficulty": "Intermediate",
+    "answer": "Use null-conditional operators (?.), null-coalescing operator (??), or filter out nulls with Where before operations. Example: collection.Where(x => x != null).Select(x => x.Property) or collection.Select(x => x?.Property ?? defaultValue)"
+  },
+  {
+    "id": 67,
+    "question": "When would you choose List over Array?",
+    "category": "Conversion Methods",
+    "difficulty": "Beginner",
+    "answer": "Choose List when you need dynamic resizing, frequent additions/removals, or LINQ methods that return lists. Use arrays for fixed-size collections, performance-critical scenarios, or when working with APIs that require arrays."
+  },
+  {
+    "id": 68,
+    "question": "What are performance differences?",
+    "category": "Conversion Methods",
+    "difficulty": "Intermediate",
+    "answer": "Arrays have slightly better performance for indexed access and fixed-size scenarios. Lists have overhead for dynamic resizing but provide more functionality. ToArray() may be faster for known sizes, while ToList() is better for unknown or changing sizes."
+  },
+  {
+    "id": 69,
+    "question": "Do both methods cause immediate execution?",
+    "category": "Conversion Methods",
+    "difficulty": "Beginner",
+    "answer": "Yes, both ToList() and ToArray() cause immediate execution of the query. They force evaluation of the entire sequence and store the results in a new list or array, breaking deferred execution."
+  },
+  {
+    "id": 70,
+    "question": "What happens when sequences have different lengths?",
+    "category": "Zip Operation",
+    "difficulty": "Intermediate",
+    "answer": "Zip stops when the shorter sequence is exhausted. It processes elements pairwise until one sequence runs out of elements. The remaining elements in the longer sequence are ignored without error."
+  },
+  {
+    "id": 71,
+    "question": "Can you Zip more than two sequences?",
+    "category": "Zip Operation",
+    "difficulty": "Intermediate",
+    "answer": "The built-in Zip only works with two sequences. To zip more sequences, chain multiple Zip calls: seq1.Zip(seq2, (a,b) => (a,b)).Zip(seq3, (ab,c) => (ab.a, ab.b, c)) or create a custom extension method for multiple sequences."
+  },
+  {
+    "id": 72,
+    "question": "What are practical use cases for Zip?",
+    "category": "Zip Operation",
+    "difficulty": "Intermediate",
+    "answer": "Practical use cases: combining parallel data streams, calculating element-wise operations, pairing related data from different sources, creating key-value pairs from separate sequences, or processing correlated datasets positionally."
+  },
+  {
+    "id": 73,
+    "question": "What's the difference between OrdinalIgnoreCase and InvariantCultureIgnoreCase?",
+    "category": "String Operations",
+    "difficulty": "Advanced",
+    "answer": "OrdinalIgnoreCase uses simple binary comparison for performance. InvariantCultureIgnoreCase uses culture-insensitive linguistic rules. For most scenarios, OrdinalIgnoreCase is preferred for performance, while InvariantCulture is for culturally consistent sorting."
+  },
+  {
+    "id": 74,
+    "question": "How do you handle case sensitivity in EF Core?",
+    "category": "String Operations",
+    "difficulty": "Intermediate",
+    "answer": "In EF Core, string comparisons are case-sensitive by default. Use StringComparison in LINQ to Objects, but for EF Core, use EF.Functions.Collate for database-level case-insensitive comparisons or store lowercased values for consistent filtering."
+  },
+  {
+    "id": 75,
+    "question": "What are performance implications?",
+    "category": "String Operations",
+    "difficulty": "Intermediate",
+    "answer": "Case-insensitive comparisons are generally slower. Database collation affects performance - use column-level collation for optimal performance. Client-side string operations force client evaluation, which can be inefficient for large datasets."
+  },
+  {
+    "id": 76,
+    "question": "How can you avoid multiple enumeration?",
+    "category": "Performance",
+    "difficulty": "Intermediate",
+    "answer": "Avoid multiple enumeration by materializing queries with ToList()/ToArray() when you need to iterate multiple times. Be cautious though - this loses deferred execution benefits. Only materialize when necessary and consider the trade-offs."
+  },
+  {
+    "id": 77,
+    "question": "What is the N+1 query problem?",
+    "category": "Performance",
+    "difficulty": "Advanced",
+    "answer": "The N+1 problem occurs when you execute one query to get N entities, then execute N additional queries to get related data for each entity. This results in N+1 database round trips instead of a single join query, causing severe performance issues."
+  },
+  {
+    "id": 78,
+    "question": "How does projection improve performance?",
+    "category": "Performance",
+    "difficulty": "Intermediate",
+    "answer": "Projection (Select) improves performance by: retrieving only needed columns from database, reducing data transfer, avoiding loading entire entities, enabling better query optimization, and reducing memory usage on both client and server."
+  },
+  {
+    "id": 79,
+    "question": "When should you switch from IQueryable to IEnumerable?",
+    "category": "Performance",
+    "difficulty": "Advanced",
+    "answer": "Switch to IEnumerable using AsEnumerable() when: you need to use client-side methods not supported by the provider, for complex processing after filtering, or when the remaining operations are more efficient in memory than translated SQL."
+  },
+  {
+    "id": 80,
+    "question": "What happens to query execution when using AsEnumerable?",
+    "category": "Performance",
+    "difficulty": "Intermediate",
+    "answer": "AsEnumerable() causes all previous operations to be executed as SQL on the server, but subsequent operations execute client-side in memory. The switch happens immediately, so plan your query composition carefully to maximize server-side processing."
+  },
+  {
+    "id": 81,
+    "question": "Can AsQueryable improve performance?",
+    "category": "Performance",
+    "difficulty": "Advanced",
+    "answer": "AsQueryable() on in-memory collections doesn't improve performance - it actually adds overhead. Its purpose is to allow uniform query syntax between in-memory and remote data sources, not for performance optimization."
+  },
+  {
+    "id": 82,
+    "question": "What is the syntax for extension methods?",
+    "category": "Custom LINQ",
+    "difficulty": "Advanced",
+    "answer": "Create static class with static methods: public static IEnumerable<T> MyMethod<T>(this IEnumerable<T> source, params). The 'this' modifier on the first parameter makes it an extension method. Follow LINQ naming and behavior patterns."
+  },
+  {
+    "id": 83,
+    "question": "Can you create custom aggregations?",
+    "category": "Custom LINQ",
+    "difficulty": "Advanced",
+    "answer": "Yes, create custom aggregation methods using Aggregate pattern or implement new methods. Example: public static T MyAggregate<T>(this IEnumerable<T> source, Func<T, T, T> func) { return source.Aggregate(func); }"
+  },
+  {
+    "id": 84,
+    "question": "How do you handle deferred execution in custom methods?",
+    "category": "Custom LINQ",
+    "difficulty": "Advanced",
+    "answer": "Use iterator methods (yield return) for deferred execution. Don't materialize the source unless necessary. Return IEnumerable<T> and use yield to maintain lazy evaluation, similar to built-in LINQ methods."
+  },
+  {
+    "id": 85,
+    "question": "When is Contains more efficient than Any?",
+    "category": "Performance",
+    "difficulty": "Intermediate",
+    "answer": "Contains is more efficient for small collections or when checking for primitive values, as it can use hash-based lookups. Any with predicate is better for complex conditions or when you need to check property values rather than the element itself."
+  },
+  {
+    "id": 86,
+    "question": "How does Contains work with custom objects?",
+    "category": "Set Operations",
+    "difficulty": "Intermediate",
+    "answer": "Contains uses the default equality comparer (Equals/GetHashCode) for custom objects. For proper behavior, override Equals and GetHashCode, or provide a custom IEqualityComparer to the Contains overload that accepts a comparer."
+  },
+  {
+    "id": 87,
+    "question": "Can you use Contains with IQueryable?",
+    "category": "LINQ to SQL",
+    "difficulty": "Intermediate",
+    "answer": "Yes, Contains can be used with IQueryable and is translated to SQL IN clause for primitive types and small collections. For large collections or complex types, it may not translate efficiently and could cause performance issues."
+  },
+  {
+    "id": 88,
+    "question": "What default value does DefaultIfEmpty use?",
+    "category": "Element Operations",
+    "difficulty": "Intermediate",
+    "answer": "DefaultIfEmpty() without parameters uses default(T) - null for reference types, zero for numeric types, false for bool. You can specify a custom default value: DefaultIfEmpty(customValue) returns a sequence containing your custom value if empty."
+  },
+  {
+    "id": 89,
+    "question": "How do you specify a custom default value?",
+    "category": "Element Operations",
+    "difficulty": "Intermediate",
+    "answer": "Use the overload: collection.DefaultIfEmpty(customDefault). This returns a sequence containing your custom value if the source is empty. Useful for providing meaningful defaults in left joins or when handling potentially empty results."
+  },
+  {
+    "id": 90,
+    "question": "Why is DefaultIfEmpty essential for left joins?",
+    "category": "Joins",
+    "difficulty": "Advanced",
+    "answer": "DefaultIfEmpty is essential for left joins because it ensures that left-side elements without matches in the right side still appear in results with null/default values for right-side properties. Without it, unmatched left elements would be excluded."
+  },
+  {
+    "id": 91,
+    "question": "What is System.Linq.Dynamic.Core?",
+    "category": "Dynamic LINQ",
+    "difficulty": "Advanced",
+    "answer": "System.Linq.Dynamic.Core is a popular NuGet package that enables dynamic LINQ queries using string-based expressions. It allows building queries at runtime without compile-time knowledge of types, useful for dynamic filtering, sorting, and projection."
+  },
+  {
+    "id": 92,
+    "question": "How do you build expression trees manually?",
+    "category": "Dynamic LINQ",
+    "difficulty": "Advanced",
+    "answer": "Build expression trees using Expression class: create parameters with Expression.Parameter, constants with Expression.Constant, operations with Expression.Add/Subtract/etc., and compile with Expression.Lambda().Compile(). Complex but powerful for dynamic queries."
+  },
+  {
+    "id": 93,
+    "question": "What are security concerns with dynamic LINQ?",
+    "category": "Dynamic LINQ",
+    "difficulty": "Advanced",
+    "answer": "Security concerns include: SQL injection-like attacks if user input is not sanitized, unintended data exposure through dynamic property access, and performance issues from poorly constructed queries. Always validate and sanitize user input in dynamic queries."
+  },
+  {
+    "id": 94,
+    "question": "How do you combine AND and OR conditions?",
+    "category": "Dynamic Queries",
+    "difficulty": "Advanced",
+    "answer": "Combine AND/OR by building expression trees with Expression.AndAlso/OrElse, or in method syntax by chaining Where for AND and using Union for OR scenarios. For complex logic, build predicate expressions dynamically and combine with && and || operators."
+  },
+  {
+    "id": 95,
+    "question": "What's the difference between chaining Where and using &&?",
+    "category": "Dynamic Queries",
+    "difficulty": "Intermediate",
+    "answer": "Chaining multiple Where clauses is equivalent to combining conditions with && in a single Where. Performance is similar, but chaining can be more readable for complex conditions. Both approaches create the same expression tree when using IQueryable."
+  },
+  {
+    "id": 96,
+    "question": "How do you build dynamic Where conditions?",
+    "category": "Dynamic Queries",
+    "difficulty": "Advanced",
+    "answer": "Build dynamic Where by: using Expression trees, System.Linq.Dynamic.Core package, or predicate builder patterns. Create a base predicate (x => true) and combine with AND/OR conditions based on runtime criteria using Expression.AndAlso/OrElse."
+  },
+  {
+    "id": 97,
+    "question": "When would you use OfType over Cast?",
+    "category": "Type Operations",
+    "difficulty": "Intermediate",
+    "answer": "Use OfType<T> when you want to filter and include only elements of type T, silently excluding others. Use Cast<T> when you expect all elements to be of type T and want InvalidCastException for non-convertible elements."
+  },
+  {
+    "id": 98,
+    "question": "What exception does Cast throw?",
+    "category": "Type Operations",
+    "difficulty": "Intermediate",
+    "answer": "Cast<T> throws InvalidCastException when it encounters an element that cannot be cast to type T. This helps catch data type mismatches early. OfType<T> silently filters out non-matching types without throwing."
+  },
+  {
+    "id": 99,
+    "question": "How do these methods work with inheritance?",
+    "category": "Type Operations",
+    "difficulty": "Intermediate",
+    "answer": "Both OfType and Cast work with inheritance hierarchies. OfType<BaseClass> will include derived classes. Cast<BaseClass> will succeed for derived classes. They respect the type hierarchy and polymorphism principles."
+  },
+  {
+    "id": 100,
+    "question": "How do you handle time zones in date queries?",
+    "category": "Date Operations",
+    "difficulty": "Advanced",
+    "answer": "Store dates in UTC in database, convert to local time only for display. Use DateTimeOffset for timezone-aware operations. In queries, ensure consistent timezone handling by converting all dates to UTC before comparison to avoid timezone-related bugs."
+  }
+]

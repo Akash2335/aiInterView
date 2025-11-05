@@ -1,0 +1,394 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "What are the pros and cons of URL segment vs query string versioning?",
+      "answer": "URL Segment (/api/v1/users): Pros - Clean URLs, cache-friendly, clearly visible in logs, RESTful design. Cons - Breaking URL changes, requires URL changes for clients. Query String (/api/users?api-version=1.0): Pros - Same URL structure, easy for clients to switch versions, no breaking changes. Cons - URLs look messy, caching complications, less discoverable."
+    },
+    {
+      "id": 2,
+      "question": "How would you handle breaking changes between versions?",
+      "answer": "1. Use semantic versioning (MAJOR.MINOR.PATCH) 2. Maintain backward compatibility during deprecation period 3. Provide clear migration guides 4. Use [ApiVersion(\"1.0\", Deprecated = true)] to mark deprecated versions 5. Monitor usage to decide when to remove old versions 6. Implement feature toggles for gradual rollout"
+    },
+    {
+      "id": 3,
+      "question": "What's the difference between [ApiVersion] and [MapToApiVersion]?",
+      "answer": "[ApiVersion] specifies which versions a controller supports, while [MapToApiVersion] maps specific actions to particular versions. Example: [ApiVersion(\"1.0\"), ApiVersion(\"2.0\")] on controller class, then [MapToApiVersion(\"2.0\")] on actions that are only available in v2."
+    },
+    {
+      "id": 4,
+      "question": "How do you deprecate an old API version?",
+      "answer": "Use the Deprecated property: [ApiVersion(\"1.0\", Deprecated = true)]. This will still allow the version to work but will indicate to clients that it's deprecated. Also report deprecated versions in the API version header and document the sunset date."
+    },
+    {
+      "id": 5,
+      "question": "When would you choose sliding window over fixed window?",
+      "answer": "Sliding window is better when you want smoother rate limiting that doesn't reset abruptly. Fixed window can cause bursts at window boundaries. Sliding window provides more consistent limiting but has slightly higher memory overhead due to tracking segments."
+    },
+    {
+      "id": 6,
+      "question": "How do you implement different rate limits for different user tiers?",
+      "answer": "Create multiple rate limit policies and apply them based on user claims or roles. Example: options.AddFixedWindowLimiter(\"Premium\", opt => { opt.PermitLimit = 1000; }); options.AddFixedWindowLimiter(\"Basic\", opt => { opt.PermitLimit = 100; }); Then use custom middleware to select the policy based on user tier."
+    },
+    {
+      "id": 7,
+      "question": "What are the performance implications of rate limiting?",
+      "answer": "Rate limiting adds overhead for tracking requests. In-memory rate limiting is fast but doesn't work in load-balanced environments. Distributed rate limiting (using Redis) has network latency but provides consistency across servers. The impact is generally minimal for most applications."
+    },
+    {
+      "id": 8,
+      "question": "How would you test rate limiting logic?",
+      "answer": "Use integration tests that send multiple requests quickly and verify 429 responses. Mock time to test window boundaries. Test with different user identities to verify per-user limits. Use load testing to validate performance under high request volumes."
+    },
+    {
+      "id": 9,
+      "question": "Why is AllowAnyOrigin() with AllowCredentials() dangerous?",
+      "answer": "This combination is blocked by browsers for security reasons. It creates a security vulnerability where any website could make authenticated requests to your API. Browsers enforce this restriction to prevent CSRF attacks and protect user credentials."
+    },
+    {
+      "id": 10,
+      "question": "What's the difference between allowed headers and exposed headers?",
+      "answer": "Allowed headers are request headers that clients can send (WithHeaders()). Exposed headers are response headers that clients can read from JavaScript (WithExposedHeaders()). Allowed headers go in Access-Control-Allow-Headers, exposed headers in Access-Control-Expose-Headers."
+    },
+    {
+      "id": 11,
+      "question": "How do you handle CORS for multiple environments?",
+      "answer": "Use configuration-based origins: policy.WithOrigins(configuration[\"AllowedOrigins\"].Split(\",\")). Create different policies for different environments. Use IWebHostEnvironment to conditionally apply permissive policies in development but restrictive ones in production."
+    },
+    {
+      "id": 12,
+      "question": "What are preflight requests and how does .NET handle them?",
+      "answer": "Preflight (OPTIONS) requests are sent by browsers for non-simple requests. .NET Core automatically handles OPTIONS requests when CORS is configured. The CORS middleware responds with appropriate headers without reaching your controller actions."
+    },
+    {
+      "id": 13,
+      "question": "What security considerations are important for JWT storage?",
+      "answer": "Never store JWTs in localStorage (vulnerable to XSS). Use httpOnly cookies for web apps. For mobile/SPA, use secure storage. Keep token expiration short (15-30 mins). Use refresh tokens for longer sessions. Always validate token signature, issuer, and audience."
+    },
+    {
+      "id": 14,
+      "question": "How would you handle token refresh?",
+      "answer": "Implement a refresh token endpoint that accepts a valid refresh token and issues new access/refresh tokens. Store refresh tokens securely (hashed) in database. Implement token rotation - issue new refresh token each time to detect theft."
+    },
+    {
+      "id": 15,
+      "question": "What's the difference between authentication and authorization?",
+      "answer": "Authentication verifies who you are (login process). Authorization determines what you're allowed to do (permissions, roles). Authentication happens first, then authorization checks if the authenticated user has access to the requested resource."
+    },
+    {
+      "id": 16,
+      "question": "How do you implement policy-based authorization?",
+      "answer": "Define policies in Program.cs: options.AddPolicy(\"AdminOnly\", policy => policy.RequireRole(\"Admin\")); Then use [Authorize(Policy = \"AdminOnly\")]. For complex policies, create custom requirements and handlers that implement business logic checks."
+    },
+    {
+      "id": 17,
+      "question": "What's the order of middleware execution and why does it matter?",
+      "answer": "Order is critical: Exception handling > HTTPS Redirection > Static Files > Routing > CORS > Authentication > Authorization > Endpoints. Each middleware can short-circuit the pipeline. Wrong order can cause security issues or functionality problems."
+    },
+    {
+      "id": 18,
+      "question": "When would you choose middleware vs filters?",
+      "answer": "Use middleware for cross-cutting concerns that apply to all requests (logging, exception handling). Use filters for MVC-specific concerns (model validation, action execution timing). Middleware runs earlier in the pipeline, filters run within MVC context."
+    },
+    {
+      "id": 19,
+      "question": "How do you handle dependencies in middleware?",
+      "answer": "Middleware supports constructor dependency injection. However, middleware is singleton, so use caution with scoped dependencies. For scoped services, inject IServiceProvider and create a scope in InvokeAsync method."
+    },
+    {
+      "id": 20,
+      "question": "What's the difference between IApplicationBuilder.Use() and Run()?",
+      "answer": "Use() adds middleware to the pipeline that can call next middleware. Run() adds terminal middleware that ends the pipeline. Run() is equivalent to Use() without calling next(). Most middleware uses Use() pattern."
+    },
+    {
+      "id": 21,
+      "question": "What's the execution order of multiple filters?",
+      "answer": "Filters execute in this order: Authorization filters > Resource filters > Action filters > Exception filters > Result filters. Within each type, Order property determines sequence. Filters with same Order execute based on scope (global > controller > action)."
+    },
+    {
+      "id": 22,
+      "question": "When would you use action filters vs middleware?",
+      "answer": "Use action filters for MVC-specific logic like model validation, action timing, or response transformation. Use middleware for general HTTP concerns like logging, compression, or authentication that apply to all requests regardless of MVC."
+    },
+    {
+      "id": 23,
+      "question": "How do you handle dependency injection in filters?",
+      "answer": "Use [ServiceFilter(typeof(MyFilter))] instead of directly applying the filter. Register the filter in DI: services.AddScoped<MyFilter>(). This ensures dependencies are properly injected. Alternatively use TypeFilterAttribute for simpler cases."
+    },
+    {
+      "id": 24,
+      "question": "What's the difference between IActionFilter and IAsyncActionFilter?",
+      "answer": "IActionFilter has synchronous OnActionExecuting/OnActionExecuted methods. IAsyncActionFilter has a single async OnActionExecutionAsync method with before/after context. Use async version for better performance with async operations."
+    },
+    {
+      "id": 25,
+      "question": "How do you handle multiple requirements in one policy?",
+      "answer": "Add multiple requirements to a policy: policy.Requirements.Add(new MinAgeRequirement(18)); policy.Requirements.Add(new SubscriptionRequirement()); All handlers must succeed unless using .RequireAssertion() for custom logic. Each requirement needs its own handler."
+    },
+    {
+      "id": 26,
+      "question": "What's the difference between roles and policies?",
+      "answer": "Roles are simple string-based checks ([Authorize(Roles = \"Admin\")]). Policies are more flexible and can include complex logic, multiple requirements, and custom handlers. Policies are more testable and maintainable for complex authorization rules."
+    },
+    {
+      "id": 27,
+      "question": "How would you implement resource-based authorization?",
+      "answer": "Use IAuthorizationService directly in your code: if ((await authorizationService.AuthorizeAsync(User, document, \"EditPolicy\")).Succeeded). Create resource-specific requirements and handlers that can inspect both user and resource properties."
+    },
+    {
+      "id": 28,
+      "question": "When should you use custom policies vs built-in role checks?",
+      "answer": "Use built-in role checks for simple role-based scenarios. Use custom policies when you need complex logic, multiple conditions, resource-based checks, or when authorization rules may change frequently and need to be configurable."
+    },
+    {
+      "id": 29,
+      "question": "What performance impact does request/response logging have?",
+      "answer": "Significant impact if not optimized: Memory streams for large bodies, CPU for serialization, I/O for logging. Mitigate by: logging only summaries for large payloads, using sampling in high-traffic scenarios, and async logging to avoid blocking."
+    },
+    {
+      "id": 30,
+      "question": "How would you avoid logging sensitive data?",
+      "answer": "1. Redact specific fields (passwords, tokens) 2. Use regex patterns to mask sensitive data 3. Create allowlists of safe fields to log 4. Implement content type filtering 5. Use different log levels for different data sensitivity"
+    },
+    {
+      "id": 31,
+      "question": "When would you use this vs built-in logging?",
+      "answer": "Use custom middleware when you need detailed request/response body logging. Use built-in logging (app.UseHttpLogging()) for standard HTTP logging without bodies. Built-in is more performant, custom gives more control."
+    },
+    {
+      "id": 32,
+      "question": "How do you handle large request/response bodies?",
+      "answer": "1. Set size limits to avoid memory issues 2. Log only metadata for large files 3. Use streaming instead of buffering for very large payloads 4. Implement sampling to log only a percentage of large requests"
+    },
+    {
+      "id": 33,
+      "question": "When would you use custom middleware vs built-in exception handling?",
+      "answer": "Use built-in app.UseExceptionHandler() for most cases - it's well-tested and handles common scenarios. Use custom middleware when you need very specific error formatting, integration with custom monitoring, or complex exception transformation logic."
+    },
+    {
+      "id": 34,
+      "question": "How do you handle different exception types differently?",
+      "answer": "Use pattern matching in catch blocks or switch expressions: exception switch { ValidationException => Status400, NotFoundException => Status404, _ => Status500 }. Create custom exception types for different error categories with appropriate HTTP status codes."
+    },
+    {
+      "id": 35,
+      "question": "What should never be exposed in production error responses?",
+      "answer": "Never expose: stack traces, database connection strings, file paths, internal system details, API keys, or any sensitive configuration. Use IWebHostEnvironment.IsDevelopment() to show details only in development."
+    },
+    {
+      "id": 36,
+      "question": "How do you test exception handling middleware?",
+      "answer": "Create integration tests that trigger specific exceptions and verify: 1. Correct HTTP status code 2. Proper error response format 3. No sensitive data leakage 4. Appropriate logging. Use TestServer to host the middleware in tests."
+    },
+    {
+      "id": 37,
+      "question": "What's the difference between model validation and business rule validation?",
+      "answer": "Model validation checks data format and basic rules (required fields, formats, ranges). Business rule validation checks application logic (user exists, has permissions, business constraints). Model validation happens automatically, business validation happens in services."
+    },
+    {
+      "id": 38,
+      "question": "How do you handle complex cross-property validation?",
+      "answer": "Implement IValidatableObject on your model class, or create a custom validation attribute that accepts multiple properties. For very complex scenarios, use FluentValidation library which provides better support for complex rule chains."
+    },
+    {
+      "id": 39,
+      "question": "When would you use FluentValidation instead?",
+      "answer": "Use FluentValidation when: 1. Complex validation rules 2. Reusable validation sets 3. Conditional validation 4. Better testability 5. Complex cross-property rules 6. Need for dependency injection in validators"
+    },
+    {
+      "id": 40,
+      "question": "How do you test custom validation attributes?",
+      "answer": "Create unit tests that: 1. Instantiate the attribute 2. Create ValidationContext 3. Call IsValid with test data 4. Verify ValidationResults. Test both valid and invalid cases, edge cases, and null values."
+    },
+    {
+      "id": 41,
+      "question": "What's the difference between Brotli and Gzip compression?",
+      "answer": "Brotli provides better compression ratios (20-26% better than Gzip) but is slightly slower. Gzip is faster for compression, Brotli for decompression. Brotli is better for static content, Gzip for dynamic. Most modern browsers support both."
+    },
+    {
+      "id": 42,
+      "question": "When should you avoid response compression?",
+      "answer": "Avoid for: 1. Already compressed content (images, videos, PDFs) 2. Very small responses (<150-850 bytes) 3. When CPU is more constrained than bandwidth 4. For specific clients that don't support compression"
+    },
+    {
+      "id": 43,
+      "question": "How do you measure the performance impact?",
+      "answer": "Measure: 1. Bandwidth savings vs CPU usage 2. Response size reduction percentage 3. Additional latency from compression 4. Throughput under load. Use application performance monitoring (APM) tools and load testing."
+    },
+    {
+      "id": 44,
+      "question": "What types of content benefit most from compression?",
+      "answer": "Text-based content benefits most: JSON, XML, HTML, CSS, JavaScript. Compression ratios of 70-90% are common. Binary files (images, videos) are already compressed and see little benefit."
+    },
+    {
+      "id": 45,
+      "question": "What's the difference between action filters and result filters?",
+      "answer": "Action filters run before/after action execution (IActionFilter). Result filters run before/after the action result is executed (IResultFilter). Action filters can modify action parameters, result filters modify the final response."
+    },
+    {
+      "id": 46,
+      "question": "When would you modify the result vs the response?",
+      "answer": "Modify the result (in result filter) to change the data structure, add metadata, or transform the output format. Modify the response directly for low-level HTTP concerns like headers, status codes, or custom formatting."
+    },
+    {
+      "id": 47,
+      "question": "How do you handle exceptions in result filters?",
+      "answer": "Result filters can catch exceptions in OnResultExecuted, but cannot handle exceptions from action execution. Use exception filters for action exceptions. Result filters are good for handling exceptions during result execution."
+    },
+    {
+      "id": 48,
+      "question": "What are some common use cases for result filters?",
+      "answer": "Common uses: 1. Adding standard response headers 2. Wrapping responses in standard format 3. Response transformation 4. Adding timestamps/version info 5. Response logging 6. Standardizing error responses"
+    },
+    {
+      "id": 49,
+      "question": "When is API key authentication appropriate vs JWT?",
+      "answer": "API keys are good for: 1. Server-to-server communication 2. Simple internal APIs 3. When you don't need user context. JWT is better for: 1. User authentication 2. Complex permissions 3. Stateless distributed systems 4. When you need expiration and refresh."
+    },
+    {
+      "id": 50,
+      "question": "How would you implement different API keys for different clients?",
+      "answer": "Store API keys in database with metadata (client name, permissions, rate limits, expiration). Look up the key and validate permissions in middleware. Use cryptographic hashing for storage, never plain text."
+    },
+    {
+      "id": 51,
+      "question": "What security considerations are important for API keys?",
+      "answer": "1. Always use HTTPS 2. Hash keys in storage (like passwords) 3. Implement key rotation 4. Set expiration dates 5. Rate limit per key 6. Log key usage 7. Have revocation process 8. Never log keys"
+    },
+    {
+      "id": 52,
+      "question": "How do you handle API key rotation?",
+      "answer": "1. Issue new keys before old ones expire 2. Support multiple active keys during transition 3. Provide secure key distribution method 4. Automate expiration notifications 5. Track key usage to identify unused keys 6. Have emergency revocation process"
+    },
+    {
+      "id": 53,
+      "question": "When would you need a custom configuration provider?",
+      "answer": "When you need to load configuration from custom sources: database, external APIs, encrypted stores, legacy systems, or when you need dynamic configuration that can change without app restart."
+    },
+    {
+      "id": 54,
+      "question": "How does the configuration system handle hierarchy and overrides?",
+      "answer": "Later providers override earlier ones. Environment variables override appsettings.json. Command line arguments override everything. Use configuration.GetSection(\"Section\") to access hierarchical data. Child keys override parent keys."
+    },
+    {
+      "id": 55,
+      "question": "What's the difference between ConfigurationProvider and IOptions?",
+      "answer": "ConfigurationProvider loads raw configuration data. IOptions<T> provides strongly-typed access to configuration with validation, change tracking (IOptionsSnapshot), and reloading (IOptionsMonitor). IOptions is the preferred way to access config."
+    },
+    {
+      "id": 56,
+      "question": "How do you handle configuration reloading?",
+      "answer": "Use IOptionsSnapshot for scoped services (new config each request) or IOptionsMonitor for singleton services (can subscribe to changes). File-based providers (JSON, XML) automatically reload when files change. Custom providers need to implement reloading."
+    },
+    {
+      "id": 57,
+      "question": "What's the difference between liveness and readiness probes?",
+      "answer": "Liveness checks if app is running (should restart if fails). Readiness checks if app can handle requests (should stop receiving traffic if fails). Liveness is basic process check, readiness checks dependencies and internal state."
+    },
+    {
+      "id": 58,
+      "question": "How do you handle health checks in load-balanced environments?",
+      "answer": "Use different endpoints for liveness (/health/live) and readiness (/health/ready). Load balancers should use readiness to route traffic. Orchestrators (Kubernetes) use liveness for restart decisions. Implement graceful degradation for partial failures."
+    },
+    {
+      "id": 59,
+      "question": "What should a health check never do?",
+      "answer": "Never: 1. Run expensive operations 2. Make external service calls frequently 3. Change application state 4. Throw exceptions 5. Include sensitive data in responses 6. Depend on non-critical services for basic health"
+    },
+    {
+      "id": 60,
+      "question": "How do you test health checks?",
+      "answer": "Create integration tests that: 1. Call health endpoints directly 2. Mock dependencies to simulate failures 3. Verify response format and status codes 4. Test timeout scenarios 5. Verify logging behavior 6. Test in containerized environments"
+    },
+	{
+      "id": 61,
+      "question": "How do you implement API versioning in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Use Microsoft.AspNetCore.Mvc.Versioning package. Configure in Program.cs: builder.Services.AddApiVersioning(options => { options.DefaultApiVersion = new ApiVersion(1, 0); options.AssumeDefaultVersionWhenUnspecified = true; options.ReportApiVersions = true; options.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader(\"api-version\"), new HeaderApiVersionReader(\"x-api-version\")); }).AddVersionedApiExplorer(). Then use [ApiVersion(\"1.0\")] on controllers and [MapToApiVersion(\"2.0\")] on actions for multiple versions."
+    },
+    {
+      "id": 62,
+      "question": "How do you configure rate limiting in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Use AspNetCore.RateLimiting package. Configure in Program.cs: builder.Services.AddRateLimiter(options => { options.AddFixedWindowLimiter(\"Fixed\", opt => { opt.PermitLimit = 100; opt.Window = TimeSpan.FromSeconds(10); opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst; opt.QueueLimit = 2; }); options.AddSlidingWindowLimiter(\"Sliding\", opt => { opt.PermitLimit = 100; opt.Window = TimeSpan.FromSeconds(10); opt.SegmentsPerWindow = 5; }); options.AddTokenBucketLimiter(\"Token\", opt => { opt.TokenLimit = 100; opt.TokensPerPeriod = 50; opt.ReplenishmentPeriod = TimeSpan.FromSeconds(10); }); options.OnRejected = async (context, token) => { context.HttpContext.Response.StatusCode = 429; await context.HttpContext.Response.WriteAsync(\"Too many requests. Please try again later.\", token); }; }). Then use [EnableRateLimiting(\"Fixed\")] on controllers or endpoints."
+    },
+    {
+      "id": 63,
+      "question": "How do you configure CORS in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Configure in Program.cs: builder.Services.AddCors(options => { options.AddPolicy(\"AllowSpecificOrigin\", policy => { policy.WithOrigins(\"https://example.com\", \"https://www.example.com\").AllowAnyHeader().AllowAnyMethod().AllowCredentials(); }); options.AddPolicy(\"AllowAnyOrigin\", policy => { policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); }); options.AddPolicy(\"CustomPolicy\", policy => { policy.WithOrigins(\"https://api.example.com\").WithMethods(\"GET\", \"POST\", \"PUT\").WithHeaders(\"Content-Type\", \"Authorization\").WithExposedHeaders(\"x-custom-header\"); }); }). Then use app.UseCors(\"AllowSpecificOrigin\") after app.UseRouting() and [EnableCors(\"AllowSpecificOrigin\")] on controllers or actions."
+    },
+    {
+      "id": 64,
+      "question": "How do you implement JWT authentication and authorization in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Use Microsoft.AspNetCore.Authentication.JwtBearer package. Configure in Program.cs: builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => { options.TokenValidationParameters = new TokenValidationParameters { ValidateIssuer = true, ValidateAudience = true, ValidateLifetime = true, ValidateIssuerSigningKey = true, ValidIssuer = builder.Configuration[\"Jwt:Issuer\"], ValidAudience = builder.Configuration[\"Jwt:Audience\"], IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration[\"Jwt:Secret\"])) }; options.Events = new JwtBearerEvents { OnAuthenticationFailed = context => { // Custom handling }, OnTokenValidated = context => { // Custom validation } }; }). Then use [Authorize] on controllers/actions, [AllowAnonymous] to bypass, and [Authorize(Roles = \"Admin\")] or [Authorize(Policy = \"RequireAdminRole\")] for role-based authorization."
+    },
+    {
+      "id": 65,
+      "question": "How do you create custom middleware in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Create class with InvokeAsync method: public class CustomMiddleware { private readonly RequestDelegate _next; public CustomMiddleware(RequestDelegate next) { _next = next; } public async Task InvokeAsync(HttpContext context) { // Pre-processing logic context.Items[\"CustomData\"] = \"Middleware Data\"; await _next(context); // Post-processing logic } }. Register in Program.cs: app.UseMiddleware<CustomMiddleware>(). Or use extension method: public static class MiddlewareExtensions { public static IApplicationBuilder UseCustomMiddleware(this IApplicationBuilder builder) { return builder.UseMiddleware<CustomMiddleware>(); } } then app.UseCustomMiddleware()."
+    },
+    {
+      "id": 66,
+      "question": "How do you implement custom action filters in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Create filter by implementing IActionFilter: public class CustomActionFilter : IActionFilter { public void OnActionExecuting(ActionExecutingContext context) { // Before action execution if (!context.ModelState.IsValid) { context.Result = new BadRequestObjectResult(context.ModelState); } } public void OnActionExecuted(ActionExecutedContext context) { // After action execution if (context.Exception != null) { context.ExceptionHandled = true; context.Result = new ObjectResult(\"Custom error\") { StatusCode = 500 }; } } }. Register globally: builder.Services.AddControllers(options => { options.Filters.Add<CustomActionFilter>(); }) or use [ServiceFilter(typeof(CustomActionFilter))] on controllers/actions. For async use IAsyncActionFilter."
+    },
+    {
+      "id": 67,
+      "question": "How do you implement custom authorization policies in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Create requirement and handler: public class MinimumAgeRequirement : IAuthorizationRequirement { public int MinimumAge { get; } public MinimumAgeRequirement(int minimumAge) { MinimumAge = minimumAge; } }. public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement> { protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinimumAgeRequirement requirement) { if (context.User.HasClaim(c => c.Type == ClaimTypes.DateOfBirth)) { var dateOfBirth = Convert.ToDateTime(context.User.FindFirst(c => c.Type == ClaimTypes.DateOfBirth).Value); var age = DateTime.Today.Year - dateOfBirth.Year; if (age >= requirement.MinimumAge) { context.Succeed(requirement); } } return Task.CompletedTask; } }. Register in Program.cs: builder.Services.AddAuthorization(options => { options.AddPolicy(\"Over18\", policy => policy.Requirements.Add(new MinimumAgeRequirement(18))); }). builder.Services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>(). Use with [Authorize(Policy = \"Over18\")]."
+    },
+    {
+      "id": 68,
+      "question": "How do you implement request/response logging middleware?",
+      "category": ".net-configuration",
+      "answer": "Create logging middleware: public class RequestResponseLoggingMiddleware { private readonly RequestDelegate _next; private readonly ILogger<RequestResponseLoggingMiddleware> _logger; public RequestResponseLoggingMiddleware(RequestDelegate next, ILogger<RequestResponseLoggingMiddleware> logger) { _next = next; _logger = logger; } public async Task InvokeAsync(HttpContext context) { // Log request var request = await FormatRequest(context.Request); _logger.LogInformation(\"Request: {Request}\", request); // Copy original response body stream var originalBodyStream = context.Response.Body; using var responseBody = new MemoryStream(); context.Response.Body = responseBody; await _next(context); // Log response var response = await FormatResponse(context.Response); _logger.LogInformation(\"Response: {Response}\", response); await responseBody.CopyToAsync(originalBodyStream); } private static async Task<string> FormatRequest(HttpRequest request) { request.EnableBuffering(); var body = await new StreamReader(request.Body).ReadToEndAsync(); request.Body.Position = 0; return $\"{request.Method} {request.Path} {request.QueryString} {body}\"; } private static async Task<string> FormatResponse(HttpResponse response) { response.Body.Seek(0, SeekOrigin.Begin); var body = await new StreamReader(response.Body).ReadToEndAsync(); response.Body.Seek(0, SeekOrigin.Begin); return $\"{response.StatusCode}: {body}\"; } }. Register: app.UseMiddleware<RequestResponseLoggingMiddleware>()."
+    },
+    {
+      "id": 69,
+      "question": "How do you implement global exception handling middleware?",
+      "category": ".net-configuration",
+      "answer": "Create exception handling middleware: public class ExceptionHandlingMiddleware { private readonly RequestDelegate _next; private readonly ILogger<ExceptionHandlingMiddleware> _logger; public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger) { _next = next; _logger = logger; } public async Task InvokeAsync(HttpContext context) { try { await _next(context); } catch (Exception ex) { _logger.LogError(ex, \"An unhandled exception occurred\"); await HandleExceptionAsync(context, ex); } } private static Task HandleExceptionAsync(HttpContext context, Exception exception) { context.Response.ContentType = \"application/json\"; var statusCode = exception switch { ArgumentException => StatusCodes.Status400BadRequest, UnauthorizedAccessException => StatusCodes.Status401Unauthorized, KeyNotFoundException => StatusCodes.Status404NotFound, _ => StatusCodes.Status500InternalServerError }; context.Response.StatusCode = statusCode; var response = new { error = exception.Message, stackTrace = context.RequestServices.GetService<IWebHostEnvironment>().IsDevelopment() ? exception.StackTrace : null }; return context.Response.WriteAsync(JsonSerializer.Serialize(response)); } }. Register: app.UseMiddleware<ExceptionHandlingMiddleware>(). Alternatively use built-in: app.UseExceptionHandler(\"/error\")."
+    },
+    {
+      "id": 70,
+      "question": "How do you implement custom model validation in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Create custom attribute: public class CustomValidationAttribute : ValidationAttribute { protected override ValidationResult IsValid(object value, ValidationContext validationContext) { if (value is string stringValue && stringValue.Contains(\"invalid\")) { return new ValidationResult(\"Value contains invalid keyword\"); } return ValidationResult.Success; } }. Use in model: public class UserModel { [CustomValidation] [Required(ErrorMessage = \"Name is required\")] [StringLength(50, ErrorMessage = \"Name cannot exceed 50 characters\")] public string Name { get; set; } [EmailAddress(ErrorMessage = \"Invalid email format\")] public string Email { get; set; } }. Configure global validation: builder.Services.AddControllers().ConfigureApiBehaviorOptions(options => { options.InvalidModelStateResponseFactory = context => { var errors = context.ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage); return new BadRequestObjectResult(new { Message = \"Validation failed\", Errors = errors }); }; })."
+    },
+    {
+      "id": 71,
+      "question": "How do you implement response compression in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Use Microsoft.AspNetCore.ResponseCompression package. Configure in Program.cs: builder.Services.AddResponseCompression(options => { options.EnableForHttps = true; options.Providers.Add<BrotliCompressionProvider>(); options.Providers.Add<GzipCompressionProvider>(); options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { \"application/json\", \"text/plain\", \"image/svg+xml\" }); }).Configure<BrotliCompressionProviderOptions>(options => { options.Level = CompressionLevel.Fastest; }).Configure<GzipCompressionProviderOptions>(options => { options.Level = CompressionLevel.Optimal; }). Then use app.UseResponseCompression() before app.UseRouting()."
+    },
+    {
+      "id": 72,
+      "question": "How do you implement custom result filters in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Create result filter: public class CustomResultFilter : IResultFilter { public void OnResultExecuting(ResultExecutingContext context) { // Before result execution if (context.Result is ObjectResult objectResult) { objectResult.Value = new { Data = objectResult.Value, Timestamp = DateTime.UtcNow, Version = \"1.0\" }; } } public void OnResultExecuted(ResultExecutedContext context) { // After result execution if (context.HttpContext.Response.StatusCode == 200) { // Log successful response } } }. Register globally: builder.Services.AddControllers(options => { options.Filters.Add<CustomResultFilter>(); }) or use [ServiceFilter(typeof(CustomResultFilter))] attribute."
+    },
+    {
+      "id": 73,
+      "question": "How do you implement API key authentication middleware?",
+      "category": ".net-configuration",
+      "answer": "Create API key middleware: public class ApiKeyMiddleware { private readonly RequestDelegate _next; private readonly IConfiguration _configuration; public ApiKeyMiddleware(RequestDelegate next, IConfiguration configuration) { _next = next; _configuration = configuration; } public async Task InvokeAsync(HttpContext context) { if (!context.Request.Headers.TryGetValue(\"X-API-Key\", out var extractedApiKey)) { context.Response.StatusCode = 401; await context.Response.WriteAsync(\"API Key missing\"); return; } var apiKey = _configuration.GetValue<string>(\"ApiKey\"); if (!apiKey.Equals(extractedApiKey)) { context.Response.StatusCode = 401; await context.Response.WriteAsync(\"Invalid API Key\"); return; } await _next(context); } }. Register: app.UseMiddleware<ApiKeyMiddleware>(). Use with custom attribute: public class ApiKeyAttribute : ServiceFilterAttribute { public ApiKeyAttribute() : base(typeof(ApiKeyAuthorizationFilter)) { } }."
+    },
+    {
+      "id": 74,
+      "question": "How do you implement custom configuration providers in .NET Core?",
+      "category": ".net-configuration",
+      "answer": "Create custom configuration provider: public class CustomConfigurationProvider : ConfigurationProvider { public override void Load() { Data[\"CustomSetting\"] = \"CustomValue\"; Data[\"ConnectionStrings:Default\"] = \"Server=localhost;Database=test;\"; } }. public class CustomConfigurationSource : IConfigurationSource { public IConfigurationProvider Build(IConfigurationBuilder builder) { return new CustomConfigurationProvider(); } }. Register in Program.cs: builder.Configuration.Add(new CustomConfigurationSource()). For AWS integration: builder.Configuration.AddSystemsManager(\"/myapp/\").AddSecretsManager()."
+    },
+    {
+      "id": 75,
+      "question": "How do you implement health checks with custom dependencies?",
+      "category": ".net-configuration",
+      "answer": "Configure health checks in Program.cs: builder.Services.AddHealthChecks().AddCheck<DatabaseHealthCheck>(\"database\").AddCheck<ExternalApiHealthCheck>(\"external-api\").AddUrlGroup(new Uri(\"https://api.example.com/health\"), \"third-party-api\").AddDbContextCheck<ApplicationDbContext>(\"entity-framework\").AddRedis(\"redis-connection-string\", \"redis\").AddElasticsearch(\"elasticsearch-url\", \"elasticsearch\"). Then map endpoints: app.MapHealthChecks(\"/health\", new HealthCheckOptions { ResponseWriter = async (context, report) => { context.Response.ContentType = \"application/json\"; var response = new { status = report.Status.ToString(), checks = report.Entries.Select(e => new { name = e.Key, status = e.Value.Status.ToString(), duration = e.Value.Duration }), totalDuration = report.TotalDuration }; await context.Response.WriteAsync(JsonSerializer.Serialize(response)); } }).RequireAuthorization(); Create custom health check: public class DatabaseHealthCheck : IHealthCheck { public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default) { try { // Test database connection return HealthCheckResult.Healthy(\"Database is healthy\"); } catch (Exception ex) { return HealthCheckResult.Unhealthy(\"Database is unhealthy\", ex); } } }."
+    }
+]
+}

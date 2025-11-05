@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "question": "What is the difference between delegate and interface?",
+    "answer": "Delegates are type-safe function pointers that reference methods, while interfaces define contracts that classes must implement. Delegates are better for single-method scenarios and event handling, while interfaces are better for defining multiple related methods and polymorphism.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 2,
+    "question": "How do you create and invoke a delegate?",
+    "answer": "Create: delegate int Calculator(int x, int y); Calculator calc = Add; Invoke: int result = calc(5, 3); or int result = calc.Invoke(5, 3);",
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "question": "What are the common built-in delegate types?",
+    "answer": "Action (void return), Func (with return type), Predicate<T> (bool return), Comparison<T> (int return for comparison), Converter<TInput, TOutput> (type conversion), EventHandler (event handling).",
+    "difficulty": "easy"
+  },
+  {
+    "id": 4,
+    "question": "When would you use Func vs Action?",
+    "answer": "Use Func when the method returns a value, use Action when the method returns void. Func<in T, out TResult> vs Action<in T>.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 5,
+    "question": "How many parameters can Func and Action support?",
+    "answer": "Func supports up to 16 input parameters + 1 return type (Func<T1,...,T16, TResult>). Action supports up to 16 input parameters (Action<T1,...,T16>).",
+    "difficulty": "easy"
+  },
+  {
+    "id": 6,
+    "question": "What is the return type of Action delegate?",
+    "answer": "Action delegates always return void. They are used for methods that perform actions without returning values.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 7,
+    "question": "How do lambda expressions differ from anonymous methods?",
+    "answer": "Lambda expressions are more concise: (x) => x * x vs delegate(int x) { return x * x; }. Lambdas support expression trees, have better type inference, and can omit parameter types.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 8,
+    "question": "What are expression trees vs lambda expressions?",
+    "answer": "Lambda expressions compile to executable code, while expression trees (Expression<Func<T>>) represent code as data that can be analyzed and transformed at runtime. Expression trees are used in LINQ providers.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 9,
+    "question": "How do closures work with lambda expressions?",
+    "answer": "Lambda expressions capture variables from their enclosing scope, creating closures. The captured variables' lifetimes are extended, and they can be modified if not read-only.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 10,
+    "question": "How does Predicate differ from Func<bool, T>?",
+    "answer": "Predicate<T> is functionally equivalent to Func<T, bool>. Predicate is older and used in legacy APIs like List<T>.FindAll(Predicate<T>), while Func<T, bool> is more modern and consistent with other generic delegates.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 11,
+    "question": "Where is Predicate commonly used in .NET?",
+    "answer": "Predicate is used in collection methods like List<T>.FindAll(), Array.FindAll(), List<T>.RemoveAll(), and other methods that require boolean condition checks on collection elements.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 12,
+    "question": "Should you use Predicate or Func in new code?",
+    "answer": "Use Func<T, bool> in new code for consistency with other LINQ methods and modern C# patterns. Predicate is mainly for compatibility with older APIs.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 13,
+    "question": "How do you add and remove methods from multicast delegates?",
+    "answer": "Use += to add methods and -= to remove methods: myDelegate += Method1; myDelegate -= Method1;. The methods are called in the order they were added.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 14,
+    "question": "What happens if a method in multicast delegate throws exception?",
+    "answer": "If any method in a multicast delegate throws an exception, the invocation stops and the exception propagates immediately. Subsequent methods in the invocation list are not called.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 15,
+    "question": "How can you get invocation list from multicast delegate?",
+    "answer": "Use the GetInvocationList() method: Delegate[] invocations = myDelegate.GetInvocationList();. This returns an array of individual delegates that can be invoked separately.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 16,
+    "question": "Why use events instead of public delegates?",
+    "answer": "Events provide encapsulation - they can only be invoked by the declaring class, while subscribers can only add/remove handlers. This prevents external code from clearing all subscribers or invoking the event.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 17,
+    "question": "How do events provide encapsulation?",
+    "answer": "Events use the 'event' keyword which restricts outside code to only += and -= operations. The underlying delegate is protected from external invocation or reassignment.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 18,
+    "question": "What is the event accessor syntax?",
+    "answer": "Custom event accessors: event EventHandler MyEvent { add { /* custom add logic */ } remove { /* custom remove logic */ } }. This allows custom storage for event handlers.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 19,
+    "question": "How does covariance work with return types?",
+    "answer": "Covariance allows a method with a more derived return type to be assigned to a delegate expecting a less derived return type. Example: Func<Animal> can reference a method that returns Dog.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 20,
+    "question": "How does contravariance work with parameters?",
+    "answer": "Contravariance allows a method with less derived parameters to be assigned to a delegate expecting more derived parameters. Example: Action<Dog> can reference a method that takes Animal.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 21,
+    "question": "Which delegates support variance in C#?",
+    "answer": "Generic delegates Func and Action support variance. Func is covariant in return type (out) and contravariant in parameters (in). Action is contravariant in parameters (in).",
+    "difficulty": "hard"
+  },
+  {
+    "id": 22,
+    "question": "When would you create custom delegates vs using Func/Action?",
+    "answer": "Create custom delegates when you need descriptive names for better API clarity, or when the signature is used frequently throughout your codebase. Use Func/Action for one-off or internal usage.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 23,
+    "question": "What are the benefits of custom delegates?",
+    "answer": "Better self-documentation, compile-time safety with specific signatures, and improved IDE IntelliSense. They make APIs more readable and intentional.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 24,
+    "question": "How do you document custom delegates?",
+    "answer": "Use XML documentation comments: /// <summary>Describes purpose</summary> /// <param name=\"param\">Parameter description</param> /// <returns>Return description</returns>",
+    "difficulty": "easy"
+  },
+  {
+    "id": 25,
+    "question": "What methods does the Delegate class provide?",
+    "answer": "Combine(), Remove(), RemoveAll(), GetInvocationList(), DynamicInvoke(), CreateDelegate(), and equality methods. These manage multicast delegates and dynamic invocation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 26,
+    "question": "How do you combine and remove delegates?",
+    "answer": "Combine: Delegate combined = Delegate.Combine(d1, d2); Remove: Delegate remaining = Delegate.Combine(combined, d1);. Usually use += and -= operators instead.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 27,
+    "question": "What is the difference between Delegate and MulticastDelegate?",
+    "answer": "Delegate is the base class for all delegates. MulticastDelegate inherits from Delegate and supports invocation lists with multiple methods. All C# delegates are MulticastDelegates.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 28,
+    "question": "How are delegates used in LINQ methods?",
+    "answer": "LINQ methods like Where, Select, OrderBy accept delegates (usually Func) to define filtering, projection, and sorting logic: numbers.Where(x => x > 5).Select(x => x * 2).",
+    "difficulty": "easy"
+  },
+  {
+    "id": 29,
+    "question": "What is the role of Func in LINQ queries?",
+    "answer": "Func delegates provide the transformation, filtering, and sorting logic in LINQ. They enable deferred execution and composable query operations.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 30,
+    "question": "How do delegates enable functional programming patterns in C#?",
+    "answer": "Delegates enable higher-order functions, function composition, currying, and passing behavior as parameters. They support functional patterns like map, filter, and reduce.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 31,
+    "question": "What is the overhead of delegate invocation?",
+    "answer": "Delegate invocation has minimal overhead - slightly more than direct method calls but much less than reflection. Modern .NET optimizes delegate calls efficiently.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 32,
+    "question": "How do lambda expressions affect performance?",
+    "answer": "Lambda expressions have similar performance to regular delegates. They may create closure objects when capturing variables, but the invocation itself is fast.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 33,
+    "question": "When should you avoid using delegates?",
+    "answer": "Avoid delegates in performance-critical tight loops, when simple interface would suffice, or when the logic is too complex for lambda expressions.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 34,
+    "question": "Can delegates be async?",
+    "answer": "Yes, delegates can reference async methods. Use Func<Task> or Func<Task<T>> for asynchronous operations. The delegate itself doesn't change - it's the method signature that matters.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 35,
+    "question": "How do you create async lambda expressions?",
+    "answer": "Use async and await: Func<Task> asyncAction = async () => { await Task.Delay(1000); }; Func<Task<int>> asyncFunc = async () => { await Task.Delay(1000); return 42; };",
+    "difficulty": "medium"
+  },
+  {
+    "id": 36,
+    "question": "What is Func<Task> and Func<Task<T>>?",
+    "answer": "Func<Task> represents an asynchronous method that returns a Task. Func<Task<T>> represents an async method that returns a Task<T> with a result of type T.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 37,
+    "question": "How does method group conversion work?",
+    "answer": "Method group conversion automatically converts a method name to a compatible delegate: Func<int, int> square = Math.Square; instead of Func<int, int> square = new Func<int, int>(Math.Square);",
+    "difficulty": "easy"
+  },
+  {
+    "id": 38,
+    "question": "When is method group conversion not possible?",
+    "answer": "When there's ambiguity between overloaded methods, or when the context doesn't provide enough type information for the compiler to infer the correct delegate type.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 39,
+    "question": "What are the benefits of method group syntax?",
+    "answer": "Cleaner, more concise code. Reduces syntactic noise and improves readability while maintaining type safety.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 40,
+    "question": "How do you convert between lambda expressions and expression trees?",
+    "answer": "Assign lambda to Expression<T> instead of Func<T>: Expression<Func<int, bool>> expr = x => x > 5;. The compiler generates expression tree instead of IL.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 41,
+    "question": "What is the difference between Expression and Func?",
+    "answer": "Expression<Func<T>> represents the code as data structure that can be analyzed/modified. Func<T> is compiled code that can be executed directly. Expression trees can be translated to other formats (SQL, etc).",
+    "difficulty": "hard"
+  },
+  {
+    "id": 42,
+    "question": "Where are expression trees used?",
+    "answer": "LINQ providers (Entity Framework), dynamic query building, runtime code generation, and frameworks that need to analyze or transform code logic.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 43,
+    "question": "What happens with exceptions in multicast delegates?",
+    "answer": "By default, if any method throws an exception, the entire invocation stops. To handle exceptions per-method, use GetInvocationList() and invoke each delegate individually with try-catch.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 44,
+    "question": "How can you catch exceptions from individual delegate invocations?",
+    "answer": "Use GetInvocationList() and invoke each delegate separately: foreach (var handler in myEvent.GetInvocationList()) { try { handler.DynamicInvoke(args); } catch (Exception ex) { /* handle */ } }",
+    "difficulty": "hard"
+  },
+  {
+    "id": 45,
+    "question": "What is the best practice for error handling in delegates?",
+    "answer": "Handle exceptions within the delegate methods when possible. For critical scenarios, use GetInvocationList() for individual error handling. Document exception behavior in APIs.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 46,
+    "question": "How does Comparison differ from IComparer?",
+    "answer": "Comparison<T> is a delegate (int Comparison<T>(T x, T y)) while IComparer<T> is an interface. Comparison is simpler for one-off sorting, IComparer is better for reusable comparison logic.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 47,
+    "question": "Where is Comparison delegate used?",
+    "answer": "In List<T>.Sort(Comparison<T>), Array.Sort<T>(T[], Comparison<T>), and other sorting methods that accept custom comparison logic as a delegate.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 48,
+    "question": "How do you create comparison logic with lambdas?",
+    "answer": "Comparison<Person> byAge = (p1, p2) => p1.Age.CompareTo(p2.Age); or use method group: Comparison<Person> byName = (p1, p2) => string.Compare(p1.Name, p2.Name);",
+    "difficulty": "easy"
+  },
+  {
+    "id": 49,
+    "question": "How does type inference work with lambda expressions?",
+    "answer": "The compiler infers parameter types from the delegate type. In var result = list.Where(x => x > 5), x is inferred as the list element type. Explicit types can be specified: (int x) => x > 5.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 50,
+    "question": "When do you need to explicitly specify delegate types?",
+    "answer": "When type inference fails due to ambiguous overloads, or when assigning to var or object variables. Also needed in some generic scenarios where inference isn't possible.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 51,
+    "question": "What are the limitations of delegate inference?",
+    "answer": "Cannot infer from null, ambiguous method overloads, or when multiple delegate types match. Also doesn't work with dynamic or object types without explicit casting.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 52,
+    "question": "How are events implemented using delegates?",
+    "answer": "Events are built on delegates. The 'event' keyword creates a private delegate field with public add/remove accessors. Underlying storage is typically EventHandler or custom delegate.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 53,
+    "question": "What is the standard event pattern in .NET?",
+    "answer": "Use EventHandler for no data, EventHandler<TEventArgs> for events with data. Follow the sender-object pattern: void EventHandler(object sender, EventArgs e).",
+    "difficulty": "medium"
+  },
+  {
+    "id": 54,
+    "question": "How do you create custom event args?",
+    "answer": "Derive from EventArgs: public class MyEventArgs : EventArgs { public string Data { get; } public MyEventArgs(string data) { Data = data; } }",
+    "difficulty": "easy"
+  },
+  {
+    "id": 55,
+    "question": "How does Converter relate to Func?",
+    "answer": "Converter<TInput, TOutput> is equivalent to Func<TInput, TOutput>. Converter is older and used in legacy APIs like List<T>.ConvertAll(Converter<T, TOutput>).",
+    "difficulty": "medium"
+  },
+  {
+    "id": 56,
+    "question": "Where is Converter delegate used?",
+    "answer": "Mainly in List<T>.ConvertAll<TOutput>() method and Array.ConvertAll() method for converting elements from one type to another in collections.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 57,
+    "question": "Should you use Converter or Func in new code?",
+    "answer": "Use Func<TInput, TOutput> in new code for consistency. Converter is legacy and Func is the standard for transformation operations in modern C#.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 58,
+    "question": "What are common callback scenarios?",
+    "answer": "Async operations completion, event handling, customization points in frameworks, progress reporting, and continuation patterns.",
+    "difficulty": "easy"
+  },
+  {
+    "id": 59,
+    "question": "How do you handle asynchronous callbacks?",
+    "answer": "Use async void for event handlers, but be careful with exceptions. For custom callbacks, use Func<Task> or provide proper error handling mechanisms.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 60,
+    "question": "What are the best practices for callback design?",
+    "answer": "Document callback contracts, handle exceptions appropriately, consider thread safety, avoid long-running operations in callbacks, and provide cancellation support when needed.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 61,
+    "question": "When should you choose delegates over interfaces?",
+    "answer": "Use delegates for single-method scenarios, event handling, and when you need flexibility with lambda expressions. Use interfaces for defining contracts with multiple related methods.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 62,
+    "question": "What are the performance differences?",
+    "answer": "Delegates have slightly more invocation overhead than interface calls, but the difference is usually negligible. Both are much faster than reflection.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 63,
+    "question": "How do they affect API design?",
+    "answer": "Delegates create more flexible APIs that accept behavior as parameters. Interfaces create more structured, testable APIs with clear contracts and implementations.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 64,
+    "question": "What are the challenges with delegate serialization?",
+    "answer": "Delegates are not serializable by default. They reference method implementations and execution context, which don't translate across process boundaries.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 65,
+    "question": "How can you work around serialization limitations?",
+    "answer": "Serialize method metadata (type name, method name) instead of delegates. Use command pattern, or create serializable wrappers that can reconstruct the delegate on the other side.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 66,
+    "question": "What alternatives exist for remote delegate invocation?",
+    "answer": "WCF callbacks, SignalR, message queues with command pattern, or REST webhooks. These provide cross-process communication without direct delegate serialization.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 67,
+    "question": "When are two delegate types compatible?",
+    "answer": "When they have the same parameter types and return type. The names can differ. Covariance/contravariance rules apply for reference types in generic delegates.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 68,
+    "question": "How does return type affect compatibility?",
+    "answer": "Return types must match exactly for non-generic delegates. For generic delegates, covariance allows more derived return types (Func<Animal> can accept method returning Dog).",
+    "difficulty": "hard"
+  },
+  {
+    "id": 69,
+    "question": "What about parameter compatibility?",
+    "answer": "Parameter types must match exactly for non-generic delegates. For generic delegates, contravariance allows less derived parameter types (Action<Dog> can accept method taking Animal).",
+    "difficulty": "hard"
+  },
+  {
+    "id": 70,
+    "question": "How do you register delegates in DI containers?",
+    "answer": "Register as factories: services.AddTransient<IService>(sp => new Service()); or register delegate directly: services.AddTransient<Func<IService>>(sp => () => sp.GetService<IService>());",
+    "difficulty": "hard"
+  },
+  {
+    "id": 71,
+    "question": "What are factory delegates?",
+    "answer": "Delegates that create instances: Func<T> factories. Useful in DI for lazy instantiation, object pooling, or when creation logic needs parameters not available to the container.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 72,
+    "question": "How do delegates enable strategy pattern?",
+    "answer": "Delegates can replace strategy interfaces: instead of IStrategy with Execute(), use Func<T, TResult>. This reduces boilerplate and allows lambda-based strategies.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 73,
+    "question": "How do you create delegates from reflection?",
+    "answer": "Use MethodInfo.CreateDelegate(): MethodInfo method = typeof(MyClass).GetMethod('MyMethod'); Func<int, int> del = (Func<int, int>)method.CreateDelegate(typeof(Func<int, int>), instance);",
+    "difficulty": "hard"
+  },
+  {
+    "id": 74,
+    "question": "What are the performance implications?",
+    "answer": "CreateDelegate() has some overhead but creates delegates that invoke as fast as regular delegates. Reflection to get MethodInfo is the expensive part.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 75,
+    "question": "When would you use dynamic delegate creation?",
+    "answer": "Plugin systems, dynamic method binding, AOP, or when working with types discovered at runtime. Avoid when types are known at compile-time.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 76,
+    "question": "What happens when you create a delegate for a struct method?",
+    "answer": "The struct may be boxed if it's an instance method delegate. For static methods or when using value types with care, boxing can be avoided.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 77,
+    "question": "How does boxing affect delegate performance?",
+    "answer": "Boxing creates heap allocations which can impact performance in tight loops. Use static methods or be mindful of capture to avoid unnecessary boxing.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 78,
+    "question": "What are the memory implications?",
+    "answer": "Delegates are reference types. Multicast delegates and closures create additional objects. Large invocation lists or many closures can increase memory pressure.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 79,
+    "question": "When should you use function pointers vs delegates?",
+    "answer": "Use function pointers (delegate*) in performance-critical scenarios with unmanaged code or when you need the absolute fastest invocation. Use delegates for most managed code scenarios.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 80,
+    "question": "What are the performance benefits of function pointers?",
+    "answer": "Function pointers have near-direct call performance, no allocation overhead, and better inlining potential. But they lack safety features and are more complex to use.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 81,
+    "question": "What are the limitations of function pointers?",
+    "answer": "No closure support, cannot capture instance methods directly, require unsafe context, and have more complex syntax. Limited to static methods or explicit instance passing.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 82,
+    "question": "How can you inspect delegate contents in debugger?",
+    "answer": "In Visual Studio debugger, expand delegate variables to see _target (instance) and _methodPtr (method). For multicast delegates, inspect _invocationList.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 83,
+    "question": "What are common delegate debugging challenges?",
+    "answer": "Tracking which methods are subscribed, debugging multicast delegate invocation order, identifying memory leaks from event subscriptions, and debugging lambda capture issues.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 84,
+    "question": "How do you track delegate subscriptions?",
+    "answer": "Use GetInvocationList() to see current subscribers. For events, you may need reflection to access the private delegate field, or implement custom event accessors with tracking.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 85,
+    "question": "How does the JIT optimize delegate calls?",
+    "answer": "JIT can inline delegate calls in some scenarios, especially for static methods. Virtual calls and instance methods with captures are harder to optimize.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 86,
+    "question": "What is delegate inlining?",
+    "answer": "When the JIT compiler replaces delegate invocation with direct method call. This eliminates the delegate overhead but depends on the delegate target being known and suitable for inlining.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 87,
+    "question": "How do virtual calls affect delegate performance?",
+    "answer": "Virtual method delegates have slightly more overhead because the actual method isn't known until runtime. This can prevent some JIT optimizations like inlining.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 88,
+    "question": "How do you implement command pattern with delegates?",
+    "answer": "Use Action or Func as commands: Dictionary<string, Action> commands. Instead of ICommand interface, use delegates for simpler command implementations.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 89,
+    "question": "What are the benefits over traditional command classes?",
+    "answer": "Less boilerplate, lambda support, better performance, and more flexible composition. But may be less testable if not properly abstracted.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 90,
+    "question": "How do you handle undo/redo with delegate commands?",
+    "answer": "Store pairs of Action (do) and Action (undo). Use stacks for history. Each command becomes a pair of delegates representing forward and reverse operations.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 91,
+    "question": "When would you use DynamicInvoke vs direct invocation?",
+    "answer": "Use DynamicInvoke when you don't know the delegate signature at compile time (late binding). Use direct invocation when types are known for better performance and type safety.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 92,
+    "question": "What are the performance costs?",
+    "answer": "DynamicInvoke has significant overhead due to parameter boxing/unboxing, reflection, and lack of compile-time optimizations. Avoid in performance-critical paths.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 93,
+    "question": "How does DynamicInvoke handle parameters?",
+    "answer": "It accepts object[] parameters, so value types get boxed. Parameters are checked and converted at runtime, which is slower than compile-time checking.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 94,
+    "question": "How do you convert between Expression and Delegate?",
+    "answer": "Use Compile() to convert Expression to Delegate: Expression<Func<int, bool>> expr = x => x > 5; Func<int, bool> func = expr.Compile();. Reverse conversion is done by compiler.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 95,
+    "question": "What is Compile() method on Expression?",
+    "answer": "Compile() generates IL code from the expression tree and returns an executable delegate. This has some overhead but creates delegates that run at full speed.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 96,
+    "question": "When would you compile expression trees to delegates?",
+    "answer": "When building dynamic queries that will be executed multiple times, creating dynamic methods at runtime, or when you need the performance of compiled code after expression analysis.",
+    "difficulty": "hard"
+  },
+  {
+    "id": 97,
+    "question": "How do delegates affect garbage collection?",
+    "answer": "Delegates are normal objects subject to GC. However, event subscriptions can create roots that prevent GC if not properly unsubscribed, leading to memory leaks.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 98,
+    "question": "What are delegate-related memory leaks?",
+    "answer": "When objects subscribe to events but don't unsubscribe, keeping both publisher and subscriber alive. Common in UI frameworks where controls subscribe to model events.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 99,
+    "question": "How do you prevent event subscription leaks?",
+    "answer": "Unsubscribe from events when done, use weak event patterns, implement IDisposable for event cleanup, or use frameworks that manage subscription lifetimes.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 100,
+    "question": "How do you mock delegate dependencies?",
+    "answer": "In tests, create mock delegates using lambda expressions or setup mock Func/Action behavior. Delegates are easier to mock than interfaces in many cases.",
+    "difficulty": "medium"
+  }
+]

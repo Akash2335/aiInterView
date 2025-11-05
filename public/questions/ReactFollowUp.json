@@ -1,0 +1,1004 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "When would you use state vs props?",
+      "answer": "State is for data that changes within a component, props are for passing data from parent to child components."
+    },
+    {
+      "id": 2,
+      "question": "Can props be changed by the child component?",
+      "answer": "No, props are read-only and immutable from the child component's perspective."
+    },
+    {
+      "id": 3,
+      "question": "How do state changes affect component rendering?",
+      "answer": "State changes trigger re-renders of the component and its children unless optimized."
+    },
+    {
+      "id": 4,
+      "question": "What are the rules of hooks?",
+      "answer": "Call hooks at top level, only in React functions, and in the same order every render."
+    },
+    {
+      "id": 5,
+      "question": "When should you create custom hooks?",
+      "answer": "When reusing stateful logic across multiple components or extracting complex logic."
+    },
+    {
+      "id": 6,
+      "question": "How do hooks compare to class component lifecycle methods?",
+      "answer": "useEffect combines didMount, didUpdate, willUnmount; mental model shifts from lifecycle to synchronization."
+    },
+    {
+      "id": 7,
+      "question": "What are the benefits of Virtual DOM?",
+      "answer": "Performance optimization through batching, minimal DOM manipulation, and efficient updates."
+    },
+    {
+      "id": 8,
+      "question": "How does diffing algorithm work?",
+      "answer": "Compares current and previous Virtual DOM, updates only changed parts using keys and heuristics."
+    },
+    {
+      "id": 9,
+      "question": "What is reconciliation in React?",
+      "answer": "The process of comparing Virtual DOM trees to determine minimal DOM updates needed."
+    },
+    {
+      "id": 10,
+      "question": "What is the equivalent of componentDidMount in hooks?",
+      "answer": "useEffect with empty dependency array [] runs after initial render."
+    },
+    {
+      "id": 11,
+      "question": "How do you clean up effects?",
+      "answer": "Return a cleanup function from useEffect that runs before re-running effect or unmounting."
+    },
+    {
+      "id": 12,
+      "question": "What is useLayoutEffect and when to use it?",
+      "answer": "Synchronous version of useEffect that runs after DOM mutations but before painting; use for DOM measurements."
+    },
+    {
+      "id": 13,
+      "question": "What are common use cases for HOCs?",
+      "answer": "Code reuse, cross-cutting concerns, authentication, logging, and props manipulation."
+    },
+    {
+      "id": 14,
+      "question": "How do HOCs differ from custom hooks?",
+      "answer": "HOCs are component wrappers that enhance components, hooks are functions that use React features."
+    },
+    {
+      "id": 15,
+      "question": "What are the drawbacks of HOCs?",
+      "answer": "Wrapper hell, prop collisions, indirection, and complexity in TypeScript typing."
+    },
+    {
+      "id": 16,
+      "question": "What problems does context solve?",
+      "answer": "Prop drilling - passing props through multiple intermediate components."
+    },
+    {
+      "id": 17,
+      "question": "How do you optimize context performance?",
+      "answer": "Split contexts, use memoization, avoid putting frequently changing values in large context objects."
+    },
+    {
+      "id": 18,
+      "question": "When should you avoid using context?",
+      "answer": "For frequently updated data, when prop drilling isn't a major issue, or when component composition works better."
+    },
+    {
+      "id": 19,
+      "question": "What is React.memo and when to use it?",
+      "answer": "Higher-order component that memoizes functional components to prevent unnecessary re-renders when props don't change."
+    },
+    {
+      "id": 20,
+      "question": "How do useCallback and useMemo help performance?",
+      "answer": "useCallback memoizes functions, useMemo memoizes values; both prevent unnecessary re-renders and computations."
+    },
+    {
+      "id": 21,
+      "question": "What are common performance bottlenecks?",
+      "answer": "Unnecessary re-renders, large component trees, expensive computations, and inefficient list rendering."
+    },
+    {
+      "id": 22,
+      "question": "Why does JSX require className instead of class?",
+      "answer": "class is a reserved keyword in JavaScript, so className is used to avoid conflicts."
+    },
+    {
+      "id": 23,
+      "question": "How do you write JavaScript expressions in JSX?",
+      "answer": "Using curly braces {} to embed JavaScript expressions within JSX."
+    },
+    {
+      "id": 24,
+      "question": "What happens during JSX compilation?",
+      "answer": "JSX is transpiled to React.createElement() calls that create React elements describing the UI."
+    },
+    {
+      "id": 25,
+      "question": "How do you handle route parameters?",
+      "answer": "Using URL parameters with React Router's useParams hook or route props."
+    },
+    {
+      "id": 26,
+      "question": "What is the difference between Link and useNavigate?",
+      "answer": "Link renders an anchor tag for declarative navigation, useNavigate provides imperative navigation function."
+    },
+    {
+      "id": 27,
+      "question": "How do you implement protected routes?",
+      "answer": "Create wrapper components that check authentication and redirect unauthenticated users."
+    },
+    {
+      "id": 28,
+      "question": "What are controlled vs uncontrolled components?",
+      "answer": "Controlled: form data handled by React state. Uncontrolled: form data handled by DOM itself."
+    },
+    {
+      "id": 29,
+      "question": "How do you handle form validation?",
+      "answer": "Using state for validation errors, onChange handlers, and conditional rendering of error messages."
+    },
+    {
+      "id": 30,
+      "question": "When would you use Formik or React Hook Form?",
+      "answer": "For complex forms with validation, state management, and submission handling needs."
+    },
+    {
+      "id": 31,
+      "question": "What is the benefit of using fragments?",
+      "answer": "Allow grouping elements without adding extra DOM nodes, improving performance and HTML structure."
+    },
+    {
+      "id": 32,
+      "question": "Can fragments have keys?",
+      "answer": "Yes, when using the explicit <Fragment> syntax, keys can be added for list rendering."
+    },
+    {
+      "id": 33,
+      "question": "What is the shorthand syntax for fragments?",
+      "answer": "<>...</> empty tag syntax, but cannot use keys with this shorthand."
+    },
+    {
+      "id": 34,
+      "question": "When is useReducer preferable over useState?",
+      "answer": "For complex state logic, multiple sub-values, or when next state depends on previous state."
+    },
+    {
+      "id": 35,
+      "question": "How does useReducer work with context?",
+      "answer": "useReducer can provide state and dispatch via context for global state management patterns."
+    },
+    {
+      "id": 36,
+      "question": "What is the typical pattern for useReducer?",
+      "answer": "const [state, dispatch] = useReducer(reducer, initialState) with action types and reducer function."
+    },
+    {
+      "id": 37,
+      "question": "What are the rules for custom hooks?",
+      "answer": "Must start with 'use', can call other hooks, and follow all standard hooks rules."
+    },
+    {
+      "id": 38,
+      "question": "What are common use cases for custom hooks?",
+      "answer": "API calls, form handling, timers, localStorage, and any reusable stateful logic."
+    },
+    {
+      "id": 39,
+      "question": "How do custom hooks compare to HOCs?",
+      "answer": "Hooks avoid wrapper hell, are more composable, and easier to type with TypeScript."
+    },
+    {
+      "id": 40,
+      "question": "What errors do error boundaries catch?",
+      "answer": "JavaScript errors in rendering, lifecycle methods, and constructors of whole component trees."
+    },
+    {
+      "id": 41,
+      "question": "How do you create an error boundary?",
+      "answer": "Class component with static getDerivedStateFromError and/or componentDidCatch lifecycle methods."
+    },
+    {
+      "id": 42,
+      "question": "What are best practices for error boundaries?",
+      "answer": "Place strategically, provide fallback UI, log errors, and don't overuse throughout app."
+    },
+    {
+      "id": 43,
+      "question": "When would you use portals?",
+      "answer": "For modals, tooltips, dialogs, or any UI that needs to break out of parent container constraints."
+    },
+    {
+      "id": 44,
+      "question": "How do events work with portals?",
+      "answer": "Events bubble through React tree hierarchy, not DOM hierarchy, despite portal placement."
+    },
+    {
+      "id": 45,
+      "question": "What is the syntax for creating portals?",
+      "answer": "ReactDOM.createPortal(children, domNode) renders children into different DOM node."
+    },
+    {
+      "id": 46,
+      "question": "How is useRef different from useState?",
+      "answer": "useRef doesn't trigger re-renders when value changes, mutable current property persists across renders."
+    },
+    {
+      "id": 47,
+      "question": "When would you use useRef for values vs DOM elements?",
+      "answer": "Values: storing previous values, intervals, any mutable value. DOM: accessing DOM nodes directly."
+    },
+    {
+      "id": 48,
+      "question": "Does useRef cause re-renders?",
+      "answer": "No, changing useRef's current property does not trigger component re-renders."
+    },
+    {
+      "id": 49,
+      "question": "What are the advantages of controlled components?",
+      "answer": "Single source of truth, validation, dynamic form control, and predictable state management."
+    },
+    {
+      "id": 50,
+      "question": "When would you use uncontrolled components?",
+      "answer": "For simple forms, file inputs, or when integrating with non-React code."
+    },
+    {
+      "id": 51,
+      "question": "How do you get values from uncontrolled components?",
+      "answer": "Using refs to access DOM elements and their values directly."
+    },
+    {
+      "id": 52,
+      "question": "What is SyntheticEvent?",
+      "answer": "React's cross-browser wrapper around native events providing consistent API across browsers."
+    },
+    {
+      "id": 53,
+      "question": "How do you prevent default behavior?",
+      "answer": "Call event.preventDefault() on the SyntheticEvent object."
+    },
+    {
+      "id": 54,
+      "question": "What are common event handling patterns?",
+      "answer": "Arrow functions, method binding, passing parameters with arrow functions or bind."
+    },
+    {
+      "id": 55,
+      "question": "What is the children prop?",
+      "answer": "Special prop that contains content between component's opening and closing tags."
+    },
+    {
+      "id": 56,
+      "question": "How does composition compare to inheritance?",
+      "answer": "React favors composition over inheritance for code reuse through props, children, and specialization."
+    },
+    {
+      "id": 57,
+      "question": "What are compound components?",
+      "answer": "Components that work together as a group, sharing implicit state while maintaining separate UI pieces."
+    },
+    {
+      "id": 58,
+      "question": "What happens if you use array index as key?",
+      "answer": "Can cause performance issues, state bugs when items are reordered, added, or removed."
+    },
+    {
+      "id": 59,
+      "question": "When are keys most important?",
+      "answer": "In dynamic lists where items can be reordered, added, removed, or have state."
+    },
+    {
+      "id": 60,
+      "question": "How do keys help with performance?",
+      "answer": "Help React identify which items changed, were added, or removed, optimizing re-renders."
+    },
+    {
+      "id": 61,
+      "question": "When should you use useMemo?",
+      "answer": "For expensive computations that should be cached, or when passing objects to optimized children."
+    },
+    {
+      "id": 62,
+      "question": "What are the performance trade-offs?",
+      "answer": "Memory overhead from caching vs computation cost; overuse can harm performance."
+    },
+    {
+      "id": 63,
+      "question": "How does useMemo differ from useCallback?",
+      "answer": "useMemo memoizes values, useCallback memoizes functions; both use similar dependency array pattern."
+    },
+    {
+      "id": 64,
+      "question": "How does useCallback prevent unnecessary re-renders?",
+      "answer": "By returning memoized function instance, preventing child components from re-rendering when passed as prop."
+    },
+    {
+      "id": 65,
+      "question": "When is useCallback necessary?",
+      "answer": "When passing functions to optimized child components that rely on reference equality."
+    },
+    {
+      "id": 66,
+      "question": "What are common use cases?",
+      "answer": "Event handlers passed to memoized children, dependency arrays in other hooks."
+    },
+    {
+      "id": 67,
+      "question": "When should you use Redux vs Context?",
+      "answer": "Redux for complex global state, middleware, devtools. Context for simpler prop drilling avoidance."
+    },
+    {
+      "id": 68,
+      "question": "What is server state vs client state?",
+      "answer": "Server state: from API (users, posts). Client state: UI state (theme, form inputs)."
+    },
+    {
+      "id": 69,
+      "question": "How do you choose a state management solution?",
+      "answer": "Based on app complexity, team size, performance needs, and learning curve considerations."
+    },
+    {
+      "id": 70,
+      "question": "How does React.memo work?",
+      "answer": "Memoizes component, only re-renders if props change (shallow comparison by default)."
+    },
+    {
+      "id": 71,
+      "question": "When should you avoid React.memo?",
+      "answer": "For simple components, when props change frequently, or when comparison cost exceeds render cost."
+    },
+    {
+      "id": 72,
+      "question": "Can you provide custom comparison function?",
+      "answer": "Yes, as second argument: React.memo(Component, areEqual) with custom props comparison."
+    },
+    {
+      "id": 73,
+      "question": "How do render props enable code reuse?",
+      "answer": "By passing a function as prop that returns React elements, sharing state and behavior."
+    },
+    {
+      "id": 74,
+      "question": "What are alternatives to render props?",
+      "answer": "Custom hooks, higher-order components, and component composition patterns."
+    },
+    {
+      "id": 75,
+      "question": "When are render props most useful?",
+      "answer": "When you need to share rendering logic while allowing custom UI structure."
+    },
+    {
+      "id": 76,
+      "question": "What is the testing pyramid for React?",
+      "answer": "Many unit tests, fewer integration tests, even fewer end-to-end tests."
+    },
+    {
+      "id": 77,
+      "question": "How do you test user interactions?",
+      "answer": "Using Testing Library's fireEvent or user-event for simulating user actions."
+    },
+    {
+      "id": 78,
+      "question": "What are best practices for React testing?",
+      "answer": "Test behavior not implementation, use accessible queries, avoid testing implementation details."
+    },
+    {
+      "id": 79,
+      "question": "What are the benefits of code splitting?",
+      "answer": "Smaller initial bundle, faster load times, better performance by loading code on demand."
+    },
+    {
+      "id": 80,
+      "question": "How do you implement route-based splitting?",
+      "answer": "Using React.lazy with React Router to split code at route boundaries."
+    },
+    {
+      "id": 81,
+      "question": "What is React.lazy and Suspense?",
+      "answer": "React.lazy for dynamic imports, Suspense for fallback UI during loading."
+    },
+    {
+      "id": 82,
+      "question": "What problems do concurrent features solve?",
+      "answer": "Janky UI, unresponsive interfaces, and poor user experience during expensive renders."
+    },
+    {
+      "id": 83,
+      "question": "How does startTransition work?",
+      "answer": "Marks state updates as transitions, allowing React to interrupt and maintain responsive UI."
+    },
+    {
+      "id": 84,
+      "question": "What is useDeferredValue?",
+      "answer": "Returns deferred version of value that can lag behind original, useful for slow renders."
+    },
+    {
+      "id": 85,
+      "question": "What are the advantages of React Hook Form?",
+      "answer": "Performance, minimal re-renders, easy validation, and better developer experience."
+    },
+    {
+      "id": 86,
+      "question": "How do you handle async validation?",
+      "answer": "Using async validation functions with proper loading states and error handling."
+    },
+    {
+      "id": 87,
+      "question": "What is form state management?",
+      "answer": "Managing form values, validation, submission state, and user interactions in forms."
+    },
+    {
+      "id": 88,
+      "question": "When would you use useImperativeHandle?",
+      "answer": "To customize instance value exposed to parent components when using refs."
+    },
+    {
+      "id": 89,
+      "question": "How does it work with forwardRef?",
+      "answer": "forwardRef passes ref through component, useImperativeHandle customizes what ref exposes."
+    },
+    {
+      "id": 90,
+      "question": "What are the drawbacks of imperative handle?",
+      "answer": "Breaks declarative paradigm, can make code harder to reason about and test."
+    },
+    {
+      "id": 91,
+      "question": "What are the benefits of server components?",
+      "answer": "Zero bundle size, direct backend access, improved performance, and simpler data fetching."
+    },
+    {
+      "id": 92,
+      "question": "How do server and client components interact?",
+      "answer": "Server components render on server, client components hydrate on client; they can be composed together."
+    },
+    {
+      "id": 93,
+      "question": "What are the limitations of server components?",
+      "answer": "No state, effects, event handlers, or browser-only APIs; only run on server."
+    },
+    {
+      "id": 94,
+      "question": "What tools analyze bundle size?",
+      "answer": "Webpack Bundle Analyzer, Source Map Explorer, and built-in tools in bundlers."
+    },
+    {
+      "id": 95,
+      "question": "How do you identify large dependencies?",
+      "answer": "Using bundle analysis tools to visualize and identify large packages in bundle."
+    },
+    {
+      "id": 96,
+      "question": "What are tree shaking and dead code elimination?",
+      "answer": "Tree shaking removes unused code, dead code elimination removes unreachable code during bundling."
+    },
+    {
+      "id": 97,
+      "question": "How do you identify performance bottlenecks?",
+      "answer": "Using React DevTools Profiler, browser performance tools, and monitoring Core Web Vitals."
+    },
+    {
+      "id": 98,
+      "question": "What is the React DevTools Profiler?",
+      "answer": "Tool for recording and analyzing component renders, identifying why components re-render."
+    },
+    {
+      "id": 99,
+      "question": "How do you optimize re-renders?",
+      "answer": "Memoization, proper dependency arrays, avoiding object creation in render, and component splitting."
+    },
+    {
+      "id": 100,
+      "question": "When should you use refs?",
+      "answer": "For DOM access, imperative animations, integrating with third-party libraries, or storing mutable values."
+    },
+    {
+      "id": 101,
+      "question": "How do you create refs in functional components?",
+      "answer": "Using useRef hook: const ref = useRef(initialValue)"
+    },
+    {
+      "id": 102,
+      "question": "What is the difference between useRef and createRef?",
+      "answer": "useRef returns same ref across renders, createRef returns new ref on every render."
+    },
+    {
+      "id": 103,
+      "question": "What are secure token storage practices?",
+      "answer": "HttpOnly cookies for tokens, secure storage on client, proper CORS, and token refresh strategies."
+    },
+    {
+      "id": 104,
+      "question": "How do you implement protected routes?",
+      "answer": "Wrapper components that check authentication and redirect to login if not authenticated."
+    },
+    {
+      "id": 105,
+      "question": "What is token refresh strategy?",
+      "answer": "Using refresh tokens to obtain new access tokens without requiring user to re-authenticate."
+    },
+    {
+      "id": 106,
+      "question": "How has batching changed in React 18?",
+      "answer": "Automatic batching for all state updates (promises, timeouts, native handlers) not just React events."
+    },
+    {
+      "id": 107,
+      "question": "When are updates not batched?",
+      "answer": "Updates inside flushSync or certain edge cases where synchronous updates are needed."
+    },
+    {
+      "id": 108,
+      "question": "What is flushSync and when to use it?",
+      "answer": "Forces synchronous, immediate DOM updates; use sparingly for specific UI synchronization needs."
+    },
+    {
+      "id": 109,
+      "question": "What checks does strict mode perform?",
+      "answer": "Identifies unsafe lifecycles, legacy API usage, unexpected side effects, and deprecated features."
+    },
+    {
+      "id": 110,
+      "question": "Does strict mode affect production builds?",
+      "answer": "No, strict mode checks are development-only and stripped in production."
+    },
+    {
+      "id": 111,
+      "question": "How does strict mode help with future React versions?",
+      "answer": "Warns about deprecated patterns and helps prepare code for future React releases."
+    },
+    {
+      "id": 112,
+      "question": "What are common side effects?",
+      "answer": "Data fetching, subscriptions, manual DOM manipulations, and timers."
+    },
+    {
+      "id": 113,
+      "question": "How do dependency arrays work?",
+      "answer": "Specify when effect should re-run; empty array runs once, specific dependencies run when they change."
+    },
+    {
+      "id": 114,
+      "question": "What is the cleanup function in useEffect?",
+      "answer": "Function returned from useEffect that runs before re-running effect or component unmounts."
+    },
+    {
+      "id": 115,
+      "question": "What are presentational vs container components?",
+      "answer": "Presentational: how things look. Container: how things work (state, logic)."
+    },
+    {
+      "id": 116,
+      "question": "How do compound components work?",
+      "answer": "Components that work together through implicit state sharing and flexible composition."
+    },
+    {
+      "id": 117,
+      "question": "What is the provider pattern?",
+      "answer": "Using Context Provider to make data available to multiple components in tree without prop drilling."
+    },
+    {
+      "id": 118,
+      "question": "How do portals handle event bubbling?",
+      "answer": "Events from portals bubble through React component hierarchy, not DOM hierarchy."
+    },
+    {
+      "id": 119,
+      "question": "What are accessibility considerations for portals?",
+      "answer": "Managing focus, ensuring proper screen reader announcements, and maintaining keyboard navigation."
+    },
+    {
+      "id": 120,
+      "question": "How do you manage focus with portals?",
+      "answer": "Trapping focus within modal, returning focus to trigger element, and managing focus order."
+    },
+    {
+      "id": 121,
+      "question": "When is Redux necessary?",
+      "answer": "Complex global state, extensive middleware needs, time-travel debugging, or large team coordination."
+    },
+    {
+      "id": 122,
+      "question": "What are the trade-offs of different state solutions?",
+      "answer": "Complexity vs simplicity, learning curve, bundle size, and team familiarity considerations."
+    },
+    {
+      "id": 123,
+      "question": "How do you manage server state vs client state?",
+      "answer": "Server state: caching, synchronization, updates. Client state: local UI state, form state."
+    },
+    {
+      "id": 124,
+      "question": "What is the order of lifecycle methods?",
+      "answer": "Mounting: constructor, render, componentDidMount. Updating: render, componentDidUpdate."
+    },
+    {
+      "id": 125,
+      "question": "How do lifecycle methods map to hooks?",
+      "answer": "componentDidMount → useEffect(fn, []), componentDidUpdate → useEffect(fn), componentWillUnmount → useEffect return"
+    },
+    {
+      "id": 126,
+      "question": "What are deprecated lifecycle methods?",
+      "answer": "componentWillMount, componentWillReceiveProps, componentWillUpdate (replaced by getDerivedStateFromProps)"
+    },
+    {
+      "id": 127,
+      "question": "How does PureComponent optimize performance?",
+      "answer": "Implements shouldComponentUpdate with shallow prop and state comparison."
+    },
+    {
+      "id": 128,
+      "question": "When should you use PureComponent?",
+      "answer": "For class components with simple props/state that change infrequently."
+    },
+    {
+      "id": 129,
+      "question": "What are the limitations of PureComponent?",
+      "answer": "Shallow comparison can miss nested object changes, may prevent necessary re-renders."
+    },
+    {
+      "id": 130,
+      "question": "What is the difference between client-side and server-side routing?",
+      "answer": "Client-side: handled in browser without page reloads. Server-side: full page requests to server."
+    },
+    {
+      "id": 131,
+      "question": "How do you handle 404 pages?",
+      "answer": "Catch-all route at end of route definitions that renders 404 component."
+    },
+    {
+      "id": 132,
+      "question": "What are dynamic routes?",
+      "answer": "Routes with parameters (e.g., /users/:id) that match multiple paths."
+    },
+    {
+      "id": 133,
+      "question": "How do you prevent unnecessary re-renders with context?",
+      "answer": "Split contexts, memoize context values, use selectors, or combine with useMemo."
+    },
+    {
+      "id": 134,
+      "question": "What is context selector pattern?",
+      "answer": "Using custom hooks or libraries to subscribe to specific context values rather than whole context."
+    },
+    {
+      "id": 135,
+      "question": "When should you split contexts?",
+      "answer": "When different parts of context change at different rates or serve different concerns."
+    },
+    {
+      "id": 136,
+      "question": "Where should you place error boundaries?",
+      "answer": "At strategic points in component tree to catch errors without crashing whole app."
+    },
+    {
+      "id": 137,
+      "question": "How do you handle error recovery?",
+      "answer": "Providing retry mechanisms, fallback content, and graceful degradation."
+    },
+    {
+      "id": 138,
+      "question": "What errors do error boundaries not catch?",
+      "answer": "Event handlers, async code, server-side rendering, and errors in error boundary itself."
+    },
+    {
+      "id": 139,
+      "question": "What is the proper way to fetch data in useEffect?",
+      "answer": "Use async function inside useEffect, handle loading/error states, and cleanup with abort controller."
+    },
+    {
+      "id": 140,
+      "question": "How do you handle loading and error states?",
+      "answer": "Using state variables for loading, error, and data with conditional rendering."
+    },
+    {
+      "id": 141,
+      "question": "What are the benefits of React Query?",
+      "answer": "Caching, background updates, error handling, pagination, and optimized performance."
+    },
+    {
+      "id": 142,
+      "question": "What is the testing trophy model?",
+      "answer": "Emphasis on integration tests over unit tests, with some end-to-end tests."
+    },
+    {
+      "id": 143,
+      "question": "How do you test async behavior?",
+      "answer": "Using async utilities, waitFor, findBy queries, and mocking with MSW."
+    },
+    {
+      "id": 144,
+      "question": "What are common testing pitfalls?",
+      "answer": "Testing implementation details, over-mocking, and not testing user behavior."
+    },
+    {
+      "id": 145,
+      "question": "Why use TypeScript or PropTypes?",
+      "answer": "Type safety, better developer experience, early error detection, and documentation."
+    },
+    {
+      "id": 146,
+      "question": "How do you handle optional props?",
+      "answer": "Using ? in TypeScript interfaces or PropTypes with isRequired flag omitted."
+    },
+    {
+      "id": 147,
+      "question": "What is prop drilling and how to avoid it?",
+      "answer": "Passing props through multiple levels; avoid with context, composition, or state management."
+    },
+    {
+      "id": 148,
+      "question": "What are CSS vs JavaScript animations?",
+      "answer": "CSS: better performance for simple animations. JS: more control for complex interactions."
+    },
+    {
+      "id": 149,
+      "question": "How do you handle enter/exit animations?",
+      "answer": "Using CSS transitions, animation libraries, or React Transition Group."
+    },
+    {
+      "id": 150,
+      "question": "What are performance considerations for animations?",
+      "answer": "Use transform and opacity, avoid layout thrashing, and leverage will-change property."
+    },
+    {
+      "id": 151,
+      "question": "Why does React favor composition?",
+      "answer": "More flexible, reusable, and predictable than inheritance for UI components."
+    },
+    {
+      "id": 152,
+      "question": "What are the benefits of composition?",
+      "answer": "Better separation of concerns, reusability, and flexibility in component design."
+    },
+    {
+      "id": 153,
+      "question": "Are there any cases where inheritance is better?",
+      "answer": "Rarely in React; composition handles most use cases more effectively."
+    },
+    {
+      "id": 154,
+      "question": "How do events bubble through portals?",
+      "answer": "Events bubble through React tree, not DOM tree, despite different DOM location."
+    },
+    {
+      "id": 155,
+      "question": "What are accessibility concerns with portals?",
+      "answer": "Focus management, screen reader announcements, and keyboard navigation across portal boundaries."
+    },
+    {
+      "id": 156,
+      "question": "How do you manage multiple portals?",
+      "answer": "Using z-index stacking, focus management, and proper DOM structure for accessibility."
+    },
+    {
+      "id": 157,
+      "question": "What are the performance benefits of React Hook Form?",
+      "answer": "Minimal re-renders, uncontrolled inputs by default, and optimized validation."
+    },
+    {
+      "id": 158,
+      "question": "How do you handle complex validation schemas?",
+      "answer": "Using validation libraries like Yup or Zod with schema-based validation."
+    },
+    {
+      "id": 159,
+      "question": "What is the useForm hook API?",
+      "answer": "Provides register, handleSubmit, watch, formState, and other form management utilities."
+    },
+    {
+      "id": 160,
+      "question": "Why are state updates asynchronous?",
+      "answer": "For performance batching, avoiding unnecessary re-renders, and ensuring predictable behavior."
+    },
+    {
+      "id": 161,
+      "question": "How do functional updates ensure correctness?",
+      "answer": "By providing current state to updater function: setState(prev => prev + 1)"
+    },
+    {
+      "id": 162,
+      "question": "When would you need synchronous updates?",
+      "answer": "Rarely; for measurements or integrations that require immediate DOM updates."
+    },
+    {
+      "id": 163,
+      "question": "Why does context cause unnecessary re-renders?",
+      "answer": "All consumers re-render when any context value changes, even if they don't use that value."
+    },
+    {
+      "id": 164,
+      "question": "How do selectors solve context problems?",
+      "answer": "By subscribing to specific values rather than whole context object."
+    },
+    {
+      "id": 165,
+      "question": "When should you use state management instead of context?",
+      "answer": "For complex state, frequent updates, or when context causes performance issues."
+    },
+    {
+      "id": 166,
+      "question": "How do you persist theme preference?",
+      "answer": "Using localStorage with useEffect to save and retrieve theme preference."
+    },
+    {
+      "id": 167,
+      "question": "What is the prefers-color-scheme media query?",
+      "answer": "CSS media query that detects user's system color scheme preference (light/dark)."
+    },
+    {
+      "id": 168,
+      "question": "How do you handle CSS variables for theming?",
+      "answer": "Defining CSS custom properties and updating them via JavaScript for dynamic themes."
+    },
+    {
+      "id": 169,
+      "question": "What are compound components?",
+      "answer": "Components that work together through implicit state sharing and flexible composition."
+    },
+    {
+      "id": 170,
+      "question": "How do render props enable reusability?",
+      "answer": "By sharing state and behavior through function props while allowing custom rendering."
+    },
+    {
+      "id": 171,
+      "question": "What is the provider pattern?",
+      "answer": "Using Context Provider to share data across multiple components in tree."
+    },
+    {
+      "id": 172,
+      "question": "How do you use React DevTools Profiler?",
+      "answer": "Record interactions, analyze component renders, and identify performance bottlenecks."
+    },
+    {
+      "id": 173,
+      "question": "What is why-did-you-render?",
+      "answer": "Library that notifies about potentially unnecessary component re-renders."
+    },
+    {
+      "id": 174,
+      "question": "How do you monitor Core Web Vitals?",
+      "answer": "Using web-vitals library, Google Analytics, or other performance monitoring tools."
+    },
+    {
+      "id": 175,
+      "question": "How do you handle large file uploads?",
+      "answer": "Chunking files, showing progress, handling interruptions, and server-side processing."
+    },
+    {
+      "id": 176,
+      "question": "What is drag and drop file upload?",
+      "answer": "Using HTML5 drag and drop API or libraries like react-dropzone for file upload UI."
+    },
+    {
+      "id": 177,
+      "question": "How do you validate file types and sizes?",
+      "answer": "Checking file.type, file.size, and extensions on client and server side."
+    },
+    {
+      "id": 178,
+      "question": "What are the pros and cons of CSS-in-JS?",
+      "answer": "Pros: scoping, dynamic styles. Cons: runtime cost, bundle size, learning curve."
+    },
+    {
+      "id": 179,
+      "question": "How do CSS Modules work?",
+      "answer": "Locally scoped CSS classes that are transformed to unique class names at build time."
+    },
+    {
+      "id": 180,
+      "question": "What is Tailwind CSS approach?",
+      "answer": "Utility-first CSS framework with predefined classes for rapid UI development."
+    },
+    {
+      "id": 181,
+      "question": "How does SSR improve SEO?",
+      "answer": "Search engines can crawl fully rendered HTML content without requiring JavaScript."
+    },
+    {
+      "id": 182,
+      "question": "What is hydration?",
+      "answer": "Process where React attaches to server-rendered HTML and makes it interactive."
+    },
+    {
+      "id": 183,
+      "question": "What are the challenges of SSR?",
+      "answer": "Complex setup, server load, shared code constraints, and hydration mismatches."
+    },
+    {
+      "id": 184,
+      "question": "What are WebSockets vs Server-Sent Events?",
+      "answer": "WebSockets: bidirectional real-time communication. SSE: server to client push notifications."
+    },
+    {
+      "id": 185,
+      "question": "How do you handle connection state?",
+      "answer": "Tracking connection status, reconnection logic, and offline/online state management."
+    },
+    {
+      "id": 186,
+      "question": "What is optimistic updates?",
+      "answer": "Immediately updating UI assuming success, then rolling back if server request fails."
+    },
+    {
+      "id": 187,
+      "question": "What is prop drilling?",
+      "answer": "Passing props through multiple component levels to reach deeply nested components."
+    },
+    {
+      "id": 188,
+      "question": "When is context better than prop drilling?",
+      "answer": "When many components need the same data or drilling through many levels."
+    },
+    {
+      "id": 189,
+      "question": "What are other alternatives to prop drilling?",
+      "answer": "Component composition, render props, higher-order components, and state management libraries."
+    },
+    {
+      "id": 190,
+      "question": "What is feature-based organization?",
+      "answer": "Grouping files by feature rather than by file type for better maintainability."
+    },
+    {
+      "id": 191,
+      "question": "How do you structure large React applications?",
+      "answer": "Feature-based folders, clear separation of concerns, and consistent naming conventions."
+    },
+    {
+      "id": 192,
+      "question": "What are absolute imports?",
+      "answer": "Importing modules using absolute paths from project root rather than relative paths."
+    },
+    {
+      "id": 193,
+      "question": "What is react-i18next?",
+      "answer": "Popular internationalization framework for React with translation management."
+    },
+    {
+      "id": 194,
+      "question": "How do you handle pluralization?",
+      "answer": "Using translation keys for singular/plural forms based on count values."
+    },
+    {
+      "id": 195,
+      "question": "What are RTL languages support?",
+      "answer": "Right-to-left language support (Arabic, Hebrew) with CSS direction and layout adjustments."
+    },
+    {
+      "id": 196,
+      "question": "What are ARIA attributes?",
+      "answer": "Accessible Rich Internet Applications attributes for improving web accessibility."
+    },
+    {
+      "id": 197,
+      "question": "How do you test accessibility?",
+      "answer": "Using screen readers, automated tools like axe-core, and manual keyboard testing."
+    },
+    {
+      "id": 198,
+      "question": "What are common accessibility mistakes?",
+      "answer": "Missing alt text, poor color contrast, inaccessible forms, and missing keyboard navigation."
+    },
+    {
+      "id": 199,
+      "question": "What is derived state?",
+      "answer": "State calculated from props or other state, often computed in render or with useMemo."
+    },
+    {
+      "id": 200,
+      "question": "Why shouldn't you mutate state directly?",
+      "answer": "Breaks React's immutability principle, can cause rendering issues and hard-to-debug behavior."
+    }
+  ]
+}

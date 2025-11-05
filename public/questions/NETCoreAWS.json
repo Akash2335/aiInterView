@@ -1,0 +1,154 @@
+{
+  "data": [
+    {
+      "id": 101,
+      "question": "How do you deploy .NET Core applications to AWS using Elastic Beanstalk?",
+      "category": ".net-aws",
+      "answer": "Use `dotnet publish` to create deployment package, create EB application and environment, configure .NET Core platform, set environment variables, use AWS Toolkit for Visual Studio for seamless deployment, and configure load balancer and auto scaling for production workloads."
+    },
+    {
+      "id": 102,
+      "question": "What's the best way to integrate .NET Core with DynamoDB?",
+      "category": ".net-aws",
+      "answer": "Use AWSSDK.DynamoDBv2 NuGet package, implement dependency injection with IServiceCollection.AddAWSService<IAmazonDynamoDB>(), use Object Persistence Model with DynamoDBContext, implement proper error handling with ProvisionedThroughputExceededException, and use DynamoDBEntity for data modeling."
+    },
+    {
+      "id": 103,
+      "question": "How do you implement serverless .NET Core with AWS Lambda?",
+      "category": ".net-aws",
+      "answer": "Use Amazon.Lambda.AspNetCoreServer package for API Gateway proxy, implement Function class as entry point, use Lambda Annotations for simplified setup, configure dependency injection in Startup.cs, and use AWS Lambda .NET CLI tools for deployment with `dotnet lambda deploy-function`."
+    },
+    {
+      "id": 104,
+      "question": "What are the best practices for connecting .NET Core to Amazon RDS SQL Server?",
+      "category": ".net-aws",
+      "answer": "Use connection pooling in appsettings.json, implement IAM database authentication to avoid password management, use RDS Proxy for connection management, implement retry logic with Polly, and use Entity Framework Core with proper context configuration for AWS RDS."
+    },
+    {
+      "id": 105,
+      "question": "How do you use Dependency Injection with AWS services in .NET Core?",
+      "category": ".net-aws",
+      "answer": "Use AWSSDK.Extensions.NETCore.Setup package, register services with services.AddAWSService<IAmazonS3>(), configure credentials via IConfiguration, use named clients for multiple AWS accounts, and implement custom services wrappers for better testability."
+    },
+    {
+      "id": 106,
+      "question": "What's the recommended way to handle configuration in .NET Core for AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS Systems Manager Parameter Store with IConfigurationBuilder.AddSystemsManager(), implement hierarchical configuration, use IOptions pattern for strongly-typed config, store secrets in AWS Secrets Manager, and implement configuration reloading on changes."
+    },
+    {
+      "id": 107,
+      "question": "How do you implement logging in .NET Core applications on AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS.Logger.AspNetCore for CloudWatch integration, implement structured logging with Serilog and CloudWatch sink, use ILogger<T> with proper log levels, implement correlation IDs for distributed tracing, and configure log groups and retention policies."
+    },
+    {
+      "id": 108,
+      "question": "What's the best approach for file uploads from .NET Core to S3?",
+      "category": ".net-aws",
+      "answer": "Use Presigned URLs for secure direct uploads, implement multipart upload for large files, use TransferUtility for simplified uploads, implement progress tracking, and set proper CORS policies and bucket policies for security."
+    },
+    {
+      "id": 109,
+      "question": "How do you implement background jobs in .NET Core using AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS SQS with BackgroundService in .NET Core, implement IHostedService for long-running tasks, use Amazon.SQS.ExtendedClient for large messages, implement message visibility timeout, and use DLQ for failed message handling."
+    },
+    {
+      "id": 110,
+      "question": "What's the best way to use Entity Framework Core with AWS databases?",
+      "category": ".net-aws",
+      "answer": "Use Pomelo.EntityFrameworkCore.MySql for Aurora MySQL, use Npgsql for Aurora PostgreSQL, implement connection resiliency with retries, use RDS Proxy for connection management, and implement database migrations in CI/CD pipeline."
+    },
+    {
+      "id": 111,
+      "question": "How do you implement caching in .NET Core with AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS ElastiCache for Redis with IDistributedCache, implement IMemoryCache for in-memory caching, use cache-aside pattern, implement cache invalidation strategies, and use DynamoDAX for DynamoDB acceleration."
+    },
+    {
+      "id": 112,
+      "question": "What's the recommended authentication approach for .NET Core APIs on AWS?",
+      "category": ".net-aws",
+      "answer": "Use Amazon Cognito with Microsoft.AspNetCore.Authentication.JwtBearer, implement OAuth 2.0 flows, use API Gateway custom authorizers for additional security, implement role-based access control, and use AWS IAM for service-to-service authentication."
+    },
+    {
+      "id": 113,
+      "question": "How do you implement health checks in .NET Core for AWS load balancers?",
+      "category": ".net-aws",
+      "answer": "Use Microsoft.AspNetCore.Diagnostics.HealthChecks, implement custom health check providers for AWS services, configure ELB health checks with proper endpoints, use Health Checks UI for monitoring, and implement readiness/liveness probes."
+    },
+    {
+      "id": 114,
+      "question": "What's the best way to handle secrets in .NET Core applications on AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS Secrets Manager with rotation, implement IConfiguration with Secrets Manager provider, use IOptions pattern for strongly-typed secrets, implement secret caching to reduce API calls, and use IAM roles for secure access."
+    },
+    {
+      "id": 115,
+      "question": "How do you implement messaging patterns with SNS/SQS in .NET Core?",
+      "category": ".net-aws",
+      "answer": "Use AWSSDK.SQS and AWSSDK.SNS packages, implement message publishers and consumers, use Amazon.SQS.ExtendedClient for large messages, implement dead letter queues, and use background services for message processing."
+    },
+    {
+      "id": 116,
+      "question": "What's the recommended approach for monitoring .NET Core applications on AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS X-Ray for distributed tracing, implement custom CloudWatch metrics, use Application Insights with AWS integration, implement structured logging, and set up CloudWatch alarms for critical business metrics."
+    },
+    {
+      "id": 117,
+      "question": "How do you implement API Gateway with .NET Core Lambda functions?",
+      "category": ".net-aws",
+      "answer": "Use Amazon.Lambda.AspNetCoreServer package, implement APIGatewayProxyFunction as entry point, configure routing with attribute routing, implement request/response models, and use Lambda Annotations for simplified configuration."
+    },
+    {
+      "id": 118,
+      "question": "What's the best way to use NoSQL databases with .NET Core on AWS?",
+      "category": ".net-aws",
+      "answer": "Use DynamoDB with Object Persistence Model, implement single-table design patterns, use DynamoDBContext for CRUD operations, implement secondary indexes for query patterns, and use transactions for complex operations."
+    },
+    {
+      "id": 119,
+      "question": "How do you implement event-driven architecture with .NET Core and EventBridge?",
+      "category": ".net-aws",
+      "answer": "Use AWSSDK.EventBridge package, implement event producers and consumers, use event schema registry, implement event filtering, and use Step Functions for complex event workflows with .NET Core activities."
+    },
+    {
+      "id": 120,
+      "question": "What's the recommended CI/CD approach for .NET Core on AWS?",
+      "category": ".net-aws",
+      "answer": "Use AWS CodeBuild with buildspec.yml for .NET Core, implement CodePipeline for deployment automation, use CloudFormation for infrastructure as code, implement automated testing in build process, and use blue-green deployments for zero downtime."
+    },
+    {
+      "id": 121,
+      "question": "How do you implement real-time features with .NET Core and AWS?",
+      "category": ".net-aws",
+      "answer": "Use API Gateway WebSocket API with Lambda, implement SignalR with AWS backing services, use AppSync for GraphQL subscriptions, implement connection management, and use DynamoDB Streams for real-time data updates."
+    },
+    {
+      "id": 122,
+      "question": "What's the best way to handle file processing in .NET Core with AWS?",
+      "category": ".net-aws",
+      "answer": "Use S3 events to trigger Lambda functions, implement S3 Select for querying files, use Textract for document processing, implement parallel processing with ECS Fargate, and use Step Functions for workflow orchestration."
+    },
+    {
+      "id": 123,
+      "question": "How do you implement security best practices for .NET Core on AWS?",
+      "category": ".net-aws",
+      "answer": "Use IAM roles instead of access keys, implement security headers with middleware, use AWS WAF for web application firewall, implement input validation, and use AWS Shield for DDoS protection."
+    },
+    {
+      "id": 124,
+      "question": "What's the recommended approach for database migrations in .NET Core on AWS?",
+      "category": ".net-aws",
+      "answer": "Use Entity Framework Core migrations in CodeBuild, implement migration scripts for RDS, use AWS DMS for large migrations, implement rollback strategies, and test migrations in staging environment first."
+    },
+    {
+      "id": 125,
+      "question": "How do you optimize .NET Core application performance on AWS?",
+      "category": ".net-aws",
+      "answer": "Use ARM64 architecture for better price-performance, implement connection pooling for databases, use ElastiCache for frequently accessed data, implement async/await patterns, and use CloudFront for static content delivery."
+    }
+  ]
+}

@@ -1,0 +1,1204 @@
+{
+  "data": [
+    { 
+      "id": 1, 
+      "question": "What is CI/CD and why is it important from a developer perspective?", 
+      "category": "ci-cd",
+      "difficulty": "beginner",
+      "followUps": [
+        "What are the main benefits of implementing CI/CD?",
+        "How does CI/CD improve developer productivity?",
+        "What challenges might teams face when adopting CI/CD?"
+      ],
+      "referenceAnswer": "CI/CD stands for Continuous Integration/Continuous Deployment. CI: Developers merge code changes frequently to main branch with automated testing. CD: Automated deployment of code to various environments. Importance: Faster feedback, fewer bugs in production, automated deployments, consistent processes, enables rapid iteration and collaboration."
+    },
+    { 
+      "id": 2, 
+      "question": "Explain the difference between CI, CD, and Continuous Deployment.", 
+      "category": "ci-cd",
+      "difficulty": "beginner",
+      "followUps": [
+        "When would you choose Continuous Delivery over Continuous Deployment?",
+        "What are the key indicators that a team is ready for Continuous Deployment?",
+        "How do these practices affect release cycles?"
+      ],
+      "referenceAnswer": "CI (Continuous Integration): Automated building and testing of code changes. CD (Continuous Delivery): Code is always in deployable state, but deployment is manual. Continuous Deployment: Automated deployment to production after passing tests. CI ensures code quality, CD ensures deployability, Continuous Deployment automates releases."
+    },
+    { 
+      "id": 3, 
+      "question": "What are GitHub Actions and how do they work?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the advantages of GitHub Actions over other CI/CD tools?",
+        "How do GitHub Actions integrate with the GitHub ecosystem?",
+        "What types of workflows can you create with GitHub Actions?"
+      ],
+      "referenceAnswer": "GitHub Actions is CI/CD platform built into GitHub. Workflows are defined in YAML files in .github/workflows directory. Components: Events (triggers), Jobs, Steps, Actions. Workflows run on GitHub-hosted runners or self-hosted runners. Provides seamless integration with GitHub repositories and features."
+    },
+    { 
+      "id": 4, 
+      "question": "How do you create a basic GitHub Actions workflow?", 
+      "category": "github-actions",
+      "difficulty": "beginner",
+      "followUps": [
+        "What are the essential components of a GitHub Actions workflow file?",
+        "How do you trigger a workflow on specific events?",
+        "What's the purpose of the actions/checkout step?"
+      ],
+      "referenceAnswer": "Create .github/workflows/ci.yml file. Define: name, on (trigger events), jobs with steps. Example: on: [push, pull_request], jobs with checkout, setup, build, test steps. Use actions/checkout@v4 to get code, then run commands with run: or use pre-built actions."
+    },
+    { 
+      "id": 5, 
+      "question": "What are the key components of a GitHub Actions workflow?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do jobs differ from steps in GitHub Actions?",
+        "What is the purpose of runners in GitHub Actions?",
+        "How do events trigger workflow execution?"
+      ],
+      "referenceAnswer": "Workflow: Automated procedure defined in YAML. Event: Triggers workflow (push, PR, schedule). Job: Set of steps running on same runner. Step: Individual task (run command or action). Action: Reusable unit of code. Runner: Server running workflows. Artifacts: Files produced by workflow."
+    },
+    { 
+      "id": 6, 
+      "question": "How do you handle secrets in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Where are secrets stored in GitHub?",
+        "How do you access secrets in workflow files?",
+        "What security best practices should you follow for secrets?"
+      ],
+      "referenceAnswer": "Store secrets in GitHub repository settings (Settings > Secrets and variables > Actions). Access in workflows with ${{ secrets.SECRET_NAME }}. Secrets are not logged in output. Use environment-specific secrets. For organization-wide secrets, use organization settings."
+    },
+    { 
+      "id": 7, 
+      "question": "What are the different trigger events in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you configure a workflow to run on specific branches?",
+        "What's the difference between push and pull_request triggers?",
+        "How can you manually trigger a workflow?"
+      ],
+      "referenceAnswer": "push: Code push to branch. pull_request: PR opened, synchronize, closed. schedule: Cron-based triggers. workflow_dispatch: Manual trigger from UI. release: Release created. repository_dispatch: External event via API. Also: issues, label, milestone, and many more GitHub events."
+    },
+    { 
+      "id": 8, 
+      "question": "How do you manage environment-specific configurations in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What tools can help manage environment configurations?",
+        "How do you handle database connections across environments?",
+        "What strategies prevent configuration drift?"
+      ],
+      "referenceAnswer": "Use environment variables with different values per environment. GitHub Environments for deployment protection rules. Configuration files per environment (appsettings.Production.json). Feature flags for gradual rollouts. Secrets management for sensitive data. Infrastructure as Code for environment consistency."
+    },
+    { 
+      "id": 9, 
+      "question": "What is a GitHub Actions runner and what types are available?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When would you choose self-hosted runners over GitHub-hosted?",
+        "What are the limitations of GitHub-hosted runners?",
+        "How do you set up a self-hosted runner?"
+      ],
+      "referenceAnswer": "Runner is machine executing workflows. GitHub-hosted: Managed by GitHub, various OS (Ubuntu, Windows, macOS). Self-hosted: Your own machines, custom configuration. Choose GitHub-hosted for simplicity, self-hosted for specific requirements (hardware, software, security)."
+    },
+    { 
+      "id": 10, 
+      "question": "How do you implement conditional execution in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What context variables are available for conditions?",
+        "How do you run steps only on specific branches?",
+        "What's the difference between job-level and step-level conditions?"
+      ],
+      "referenceAnswer": "Use if conditions in jobs or steps. Check context variables: github.ref, github.event_name, github.actor. Example: if: ${{ github.ref == 'refs/heads/main' }}. Use expressions with &&, ||, !. Also: continue-on-error, timeout-minutes for step control."
+    },
+    { 
+      "id": 11, 
+      "question": "What are GitHub Actions artifacts and how do you use them?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What types of files are typically stored as artifacts?",
+        "How long are artifacts stored by default?",
+        "Can artifacts be shared between different workflows?"
+      ],
+      "referenceAnswer": "Artifacts are files produced during workflow run. Upload with actions/upload-artifact@v4. Download with actions/download-artifact@v4. Use for: build outputs, test results, coverage reports, packages. Stored for 90 days (default). Share between jobs in same workflow."
+    },
+    { 
+      "id": 12, 
+      "question": "How do you handle dependencies and caching in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What files should be used as cache keys?",
+        "How does caching improve workflow performance?",
+        "What are the limitations of GitHub Actions caching?"
+      ],
+      "referenceAnswer": "Use actions/cache@v4 to cache dependencies. Key on lock files (package-lock.json, requirements.txt). Restore keys for fallback. Setup actions: actions/setup-node@v4, actions/setup-dotnet@v4, etc. Cache build outputs to speed up subsequent workflows."
+    },
+    { 
+      "id": 13, 
+      "question": "What is the difference between jobs and steps in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "beginner",
+      "followUps": [
+        "Can jobs run in parallel?",
+        "How do you control the execution order of jobs?",
+        "What happens if a step fails in a job?"
+      ],
+      "referenceAnswer": "Job: Collection of steps running on same runner. Runs in parallel with other jobs by default. Step: Individual task within job. Can run commands (run:) or use actions (uses:). Jobs can have dependencies (needs:), steps execute sequentially."
+    },
+    { 
+      "id": 14, 
+      "question": "How do you implement matrix builds in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are common use cases for matrix builds?",
+        "How do you access matrix values in steps?",
+        "What's the impact on workflow execution time?"
+      ],
+      "referenceAnswer": "Use strategy.matrix in job definition. Define multiple versions, OS, configurations. Example: matrix: node-version: [14, 16, 18], os: [ubuntu-latest, windows-latest]. Runs job for each combination. Access matrix values with ${{ matrix.node-version }}."
+    },
+    { 
+      "id": 15, 
+      "question": "What are reusable workflows in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you pass inputs to reusable workflows?",
+        "What are the benefits of using reusable workflows?",
+        "Can reusable workflows call other reusable workflows?"
+      ],
+      "referenceAnswer": "Reusable workflows allow defining workflow in one repository and calling from others. Define with workflow_call trigger. Pass inputs, secrets. Use for standardizing CI/CD processes across multiple repositories. Promotes DRY principle and consistency."
+    },
+    { 
+      "id": 16, 
+      "question": "How do you handle database migrations in CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What makes a database migration script idempotent?",
+        "How do you test migrations before production?",
+        "What rollback strategies are available for failed migrations?"
+      ],
+      "referenceAnswer": "Run migrations as part of deployment process. Use idempotent migration scripts. Test migrations in staging first. Rollback strategies for failed migrations. Separate migration jobs with manual approval for production. Use tools like EF Core migrations, Flyway, Liquibase."
+    },
+    { 
+      "id": 17, 
+      "question": "What is branch protection and how does it integrate with CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What status checks can be required for branch protection?",
+        "How do you configure branch protection rules?",
+        "What's the impact on developer workflow?"
+      ],
+      "referenceAnswer": "Branch protection rules enforce workflow requirements. Require status checks to pass before merge. Require pull request reviews. Prevent force pushes. Integrate by requiring specific CI jobs to pass. Ensures code quality and prevents broken code from merging."
+    },
+    { 
+      "id": 18, 
+      "question": "How do you implement automated testing in CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What types of tests should run at different pipeline stages?",
+        "How do you handle test failures?",
+        "What metrics should you track for test effectiveness?"
+      ],
+      "referenceAnswer": "Run unit tests on every push. Integration tests on PR or main branch. E2E tests on schedule or before production. Use test reporters for results. Fail fast on test failures. Parallelize test execution. Use coverage thresholds. Store test artifacts."
+    },
+    { 
+      "id": 19, 
+      "question": "What are GitHub Environments and how do you use them?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What protection rules can be configured for environments?",
+        "How do environment secrets differ from repository secrets?",
+        "When should you use multiple environments?"
+      ],
+      "referenceAnswer": "Environments represent deployment targets (staging, production). Configure protection rules: required reviewers, wait timer, secrets. Reference in workflows with environment: production. Use for controlled deployments with approval processes."
+    },
+    { 
+      "id": 20, 
+      "question": "How do you handle rollbacks in CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What triggers an automatic rollback?",
+        "How do you implement blue-green deployments for easy rollback?",
+        "What database considerations are there for rollbacks?"
+      ],
+      "referenceAnswer": "Automated rollback on health check failures. Manual rollback workflows. Blue-green deployments for instant rollback. Database migration rollback scripts. Feature flags for gradual rollback. Monitor metrics and automatically trigger rollback on anomalies."
+    },
+    { 
+      "id": 21, 
+      "question": "What is the purpose of .github/workflows directory?", 
+      "category": "github-actions",
+      "difficulty": "beginner",
+      "followUps": [
+        "Can you have multiple workflow files?",
+        "How does GitHub detect workflow files?",
+        "What naming conventions are recommended?"
+      ],
+      "referenceAnswer": "Contains YAML workflow files. GitHub automatically detects and runs workflows from this directory. Multiple workflow files for different purposes (ci.yml, deploy.yml, tests.yml). Workflows can be organized in subdirectories (feature available)."
+    },
+    { 
+      "id": 22, 
+      "question": "How do you optimize GitHub Actions performance and cost?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "What caching strategies are most effective?",
+        "How can you reduce workflow execution time?",
+        "What monitoring tools are available?"
+      ],
+      "referenceAnswer": "Use caching for dependencies. Split workflows to run only necessary jobs. Use matrix efficiently. Cancel previous runs on new push. Set appropriate timeout. Use self-hosted runners for large workloads. Monitor usage in insights tab."
+    },
+    { 
+      "id": 23, 
+      "question": "What are composite actions in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do composite actions differ from JavaScript actions?",
+        "When should you create a composite action?",
+        "What are the limitations of composite actions?"
+      ],
+      "referenceAnswer": "Composite actions bundle multiple run steps into single action. Defined in action.yml. Can include multiple shell commands. Reusable across workflows. Good for complex sequences of commands that are used repeatedly."
+    },
+    { 
+      "id": 24, 
+      "question": "How do you implement security scanning in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What's the difference between SAST and DAST?",
+        "How do you handle security findings in the pipeline?",
+        "What tools integrate well with GitHub Actions?"
+      ],
+      "referenceAnswer": "SAST: CodeQL, SonarQube for code analysis. DAST: OWASP ZAP for runtime scanning. Dependency scanning: Dependabot, Snyk. Container scanning: Trivy. Secrets detection: Gitleaks. Integrate scanners in CI pipeline, fail on critical vulnerabilities, regular dependency updates."
+    },
+    { 
+      "id": 25, 
+      "question": "What is the difference between actions/checkout@v3 and v4?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Why is it important to use specific action versions?",
+        "What breaking changes might occur between major versions?",
+        "How do you safely upgrade actions?"
+      ],
+      "referenceAnswer": "v4 uses Node 20 (v3 used Node 16). Improved performance and security. Better default behaviors. Always use latest major version for security updates and features. Check release notes for breaking changes when upgrading."
+    },
+    { 
+      "id": 26, 
+      "question": "How do you handle environment variables in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the default environment variables available?",
+        "How do you set environment variables dynamically?",
+        "What's the scope of environment variables?"
+      ],
+      "referenceAnswer": "Define at workflow, job, or step level. Use env: context. Secrets accessed via secrets context. Default environment variables (GITHUB_SHA, GITHUB_REF). Use for configuration, avoiding hardcoded values. Can be set conditionally."
+    },
+    { 
+      "id": 27, 
+      "question": "What are deployment strategies in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "When would you choose canary over blue-green deployment?",
+        "What infrastructure is needed for each strategy?",
+        "How do you monitor deployment success?"
+      ],
+      "referenceAnswer": "Blue-green: Two identical environments, switch traffic. Canary: Gradual traffic shift to new version. Rolling: Replace instances gradually. Recreate: Downtime, replace all at once. A/B testing: Route by user attributes. Choose based on risk tolerance and application architecture."
+    },
+    { 
+      "id": 28, 
+      "question": "How do you implement code quality checks in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What tools can automate code formatting?",
+        "How do you enforce coding standards?",
+        "What metrics indicate good code quality?"
+      ],
+      "referenceAnswer": "Linting: ESLint, Pylint, StyleCop. Formatting: Prettier, Black. Static analysis: SonarQube, CodeClimate. Complexity checks. Duplication detection. Enforce with PR checks. Fail pipeline on quality gates. Use quality gates in CI."
+    },
+    { 
+      "id": 29, 
+      "question": "What is the purpose of GITHUB_TOKEN in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What permissions does GITHUB_TOKEN have by default?",
+        "How do you customize GITHUB_TOKEN permissions?",
+        "What operations require GITHUB_TOKEN?"
+      ],
+      "referenceAnswer": "Automatically created authentication token for workflow. Permissions to repository where workflow runs. Configurable permissions (read/write). Used for GitHub API operations. Expires after workflow completion. No manual secret setup required."
+    },
+    { 
+      "id": 30, 
+      "question": "How do you handle database seeding in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What data should be included in seed scripts?",
+        "How do you manage seed data across environments?",
+        "What performance considerations are there for seeding?"
+      ],
+      "referenceAnswer": "Seed test data for integration tests. Use separate seed scripts per environment. Idempotent seeding operations. Clean up test data after tests. Use transaction rollback for test isolation. Separate seed data from schema migrations."
+    },
+    { 
+      "id": 31, 
+      "question": "What are the best practices for writing GitHub Actions workflows?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Why should you pin actions to specific versions?",
+        "How do you handle workflow failures gracefully?",
+        "What documentation should accompany workflows?"
+      ],
+      "referenceAnswer": "Use specific action versions (not @v1). Implement proper error handling. Use meaningful job and step names. Set appropriate permissions. Use caching for performance. Secure secrets properly. Add status badges. Document complex workflows."
+    },
+    { 
+      "id": 32, 
+      "question": "How do you implement parallel testing in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you split test suites effectively?",
+        "What tools help with test parallelization?",
+        "How do you aggregate test results from parallel runs?"
+      ],
+      "referenceAnswer": "Split test suite by type or file. Use test sharding. Parallel jobs in CI. Test containers for isolation. Use test reporters to combine results. Balance test distribution for optimal timing. Monitor test duration and adjust splitting."
+    },
+    { 
+      "id": 33, 
+      "question": "What is Dependabot and how does it integrate with CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you configure Dependabot update frequency?",
+        "What security alerts does Dependabot provide?",
+        "How do you handle Dependabot PRs in your workflow?"
+      ],
+      "referenceAnswer": "Dependabot automatically creates PRs for dependency updates. Configurable update frequency. Security vulnerability alerts. Integrate by running CI on Dependabot PRs. Auto-merge passing updates. Keep dependencies current and secure."
+    },
+    { 
+      "id": 34, 
+      "question": "How do you handle large files or build outputs in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the storage limits for artifacts?",
+        "When should you use external storage?",
+        "How do you optimize large file transfers?"
+      ],
+      "referenceAnswer": "Use artifacts for build outputs. Cache for dependencies. Self-hosted runners for large storage needs. External storage (S3) for very large files. Split workflows to avoid large transfers. Use actions/upload-artifact with compression."
+    },
+    { 
+      "id": 35, 
+      "question": "What is the difference between running on ubuntu-latest, windows-latest, and macos-latest?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the hardware specifications for each runner?",
+        "How do startup times compare?",
+        "When would you need multiple OS runners?"
+      ],
+      "referenceAnswer": "Different operating systems with specific tooling. Ubuntu: Linux-based, most common, fastest startup. Windows: Windows-specific applications, .NET Framework. macOS: iOS development, Xcode. Choose based on application requirements and tool compatibility."
+    },
+    { 
+      "id": 36, 
+      "question": "How do you implement canary deployments with GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "What metrics determine canary success?",
+        "How do you automate traffic shifting?",
+        "What rollback procedures are needed?"
+      ],
+      "referenceAnswer": "Use traffic shifting (App Service, ALB). Feature flags for gradual rollout. Monitor metrics with CloudWatch/Prometheus. Automated rollback on failure. Manual approval for production canary. Use deployment strategies in target platform."
+    },
+    { 
+      "id": 37, 
+      "question": "What are the security considerations for GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you audit third-party actions?",
+        "What secrets management practices are essential?",
+        "How do you prevent secret leakage in logs?"
+      ],
+      "referenceAnswer": "Use least privilege for GITHUB_TOKEN. Pin actions to full commit SHA. Audit third-party actions. Secure secrets properly. Regular dependency updates. Code scanning in CI. Environment protection rules. Review workflow logs for sensitive data."
+    },
+    { 
+      "id": 38, 
+      "question": "How do you handle configuration management in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What tools support configuration as code?",
+        "How do you manage secrets across environments?",
+        "What validation should be performed on configuration?"
+      ],
+      "referenceAnswer": "Environment-specific config files. Configuration servers. Environment variables. Feature flags. Secrets management. Configuration validation. Rollback configuration with application. Versioned configuration with application version."
+    },
+    { 
+      "id": 39, 
+      "question": "What is the purpose of needs keyword in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you create complex job dependencies?",
+        "What happens when a dependent job fails?",
+        "Can jobs have multiple dependencies?"
+      ],
+      "referenceAnswer": "Defines job dependencies. Jobs with needs wait for required jobs to complete. Creates directed acyclic graph (DAG) of job execution. Enables parallel execution with dependencies. Use for: build before test, test before deploy sequences."
+    },
+    { 
+      "id": 40, 
+      "question": "How do you implement infrastructure deployment in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What IaC tools integrate well with CI/CD?",
+        "How do you manage state files securely?",
+        "What approval processes are needed for infrastructure changes?"
+      ],
+      "referenceAnswer": "Infrastructure as Code (Terraform, CloudFormation). Separate infrastructure and application pipelines. Plan and apply stages. State management. Backend configuration. Drift detection. Rollback strategies. Environment-specific configurations."
+    },
+    { 
+      "id": 41, 
+      "question": "What are custom actions in GitHub Actions and when to create them?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are the different types of custom actions?",
+        "How do you test custom actions?",
+        "When should you avoid creating custom actions?"
+      ],
+      "referenceAnswer": "Custom actions are reusable units of workflow logic. Types: JavaScript, Docker, composite. Create when: repeating complex steps, sharing across workflows/organizations, abstracting complex operations. Publish to marketplace or use from same repository."
+    },
+    { 
+      "id": 42, 
+      "question": "How do you handle flaky tests in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you identify flaky tests?",
+        "What strategies help reduce test flakiness?",
+        "Should flaky tests be removed from CI?"
+      ],
+      "referenceAnswer": "Identify and fix root causes. Retry mechanisms for transient failures. Quarantine flaky tests. Monitor test stability. Separate flaky tests from main suite. Automatic issue creation for flaky tests. Test environment stability."
+    },
+    { 
+      "id": 43, 
+      "question": "What is the purpose of concurrency in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do concurrency groups work?",
+        "When should you use cancel-in-progress?",
+        "What are the performance implications?"
+      ],
+      "referenceAnswer": "Concurrency controls parallel workflow runs. Cancel in-progress runs on new push. Group related workflows. Prevent resource conflicts. Use concurrency: group-name with cancel-in-progress: true. Optimize for cost and resource usage."
+    },
+    { 
+      "id": 44, 
+      "question": "How do you implement blue-green deployment with GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "What infrastructure supports blue-green deployment?",
+        "How do you perform smoke tests?",
+        "What cleanup is needed after traffic switch?"
+      ],
+      "referenceAnswer": "Deploy to separate environment (blue/green). Smoke tests on new environment. Route traffic switch (Load Balancer, Route 53). Rollback by switching back. Clean up old environment. Use platform-specific blue-green capabilities."
+    },
+    { 
+      "id": 45, 
+      "question": "What are the different types of GitHub Actions runners?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are larger runners and when to use them?",
+        "How do you configure self-hosted runners?",
+        "What maintenance is required for self-hosted runners?"
+      ],
+      "referenceAnswer": "GitHub-hosted: Ubuntu, Windows, macOS in various sizes. Self-hosted: Custom machines, on-premises, specific requirements. Larger runners: More resources for large workloads. Choose based on: OS, software, security, performance requirements."
+    },
+    { 
+      "id": 46, 
+      "question": "How do you handle database versioning in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What is migration-based versioning?",
+        "How do you handle rollback scripts?",
+        "What tools support database version control?"
+      ],
+      "referenceAnswer": "Migration-based versioning. Each change as separate migration. Rollback scripts. Version table in database. Automated migration testing. Separate database and application deployment. Environment-specific seed data."
+    },
+    { 
+      "id": 47, 
+      "question": "What is the difference between run: and uses: in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "beginner",
+      "followUps": [
+        "When should you prefer run: over uses:?",
+        "Can you mix run: and uses: in the same step?",
+        "What are the performance implications?"
+      ],
+      "referenceAnswer": "run: executes shell commands directly in runner. uses: runs a pre-built action (reusable code). Use run: for simple commands, uses: for complex operations or to use community actions. run: is inline, uses: is reusable component."
+    },
+    { 
+      "id": 48, 
+      "question": "How do you implement monitoring and alerting for CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What metrics are most important to track?",
+        "How do you set up alerts for pipeline failures?",
+        "What tools integrate with pipeline monitoring?"
+      ],
+      "referenceAnswer": "Pipeline metrics: duration, success rate, failure reasons. Alert on pipeline failures. Monitor resource usage. Track deployment frequency. Mean time to recovery. Use workflow status badges. Integration with monitoring tools (Datadog, PagerDuty)."
+    },
+    { 
+      "id": 49, 
+      "question": "What are workflow_dispatch inputs in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What input types are available?",
+        "How do you access input values in workflows?",
+        "What validation can be applied to inputs?"
+      ],
+      "referenceAnswer": "Manual workflow triggers with user inputs. Define inputs in on.workflow_dispatch.inputs. Types: string, choice, boolean, environment. Use for: manual deployments, parameterized builds, operational tasks. Accessed via github.event.inputs."
+    },
+    { 
+      "id": 50, 
+      "question": "How do you handle multi-region deployments in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What coordination is needed between regions?",
+        "How do you handle regional failures?",
+        "What tools support multi-region deployment?"
+      ],
+      "referenceAnswer": "Parallel deployment to multiple regions. Regional health checks. Traffic management (Route 53, Traffic Manager). Regional configuration management. Rollback per region. Monitor regional performance. Data replication strategies."
+    },
+    { 
+      "id": 51, 
+      "question": "What is the purpose of continue-on-error in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use continue-on-error?",
+        "What's the difference between step and job level?",
+        "How do you handle errors that should continue?"
+      ],
+      "referenceAnswer": "Allows job/step to continue even if it fails. Use for: non-critical tests, cleanup operations, optional steps. Step level: continue step execution. Job level: continue workflow even if job fails. Default: false (fail fast)."
+    },
+    { 
+      "id": 52, 
+      "question": "How do you implement security in the CI/CD pipeline?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What security gates should be in the pipeline?",
+        "How do you handle security findings?",
+        "What compliance requirements affect CI/CD?"
+      ],
+      "referenceAnswer": "SAST/DAST scanning. Dependency vulnerability checks. Container image scanning. Infrastructure security scanning. Secrets detection. Compliance checks. Security gates in pipeline. Regular security audits of pipeline itself."
+    },
+    { 
+      "id": 53, 
+      "question": "What are the different GitHub Actions expression contexts?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you access job context information?",
+        "What's available in the github context?",
+        "How do you use expressions in conditions?"
+      ],
+      "referenceAnswer": "github: workflow run information. env: environment variables. job: current job status. steps: previous steps output. inputs: workflow_dispatch inputs. secrets: repository secrets. vars: variables. Use ${{ context.property }} syntax."
+    },
+    { 
+      "id": 54, 
+      "question": "How do you handle application configuration in different environments?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What tools help manage configuration?",
+        "How do you prevent configuration drift?",
+        "What's the role of feature flags?"
+      ],
+      "referenceAnswer": "Environment-specific config files. Configuration servers. Environment variables. Feature flags. Secrets management. Configuration validation. Rollback configuration with application. Versioned configuration with application version."
+    },
+    { 
+      "id": 55, 
+      "question": "What is the purpose of timeout-minutes in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What's the default timeout?",
+        "When should you increase timeout?",
+        "What happens when timeout is reached?"
+      ],
+      "referenceAnswer": "Sets maximum execution time for job. Prevents runaway jobs. Default: 360 minutes (6 hours). Set appropriate timeouts for job types. Use for cost control and resource management. Can be set at job level."
+    },
+    { 
+      "id": 56, 
+      "question": "How do you implement database testing in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What types of database tests are most valuable?",
+        "How do you manage test data?",
+        "What tools support database testing?"
+      ],
+      "referenceAnswer": "Test database in CI environment. Transaction rollback for test isolation. Test data management. Migration testing. Performance testing. Connection testing. Use test containers for database testing. Separate test databases."
+    },
+    { 
+      "id": 57, 
+      "question": "What are the advantages of using GitHub Actions over other CI/CD tools?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How does pricing compare to other tools?",
+        "What integration benefits does GitHub provide?",
+        "When might other tools be better suited?"
+      ],
+      "referenceAnswer": "Tight GitHub integration. No additional setup for GitHub repos. Large marketplace of actions. Free for public repositories. YAML-based configuration. Native secret management. Composite and reusable workflows. GitHub ecosystem integration."
+    },
+    { 
+      "id": 58, 
+      "question": "How do you handle state management in CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What state should be persisted between runs?",
+        "How do you manage infrastructure state?",
+        "What cleanup procedures are needed?"
+      ],
+      "referenceAnswer": "Artifacts for build outputs. Cache for dependencies. External state for infrastructure. Database for application state. Version everything. Immutable deployments. Clean up old artifacts. State validation between stages."
+    },
+    { 
+      "id": 59, 
+      "question": "What is the purpose of permissions in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What are the default permissions?",
+        "How do you apply principle of least privilege?",
+        "What operations require specific permissions?"
+      ],
+      "referenceAnswer": "Controls GITHUB_TOKEN permissions. Levels: read, write, none. Can be set at workflow or job level. Principle of least privilege. Prevents unintended repository modifications. Specific permissions: contents, issues, packages, etc."
+    },
+    { 
+      "id": 60, 
+      "question": "How do you implement performance testing in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What performance metrics are most important?",
+        "How do you set performance gates?",
+        "What tools support automated performance testing?"
+      ],
+      "referenceAnswer": "Load testing in staging environment. Performance benchmarks. Resource usage monitoring. Performance regression detection. Canary analysis. Synthetic monitoring. Performance gates in pipeline. Automated performance testing."
+    },
+    { 
+      "id": 61, 
+      "question": "What are the different GitHub Actions event filters?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do path filters work?",
+        "Can you combine multiple filters?",
+        "What's the performance impact of complex filters?"
+      ],
+      "referenceAnswer": "branches: specific branches. paths: file paths. tags: git tags. types: event types (opened, synchronize). Use for: running CI only on certain paths, deployment only from main branch, specific PR types. Fine-grained workflow triggering."
+    },
+    { 
+      "id": 62, 
+      "question": "How do you handle container image building in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are multi-stage builds?",
+        "How do you optimize Docker images?",
+        "What security practices apply to container images?"
+      ],
+      "referenceAnswer": "Multi-stage Docker builds. Image scanning for vulnerabilities. Image signing. Push to container registry. Version tagging. Cache image layers. Multi-architecture builds. Clean up old images."
+    },
+    { 
+      "id": 63, 
+      "question": "What is the purpose of strategy in GitHub Actions jobs?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How does fail-fast work with matrix jobs?",
+        "What's the purpose of max-parallel?",
+        "How do you handle matrix job failures?"
+      ],
+      "referenceAnswer": "Defines build matrix and failure handling. matrix: multiple configurations. fail-fast: stop all matrix jobs if one fails. max-parallel: limit concurrent matrix jobs. Use for: testing multiple versions, OS combinations, configurations."
+    },
+    { 
+      "id": 64, 
+      "question": "How do you implement feature branch deployments?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What infrastructure supports dynamic environments?",
+        "How do you manage costs for feature environments?",
+        "What cleanup automation is needed?"
+      ],
+      "referenceAnswer": "Dynamic environment creation. Feature flag integration. Preview deployments. Automatic cleanup. Isolated testing environments. Route by branch name. Cost management for feature environments. Integration with PR reviews."
+    },
+    { 
+      "id": 65, 
+      "question": "What are the common anti-patterns in CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you identify pipeline anti-patterns?",
+        "What refactoring strategies help?",
+        "How do you measure pipeline health?"
+      ],
+      "referenceAnswer": "Long-running pipelines. Flaky tests. Manual steps in CD. No rollback strategy. Poor secret management. No security scanning. Complex conditional logic. Monolithic deployments. Ignoring failed steps. No performance testing."
+    },
+    { 
+      "id": 66, 
+      "question": "How do you handle API versioning in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What versioning strategies are available?",
+        "How do you manage backward compatibility?",
+        "What testing is needed for API versions?"
+      ],
+      "referenceAnswer": "Version in URL path, headers, or query params. Backward compatibility. Deprecation policies. Version-specific deployment. Canary releases for new versions. API documentation generation. Contract testing between services."
+    },
+    { 
+      "id": 67, 
+      "question": "What is the purpose of services in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What services are commonly used?",
+        "How do you configure service health checks?",
+        "What networking is available between services?"
+      ],
+      "referenceAnswer": "Run additional containers alongside job. Use for: databases, message queues, caches. Defined in job.services. Container-to-container networking. Health checks. Example: PostgreSQL, Redis, LocalStack for testing."
+    },
+    { 
+      "id": 68, 
+      "question": "How do you implement database rollback strategies?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What makes a migration rollback-safe?",
+        "How do you test rollback procedures?",
+        "What tools support database rollbacks?"
+      ],
+      "referenceAnswer": "Transactional migrations. Rollback scripts. Backup before migration. Point-in-time recovery. Feature flags for data changes. Zero-downtime migrations. Testing rollback procedures. Monitoring during migration."
+    },
+    { 
+      "id": 69, 
+      "question": "What are the different ways to share data between GitHub Actions jobs?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use artifacts vs cache?",
+        "How do job outputs work?",
+        "What are the size limitations?"
+      ],
+      "referenceAnswer": "Artifacts: files between jobs in same workflow. Cache: dependencies and build outputs. Job outputs: small data via outputs. Environment variables: limited to job. External storage: S3, databases. Use needs for dependency order."
+    },
+    { 
+      "id": 70, 
+      "question": "How do you handle mobile app deployments in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What special considerations apply to mobile CI/CD?",
+        "How do you handle app store submissions?",
+        "What testing strategies work for mobile?"
+      ],
+      "referenceAnswer": "Build for different platforms. Code signing. App store deployment. Beta testing distribution. Version management. Store metadata management. Screenshot generation. App store review process handling."
+    },
+    { 
+      "id": 71, 
+      "question": "What is the purpose of defaults in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What default values can be set?",
+        "How do defaults affect workflow maintenance?",
+        "Can defaults be overridden?"
+      ],
+      "referenceAnswer": "Sets default values for workflow. defaults.run: default shell and working directory. defaults.run.shell: bash, pwsh, python, etc. defaults.run.working-directory: base directory for steps. Reduces repetition in workflow steps."
+    },
+    { 
+      "id": 72, 
+      "question": "How do you implement canary analysis in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What metrics indicate canary success?",
+        "How do you automate traffic shifting?",
+        "What alerting is needed during canary?"
+      ],
+      "referenceAnswer": "Deploy to small percentage of users. Monitor key metrics (latency, errors, business metrics). Automated rollback on anomalies. Gradual traffic increase. Comparison with baseline. Custom analysis rules. Integration with monitoring tools."
+    },
+    { 
+      "id": 73, 
+      "question": "What are the security best practices for CI/CD pipelines?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do you secure pipeline infrastructure?",
+        "What access controls are needed?",
+        "How do you handle security incidents?"
+      ],
+      "referenceAnswer": "Least privilege for service accounts. Secure secret management. Regular dependency updates. Code signing. Infrastructure security. Pipeline access control. Audit trail. Vulnerability scanning. Network security. Regular security reviews."
+    },
+    { 
+      "id": 74, 
+      "question": "How do you handle multi-language projects in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What coordination is needed between language builds?",
+        "How do you manage shared dependencies?",
+        "What testing strategies work across languages?"
+      ],
+      "referenceAnswer": "Separate build jobs per language. Shared dependency caching. Matrix builds for versions. Unified testing strategy. Consistent artifact management. Language-specific quality gates. Containerized builds. Monorepo or polyrepo strategy."
+    },
+    { 
+      "id": 75, 
+      "question": "What is the purpose of environment in GitHub Actions jobs?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do environment protection rules work?",
+        "What's the difference between environment and job environment?",
+        "How do you manage environment-specific secrets?"
+      ],
+      "referenceAnswer": "References GitHub environment for deployment protection. environment: production with protection rules. Required reviewers. Wait timer. Environment-specific secrets. Deployment history. Use for controlled production deployments."
+    },
+    { 
+      "id": 76, 
+      "question": "How do you implement chaos engineering in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What failure scenarios should be tested?",
+        "How do you safely run chaos experiments?",
+        "What tools support chaos engineering?"
+      ],
+      "referenceAnswer": "Controlled failure injection in staging. Automated chaos experiments. Resilience validation. Failure recovery testing. GameDay exercises. Integration with CI/CD for automated resilience testing. Monitor system behavior under failure."
+    },
+    { 
+      "id": 77, 
+      "question": "What are the different GitHub Actions status check contexts?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do status checks affect PR merging?",
+        "Can you customize status check names?",
+        "What happens when status checks fail?"
+      ],
+      "referenceAnswer": "Each job creates status check. Required status checks for branch protection. Custom status names. Multiple jobs create multiple statuses. PR checks show individual job statuses. Use for: gating merges, deployment approvals."
+    },
+    { 
+      "id": 78, 
+      "question": "How do you handle data migration in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What makes a data migration zero-downtime?",
+        "How do you validate data migrations?",
+        "What rollback strategies exist for data?"
+      ],
+      "referenceAnswer": "Separate data and schema migrations. Zero-downtime migrations. Backward compatibility. Data validation. Rollback strategies. Performance testing for large migrations. Monitoring during migration. Coordination with application deployment."
+    },
+    { 
+      "id": 79, 
+      "question": "What is the purpose of if: always() in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "When should you use always() vs success()?",
+        "What are common use cases for always()?",
+        "How does always() affect workflow status?"
+      ],
+      "referenceAnswer": "Runs step regardless of previous step failure. Use for: cleanup operations, notifications, post-processing. always(): always run. success(): run only on success. failure(): run only on failure. cancelled(): run only when cancelled."
+    },
+    { 
+      "id": 80, 
+      "question": "How do you implement compliance checks in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What compliance frameworks affect CI/CD?",
+        "How do you automate compliance reporting?",
+        "What tools support compliance as code?"
+      ],
+      "referenceAnswer": "Policy as code. Compliance scanning. Audit trail generation. Regulatory requirement checks. Security compliance (SOC2, HIPAA). Infrastructure compliance. Automated compliance reporting. Compliance gates in pipeline."
+    },
+    { 
+      "id": 81, 
+      "question": "What are the different types of GitHub Actions triggers?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do scheduled triggers work?",
+        "What's the difference between push and pull_request triggers?",
+        "How do you use repository_dispatch?"
+      ],
+      "referenceAnswer": "Webhook events: push, pull_request, issues. Scheduled: cron syntax. Manual: workflow_dispatch. Repository: created, deleted. Package: published, updated. Security: code scanning, secret scanning. Custom: repository_dispatch."
+    },
+    { 
+      "id": 82, 
+      "question": "How do you handle secret rotation in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What automation supports secret rotation?",
+        "How do you handle secret versioning?",
+        "What monitoring is needed for secret usage?"
+      ],
+      "referenceAnswer": "Automated secret rotation. Zero-downtime rotation. Secret versioning. Grace periods for old secrets. Monitoring for secret usage. Automated updates in configurations. Integration with secret management systems."
+    },
+    { 
+      "id": 83, 
+      "question": "What is the purpose of outputs in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you set step outputs?",
+        "What data types can be outputs?",
+        "How do you access outputs in dependent jobs?"
+      ],
+      "referenceAnswer": "Share data between jobs. Set in step with echo \"::set-output name=output_name::value\". Access in dependent jobs with ${{ needs.job_id.outputs.output_name }}. Use for: version numbers, build info, test results."
+    },
+    { 
+      "id": 84, 
+      "question": "How do you implement database performance testing in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What database metrics are most important?",
+        "How do you set performance baselines?",
+        "What tools support database performance testing?"
+      ],
+      "referenceAnswer": "Query performance testing. Index optimization checks. Connection pool testing. Load testing with realistic data. Performance baseline comparison. Query plan analysis. Database-specific performance metrics. Integration with application performance testing."
+    },
+    { 
+      "id": 85, 
+      "question": "What are the different GitHub Actions runner labels?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you assign labels to self-hosted runners?",
+        "What are the built-in labels?",
+        "How do labels affect job scheduling?"
+      ],
+      "referenceAnswer": "Self-hosted runners can have custom labels. Use for: specific capabilities, hardware requirements, software versions. GitHub-hosted runners have standard labels (ubuntu-latest, windows-2022). Filter jobs with runs-on using labels."
+    },
+    { 
+      "id": 86, 
+      "question": "How do you handle cross-platform builds in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What tools support cross-platform compilation?",
+        "How do you manage platform-specific dependencies?",
+        "What testing is needed for each platform?"
+      ],
+      "referenceAnswer": "Matrix builds for different platforms. Platform-specific build tools. Universal binaries where possible. Containerized builds for consistency. Platform testing. Artifact management per platform. Deployment to platform-specific stores."
+    },
+    { 
+      "id": 87, 
+      "question": "What is the purpose of paths-ignore and paths in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do path filters affect workflow performance?",
+        "Can you use regex in path filters?",
+        "What are common use cases for path filtering?"
+      ],
+      "referenceAnswer": "Filter workflow triggers based on file paths. paths: run only when specified paths change. paths-ignore: skip when specified paths change. Use for: documentation-only changes, config file updates, avoiding unnecessary builds."
+    },
+    { 
+      "id": 88, 
+      "question": "How do you implement disaster recovery in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What backup strategies are needed?",
+        "How do you test disaster recovery?",
+        "What documentation is essential?"
+      ],
+      "referenceAnswer": "Pipeline redundancy. Cross-region deployment capability. Backup and restore procedures. Documentation for manual recovery. Regular disaster recovery drills. Monitoring for pipeline health. Quick environment provisioning."
+    },
+    { 
+      "id": 89, 
+      "question": "What are the different GitHub Actions execution contexts?", 
+      "category": "github-actions",
+      "difficulty": "advanced",
+      "followUps": [
+        "How do execution contexts affect security?",
+        "What limitations exist in each context?",
+        "How do you troubleshoot context issues?"
+      ],
+      "referenceAnswer": "Runner: where workflow executes. Shell: command execution environment. Container: service containers. Network: inter-container communication. File system: workspace and artifacts. Environment: variables and secrets. Each has specific characteristics and limitations."
+    },
+    { 
+      "id": 90, 
+      "question": "How do you handle configuration drift in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What tools detect configuration drift?",
+        "How do you automate drift remediation?",
+        "What alerting is needed for drift?"
+      ],
+      "referenceAnswer": "Infrastructure as Code with drift detection. Regular compliance scanning. Automated remediation. Configuration versioning. Audit trails. Environment consistency checks. Automated synchronization. Alerting on drift detection."
+    },
+    { 
+      "id": 91, 
+      "question": "What is the purpose of GITHUB_ENV in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How does GITHUB_ENV differ from workflow env?",
+        "What are common use cases?",
+        "What are the limitations?"
+      ],
+      "referenceAnswer": "Sets environment variables for subsequent steps. Use: echo \"NAME=value\" >> $GITHUB_ENV. Variables available in all subsequent steps in same job. Alternative to using workflow environment variables. Useful for dynamic variable values."
+    },
+    { 
+      "id": 92, 
+      "question": "How do you implement cost optimization in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What metrics help track CI/CD costs?",
+        "How do you right-size compute resources?",
+        "What waste reduction strategies work?"
+      ],
+      "referenceAnswer": "Right-size compute resources. Efficient caching strategies. Pipeline optimization (parallelization). Resource cleanup. Spot instances where possible. Monitoring and alerting on cost. Regular cost reviews. Efficient test strategies."
+    },
+    { 
+      "id": 93, 
+      "question": "What are the different GitHub Actions statuses?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do you check workflow status programmatically?",
+        "What webhook events are available for status changes?",
+        "How do statuses affect dependent workflows?"
+      ],
+      "referenceAnswer": "queued: waiting for runner. in_progress: currently running. completed: finished with success, failure, cancelled, or skipped. Use GitHub API to check status. Webhook events for status changes. PR status checks."
+    },
+    { 
+      "id": 94, 
+      "question": "How do you handle certificate management in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What tools automate certificate provisioning?",
+        "How do you handle certificate expiration?",
+        "What security practices apply to certificates?"
+      ],
+      "referenceAnswer": "Automated certificate provisioning (Let's Encrypt). Certificate rotation. SSL/TLS testing. Certificate storage in secure locations. Certificate validation in pipeline. Monitoring certificate expiration. Integration with load balancers and CDN."
+    },
+    { 
+      "id": 95, 
+      "question": "What is the purpose of GITHUB_OUTPUT in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How does GITHUB_OUTPUT replace set-output?",
+        "What data types can be outputs?",
+        "How do you access outputs in subsequent steps?"
+      ],
+      "referenceAnswer": "Sets step outputs for job. Use: echo \"name=value\" >> $GITHUB_OUTPUT. Replaces ::set-output. Outputs available to subsequent steps via ${{ steps.step_id.outputs.name }}. Use for sharing data between steps in same job."
+    },
+    { 
+      "id": 96, 
+      "question": "How do you implement progressive delivery in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What tools support progressive delivery?",
+        "How do you measure rollout success?",
+        "What automation controls traffic shifting?"
+      ],
+      "referenceAnswer": "Feature flags for gradual rollout. Canary deployments with metrics analysis. Blue-green deployments. Traffic splitting. Automated rollback based on metrics. User segmentation. Performance monitoring during rollout. Business metrics tracking."
+    },
+    { 
+      "id": 97, 
+      "question": "What are the different GitHub Actions workflow run conclusions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "How do conclusions affect dependent workflows?",
+        "What triggers each conclusion type?",
+        "How do you handle different conclusions?"
+      ],
+      "referenceAnswer": "success: all steps completed successfully. failure: at least one step failed. cancelled: workflow was cancelled. skipped: conditions not met. Actionable: success, failure. Non-actionable: cancelled, skipped. Use for conditional logic in dependent workflows."
+    },
+    { 
+      "id": 98, 
+      "question": "How do you handle database connection strings in CI/CD?", 
+      "category": "ci-cd",
+      "difficulty": "intermediate",
+      "followUps": [
+        "Where should connection strings be stored?",
+        "How do you secure connection strings?",
+        "What rotation strategies work?"
+      ],
+      "referenceAnswer": "Store in secure secret management. Environment-specific connection strings. Connection string rotation. Connection testing in pipeline. Secure transmission. No hardcoded connection strings. Use managed identities where possible. Connection pooling configuration."
+    },
+    { 
+      "id": 99, 
+      "question": "What is the purpose of GITHUB_STEP_SUMMARY in GitHub Actions?", 
+      "category": "github-actions",
+      "difficulty": "intermediate",
+      "followUps": [
+        "What formatting is supported in summaries?",
+        "How do summaries appear in the UI?",
+        "What are common use cases?"
+      ],
+      "referenceAnswer": "Creates summary for workflow run. Appears in Actions tab. Use: echo \"# Summary\" >> $GITHUB_STEP_SUMMARY. Markdown supported. Use for: test results, deployment summary, performance metrics, custom reports."
+    },
+    { 
+      "id": 100, 
+      "question": "How do you measure CI/CD pipeline effectiveness?", 
+      "category": "ci-cd",
+      "difficulty": "advanced",
+      "followUps": [
+        "What are DORA metrics?",
+        "How do you collect pipeline metrics?",
+        "What targets indicate good performance?"
+      ],
+      "referenceAnswer": "DORA metrics: Deployment Frequency, Lead Time for Changes, Mean Time to Recovery, Change Failure Rate. Pipeline duration. Success rate. Resource utilization. Developer satisfaction. Time to detection of issues. Business impact metrics."
+    }
+  ]
+}
