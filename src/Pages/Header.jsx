@@ -18,10 +18,13 @@ const Header = ({ setDarkMode, darkMode }) => {
     }
     setIsMobileMenuOpen(false); // Close mobile menu on navigation
   }, []);
-
+const handleLogoutToClearLocalStorage = () => {
+    localStorage.clear();
+  }
   // Memoized logout handler
   const handleLogout = useCallback(() => {
     logout();
+    handleLogoutToClearLocalStorage();
     navigate('/login');
     setIsMobileMenuOpen(false);
   }, [logout, navigate]);

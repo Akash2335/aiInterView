@@ -11,6 +11,7 @@ import InterviewAssistantFooter from './Pages/Footer';
 import Arrow from './Pages/Arrow';
 import AuthRedirect from './AuthRedirect';
 import { populateInterviewHistory } from './simulateInterview';
+import AutoLogout from './AutoLogout';
 
 // Lazy-loaded components
 const Login = lazy(() => import('./Components/Login'));
@@ -105,6 +106,7 @@ function App() {
   }, []);
 
   return (
+       <AutoLogout logoutTime={10 * 60 * 1000} warningTime={2 * 60 * 1000}>
     <AuthProvider>
       {/* ✅ Provide dark mode context to the whole app */}
       <DarkModeContext.Provider value={{ darkMode, setDarkMode,cameraStopTree,setcameraStopTree}}>
@@ -112,7 +114,8 @@ function App() {
           <AppContent />
         </Router>
       </DarkModeContext.Provider>
-    </AuthProvider>
+      </AuthProvider>
+      </AutoLogout>
   );
 }
 

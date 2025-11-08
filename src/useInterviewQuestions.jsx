@@ -111,13 +111,13 @@ const useInterviewQuestions = (language = 'c') => {
         const questionsArray = Array.isArray(data) 
           ? data 
           : (Array.isArray(data.data) ? data.data : []);
-
         if (questionsArray.length > 0) {
+          console.log(questionsArray.length);
           // Validate question structure
           const validQuestions = questionsArray.filter(q => 
             q && typeof q === 'object' && q.id && q.question && q.answer
           );
-
+          console.log(validQuestions);
           if (validQuestions.length !== questionsArray.length) {
             console.warn(`Some questions for ${language} have invalid structure`);
           }

@@ -16,10 +16,29 @@ function Login() {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem('users') || '{}');
     if (users[username] && users[username] === password) {
-      login();
+      let permissions = [];
+      if (username === 'akash@2335') {
+         permissions = [
+          "Personal", "Testing", "Aws", "React", "SQL", "CICD", "NetCore", "EntityFramework", "LINQ",
+          "AsyncAwaitQ", "AsyncAwaitBasic", "AsyncFollowUp", "AsyncPatterns", "CSharp", "cCollection",
+          "cicdAction", "entityFramwork", "JavaScript", "LINQAdvanced", "LINQQueryPractice",
+          "NETCaseStudies", "NETCoreAWS", "NETFollowUp", "ReactFollowUp", "ReduxStateManagement",
+          "SQLCaseStudies", "SQLQueryStudies","ShapBasic","Ccoding"
+        ];
+      } else {
+        // For other users, allow all languages
+        permissions = ["Aws", "React", "SQL", "CICD", "NetCore", "EntityFramework", "LINQ",
+          "AsyncAwaitQ", "AsyncAwaitBasic", "AsyncFollowUp", "AsyncPatterns", "CSharp", "cCollection",
+          "cicdAction", "entityFramwork", "JavaScript", "LINQAdvanced", "LINQQueryPractice",
+          "NETCaseStudies", "NETCoreAWS", "NETFollowUp", "ReactFollowUp", "ReduxStateManagement",
+          "SQLCaseStudies", "SQLQueryStudies","ShapBasic","Ccoding"
+        ];
+      }
+      login(username, permissions);
       navigate('/');
     } else {
       setMessage('⚠️ Invalid credentials.');
+      navigate('/register');
     }
   };
 

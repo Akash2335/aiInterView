@@ -21,8 +21,8 @@ export const AuthProvider = ({ children }) => {
   }, [user]);
 
   // Login function
-  const login = (username) => {
-    setUser({ username });
+  const login = (username, permissions = []) => {
+    setUser({ username, permissions });
   };
 
   // Logout function
