@@ -1,807 +1,438 @@
-{"data":[
-  {
-    "id": 1,
-    "difficulty": "medium",
-    "question": "1. What is Object-Oriented Programming (OOP)?",
-    "answer": "Answer: ● OOP is a programming paradigm that organizes software around objects, which contain data (fields/properties) and behavior (methods/functions). ● Helps model real-world entities and their interactions."
-  },
-  {
-    "id": 2,
-    "difficulty": "medium",
-    "question": "2. What are the four pillars of OOP?",
-    "answer": "Answer: 1. Encapsulation – Hiding internal details of objects and exposing only necessary functionality. 2. Abstraction – Hiding implementation details and showing only essential features. 3. Inheritance – Allowing a class to inherit properties and methods from another class. 4. Polymorphism – Allowing objects to take multiple forms."
-  },
-  {
-    "id": 3,
-    "difficulty": "medium",
-    "question": "3. Why is OOP preferred over procedural programming?",
-    "answer": "Answer: ● Promotes code reusability through classes and objects. ● Easier to maintain and extend large applications. ● Better organization through modular design. ● Supports complex real-world modeling."
-  },
-  {
-    "id": 4,
-    "difficulty": "medium",
-    "question": "4. How does OOP help in software development?",
-    "answer": "Answer: ● Encourages modular code → easier to maintain and test. ● Reduces code duplication through inheritance and composition. ● Improves code organization and readability. ● Enables better collaboration through clear interfaces."
-  },
-  {
-    "id": 5,
-    "difficulty": "medium",
-    "question": "5. What is a class in OOP?",
-    "answer": "Answer: ● A class is a blueprint or template for creating objects. ● It defines the properties (fields) and behaviors (methods) that objects of that class will have. ● Example: 'Car' class defines properties like color, model and methods like Start(), Stop()."
-  },
-  {
-    "id": 6,
-    "difficulty": "medium",
-    "question": "6. What is an object?",
-    "answer": "Answer: ● An instance of a class with actual values. ● Represents a real-world entity in memory. ● Example: A specific car object with color='Red', model='SUV'."
-  },
-  {
-    "id": 7,
-    "difficulty": "medium",
-    "question": "7. What is the difference between a class and an object?",
-    "answer": "Answer: \nFeature        Class                    Object\nDefinition     Blueprint/Template       Instance of class\nMemory         No memory allocated      Memory allocated when created\nUsage          Defines structure        Contains actual data\nExample        Car class                MyCar object with specific values"
-  },
-  {
-    "id": 8,
-    "difficulty": "medium",
-    "question": "8. What is a constructor?",
-    "answer": "Answer: ● A special method that is called automatically when an object is created. ● Used to initialize the object's fields. ● Has the same name as the class and no return type."
-  },
-  {
-    "id": 9,
-    "difficulty": "medium",
-    "question": "9. What is a destructor?",
-    "answer": "Answer: ● A method called automatically when an object is destroyed. ● Used to release resources before the object is removed from memory. ● In C#, called Finalize() and managed by garbage collector."
-  },
-  {
-    "id": 10,
-    "difficulty": "medium",
-    "question": "10. What are instance vs static members in a class?",
-    "answer": "Answer: ● Instance members → Belong to each object, require object to access. ● Static members → Belong to the class itself, shared by all objects. ● Example: Instance - each car has its own speed; Static - total number of cars created."
-  },
-  {
-    "id": 11,
-    "difficulty": "medium",
-    "question": "11. What is encapsulation?",
-    "answer": "Answer: ● The practice of hiding internal details of a class and exposing only necessary functionality through access modifiers and properties. ● Example: private int speed; public int Speed { get; set; }"
-  },
-  {
-    "id": 12,
-    "difficulty": "medium",
-    "question": "12. What is abstraction?",
-    "answer": "Answer: ● Hiding implementation details and showing only the essential features of an object. ● Achieved using abstract classes and interfaces. ● Example: Car interface with Start() method hides how engine starts."
-  },
-  {
-    "id": 13,
-    "difficulty": "medium",
-    "question": "13. What is inheritance?",
-    "answer": "Answer: ● A mechanism where a class (child) inherits properties and methods from another class (parent). ● Promotes code reusability and establishes 'is-a' relationships. ● Example: Car class inherits from Vehicle class."
-  },
-  {
-    "id": 14,
-    "difficulty": "medium",
-    "question": "14. What is polymorphism?",
-    "answer": "Answer: ● Ability of an object to take multiple forms. ● Types: Compile-time (method overloading) and Runtime (method overriding). ● Example: Animal class with Speak() method, Dog and Cat override it differently."
-  },
-  {
-    "id": 15,
-    "difficulty": "medium",
-    "question": "15. What is a real-world example of OOP?",
-    "answer": "Answer: ● Car object: ○ Class → Car ○ Objects → Toyota Camry, Honda Civic ○ Properties → Color, Model, Speed ○ Methods → Start(), Stop(), Accelerate() ○ Inheritance → Vehicle ← Car ← ElectricCar"
-  },
-  {
-    "id": 16,
-    "difficulty": "medium",
-    "question": "16. What is encapsulation in OOP?",
-    "answer": "Answer: ● Encapsulation is the mechanism of hiding internal details of an object and exposing only necessary functionalities. ● It helps in protecting data and maintaining control over how it is accessed or modified."
-  },
-  {
-    "id": 17,
-    "difficulty": "medium",
-    "question": "17. How does encapsulation help in security?",
-    "answer": "Answer: ● By making fields private, external code cannot directly modify sensitive data. ● Access is controlled via methods or properties, enforcing validation rules. ● Prevents invalid state changes and maintains data integrity."
-  },
-  {
-    "id": 18,
-    "difficulty": "medium",
-    "question": "18. How is encapsulation implemented in C#?",
-    "answer": "Answer: ● Use private fields to store data. ● Expose controlled access via public properties or methods. ● Use getters and setters with validation logic."
-  },
-  {
-    "id": 19,
-    "difficulty": "medium",
-    "question": "19. What are access modifiers?",
-    "answer": "Answer: ● Keywords that define visibility of class members. ● Common C# modifiers: public, private, protected, internal, protected internal."
-  },
-  {
-    "id": 20,
-    "difficulty": "medium",
-    "question": "21. What is the use of internal, protected, and protected internal?",
-    "answer": "Answer: ● Internal → Accessible only within the same assembly. ● Protected → Accessible in the class and derived classes. ● Protected Internal → Accessible in derived classes OR within same assembly."
-  },
-  {
-    "id": 21,
-    "difficulty": "medium",
-    "question": "22. Can fields be made public directly?",
-    "answer": "Answer: ● Technically yes, but not recommended. ● Makes the data vulnerable to invalid modifications. ● Violates encapsulation principles."
-  },
-  {
-    "id": 22,
-    "difficulty": "medium",
-    "question": "23. What is the use of properties in encapsulation?",
-    "answer": "Answer: ● Properties provide controlled access to private fields. ● Enable validation, read-only/write-only access, and future flexibility. ● Allow data binding and additional logic in getters/setters."
-  },
-  {
-    "id": 23,
-    "difficulty": "medium",
-    "question": "24. How does encapsulation differ from abstraction?",
-    "answer": "Answer: ● Encapsulation → Hides internal data, focuses on data protection. ● Abstraction → Hides implementation details, focuses on simplifying complex systems. ● Encapsulation is about 'how' to hide data, abstraction is about 'what' to show."
-  },
-  {
-    "id": 24,
-    "difficulty": "medium",
-    "question": "26. What is abstraction in OOP?",
-    "answer": "Answer: ● Abstraction is the process of hiding the internal implementation details of a system and exposing only the essential features. ● It allows developers to focus on what an object does, not how it does it."
-  },
-  {
-    "id": 25,
-    "difficulty": "medium",
-    "question": "27. Why is abstraction important?",
-    "answer": "Answer: ● Simplifies complex systems by exposing only relevant functionality. ● Enhances maintainability, readability, and reusability of code. ● Reduces complexity and improves code organization."
-  },
-  {
-    "id": 26,
-    "difficulty": "medium",
-    "question": "28. How do you implement abstraction in C#?",
-    "answer": "Answer: ● Using abstract classes or interfaces. ● Abstract classes can have abstract and non-abstract methods. ● Interfaces define contracts that implementing classes must follow."
-  },
-  {
-    "id": 27,
-    "difficulty": "medium",
-    "question": "29. What are abstract classes?",
-    "answer": "Answer: ● Classes that cannot be instantiated directly and may contain abstract methods (without implementation). ● Can have fields, constructors, and concrete methods. ● Must be inherited by derived classes."
-  },
-  {
-    "id": 28,
-    "difficulty": "medium",
-    "question": "30. What are interfaces?",
-    "answer": "Answer: ● Interfaces define a contract of methods, properties, or events that implementing classes must follow. ● Interfaces provide full abstraction without any implementation (C# 8+ allows default implementations). ● Support multiple inheritance."
-  },
-  {
-    "id": 29,
-    "difficulty": "medium",
-    "question": "31. How do interfaces support abstraction?",
-    "answer": "Answer: ● By exposing method signatures only, interfaces hide the implementation. ● Allows multiple classes to implement the interface differently, providing flexibility and decoupling. ● Clients depend on interface, not concrete implementation."
-  },
-  {
-    "id": 30,
-    "difficulty": "medium",
-    "question": "33. Can you instantiate an abstract class?",
-    "answer": "Answer: ● No, abstract classes cannot be instantiated directly. ● Must be inherited by a derived class which implements abstract methods. ● Example: abstract class Animal → class Dog : Animal"
-  },
-  {
-    "id": 31,
-    "difficulty": "medium",
-    "question": "34. Can abstract classes have constructors?",
-    "answer": "Answer: ● Yes, abstract classes can have constructors. ● Used to initialize fields for derived classes. ● Called when derived class is instantiated."
-  },
-  {
-    "id": 32,
-    "difficulty": "medium",
-    "question": "35. Can abstract classes have non-abstract methods?",
-    "answer": "Answer: ● Yes, abstract classes can have concrete methods with implementation. ● Allows shared behavior for derived classes. ● Derived classes can use or override these methods."
-  },
-  {
-    "id": 33,
-    "difficulty": "medium",
-    "question": "36. What is the purpose of abstraction in large systems?",
-    "answer": "Answer: ● Reduces system complexity by focusing on essential features. ● Decouples modules, making large systems easier to maintain and extend. ● Enables team collaboration through clear contracts."
-  },
-  {
-    "id": 34,
-    "difficulty": "medium",
-    "question": "37. How does abstraction reduce complexity?",
-    "answer": "Answer: ● Hides implementation details, allowing developers to work at higher level of abstraction. ● Provides clear boundaries between components. ● Makes code easier to understand and modify."
-  },
-  {
-    "id": 35,
-    "difficulty": "medium",
-    "question": "39. What is inheritance?",
-    "answer": "Answer: ● Inheritance is an OOP mechanism where a class (derived/child) inherits properties and methods from another class (base/parent). ● Promotes code reusability and hierarchical relationships."
-  },
-  {
-    "id": 36,
-    "difficulty": "medium",
-    "question": "40. What is the base class and derived class?",
-    "answer": "Answer: ● Base Class (Parent) → Class whose members are inherited. ● Derived Class (Child) → Class that inherits from base class. ● Example: class Vehicle (base) → class Car : Vehicle (derived)"
-  },
-  {
-    "id": 37,
-    "difficulty": "medium",
-    "question": "41. How is inheritance implemented in C#?",
-    "answer": "Answer: ● Using the colon (:) symbol. ● Derived class can access public/protected members of the base class. ● Example: class Car : Vehicle"
-  },
-  {
-    "id": 38,
-    "difficulty": "medium",
-    "question": "42. What is the : base() keyword used for?",
-    "answer": "Answer: ● Calls the constructor of the base class from a derived class. ● Ensures base class initialization before derived class constructor runs. ● Can pass parameters to base constructor."
-  },
-  {
-    "id": 39,
-    "difficulty": "medium",
-    "question": "43. Can you inherit multiple classes in C#?",
-    "answer": "Answer: ● No, C# does not support multiple class inheritance. ● A class can inherit from only one base class. ● Use interfaces for multiple inheritance-like behavior."
-  },
-  {
-    "id": 40,
-    "difficulty": "medium",
-    "question": "44. What is the workaround for multiple inheritance in C#?",
-    "answer": "Answer: ● Use interfaces to achieve multiple inheritance. ● A class can implement multiple interfaces. ● Example: class Car : IDriveable, IFlyable"
-  },
-  {
-    "id": 41,
-    "difficulty": "medium",
-    "question": "45. What is the difference between inheritance and composition?",
-    "answer": "Answer: \nFeature        Inheritance          Composition\nRelationship    \"is-a\"               \"has-a\"\nFlexibility     Less flexible        More flexible\nCoupling        Tight coupling       Loose coupling\nReusability     White-box reuse      Black-box reuse"
-  },
-  {
-    "id": 42,
-    "difficulty": "medium",
-    "question": "46. What is method overriding?",
-    "answer": "Answer: ● A derived class provides a new implementation of a base class method marked virtual. ● Achieves run-time polymorphism. ● Uses override keyword in derived class."
-  },
-  {
-    "id": 43,
-    "difficulty": "medium",
-    "question": "47. What is the use of the virtual and override keywords?",
-    "answer": "Answer: ● virtual → Marks a base class method as overridable. ● override → Overrides a virtual method in the derived class. ● Example: base class: virtual void Speak(), derived class: override void Speak()"
-  },
-  {
-    "id": 44,
-    "difficulty": "medium",
-    "question": "48. What is the sealed keyword?",
-    "answer": "Answer: ● Prevents a class from being inherited or a method from being overridden. ● Example: sealed class FinalClass { } class Car : FinalClass { } // Not allowed"
-  },
-  {
-    "id": 45,
-    "difficulty": "medium",
-    "question": "49. What is the difference between new and override in inheritance?",
-    "answer": "Answer: ● override → Polymorphically overrides base method, runtime resolution. ● new → Hides base method, compile-time resolution. ● override changes behavior, new creates separate method."
-  },
-  {
-    "id": 46,
-    "difficulty": "medium",
-    "question": "50. How does inheritance promote code reusability?",
-    "answer": "Answer: ● Common functionality is implemented in base class. ● Derived classes reuse the code without duplicating it, reducing maintenance effort. ● Changes in base class automatically apply to all derived classes."
-  },
-  {
-    "id": 47,
-    "difficulty": "medium",
-    "question": "51. What are the types of inheritance?",
-    "answer": "Answer: 1. Single Inheritance – One base, one derived. 2. Multilevel Inheritance – Base → Derived → Sub-derived. 3. Hierarchical Inheritance – One base, multiple derived. 4. Multiple Inheritance – Through interfaces only in C#."
-  },
-  {
-    "id": 48,
-    "difficulty": "medium",
-    "question": "52. What is the constructor order in inheritance?",
-    "answer": "Answer: ● Base class constructor executes first, then derived class constructor. ● If no explicit base call, default base constructor is called. ● Order: Base static → Derived static → Base instance → Derived instance."
-  },
-  {
-    "id": 49,
-    "difficulty": "medium",
-    "question": "53. Can a derived class access private members of a base class?",
-    "answer": "Answer: ● No, private members are hidden from derived classes. ● Can access protected, internal, or public members. ● Use protected access for derived class access."
-  },
-  {
-    "id": 50,
-    "difficulty": "medium",
-    "question": "54. What is polymorphism in OOP?",
-    "answer": "Answer: ● Polymorphism means 'many forms'. ● It allows objects of different types to be treated as objects of a common base type. ● Enables flexible and extensible code design."
-  },
-  {
-    "id": 51,
-    "difficulty": "medium",
-    "question": "55. What is compile-time polymorphism?",
-    "answer": "Answer: ● Also called static polymorphism. ● Achieved through method overloading and operator overloading. ● Resolution happens at compile time."
-  },
-  {
-    "id": 52,
-    "difficulty": "medium",
-    "question": "56. What is runtime polymorphism?",
-    "answer": "Answer: ● Also called dynamic polymorphism. ● Resolved at runtime using method overriding. ● Base class reference can point to derived class objects."
-  },
-  {
-    "id": 53,
-    "difficulty": "medium",
-    "question": "57. What is method overloading?",
-    "answer": "Answer: ● Same method name with different parameters in the same class. ● Enables compile-time polymorphism. ● Different signatures based on parameter types/count."
-  },
-  {
-    "id": 54,
-    "difficulty": "medium",
-    "question": "58. What is method overriding?",
-    "answer": "Answer: ● Derived class provides a new implementation for a virtual method in base class. ● Enables runtime polymorphism. ● Requires virtual keyword in base, override in derived."
-  },
-  {
-    "id": 55,
-    "difficulty": "medium",
-    "question": "59. Can constructors be overloaded?",
-    "answer": "Answer: ● Yes, constructors can have multiple signatures in the same class. ● Example: class Car { Car(), Car(string model), Car(string model, int year) }"
-  },
-  {
-    "id": 56,
-    "difficulty": "medium",
-    "question": "60. Can constructors be overridden?",
-    "answer": "Answer: ● No, constructors cannot be overridden. ● Each class defines its own constructors. ● Derived classes can call base constructors using : base()"
-  },
-  {
-    "id": 57,
-    "difficulty": "medium",
-    "question": "61. What is operator overloading?",
-    "answer": "Answer: ● Defining custom behavior for operators (+, -, *, etc.) for a class. ● Example: class Point { public static Point operator +(Point a, Point b) }"
-  },
-  {
-    "id": 58,
-    "difficulty": "medium",
-    "question": "62. What is the difference between overriding and overloading?",
-    "answer": "Answer: \nFeature        Overloading          Overriding\nCompile/Runtime Compile-time          Runtime\nParameters      Different            Same\nInheritance     Same class           Different classes\nKeyword         None                 override"
-  },
-  {
-    "id": 59,
-    "difficulty": "medium",
-    "question": "63. What is late binding and early binding?",
-    "answer": "Answer: ● Early binding → Resolved at compile time (e.g., method overloading). ● Late binding → Resolved at runtime (e.g., method overriding). ● Early binding is faster, late binding is more flexible."
-  },
-  {
-    "id": 60,
-    "difficulty": "medium",
-    "question": "64. What is the object class in C# and its relation to polymorphism?",
-    "answer": "Answer: ● object is the base class for all C# types. ● Enables polymorphism, as any object can be referred using object type. ● Provides common methods like ToString(), Equals(), GetHashCode()."
-  },
-  {
-    "id": 61,
-    "difficulty": "medium",
-    "question": "65. How is polymorphism implemented in C#?",
-    "answer": "Answer: ● Through: 1. Method Overloading → Compile-time 2. Method Overriding → Runtime 3. Interfaces → Runtime 4. Abstract classes → Runtime"
-  },
-  {
-    "id": 62,
-    "difficulty": "medium",
-    "question": "67. What is the role of interfaces in achieving polymorphism?",
-    "answer": "Answer: ● Interfaces allow different classes to implement the same contract, enabling dynamic behavior at runtime. ● Example: interface IDriveable { void Drive(); } class Car : IDriveable, class Truck : IDriveable"
-  },
-  {
-    "id": 63,
-    "difficulty": "medium",
-    "question": "68. What is dynamic polymorphism?",
-    "answer": "Answer: ● Another term for runtime polymorphism, achieved via method overriding. ● Method to call is determined at runtime based on actual object type."
-  },
-  {
-    "id": 64,
-    "difficulty": "medium",
-    "question": "69. How does polymorphism help in loose coupling?",
-    "answer": "Answer: ● Code depends on interfaces or base classes, not concrete implementations. ● Easy to swap implementations without affecting client code. ● Promotes extensibility and maintainability."
-  },
-  {
-    "id": 65,
-    "difficulty": "medium",
-    "question": "70. What are the advantages and disadvantages of polymorphism?",
-    "answer": "Answer: Advantages: ● Promotes code reuse and flexibility ● Enables loose coupling ● Supports extensibility Disadvantages: ● Slight performance overhead ● Increased complexity ● Can be harder to debug"
-  },
-  {
-    "id": 66,
-    "difficulty": "medium",
-    "question": "71. What is an interface?",
-    "answer": "Answer: ● An interface is a contract that defines method signatures, properties, events, or indexers without providing implementation. ● Classes or structs that implement the interface must provide the implementation."
-  },
-  {
-    "id": 67,
-    "difficulty": "medium",
-    "question": "72. How do you define an interface in C#?",
-    "answer": "Answer: ● Use interface keyword. ● Example: public interface IDriveable { void Drive(); int Speed { get; set; } }"
-  },
-  {
-    "id": 68,
-    "difficulty": "medium",
-    "question": "73. What is the syntax to implement an interface?",
-    "answer": "Answer: ● Use the colon (:) symbol and implement all members. ● Example: class Car : IDriveable { public void Drive() { } public int Speed { get; set; } }"
-  },
-  {
-    "id": 69,
-    "difficulty": "medium",
-    "question": "74. Can an interface have fields?",
-    "answer": "Answer: ● No, interfaces cannot have fields. Only methods, properties, events, or indexers. ● Use properties instead of fields in interfaces."
-  },
-  {
-    "id": 70,
-    "difficulty": "medium",
-    "question": "75. Can an interface have constructors?",
-    "answer": "Answer: ● No, interfaces cannot have constructors. ● Interfaces define behavior contracts, not initialization logic."
-  },
-  {
-    "id": 71,
-    "difficulty": "medium",
-    "question": "76. Can interfaces contain static methods?",
-    "answer": "Answer: ● Yes, starting from C# 8, interfaces can contain static methods. ● Example: interface IUtility { static void HelperMethod() { } }"
-  },
-  {
-    "id": 72,
-    "difficulty": "medium",
-    "question": "77. Can interfaces have default implementations (C# 8+)?",
-    "answer": "Answer: ● Yes, methods can have default implementations in interfaces. ● Example: interface ILogger { void Log(string message) { Console.WriteLine(message); } }"
-  },
-  {
-    "id": 73,
-    "difficulty": "medium",
-    "question": "78. What is the difference between an interface and a class?",
-    "answer": "Answer: \nFeature        Interface            Class\nImplementation  No implementation     Full implementation\nFields          No                   Yes\nConstructors    No                   Yes\nInheritance     Multiple             Single\nInstantiation   No                   Yes"
-  },
-  {
-    "id": 74,
-    "difficulty": "medium",
-    "question": "79. Can a class implement multiple interfaces?",
-    "answer": "Answer: ● Yes, a class can implement multiple interfaces, solving multiple inheritance issues. ● Example: class FlyingCar : IDriveable, IFlyable"
-  },
-  {
-    "id": 75,
-    "difficulty": "medium",
-    "question": "80. What happens if two interfaces have the same method signature?",
-    "answer": "Answer: ● The implementing class must provide a single implementation for both interfaces. ● Or use explicit interface implementation to differentiate. ● Example: void IFirst.DoSomething() and void ISecond.DoSomething()"
-  },
-  {
-    "id": 76,
-    "difficulty": "medium",
-    "question": "81. Can you implement an interface explicitly?",
-    "answer": "Answer: ● Yes, explicit implementation allows a class to implement interface members separately. ● Example: class Car : IDriveable { void IDriveable.Drive() { } }"
-  },
-  {
-    "id": 77,
-    "difficulty": "medium",
-    "question": "82. What is explicit interface implementation?",
-    "answer": "Answer: ● Implementing an interface member explicitly so it can only be called via interface reference, not class object. ● Example: IDriveable car = new Car(); car.Drive(); // Works Car myCar = new Car(); myCar.Drive(); // Error"
-  },
-  {
-    "id": 78,
-    "difficulty": "medium",
-    "question": "83. What is the purpose of using interfaces?",
-    "answer": "Answer: ● Define contracts for classes. ● Achieve abstraction, polymorphism, and loose coupling. ● Enable multiple inheritance-like behavior."
-  },
-  {
-    "id": 79,
-    "difficulty": "medium",
-    "question": "84. How do interfaces help achieve abstraction?",
-    "answer": "Answer: ● Expose method signatures without implementation. ● Users interact with the interface, not the underlying implementation. ● Hides complex implementation details."
-  },
-  {
-    "id": 80,
-    "difficulty": "medium",
-    "question": "85. How do interfaces support loose coupling?",
-    "answer": "Answer: ● Code depends on interface, not concrete class. ● Easy to swap implementations without affecting dependent code. ● Promotes testability and maintainability."
-  },
-  {
-    "id": 81,
-    "difficulty": "medium",
-    "question": "86. How are interfaces used in dependency injection?",
-    "answer": "Answer: ● Interfaces allow DI frameworks to inject concrete implementations at runtime. ● Promotes flexibility and testability. ● Example: services.AddSingleton<ILogger, FileLogger>();"
-  },
-  {
-    "id": 82,
-    "difficulty": "medium",
-    "question": "87. What is the IComparable interface?",
-    "answer": "Answer: ● Provides a standard method to compare objects for sorting. ● Example: class Employee : IComparable<Employee> { public int CompareTo(Employee other) { return Salary.CompareTo(other.Salary); } }"
-  },
-  {
-    "id": 83,
-    "difficulty": "medium",
-    "question": "88. What is the IDisposable interface?",
-    "answer": "Answer: ● Used to release unmanaged resources. ● Contains Dispose() method for cleanup. ● Used with using statement for automatic disposal."
-  },
-  {
-    "id": 84,
-    "difficulty": "medium",
-    "question": "89. What is the difference between IEnumerable and IEnumerator?",
-    "answer": "Answer: ● IEnumerable → Provides collection traversal capability (GetEnumerator() method). ● IEnumerator → Used to iterate over a collection (MoveNext(), Current, Reset()). ● IEnumerable is the collection, IEnumerator is the iterator."
-  },
-  {
-    "id": 85,
-    "difficulty": "medium",
-    "question": "90. Can one interface inherit another interface?",
-    "answer": "Answer: ● Yes, interfaces can inherit from other interfaces, forming a hierarchy. ● Example: interface IFlyable { void Fly(); } interface IAdvancedFlyable : IFlyable { void Loop(); }"
-  },
-  {
-    "id": 86,
-    "difficulty": "medium",
-    "question": "91. What are marker interfaces?",
-    "answer": "Answer: ● Interfaces with no members, used to mark classes with specific capabilities. ● Example: ISerializable (though it has members in .NET), ICloneable. ● Less common in C# compared to Java."
-  },
-  {
-    "id": 87,
-    "difficulty": "medium",
-    "question": "92. What is an abstract class?",
-    "answer": "Answer: ● An abstract class is a class that cannot be instantiated directly. ● Can contain abstract methods (without implementation) and concrete methods (with implementation). ● Must be inherited by derived classes."
-  },
-  {
-    "id": 88,
-    "difficulty": "medium",
-    "question": "93. How do you declare an abstract class in C#?",
-    "answer": "Answer: ● Use the abstract keyword. ● Example: abstract class Vehicle { public abstract void Start(); public void Stop() { Console.WriteLine(\"Stopping\"); } }"
-  },
-  {
-    "id": 89,
-    "difficulty": "medium",
-    "question": "94. What is an abstract method?",
-    "answer": "Answer: ● A method declared without implementation in an abstract class. ● Must be implemented by derived classes. ● Uses abstract keyword and has no body."
-  },
-  {
-    "id": 90,
-    "difficulty": "medium",
-    "question": "95. Can abstract classes have fields?",
-    "answer": "Answer: ● Yes, abstract classes can have fields, properties, and constants. ● Example: abstract class Vehicle { protected int speed; public int MaxSpeed { get; set; } }"
-  },
-  {
-    "id": 91,
-    "difficulty": "medium",
-    "question": "96. Can abstract classes have constructors?",
-    "answer": "Answer: ● Yes, constructors are used to initialize fields in derived classes. ● Example: abstract class Vehicle { protected Vehicle(int maxSpeed) { MaxSpeed = maxSpeed; } }"
-  },
-  {
-    "id": 92,
-    "difficulty": "medium",
-    "question": "97. Can abstract classes implement interfaces?",
-    "answer": "Answer: ● Yes, abstract classes can implement interfaces partially or fully. ● Derived classes must implement any remaining abstract members. ● Can provide default implementation for interface methods."
-  },
-  {
-    "id": 93,
-    "difficulty": "medium",
-    "question": "98. Can abstract classes be sealed?",
-    "answer": "Answer: ● No, abstract classes cannot be sealed. ● A sealed class cannot be inherited, while abstract classes are meant to be inherited. ● These are contradictory concepts."
-  },
-  {
-    "id": 94,
-    "difficulty": "medium",
-    "question": "99. Can an abstract class have private members?",
-    "answer": "Answer: ● Yes, abstract classes can have private members. ● Private members are accessible only within the abstract class itself. ● Use protected for derived class access."
-  },
-  {
-    "id": 95,
-    "difficulty": "medium",
-    "question": "100. Can a class be both abstract and static?",
-    "answer": "Answer: ● No, a class cannot be both abstract and static. ● Abstract classes are for inheritance, static classes cannot be inherited. ● These are mutually exclusive concepts."
-  },
-  {
-    "id": 96,
-    "difficulty": "medium",
-    "question": "102. Why use abstract classes over interfaces?",
-    "answer": "Answer: ● Abstract classes can provide shared implementation, fields, and constructors. ● Useful when multiple classes share common behavior along with enforced abstraction. ● Better for versioning as you can add methods without breaking existing code."
-  },
-  {
-    "id": 97,
-    "difficulty": "medium",
-    "question": "105. Can you override an abstract method as virtual?",
-    "answer": "Answer: ● No, abstract methods must be overridden with override in derived classes. ● You can then mark the overriding method as virtual to allow further overriding in subclasses. ● Example: override virtual void Method()"
-  },
-  {
-    "id": 98,
-    "difficulty": "medium",
-    "question": "106. Can you inherit multiple abstract classes?",
-    "answer": "Answer: ● No, C# does not allow multiple class inheritance. ● Use interfaces as a workaround. ● A class can inherit one abstract class and multiple interfaces."
-  },
-  {
-    "id": 99,
-    "difficulty": "medium",
-    "question": "107. What is the key difference between abstract classes and interfaces?",
-    "answer": "Answer: ● Abstract classes can have implementation, fields, constructors. ● Interfaces define contracts only (until C# 8). ● Abstract classes support single inheritance, interfaces support multiple. ● Abstract classes are for 'is-a', interfaces for 'can-do' relationships."
-  },
-  {
-    "id": 100,
-    "difficulty": "medium",
-    "question": "108. When would you choose an interface over an abstract class?",
-    "answer": "Answer: ● When you want to define pure contracts without implementation. ● When you need multiple inheritance. ● When unrelated classes need to share common behavior."
-  },
-  {
-    "id": 101,
-    "difficulty": "medium",
-    "question": "109. When should you prefer abstract class over an interface?",
-    "answer": "Answer: ● When you want to share common code among related classes. ● When you need fields or constructors. ● When you have a clear 'is-a' relationship hierarchy."
-  },
-  {
-    "id": 102,
-    "difficulty": "medium",
-    "question": "111. Which allows multiple inheritance — interface or abstract class?",
-    "answer": "Answer: ● Interface allows multiple inheritance. ● Abstract class allows only single inheritance."
-  },
-  {
-    "id": 103,
-    "difficulty": "medium",
-    "question": "112. Can interfaces contain implementation (default interface methods)?",
-    "answer": "Answer: ● Yes, starting from C# 8, interfaces can have default method implementations. ● Example: interface ILogger { void Log(string message) => Console.WriteLine(message); }"
-  },
-  {
-    "id": 104,
-    "difficulty": "medium",
-    "question": "113. Can abstract classes provide full implementation?",
-    "answer": "Answer: ● Yes, abstract classes can have fully implemented methods along with abstract methods. ● Can contain 0% to 100% implementation. ● At least one abstract method makes it abstract."
-  },
-  {
-    "id": 105,
-    "difficulty": "medium",
-    "question": "114. Can you have properties in both interfaces and abstract classes?",
-    "answer": "Answer: ● Yes, both can define properties. ● Interface properties are abstract by default; abstract class properties can have implementation. ● Both support auto-properties and full property syntax."
-  },
-  {
-    "id": 106,
-    "difficulty": "medium",
-    "question": "115. Can you create an object of an interface?",
-    "answer": "Answer: ● No, you cannot instantiate an interface. ● You can only use it as a reference type. ● Can create objects of classes that implement the interface."
-  },
-  {
-    "id": 107,
-    "difficulty": "medium",
-    "question": "116. Can you use abstract classes with dependency injection?",
-    "answer": "Answer: ● Yes, abstract classes can be injected as service contracts, but interfaces are preferred for looser coupling. ● Useful when you want to provide base functionality to derived classes."
-  },
-  {
-    "id": 108,
-    "difficulty": "medium",
-    "question": "117. What are the similarities between interfaces and abstract classes?",
-    "answer": "Answer: ● Both cannot be instantiated directly. ● Both can define method signatures without implementation. ● Both support inheritance and polymorphism. ● Both can be used as reference types."
-  },
-  {
-    "id": 109,
-    "difficulty": "medium",
-    "question": "118. How are interface contracts different from abstract class contracts?",
-    "answer": "Answer: ● Interface contracts are pure method signatures. ● Abstract class contracts can contain shared code and fields. ● Interface contracts are more rigid, abstract class contracts are more flexible."
-  },
-  {
-    "id": 110,
-    "difficulty": "medium",
-    "question": "120. Can an interface inherit from an abstract class?",
-    "answer": "Answer: ● No, an interface cannot inherit from an abstract class. ● Interfaces can only inherit from other interfaces. ● Abstract classes can implement interfaces."
-  },
-  {
-    "id": 111,
-    "difficulty": "medium",
-    "question": "121. Can an abstract class implement an interface?",
-    "answer": "Answer: ● Yes, abstract classes can implement interfaces partially or fully. ● Can leave interface methods abstract for derived classes to implement. ● Can provide default implementation for interface methods."
-  },
-  {
-    "id": 112,
-    "difficulty": "medium",
-    "question": "123. Which is better for API design: interface or abstract class?",
-    "answer": "Answer: ● Interfaces are preferred for public APIs because they: ○ Allow multiple inheritance ○ Provide looser coupling ○ Are more flexible for future changes ○ Support better testability"
-  },
-  {
-    "id": 113,
-    "difficulty": "medium",
-    "question": "125. Which supports multiple inheritance in C#?",
-    "answer": "Answer: ● Interfaces support multiple inheritance. ● Abstract classes do not."
-  },
-  {
-    "id": 114,
-    "difficulty": "medium",
-    "question": "126. How would you design a plugin system using interfaces?",
-    "answer": "Answer: ● Define an interface like IPlugin with a Run() method. ● Each plugin implements IPlugin and can be loaded dynamically. ● Use reflection or DI to discover and load plugins at runtime."
-  },
-  {
-    "id": 115,
-    "difficulty": "medium",
-    "question": "128. How can you implement a notification system using polymorphism?",
-    "answer": "Answer: ● Create base class/interface INotification with Send() method. ● Implement different notification types: EmailNotification, SMSNotification, PushNotification. ● Client code works with INotification interface, actual type determined at runtime."
-  },
-  {
-    "id": 116,
-    "difficulty": "medium",
-    "question": "129. How does the SOLID principle relate to OOP?",
-    "answer": "Answer: ● SOLID principles are design guidelines that enhance maintainability, flexibility, and scalability of OOP systems. ● They guide proper use of abstraction, inheritance, encapsulation, and polymorphism. ● Examples: SRP (single responsibility), OCP (open/closed), LSP (Liskov substitution), ISP (interface segregation), DIP (dependency inversion)."
-  },
-  {
-    "id": 117,
-    "difficulty": "medium",
-    "question": "131. What is Interface Segregation Principle?",
-    "answer": "Answer: ● No client should be forced to implement methods it does not use. ● Break large interfaces into smaller, focused interfaces. ● Example: Instead of IWorker with Work() and Eat(), use IWorkable and IEatable separately."
-  },
-  {
-    "id": 118,
-    "difficulty": "medium",
-    "question": "133. What's the role of encapsulation in API security?",
-    "answer": "Answer: ● Protects internal data by restricting direct access. ● Validates input through controlled access methods. ● Prevents unauthorized modification of sensitive data. ● Maintains data integrity and consistency."
-  },
-  {
-    "id": 119,
-    "difficulty": "medium",
-    "question": "134. How do you mock interfaces in unit testing?",
-    "answer": "Answer: ● Use mocking frameworks like Moq or NSubstitute. ● Provides fake implementations to test dependent classes. ● Example: var mock = new Mock<ILogger>(); mock.Setup(m => m.Log(It.IsAny<string>()))"
-  },
-  {
-    "id": 120,
-    "difficulty": "medium",
-    "question": "136. In what situations should you avoid inheritance?",
-    "answer": "Answer: ● When there's no clear 'is-a' relationship. ● When you need to share behavior across unrelated classes. ● When composition would provide better flexibility. ● When dealing with fragile base class problems."
-  },
-  {
-    "id": 121,
-    "difficulty": "medium",
-    "question": "137. What are the risks of deep inheritance hierarchies?",
-    "answer": "Answer: ● Hard to maintain and understand. ● Fragile base class problem. ● Tight coupling between classes. ● Difficult to test in isolation."
-  },
-  {
-    "id": 122,
-    "difficulty": "medium",
-    "question": "138. Why is composition preferred over inheritance in some cases?",
-    "answer": "Answer: ● Provides flexibility, reduces tight coupling, and avoids deep hierarchies. ● Easier to change behavior at runtime. ● Better follows 'favor composition over inheritance' principle."
-  },
-  {
-    "id": 123,
-    "difficulty": "medium",
-    "question": "139. Can polymorphism lead to performance issues?",
-    "answer": "Answer: ● Minor runtime overhead for virtual calls. ● Usually negligible; design benefits outweigh performance cost. ● Modern JIT compilers optimize virtual calls efficiently."
-  },
-  {
-    "id": 124,
-    "difficulty": "medium",
-    "question": "140. How do you handle versioning when using interfaces?",
-    "answer": "Answer: ● Add new methods with default implementations (C# 8+). ● Create new interfaces that inherit from old ones. ● Use adapter pattern for backward compatibility. ● Avoid breaking changes in public interfaces."
-  },
-  {
-    "id": 125,
-    "difficulty": "medium",
-    "question": "142. How would you design a shape hierarchy using OOP?",
-    "answer": "Answer: ● Base abstract class Shape with abstract Draw() method and concrete properties. ● Derived classes like Circle, Rectangle, Triangle override Draw(). ● Use polymorphism to handle different shapes uniformly."
-  },
-  {
-    "id": 126,
-    "difficulty": "medium",
-    "question": "143. How would you use polymorphism to handle different file formats?",
-    "answer": "Answer: ● Create interface IFileProcessor with Load() and Save() methods. ● Implement different processors: XmlProcessor, JsonProcessor, CsvProcessor. ● Client code works with IFileProcessor interface, actual processor determined by file type."
-  },
-  {
-    "id": 127,
-    "difficulty": "medium",
-    "question": "144. When is it better to use a base class instead of interfaces?",
-    "answer": "Answer: ● When you want to share code or fields across derived classes. ● When common behavior is needed along with enforced methods. ● When you have a clear hierarchical relationship."
-  },
-  {
-    "id": 128,
-    "difficulty": "medium",
-    "question": "146. What are common pitfalls when using inheritance?",
-    "answer": "Answer: ● Deep hierarchies, fragile base classes, tight coupling, misuse of override. ● Violating Liskov substitution principle. ● Overusing inheritance when composition would be better."
-  },
-  {
-    "id": 129,
-    "difficulty": "medium",
-    "question": "147. Can interface changes break backward compatibility?",
-    "answer": "Answer: ● Adding new members without default implementation breaks existing implementers. ● Changing existing member signatures breaks compatibility. ● Use default interface methods (C# 8+) for non-breaking changes."
-  },
-  {
-    "id": 130,
-    "difficulty": "medium",
-    "question": "148. How does using abstract classes or interfaces help in testability?",
-    "answer": "Answer: ● Allows dependency injection of mocks/stubs. ● Enables unit testing without relying on concrete implementations. ● Promotes separation of concerns and single responsibility."
-  },
-  {
-    "id": 131,
-    "difficulty": "medium",
-    "question": "150. Can interfaces help in event-driven architectures?",
-    "answer": "Answer: ● Yes, interfaces can define event contracts for publishers/subscribers. ● Enables decoupling of event producers and consumers. ● Supports observer pattern implementation."
-  },
-  {
-    "id": 132,
-    "difficulty": "medium",
-    "question": "151. What is duck typing and does C# support it with interfaces?",
-    "answer": "Answer: ● Duck typing: 'If it looks like a duck and quacks like a duck, it is a duck.' ● Behavior is based on method/property availability, not type inheritance. ● C# supports it via dynamic keyword or interfaces with explicit implementation."
-  },
-  {
-    "id": 133,
-    "difficulty": "medium",
-    "question": "152. Can interfaces have private methods (C# 8+)? If so, why?",
-    "answer": "Answer: ● Yes, C# 8 introduced private methods in interfaces. ● Purpose: share implementation among default interface methods without exposing them publicly. ● Helps organize code within interfaces."
-  },
-  {
-    "id": 134,
-    "difficulty": "medium",
-    "question": "155. How does OOP enable microservice isolation and autonomy?",
-    "answer": "Answer: ● Encapsulation hides internal implementation of each service. ● Interfaces define clear service contracts. ● Polymorphism allows different implementations behind same interface. ● Inheritance enables code sharing through base services."
-  }
-]
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "fundamental",
+      "difficulty": "medium",
+      "question": "1. What is Object-Oriented Programming (OOP)?",
+      "answer": "Answer: ● OOP is a programming paradigm that organizes software around objects, which contain data (fields/properties) and behavior (methods/functions). ● Helps model real-world entities and their interactions."
+    },
+    {
+      "id": 2,
+      "type": "fundamental",
+      "difficulty": "medium",
+      "question": "2. What are the four pillars of OOP?",
+      "answer": "Answer: 1. Encapsulation – Hiding internal details of objects and exposing only necessary functionality. 2. Abstraction – Hiding implementation details and showing only essential features. 3. Inheritance – Allowing a class to inherit properties and methods from another class. 4. Polymorphism – Allowing objects to take multiple forms."
+    },
+    {
+      "id": 3,
+      "type": "fundamental",
+      "difficulty": "medium",
+      "question": "3. Why is OOP preferred over procedural programming?",
+      "answer": "Answer: ● Promotes code reusability through classes and objects. ● Easier to maintain and extend large applications. ● Better organization through modular design. ● Supports complex real-world modeling."
+    },
+    {
+      "id": 4,
+      "type": "fundamental",
+      "difficulty": "medium",
+      "question": "4. How does OOP help in software development?",
+      "answer": "Answer: ● Encourages modular code → easier to maintain and test. ● Reduces code duplication through inheritance and composition. ● Improves code organization and readability. ● Enables better collaboration through clear interfaces."
+    },
+    {
+      "id": 5,
+      "type": "class-object",
+      "difficulty": "medium",
+      "question": "5. What is a class in OOP?",
+      "answer": "Answer: ● A class is a blueprint or template for creating objects. ● It defines the properties (fields) and behaviors (methods) that objects of that class will have. ● Example: 'Car' class defines properties like color, model and methods like Start(), Stop()."
+    },
+    {
+      "id": 6,
+      "type": "class-object",
+      "difficulty": "medium",
+      "question": "6. What is an object?",
+      "answer": "Answer: ● An instance of a class with actual values. ● Represents a real-world entity in memory. ● Example: A specific car object with color='Red', model='SUV'."
+    },
+    {
+      "id": 7,
+      "type": "class-object",
+      "difficulty": "medium",
+      "question": "7. What is the difference between a class and an object?",
+      "answer": "Answer: \nFeature        Class                    Object\nDefinition     Blueprint/Template       Instance of class\nMemory         No memory allocated      Memory allocated when created\nUsage          Defines structure        Contains actual data\nExample        Car class                MyCar object with specific values"
+    },
+    {
+      "id": 8,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "8. What is a constructor?",
+      "answer": "Answer: ● A special method that is called automatically when an object is created. ● Used to initialize the object's fields. ● Has the same name as the class and no return type."
+    },
+    {
+      "id": 9,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "9. What is a destructor?",
+      "answer": "Answer: ● A method called automatically when an object is destroyed. ● Used to release resources before the object is removed from memory. ● In C#, called Finalize() and managed by garbage collector."
+    },
+    {
+      "id": 10,
+      "type": "class-object",
+      "difficulty": "medium",
+      "question": "10. What are instance vs static members in a class?",
+      "answer": "Answer: ● Instance members → Belong to each object, require object to access. ● Static members → Belong to the class itself, shared by all objects. ● Example: Instance - each car has its own speed; Static - total number of cars created."
+    },
+    {
+      "id": 11,
+      "type": "encapsulation",
+      "difficulty": "medium",
+      "question": "11. What is encapsulation?",
+      "answer": "Answer: ● The practice of hiding internal details of a class and exposing only necessary functionality through access modifiers and properties. ● Example: private int speed; public int Speed { get; set; }"
+    },
+    {
+      "id": 12,
+      "type": "encapsulation",
+      "difficulty": "medium",
+      "question": "12. How does encapsulation help in security?",
+      "answer": "Answer: ● By making fields private, external code cannot directly modify sensitive data. ● Access is controlled via methods or properties, enforcing validation rules. ● Prevents invalid state changes and maintains data integrity."
+    },
+    {
+      "id": 13,
+      "type": "encapsulation",
+      "difficulty": "medium",
+      "question": "13. How is encapsulation implemented in C#?",
+      "answer": "Answer: ● Use private fields to store data. ● Expose controlled access via public properties or methods. ● Use getters and setters with validation logic."
+    },
+    {
+      "id": 14,
+      "type": "encapsulation",
+      "difficulty": "medium",
+      "question": "14. What are access modifiers?",
+      "answer": "Answer: ● Keywords that define visibility of class members. ● Common C# modifiers: public, private, protected, internal, protected internal."
+    },
+    {
+      "id": 15,
+      "type": "encapsulation",
+      "difficulty": "medium",
+      "question": "15. What is the use of internal, protected, and protected internal?",
+      "answer": "Answer: ● Internal → Accessible only within the same assembly. ● Protected → Accessible in the class and derived classes. ● Protected Internal → Accessible in derived classes OR within same assembly."
+    },
+    {
+      "id": 16,
+      "type": "encapsulation",
+      "difficulty": "medium",
+      "question": "16. What is the use of properties in encapsulation?",
+      "answer": "Answer: ● Properties provide controlled access to private fields. ● Enable validation, read-only/write-only access, and future flexibility. ● Allow data binding and additional logic in getters/setters."
+    },
+    {
+      "id": 17,
+      "type": "abstraction",
+      "difficulty": "medium",
+      "question": "17. What is abstraction?",
+      "answer": "Answer: ● Hiding implementation details and showing only the essential features of an object. ● Achieved using abstract classes and interfaces. ● Example: Car interface with Start() method hides how engine starts."
+    },
+    {
+      "id": 18,
+      "type": "abstraction",
+      "difficulty": "medium",
+      "question": "18. Why is abstraction important?",
+      "answer": "Answer: ● Simplifies complex systems by exposing only relevant functionality. ● Enhances maintainability, readability, and reusability of code. ● Reduces complexity and improves code organization."
+    },
+    {
+      "id": 19,
+      "type": "abstraction",
+      "difficulty": "medium",
+      "question": "19. How do you implement abstraction in C#?",
+      "answer": "Answer: ● Using abstract classes or interfaces. ● Abstract classes can have abstract and non-abstract methods. ● Interfaces define contracts that implementing classes must follow."
+    },
+    {
+      "id": 20,
+      "type": "abstraction",
+      "difficulty": "medium",
+      "question": "20. How does abstraction reduce complexity?",
+      "answer": "Answer: ● Hides implementation details, allowing developers to work at higher level of abstraction. ● Provides clear boundaries between components. ● Makes code easier to understand and modify."
+    },
+    {
+      "id": 21,
+      "type": "inheritance",
+      "difficulty": "medium",
+      "question": "21. What is inheritance?",
+      "answer": "Answer: ● A mechanism where a class (child) inherits properties and methods from another class (parent). ● Promotes code reusability and establishes 'is-a' relationships. ● Example: Car class inherits from Vehicle class."
+    },
+    {
+      "id": 22,
+      "type": "inheritance",
+      "difficulty": "medium",
+      "question": "22. What is the base class and derived class?",
+      "answer": "Answer: ● Base Class (Parent) → Class whose members are inherited. ● Derived Class (Child) → Class that inherits from base class. ● Example: class Vehicle (base) → class Car : Vehicle (derived)"
+    },
+    {
+      "id": 23,
+      "type": "inheritance",
+      "difficulty": "medium",
+      "question": "23. How is inheritance implemented in C#?",
+      "answer": "Answer: ● Using the colon (:) symbol. ● Derived class can access public/protected members of the base class. ● Example: class Car : Vehicle"
+    },
+    {
+      "id": 24,
+      "type": "inheritance",
+      "difficulty": "medium",
+      "question": "24. What is the : base() keyword used for?",
+      "answer": "Answer: ● Calls the constructor of the base class from a derived class. ● Ensures base class initialization before derived class constructor runs. ● Can pass parameters to base constructor."
+    },
+    {
+      "id": 25,
+      "type": "inheritance",
+      "difficulty": "medium",
+      "question": "25. Can you inherit multiple classes in C#?",
+      "answer": "Answer: ● No, C# does not support multiple class inheritance. ● A class can inherit from only one base class. ● Use interfaces for multiple inheritance-like behavior."
+    },
+    {
+      "id": 26,
+      "type": "inheritance",
+      "difficulty": "medium",
+      "question": "26. What is the difference between inheritance and composition?",
+      "answer": "Answer: \nFeature        Inheritance          Composition\nRelationship    \"is-a\"               \"has-a\"\nFlexibility     Less flexible        More flexible\nCoupling        Tight coupling       Loose coupling\nReusability     White-box reuse      Black-box reuse"
+    },
+    {
+      "id": 27,
+      "type": "polymorphism",
+      "difficulty": "medium",
+      "question": "27. What is polymorphism?",
+      "answer": "Answer: ● Ability of an object to take multiple forms. ● Types: Compile-time (method overloading) and Runtime (method overriding). ● Example: Animal class with Speak() method, Dog and Cat override it differently."
+    },
+    {
+      "id": 28,
+      "type": "polymorphism",
+      "difficulty": "medium",
+      "question": "28. What is compile-time polymorphism?",
+      "answer": "Answer: ● Also called static polymorphism. ● Achieved through method overloading and operator overloading. ● Resolution happens at compile time."
+    },
+    {
+      "id": 29,
+      "type": "polymorphism",
+      "difficulty": "medium",
+      "question": "29. What is runtime polymorphism?",
+      "answer": "Answer: ● Also called dynamic polymorphism. ● Resolved at runtime using method overriding. ● Base class reference can point to derived class objects."
+    },
+    {
+      "id": 30,
+      "type": "polymorphism",
+      "difficulty": "medium",
+      "question": "30. What is method overloading?",
+      "answer": "Answer: ● Same method name with different parameters in the same class. ● Enables compile-time polymorphism. ● Different signatures based on parameter types/count."
+    },
+    {
+      "id": 31,
+      "type": "polymorphism",
+      "difficulty": "medium",
+      "question": "31. What is method overriding?",
+      "answer": "Answer: ● Derived class provides a new implementation for a virtual method in base class. ● Enables runtime polymorphism. ● Requires virtual keyword in base, override in derived."
+    },
+    {
+      "id": 32,
+      "type": "polymorphism",
+      "difficulty": "medium",
+      "question": "32. What is the difference between overriding and overloading?",
+      "answer": "Answer: \nFeature        Overloading          Overriding\nCompile/Runtime Compile-time          Runtime\nParameters      Different            Same\nInheritance     Same class           Different classes\nKeyword         None                 override"
+    },
+    {
+      "id": 33,
+      "type": "interface",
+      "difficulty": "medium",
+      "question": "33. What is an interface?",
+      "answer": "Answer: ● An interface is a contract that defines method signatures, properties, events, or indexers without providing implementation. ● Classes or structs that implement the interface must provide the implementation."
+    },
+    {
+      "id": 34,
+      "type": "interface",
+      "difficulty": "medium",
+      "question": "34. How do you define an interface in C#?",
+      "answer": "Answer: ● Use interface keyword. ● Example: public interface IDriveable { void Drive(); int Speed { get; set; } }"
+    },
+    {
+      "id": 35,
+      "type": "interface",
+      "difficulty": "medium",
+      "question": "35. What is the syntax to implement an interface?",
+      "answer": "Answer: ● Use the colon (:) symbol and implement all members. ● Example: class Car : IDriveable { public void Drive() { } public int Speed { get; set; } }"
+    },
+    {
+      "id": 36,
+      "type": "interface",
+      "difficulty": "medium",
+      "question": "36. Can a class implement multiple interfaces?",
+      "answer": "Answer: ● Yes, a class can implement multiple interfaces, solving multiple inheritance issues. ● Example: class FlyingCar : IDriveable, IFlyable"
+    },
+    {
+      "id": 37,
+      "type": "abstract-class",
+      "difficulty": "medium",
+      "question": "37. What is an abstract class?",
+      "answer": "Answer: ● An abstract class is a class that cannot be instantiated directly. ● Can contain abstract methods (without implementation) and concrete methods (with implementation). ● Must be inherited by derived classes."
+    },
+    {
+      "id": 38,
+      "type": "abstract-class",
+      "difficulty": "medium",
+      "question": "38. What is an abstract method?",
+      "answer": "Answer: ● A method declared without implementation in an abstract class. ● Must be implemented by derived classes. ● Uses abstract keyword and has no body."
+    },
+    {
+      "id": 39,
+      "type": "comparison",
+      "difficulty": "medium",
+      "question": "39. What is the key difference between abstract classes and interfaces?",
+      "answer": "Answer: ● Abstract classes can have implementation, fields, constructors. ● Interfaces define contracts only (until C# 8). ● Abstract classes support single inheritance, interfaces support multiple. ● Abstract classes are for 'is-a', interfaces for 'can-do' relationships."
+    },
+    {
+      "id": 40,
+      "type": "example",
+      "difficulty": "medium",
+      "question": "40. What is a real-world example of OOP?",
+      "answer": "Answer: ● Car object: ○ Class → Car ○ Objects → Toyota Camry, Honda Civic ○ Properties → Color, Model, Speed ○ Methods → Start(), Stop(), Accelerate() ○ Inheritance → Vehicle ← Car ← ElectricCar"
+    },
+    {
+      "id": 41,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "41. What are the different types of constructors in C#?",
+      "answer": "Answer: ● Default Constructor - No parameters, provided by compiler if none defined. ● Parameterized Constructor - Takes parameters to initialize objects with specific values. ● Copy Constructor - Creates an object by copying from another object. ● Static Constructor - Initializes static members, called automatically before first instance is created."
+    },
+    {
+      "id": 42,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "42. What is a default constructor?",
+      "answer": "Answer: ● A constructor with no parameters. ● If no constructor is defined, compiler provides a default one. ● Initializes fields to their default values (0, null, false, etc.)."
+    },
+    {
+      "id": 43,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "43. What is a parameterized constructor?",
+      "answer": "Answer: ● A constructor that takes parameters to initialize the object with specific values. ● Allows creating objects with custom initial state. ● Example: public Car(string model, int year) { Model = model; Year = year; }"
+    },
+    {
+      "id": 44,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "44. What is a copy constructor?",
+      "answer": "Answer: ● A constructor that creates an object by copying data from another object of same class. ● Used to create a deep or shallow copy of an existing object. ● Example: public Car(Car otherCar) { Model = otherCar.Model; Year = otherCar.Year; }"
+    },
+    {
+      "id": 45,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "45. What is a static constructor?",
+      "answer": "Answer: ● A constructor that initializes static members of a class. ● Called automatically before the first instance is created or any static member is referenced. ● Cannot have access modifiers or parameters. ● Example: static Car() { TotalCars = 0; }"
+    },
+    {
+      "id": 46,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "46. Can constructors be overloaded?",
+      "answer": "Answer: ● Yes, constructors can be overloaded by having different parameter lists. ● Provides multiple ways to initialize objects. ● Example: Car(), Car(string model), Car(string model, int year)"
+    },
+    {
+      "id": 47,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "47. Can constructors be private?",
+      "answer": "Answer: ● Yes, private constructors are used in: ○ Singleton pattern to prevent external instantiation ○ Factory methods ○ Static utility classes ● Prevents creating instances of the class from outside."
+    },
+    {
+      "id": 48,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "48. What is constructor chaining?",
+      "answer": "Answer: ● Calling one constructor from another constructor in the same class using this() keyword. ● Helps avoid code duplication in constructors. ● Example: public Car() : this(\"Unknown\", 2023) { } public Car(string model, int year) { Model = model; Year = year; }"
+    },
+    {
+      "id": 49,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "49. What is the order of constructor execution in inheritance?",
+      "answer": "Answer: ● Static constructors (base then derived) ● Base class instance constructor ● Derived class instance constructor ● Example: Vehicle static → Car static → Vehicle instance → Car instance"
+    },
+    {
+      "id": 50,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "50. Can constructors have return types?",
+      "answer": "Answer: ● No, constructors cannot have return types, not even void. ● They implicitly return the created object instance. ● Having a return type makes it a regular method, not a constructor."
+    },
+    {
+      "id": 51,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "51. Can abstract classes have constructors?",
+      "answer": "Answer: ● Yes, abstract classes can have constructors. ● Used to initialize fields and set up base class state. ● Called when derived class is instantiated. ● Cannot be used to create abstract class instances directly."
+    },
+    {
+      "id": 52,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "52. Can interfaces have constructors?",
+      "answer": "Answer: ● No, interfaces cannot have constructors. ● Interfaces define behavior contracts, not initialization logic. ● Implementing classes provide their own constructors."
+    },
+    {
+      "id": 53,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "53. What happens if no constructor is defined in a class?",
+      "answer": "Answer: ● The compiler automatically provides a default parameterless constructor. ● This default constructor initializes all fields to their default values. ● If any constructor is defined, default constructor is not provided unless explicitly defined."
+    },
+    {
+      "id": 54,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "54. Can constructors be virtual or abstract?",
+      "answer": "Answer: ● No, constructors cannot be virtual or abstract. ● Virtual/abstract implies polymorphism, but constructors are called during object creation before polymorphism applies. ● Abstract classes can have abstract methods but not abstract constructors."
+    },
+    {
+      "id": 55,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "55. What is the difference between constructor and method?",
+      "answer": "Answer: \nFeature        Constructor          Method\nPurpose        Initialize object    Perform operations\nName           Same as class        Any valid name\nReturn Type    None                 Required\nCalling        Automatic on new     Explicit call\nInheritance    Not inherited        Can be inherited"
+    },
+    {
+      "id": 56,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "56. Can constructors throw exceptions?",
+      "answer": "Answer: ● Yes, constructors can throw exceptions if initialization fails. ● If constructor throws exception, object creation fails and memory is reclaimed. ● Caller should handle exceptions when creating objects."
+    },
+    {
+      "id": 57,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "57. What is the IDisposable pattern and how does it relate to constructors?",
+      "answer": "Answer: ● IDisposable provides deterministic cleanup of resources. ● Dispose() method is called explicitly to release resources. ● Used with using statement for automatic disposal. ● Constructor acquires resources, Dispose() releases them."
+    },
+    {
+      "id": 58,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "58. Can structs have constructors?",
+      "answer": "Answer: ● Yes, structs can have constructors but must initialize all fields. ● Cannot have parameterless constructor (except in C# 10+). ● Always called when struct is created, even with default keyword."
+    },
+    {
+      "id": 59,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "59. What is the 'readonly' modifier in constructor context?",
+      "answer": "Answer: ● readonly fields can only be assigned in constructor or field initializer. ● Ensures field value doesn't change after object construction. ● Provides immutability for object state. ● Example: public readonly string Model;"
+    },
+    {
+      "id": 60,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "60. What are object initializers and how do they differ from constructors?",
+      "answer": "Answer: ● Object initializers set properties after constructor call using { } syntax. ● Constructor sets initial state, initializers modify it immediately after. ● Example: var car = new Car() { Model = \"Toyota\", Year = 2023 }; ● More flexible than having multiple constructor overloads."
+    },
+    {
+      "id": 61,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "61. What is the 'this' keyword in constructors?",
+      "answer": "Answer: ● Refers to the current object instance. ● Used to: ○ Differentiate between parameters and fields with same name ○ Call other constructors in the same class (constructor chaining) ○ Pass current object as parameter ● Example: public Car(string model) { this.model = model; }"
+    },
+    {
+      "id": 62,
+      "type": "constructor",
+      "difficulty": "medium",
+      "question": "62. How do constructors work with inheritance and polymorphism?",
+      "answer": "Answer: ● Constructors are not inherited or polymorphic. ● Each class defines its own constructors. ● Derived constructors must call base constructor explicitly or implicitly. ● Polymorphism applies after object construction is complete."
+    }
+  ]
 }

@@ -106,7 +106,7 @@ function App() {
   }, []);
 
   return (
-       <AutoLogout logoutTime={10 * 60 * 1000} warningTime={2 * 60 * 1000}>
+       <AutoLogout logoutTime={5 * 60 * 1000} warningTime={60 * 1000}>
     <AuthProvider>
       {/* ✅ Provide dark mode context to the whole app */}
       <DarkModeContext.Provider value={{ darkMode, setDarkMode,cameraStopTree,setcameraStopTree}}>

@@ -8,14 +8,14 @@ import CalendarInterviewTracker from "../Pages/CalendarInterviewTracker";
 import useInterviewHistory from '../hooks/useInterviewHistory';
 import { AuthContext } from '../utils/AuthProvider';
 
-const languages = [{
+const languages = [
+    {
     id: 1, code: "Personal", label: "Personal Development", icon: <Code2 className="w-8 h-8" />,
     description: "Master C# programming with .NET ecosystem", lang: "C#",
     gradient: "from-purple-500 via-pink-500 to-rose-500",
     bgGradient: "from-purple-500/20 to-pink-500/20",
     stats: "100+ Questions", features: ["ASP.NET Core", "Entity Framework", "LINQ", "Blazor"]
-},
-{
+},{
     id: 2, code: "Testing", label: "C# & .NET", icon: <Code2 className="w-8 h-8" />,
     description: "Master C# programming with .NET ecosystem", lang: "C#",
     gradient: "from-purple-500 via-pink-500 to-rose-500",
