@@ -1,6 +1,11 @@
 {
   "data": [
     {
+  "id": 1,
+  "question": "What are the main advantages of using C# Web API (ASP.NET Web API)?",
+  "answer": "1. Platform Independence, 2. Lightweight & Fast, 3. Easy Integration, 4. RESTful Design, 5. Strongly Typed and Secure, 6. Code Reusability, 7. Easy Testing & Debugging, 8. Cloud-Ready, 9. Versioning and Maintainability, 10. Asynchronous Programming"
+  },
+    {
       "id": 1,
       "question": "What is the difference between .NET Framework and .NET Core?",
       "category": "dotnet-core",

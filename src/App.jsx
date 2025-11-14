@@ -99,17 +99,18 @@ const AppContent = () => {
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const[cameraStopTree,setcameraStopTree]=useState(false);
-
+  const [scrolle,Setscrolle] = useState(false);
+  
   // Populate sample interview history on app start
   useEffect(() => {
     populateInterviewHistory(true); // Force populate to ensure data is always there
   }, []);
 
   return (
-       <AutoLogout logoutTime={5 * 60 * 1000} warningTime={60 * 1000}>
+       <AutoLogout logoutTime={15 * 60 * 1000} warningTime={60 * 1000}>
     <AuthProvider>
       {/* ✅ Provide dark mode context to the whole app */}
-      <DarkModeContext.Provider value={{ darkMode, setDarkMode,cameraStopTree,setcameraStopTree}}>
+      <DarkModeContext.Provider value={{ darkMode, setDarkMode,cameraStopTree,setcameraStopTree,scrolle,Setscrolle}}>
         <Router>
           <AppContent />
         </Router>

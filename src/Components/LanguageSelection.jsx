@@ -204,7 +204,8 @@ const LanguageSelection = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [viewMode, setViewMode] = useState('grid');
-    const { darkMode } = useContext(DarkModeContext);
+    const[viewLanguageBadge, setviewLanguageBadge] = useState([]);
+    const { darkMode,Setscrolle,scrolle } = useContext(DarkModeContext);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -222,6 +223,9 @@ const LanguageSelection = () => {
         }
     }, [searchParams]);
 
+    useEffect(() => { 
+        selectLnguge()
+    }, []);
     // Filtered languages based on search and user permissions
     const filteredLanguages = useMemo(() => {
         console.log(languages);
@@ -314,7 +318,15 @@ const LanguageSelection = () => {
             ))}
         </div>
     );
-
+    const selectLnguge = () => {
+        var lan = window.localStorage.getItem("learningProgress");
+        var data =  Object.keys(JSON.parse(lan));
+        if (!Array.isArray(data)) return;
+        setviewLanguageBadge(data);
+    }
+const RevisionLAnguageSelect=()=>{
+    
+}
     return (
       <div className={`min-h-screen ${darkModeStyles.background} relative overflow-hidden transition-all duration-700`}>
         {/* CalendarSection */}
@@ -573,8 +585,74 @@ const LanguageSelection = () => {
                             {viewMode === 'grid' ? 'Grid View' : 'List View'}
                         </span>
                     </p>
-                </motion.div>
-
+                    </motion.div>
+                   {/* Language selected Badge - Ultra Modern Design */}
+<motion.div 
+    className="mb-8"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+>
+    {
+        viewLanguageBadge.length > 0 ? (
+            <div className="flex flex-wrap gap-3 justify-center">
+                {
+                    viewLanguageBadge.map((language, index) => (
+                        <motion.div
+                            key={language}
+                            className="relative group"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ 
+                                duration: 0.4,
+                                delay: index * 0.1,
+                                type: "spring",
+                                stiffness: 120
+                            }}
+                            whileHover={{ 
+                                scale: 1.05,
+                                y: -2
+                            }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            {/* Main Badge */}
+                            <div className="relative">
+                                {/* Gradient Background */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300 opacity-70 group-hover:opacity-100"></div>
+                                
+                                {/* Badge Content */}
+                                <div className="relative bg-white/90 backdrop-blur-xl border border-white/20 rounded-xl px-4 py-2.5 shadow-2xl group-hover:shadow-3xl transition-all duration-300">
+                                    {/* Language Text */}
+                                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold text-sm whitespace-nowrap" onClick={RevisionLAnguageSelect}>
+                                        {language}
+                                    </span>
+                                    
+                                    {/* Shine Effect */}
+                                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                                </div>
+                                
+                                {/* Floating Particles */}
+                                <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping"></div>
+                            </div>
+                        </motion.div>
+                    ))
+                }
+            </div>
+        ) : (
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+            >
+                <div className="inline-flex items-center gap-2 px-4 py-3 bg-gray-100/80 backdrop-blur-sm rounded-xl border border-gray-200/50">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                    <span className="text-gray-500 font-medium text-sm">No languages selected</span>
+                </div>
+            </motion.div>
+        )
+    }
+</motion.div>
                 {/* Ultra-Modern Languages Grid/List */}
                 <motion.div 
                     className={`gap-6 mx-auto ${

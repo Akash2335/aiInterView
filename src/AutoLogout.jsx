@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
-const DEFAULT_LOGOUT_TIME = 5 * 60 * 1000; // 5 minutes
+const DEFAULT_LOGOUT_TIME = 15 * 60 * 1000; // 15 minutes
 const DEFAULT_WARNING_TIME = 60 * 1000; // 1 minute
 
 const AutoLogout = ({
