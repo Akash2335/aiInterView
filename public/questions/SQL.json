@@ -790,6 +790,36 @@
       "category": "SQL Queries",
       "difficulty": "Medium",
       "answer": "Pagination can be implemented using OFFSET and FETCH: SELECT ... ORDER BY Column OFFSET (@Page-1)*@PageSize ROWS FETCH NEXT @PageSize ROWS ONLY. For older versions, use ROW_NUMBER() with a CTE."
-    }
+    },
+     {
+    "id": 114,
+    "question": "What is an MDF file in SQL Server?",
+    "category": "database",
+    "answer": "MDF (Primary Data File) is the main SQL Server database file that stores the database schema and actual data. Every database has one primary MDF file which contains tables, indexes, stored procedures, and metadata."
+  },
+  {
+    "id": 115,
+    "question": "What is an LDF file in SQL Server?",
+    "category": "database",
+    "answer": "LDF (Log Data File) contains the transaction log for the database. It stores transaction records, rollback information, and data required for recovery and point-in-time restore. The log file is essential for transactional consistency and recovery."
+  },
+  {
+    "id": 116,
+    "question": "What is an NDF file in SQL Server?",
+    "category": "database",
+    "answer": "NDF (Secondary Data File) is an optional secondary data file used to spread database data across multiple files or disks. NDFs are useful for large databases or when distributing I/O across drives. A database can have zero or many NDF files."
+  },
+  {
+    "id": 117,
+    "question": "What are the differences between MDF, LDF, and NDF?",
+    "category": "database",
+    "answer": "MDF is the primary data file storing schema and data (required, one per DB). LDF is the transaction log file storing log records for recovery (required). NDF are optional secondary data files used to store additional data and distribute I/O. MDF/NDF store data; LDF stores transaction logs. Extensions: .mdf, .ldf, .ndf."
+  },
+  {
+    "id": 118,
+    "question": "When should you use NDF files?",
+    "category": "database",
+    "answer": "Use NDF files when the database grows large or when you want to distribute database files across multiple disks to improve I/O throughput, storage management, or performance. NDFs help scale storage and improve performance for large databases."
+  }
   ]
 }
