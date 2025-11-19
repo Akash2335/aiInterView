@@ -324,8 +324,10 @@ const LanguageSelection = () => {
         if (!Array.isArray(data)) return;
         setviewLanguageBadge(data);
     }
-const RevisionLAnguageSelect=()=>{
-    
+const RevisionLAnguageSelect=(language)=>{
+    resetLearningProgress(language);
+    setviewLanguageBadge(prev => prev.filter(lang => lang !== language));
+    toast.success(`Removed ${language} from selected languages`);
 }
     return (
       <div className={`min-h-screen ${darkModeStyles.background} relative overflow-hidden transition-all duration-700`}>
@@ -623,7 +625,10 @@ const RevisionLAnguageSelect=()=>{
                                 {/* Badge Content */}
                                 <div className="relative bg-white/90 backdrop-blur-xl border border-white/20 rounded-xl px-4 py-2.5 shadow-2xl group-hover:shadow-3xl transition-all duration-300">
                                     {/* Language Text */}
-                                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold text-sm whitespace-nowrap" onClick={RevisionLAnguageSelect}>
+                                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold text-sm whitespace-nowrap" onClick={() => {
+                                        setIsLearning("Learning");
+                                        handleSelect(language);
+                                    }}>
                                         {language}
                                     </span>
                                     
