@@ -597,5 +597,11 @@
     "question": "Explain the view components in ASP.NET Core.", 
     "category": "csharp",
     "answer": "View components render reusable chunks of UI with logic. InvokeAsync returns IViewComponentResult. More powerful than partial views. Used for dynamic navigation, shopping carts, sidebar content."
-  }
+  }, {
+  "id": 101,
+  "question": "Interface Conflict.",
+  "category": "csharp",
+  "answer": "When two or more interfaces have methods with the same name, your class may face a method name conflict.\n\nExample:\n\npublic interface IA {\n    void Print();\n}\n\npublic interface IB {\n    void Print();\n}\n\npublic class MyClass : IA, IB {\n    public void Print() {\n        // Conflict: Which interface method?\n    }\n}\n\nSolution 3 — Explicit + Public Wrapper Method:\n\npublic class MyClass : IA, IB {\n    void IA.Print() => Console.WriteLine(\"IA Print\");\n    void IB.Print() => Console.WriteLine(\"IB Print\");\n\n    public void Print() {\n        Console.WriteLine(\"Class-level Print()\");\n    }\n}\n\nUsage:\nvar obj = new MyClass();\nobj.Print();          // Class-level Print\n((IA)obj).Print();    // IA Print\n((IB)obj).Print();    // IB Print"
+}
+
 ]}

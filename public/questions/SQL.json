@@ -1,746 +1,795 @@
 {
   "data": [
     {
-    "id": 1,
-    "question": "What does the UNION operator do in SQL?",
-    "category": "SQL Set Operators",
-    "difficulty": "Easy",
-    "answer": "UNION combines the results of two or more SELECT statements and removes duplicate rows automatically. It returns all unique rows from both queries."
-  },
-  {
-    "id": 2,
-    "question": "What is the difference between UNION and UNION ALL?",
-    "category": "SQL Set Operators",
-    "difficulty": "Medium",
-    "answer": "UNION removes duplicates, while UNION ALL includes duplicates and is faster since it does not perform a distinct check."
-  },
-  {
-    "id": 3,
-    "question": "What does the EXCEPT operator do?",
-    "category": "SQL Set Operators",
-    "difficulty": "Medium",
-    "answer": "EXCEPT returns rows from the first query that do not appear in the second query. In Oracle, this operator is known as MINUS."
-  },
-  {
-    "id": 4,
-    "question": "What does the INTERSECT operator do?",
-    "category": "SQL Set Operators",
-    "difficulty": "Medium",
-    "answer": "INTERSECT returns only the rows that are common to both queries and automatically removes duplicates."
-  },
-  {
-    "id": 5,
-    "question": "What is a JOIN in SQL and why is it used?",
-    "category": "SQL Joins",
-    "difficulty": "Easy",
-    "answer": "A JOIN in SQL is used to combine rows from two or more tables based on a related column between them. It allows you to retrieve data spread across multiple tables using a common key such as a foreign key."
-  },
-  {
-    "id": 6,
-    "question": "What is the difference between JOIN and INTERSECT in SQL?",
-    "category": "SQL Comparison",
-    "difficulty": "Medium",
-    "answer": "JOIN merges data horizontally by combining columns from two tables based on a condition, while INTERSECT merges data vertically by returning only the rows that are common to both result sets. JOIN requires an ON condition; INTERSECT does not."
-  },
-    {
       "id": 1,
-      "question": "What are the different types of JOINs in SQL?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "INNER JOIN: Returns matching rows from both tables. LEFT JOIN: All rows from left table + matching rows from right (NULL if no match). RIGHT JOIN: All rows from right table + matching rows from left. FULL OUTER JOIN: All rows when there's match in either table. CROSS JOIN: Cartesian product of both tables."
+      "question": "What does the UNION operator do in SQL?",
+      "category": "SQL Set Operators",
+      "difficulty": "Easy",
+      "answer": "UNION combines the results of two or more SELECT statements and removes duplicate rows automatically. It returns all unique rows from both queries."
     },
     {
       "id": 2,
-      "question": "Explain indexes and how they improve performance.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Indexes are data structures that speed up data retrieval. Types: Clustered (determines physical order of data), Non-clustered (separate structure with pointers), Unique, Composite. Improve SELECT performance but slow down INSERT/UPDATE/DELETE. Use on frequently queried columns in WHERE, JOIN, ORDER BY clauses."
+      "question": "What is the difference between UNION and UNION ALL?",
+      "category": "SQL Set Operators",
+      "difficulty": "Medium",
+      "answer": "UNION removes duplicates, while UNION ALL includes duplicates and is faster since it does not perform a distinct check."
     },
     {
       "id": 3,
-      "question": "What is normalization and denormalization?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Normalization: Organizing data to reduce redundancy (1NF, 2NF, 3NF, BCNF). Denormalization: Intentionally adding redundancy for performance. Normalization improves data integrity, denormalization improves read performance at cost of write performance and data redundancy."
+      "question": "What does the EXCEPT operator do?",
+      "category": "SQL Set Operators",
+      "difficulty": "Medium",
+      "answer": "EXCEPT returns rows from the first query that do not appear in the second query. In Oracle, this operator is known as MINUS."
     },
     {
       "id": 4,
-      "question": "How do you optimize slow-running queries?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use EXPLAIN to analyze query plan, add appropriate indexes, avoid SELECT *, use WHERE clauses efficiently, limit result sets with TOP/LIMIT, avoid functions on indexed columns in WHERE, use EXISTS instead of IN for subqueries, normalize/denormalize appropriately, update statistics."
+      "question": "What does the INTERSECT operator do?",
+      "category": "SQL Set Operators",
+      "difficulty": "Medium",
+      "answer": "INTERSECT returns only the rows that are common to both queries and automatically removes duplicates."
     },
     {
       "id": 5,
-      "question": "What are stored procedures and when to use them?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Stored procedures are precompiled SQL code stored in database. Benefits: Performance (compiled once), security (permission on SP rather than tables), maintainability, reduced network traffic. Use for complex operations, batch processing, when application logic belongs in database layer."
+      "question": "What is a JOIN in SQL and why is it used?",
+      "category": "SQL Joins",
+      "difficulty": "Easy",
+      "answer": "A JOIN in SQL is used to combine rows from two or more tables based on a related column between them. It allows you to retrieve data spread across multiple tables using a common key such as a foreign key."
     },
     {
       "id": 6,
-      "question": "Explain ACID properties in database transactions.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Atomicity: All operations succeed or all fail. Consistency: Database remains in valid state before and after transaction. Isolation: Concurrent transactions don't interfere. Durability: Committed transactions persist even after system failure. Ensures data integrity and reliability."
+      "question": "What is the difference between JOIN and INTERSECT in SQL?",
+      "category": "SQL Comparison",
+      "difficulty": "Medium",
+      "answer": "JOIN merges data horizontally by combining columns from two tables based on a condition, while INTERSECT merges data vertically by returning only the rows that are common to both result sets. JOIN requires an ON condition; INTERSECT does not."
     },
     {
       "id": 7,
-      "question": "What is the difference between WHERE and HAVING?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "WHERE filters rows before aggregation, HAVING filters groups after aggregation. WHERE can't use aggregate functions, HAVING can. Example: WHERE filters individual rows, HAVING filters groups created by GROUP BY."
+      "question": "What are the different types of JOINs in SQL?",
+      "category": "SQL Joins",
+      "difficulty": "Easy",
+      "answer": "INNER JOIN: Returns matching rows from both tables. LEFT JOIN: All rows from left table + matching rows from right (NULL if no match). RIGHT JOIN: All rows from right table + matching rows from left. FULL OUTER JOIN: All rows when there's match in either table. CROSS JOIN: Cartesian product of both tables."
     },
     {
       "id": 8,
-      "question": "How do you handle NULL values in SQL?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "Use IS NULL/IS NOT NULL for comparisons, COALESCE to provide default values, NULLIF to handle specific values, handle in aggregations (NULLs ignored in SUM/AVG), use outer joins carefully. NULL represents unknown/missing data, not zero or empty string."
+      "question": "Explain indexes and how they improve performance.",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "Indexes are data structures that speed up data retrieval. Types: Clustered (determines physical order of data), Non-clustered (separate structure with pointers), Unique, Composite. Improve SELECT performance but slow down INSERT/UPDATE/DELETE. Use on frequently queried columns in WHERE, JOIN, ORDER BY clauses."
     },
     {
       "id": 9,
-      "question": "What are window functions in SQL?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Window functions perform calculations across set of table rows related to current row. Types: Ranking (ROW_NUMBER, RANK, DENSE_RANK), Aggregate (SUM, AVG over partitions), Value (LAG, LEAD, FIRST_VALUE). Use OVER clause with PARTITION BY and ORDER BY."
+      "question": "What is normalization and denormalization?",
+      "category": "Database Design",
+      "difficulty": "Medium",
+      "answer": "Normalization: Organizing data to reduce redundancy (1NF, 2NF, 3NF, BCNF). Denormalization: Intentionally adding redundancy for performance. Normalization improves data integrity, denormalization improves read performance at cost of write performance and data redundancy."
     },
     {
       "id": 10,
-      "question": "Explain database isolation levels.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Read Uncommitted: Can read uncommitted changes (dirty reads). Read Committed: Only read committed data. Repeatable Read: Locks prevent other transactions from modifying data. Serializable: Highest isolation, complete isolation. Snapshot: Uses row versioning. Choose based on concurrency vs consistency needs."
+      "question": "How do you optimize slow-running queries?",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "Use EXPLAIN to analyze query plan, add appropriate indexes, avoid SELECT *, use WHERE clauses efficiently, limit result sets with TOP/LIMIT, avoid functions on indexed columns in WHERE, use EXISTS instead of IN for subqueries, normalize/denormalize appropriately, update statistics."
     },
     {
       "id": 11,
-      "question": "What is the difference between UNION and UNION ALL?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "UNION combines results and removes duplicates. UNION ALL combines all results including duplicates. UNION ALL is faster as it doesn't need duplicate removal. Use UNION when you need distinct results, UNION ALL when duplicates don't matter or are impossible."
+      "question": "What are stored procedures and when to use them?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "Stored procedures are precompiled SQL code stored in database. Benefits: Performance (compiled once), security (permission on SP rather than tables), maintainability, reduced network traffic. Use for complex operations, batch processing, when application logic belongs in database layer."
     },
     {
       "id": 12,
-      "question": "How do you prevent SQL injection attacks?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use parameterized queries/prepared statements, input validation and sanitization, stored procedures, principle of least privilege for database users, ORM frameworks, avoid dynamic SQL with string concatenation, use whitelist input validation."
+      "question": "Explain ACID properties in database transactions.",
+      "category": "Transactions",
+      "difficulty": "Medium",
+      "answer": "Atomicity: All operations succeed or all fail. Consistency: Database remains in valid state before and after transaction. Isolation: Concurrent transactions don't interfere. Durability: Committed transactions persist even after system failure. Ensures data integrity and reliability."
     },
     {
       "id": 13,
-      "question": "What are the different types of indexes?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Clustered: Determines physical order (one per table). Non-clustered: Separate structure with pointers. Unique: Ensures unique values. Composite: Multiple columns. Filtered: On subset of data. Full-text: For text searching. Columnstore: For data warehousing."
+      "question": "What is the difference between WHERE and HAVING?",
+      "category": "SQL Queries",
+      "difficulty": "Easy",
+      "answer": "WHERE filters rows before aggregation, HAVING filters groups after aggregation. WHERE can't use aggregate functions, HAVING can. Example: WHERE filters individual rows, HAVING filters groups created by GROUP BY."
     },
     {
       "id": 14,
-      "question": "Explain the difference between DELETE, TRUNCATE, and DROP.",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "DELETE: Removes rows one by one, can use WHERE, can be rolled back, fires triggers. TRUNCATE: Removes all rows quickly, resets identity, can't use WHERE, minimal logging. DROP: Removes entire table structure and data. Use based on requirements and performance needs."
+      "question": "How do you handle NULL values in SQL?",
+      "category": "SQL Queries",
+      "difficulty": "Easy",
+      "answer": "Use IS NULL/IS NOT NULL for comparisons, COALESCE to provide default values, NULLIF to handle specific values, handle in aggregations (NULLs ignored in SUM/AVG), use outer joins carefully. NULL represents unknown/missing data, not zero or empty string."
     },
     {
       "id": 15,
-      "question": "What are common table expressions (CTEs)?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "CTEs are temporary named result sets that can be referenced within a SQL statement. Syntax: WITH cte_name AS (SELECT ...). Useful for recursive queries, breaking complex queries into parts, improving readability. Materialized only when referenced."
+      "question": "What are window functions in SQL?",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "Window functions perform calculations across set of table rows related to current row. Types: Ranking (ROW_NUMBER, RANK, DENSE_RANK), Aggregate (SUM, AVG over partitions), Value (LAG, LEAD, FIRST_VALUE). Use OVER clause with PARTITION BY and ORDER BY."
     },
     {
       "id": 16,
-      "question": "How do you handle duplicate records in a table?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use DISTINCT in SELECT, GROUP BY to aggregate duplicates, ROW_NUMBER() with PARTITION BY to identify duplicates, DELETE with self-join or CTE to remove duplicates. Prevent with UNIQUE constraints or primary keys."
+      "question": "Explain database isolation levels.",
+      "category": "Transactions",
+      "difficulty": "Advanced",
+      "answer": "Read Uncommitted: Can read uncommitted changes (dirty reads). Read Committed: Only read committed data. Repeatable Read: Locks prevent other transactions from modifying data. Serializable: Highest isolation, complete isolation. Snapshot: Uses row versioning. Choose based on concurrency vs consistency needs."
     },
     {
       "id": 17,
-      "question": "What is the difference between CHAR and VARCHAR?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "CHAR: Fixed-length, pads with spaces, faster for fixed-size data. VARCHAR: Variable-length, no padding, saves storage for variable data. Use CHAR for fixed-length codes (country codes), VARCHAR for variable data (names, addresses)."
+      "question": "How do you prevent SQL injection attacks?",
+      "category": "Security",
+      "difficulty": "Medium",
+      "answer": "Use parameterized queries/prepared statements, input validation and sanitization, stored procedures, principle of least privilege for database users, ORM frameworks, avoid dynamic SQL with string concatenation, use whitelist input validation."
     },
     {
       "id": 18,
-      "question": "Explain database normalization forms (1NF, 2NF, 3NF).",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "1NF: Atomic values, no repeating groups. 2NF: In 1NF + no partial dependencies (all non-key attributes depend on whole primary key). 3NF: In 2NF + no transitive dependencies (non-key attributes depend only on primary key). BCNF: Stronger version of 3NF."
+      "question": "What are the different types of indexes?",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "Clustered: Determines physical order (one per table). Non-clustered: Separate structure with pointers. Unique: Ensures unique values. Composite: Multiple columns. Filtered: On subset of data. Full-text: For text searching. Columnstore: For data warehousing."
     },
     {
       "id": 19,
-      "question": "What are database transactions and how do you manage them?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Transactions are sequences of operations performed as single logical unit. Manage with BEGIN TRANSACTION, COMMIT (save changes), ROLLBACK (undo changes). Use savepoints for partial rollbacks. Ensure ACID properties for data integrity."
+      "question": "Explain the difference between DELETE, TRUNCATE, and DROP.",
+      "category": "DDL/DML",
+      "difficulty": "Easy",
+      "answer": "DELETE: Removes rows one by one, can use WHERE, can be rolled back, fires triggers. TRUNCATE: Removes all rows quickly, resets identity, can't use WHERE, minimal logging. DROP: Removes entire table structure and data. Use based on requirements and performance needs."
     },
     {
       "id": 20,
-      "question": "How do you calculate running totals in SQL?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use window functions: SUM(column) OVER (ORDER BY date ROWS UNBOUNDED PRECEDING). Or use self-joins or correlated subqueries (less efficient). Window functions are most efficient and readable for running calculations."
+      "question": "What are common table expressions (CTEs)?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "CTEs are temporary named result sets that can be referenced within a SQL statement. Syntax: WITH cte_name AS (SELECT ...). Useful for recursive queries, breaking complex queries into parts, improving readability. Materialized only when referenced."
     },
     {
       "id": 21,
-      "question": "What is the difference between IN and EXISTS?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "IN checks if value matches any in list/subquery. EXISTS returns true if subquery returns any rows. EXISTS is often faster as it can stop after first match. IN can have performance issues with large lists. Use EXISTS for correlated subqueries."
+      "question": "How do you handle duplicate records in a table?",
+      "category": "Data Management",
+      "difficulty": "Medium",
+      "answer": "Use DISTINCT in SELECT, GROUP BY to aggregate duplicates, ROW_NUMBER() with PARTITION BY to identify duplicates, DELETE with self-join or CTE to remove duplicates. Prevent with UNIQUE constraints or primary keys."
     },
     {
       "id": 22,
-      "question": "Explain database locking and deadlocks.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Locking prevents concurrent access issues. Types: Shared (read), Exclusive (write), Intent, Schema. Deadlock occurs when two transactions wait for each other's locks. Prevent with: access objects in same order, use lower isolation levels, set lock timeout, deadlock detection."
+      "question": "What is the difference between CHAR and VARCHAR?",
+      "category": "Data Types",
+      "difficulty": "Easy",
+      "answer": "CHAR: Fixed-length, pads with spaces, faster for fixed-size data. VARCHAR: Variable-length, no padding, saves storage for variable data. Use CHAR for fixed-length codes (country codes), VARCHAR for variable data (names, addresses)."
     },
     {
       "id": 23,
-      "question": "What are the different types of subqueries?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Scalar (returns single value), Correlated (references outer query), Non-correlated (independent), Single-row, Multiple-row, Multiple-column. Use in SELECT, FROM, WHERE, HAVING clauses. Can often be rewritten with JOINs for better performance."
+      "question": "Explain database normalization forms (1NF, 2NF, 3NF).",
+      "category": "Database Design",
+      "difficulty": "Medium",
+      "answer": "1NF: Atomic values, no repeating groups. 2NF: In 1NF + no partial dependencies (all non-key attributes depend on whole primary key). 3NF: In 2NF + no transitive dependencies (non-key attributes depend only on primary key). BCNF: Stronger version of 3NF."
     },
     {
       "id": 24,
-      "question": "How do you implement pagination in SQL?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use OFFSET-FETCH (SQL Server 2012+), LIMIT-OFFSET (MySQL, PostgreSQL), ROW_NUMBER() with CTE. Example: ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY. For large datasets, use keyset pagination (WHERE id > last_id) for better performance."
+      "question": "What are database transactions and how do you manage them?",
+      "category": "Transactions",
+      "difficulty": "Medium",
+      "answer": "Transactions are sequences of operations performed as single logical unit. Manage with BEGIN TRANSACTION, COMMIT (save changes), ROLLBACK (undo changes). Use savepoints for partial rollbacks. Ensure ACID properties for data integrity."
     },
     {
       "id": 25,
-      "question": "What are database constraints and their types?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "NOT NULL: Column can't contain NULL. UNIQUE: All values in column are unique. PRIMARY KEY: Unique identifier for table. FOREIGN KEY: Links to another table's primary key. CHECK: Validates data against condition. DEFAULT: Provides default value."
+      "question": "How do you calculate running totals in SQL?",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "Use window functions: SUM(column) OVER (ORDER BY date ROWS UNBOUNDED PRECEDING). Or use self-joins or correlated subqueries (less efficient). Window functions are most efficient and readable for running calculations."
     },
     {
       "id": 26,
-      "question": "Explain the difference between ROW_NUMBER, RANK, and DENSE_RANK.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "ROW_NUMBER: Unique sequential numbers. RANK: Same rank for ties, gaps in sequence. DENSE_RANK: Same rank for ties, no gaps in sequence. Example: Scores 100,100,90 - ROW_NUMBER: 1,2,3; RANK: 1,1,3; DENSE_RANK: 1,1,2."
+      "question": "What is the difference between IN and EXISTS?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "IN checks if value matches any in list/subquery. EXISTS returns true if subquery returns any rows. EXISTS is often faster as it can stop after first match. IN can have performance issues with large lists. Use EXISTS for correlated subqueries."
     },
     {
       "id": 27,
-      "question": "What are database views and when to use them?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Views are virtual tables based on SQL query. Use for: security (restrict column access), simplicity (hide complex queries), consistency (standardized data access). Types: Simple (single table), Complex (multiple tables), Materialized (physically stored)."
+      "question": "Explain database locking and deadlocks.",
+      "category": "Transactions",
+      "difficulty": "Advanced",
+      "answer": "Locking prevents concurrent access issues. Types: Shared (read), Exclusive (write), Intent, Schema. Deadlock occurs when two transactions wait for each other's locks. Prevent with: access objects in same order, use lower isolation levels, set lock timeout, deadlock detection."
     },
     {
       "id": 28,
-      "question": "How do you handle hierarchical data in SQL?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Adjacency List (parent_id column), Path Enumeration (materialized path), Nested Sets, Closure Table. Use recursive CTEs for querying hierarchies. Choose based on query patterns: Adjacency List for simple, Closure Table for complex queries."
+      "question": "What are the different types of subqueries?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "Scalar (returns single value), Correlated (references outer query), Non-correlated (independent), Single-row, Multiple-row, Multiple-column. Use in SELECT, FROM, WHERE, HAVING clauses. Can often be rewritten with JOINs for better performance."
     },
     {
       "id": 29,
-      "question": "What is the difference between temporary tables and table variables?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Temporary tables: #table (session), ##table (global), physical tempdb storage, indexes, statistics. Table variables: @table, memory-based, no statistics, scope limited to batch. Use temp tables for large datasets, table variables for small datasets."
+      "question": "How do you implement pagination in SQL?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "Use OFFSET-FETCH (SQL Server 2012+), LIMIT-OFFSET (MySQL, PostgreSQL), ROW_NUMBER() with CTE. Example: ORDER BY id OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY. For large datasets, use keyset pagination (WHERE id > last_id) for better performance."
     },
     {
       "id": 30,
-      "question": "Explain database indexing strategies.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Index on frequently queried columns, composite indexes for multiple columns, consider index selectivity (high cardinality), avoid over-indexing (maintenance cost), use covering indexes (include all needed columns), monitor index usage and fragmentation."
+      "question": "What are database constraints and their types?",
+      "category": "Database Design",
+      "difficulty": "Easy",
+      "answer": "NOT NULL: Column can't contain NULL. UNIQUE: All values in column are unique. PRIMARY KEY: Unique identifier for table. FOREIGN KEY: Links to another table's primary key. CHECK: Validates data against condition. DEFAULT: Provides default value."
     },
     {
       "id": 31,
-      "question": "What are database triggers and their types?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Triggers are automatic actions on database events. Types: AFTER (after operation), INSTEAD OF (replace operation), DML (INSERT/UPDATE/DELETE), DDL (CREATE/ALTER/DROP). Use for auditing, validation, maintaining derived data. Use sparingly due to performance impact."
+      "question": "Explain the difference between ROW_NUMBER, RANK, and DENSE_RANK.",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "ROW_NUMBER: Unique sequential numbers. RANK: Same rank for ties, gaps in sequence. DENSE_RANK: Same rank for ties, no gaps in sequence. Example: Scores 100,100,90 - ROW_NUMBER: 1,2,3; RANK: 1,1,3; DENSE_RANK: 1,1,2."
     },
     {
       "id": 32,
-      "question": "How do you perform bulk operations efficiently?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Use BULK INSERT, batching (commit in chunks), disable indexes during load, use minimal logging, avoid triggers, use table-valued parameters, consider ETL tools for large data. Test with realistic data volumes."
+      "question": "What are database views and when to use them?",
+      "category": "Database Objects",
+      "difficulty": "Medium",
+      "answer": "Views are virtual tables based on SQL query. Use for: security (restrict column access), simplicity (hide complex queries), consistency (standardized data access). Types: Simple (single table), Complex (multiple tables), Materialized (physically stored)."
     },
     {
       "id": 33,
-      "question": "What is the difference between correlated and non-correlated subqueries?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Correlated: References columns from outer query, executes once for each row. Non-correlated: Independent, executes once. Correlated subqueries can be slow for large datasets. Often can be rewritten with JOINs for better performance."
+      "question": "How do you handle hierarchical data in SQL?",
+      "category": "Data Management",
+      "difficulty": "Advanced",
+      "answer": "Adjacency List (parent_id column), Path Enumeration (materialized path), Nested Sets, Closure Table. Use recursive CTEs for querying hierarchies. Choose based on query patterns: Adjacency List for simple, Closure Table for complex queries."
     },
     {
       "id": 34,
-      "question": "Explain database backup and recovery strategies.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Full backup: Complete database copy. Differential: Changes since last full backup. Transaction log: All transactions since last backup. Recovery models: Simple (no log backups), Full (point-in-time recovery), Bulk-logged. Test recovery procedures regularly."
+      "question": "What is the difference between temporary tables and table variables?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "Temporary tables: #table (session), ##table (global), physical tempdb storage, indexes, statistics. Table variables: @table, memory-based, no statistics, scope limited to batch. Use temp tables for large datasets, table variables for small datasets."
     },
     {
       "id": 35,
-      "question": "What are the different types of database relationships?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "One-to-One: Single record in each table. One-to-Many: Single record to multiple records. Many-to-Many: Multiple records to multiple records (uses junction table). Self-referencing: Table relates to itself. Implement with primary/foreign keys."
+      "question": "Explain database indexing strategies.",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "Index on frequently queried columns, composite indexes for multiple columns, consider index selectivity (high cardinality), avoid over-indexing (maintenance cost), use covering indexes (include all needed columns), monitor index usage and fragmentation."
     },
     {
       "id": 36,
-      "question": "How do you handle database performance tuning?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Monitor slow queries, analyze execution plans, optimize indexes, update statistics, normalize/denormalize appropriately, partition large tables, use appropriate data types, configure memory and storage properly, use query hints when necessary."
+      "question": "What are database triggers and their types?",
+      "category": "Database Objects",
+      "difficulty": "Medium",
+      "answer": "Triggers are automatic actions on database events. Types: AFTER (after operation), INSTEAD OF (replace operation), DML (INSERT/UPDATE/DELETE), DDL (CREATE/ALTER/DROP). Use for auditing, validation, maintaining derived data. Use sparingly due to performance impact."
     },
     {
       "id": 37,
-      "question": "What is database partitioning and its benefits?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Partitioning splits large tables into smaller, manageable pieces. Benefits: Improved query performance, easier maintenance, faster backup/restore. Types: Range, List, Hash. Implement based on access patterns (date ranges, regions)."
+      "question": "How do you perform bulk operations efficiently?",
+      "category": "Data Management",
+      "difficulty": "Advanced",
+      "answer": "Use BULK INSERT, batching (commit in chunks), disable indexes during load, use minimal logging, avoid triggers, use table-valued parameters, consider ETL tools for large data. Test with realistic data volumes."
     },
     {
       "id": 38,
-      "question": "Explain the difference between CHAR, VARCHAR, and NVARCHAR.",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "CHAR: Fixed-length, non-Unicode. VARCHAR: Variable-length, non-Unicode. NVARCHAR: Variable-length, Unicode (supports all characters). Use NVARCHAR for international applications, VARCHAR for English-only, CHAR for fixed-length codes."
+      "question": "What is the difference between correlated and non-correlated subqueries?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "Correlated: References columns from outer query, executes once for each row. Non-correlated: Independent, executes once. Correlated subqueries can be slow for large datasets. Often can be rewritten with JOINs for better performance."
     },
     {
       "id": 39,
-      "question": "What are database statistics and why are they important?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Statistics contain information about data distribution in tables. Used by query optimizer to choose efficient execution plans. Important for: join order, index selection, query performance. Update automatically or manually with UPDATE STATISTICS."
+      "question": "Explain database backup and recovery strategies.",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Full backup: Complete database copy. Differential: Changes since last full backup. Transaction log: All transactions since last backup. Recovery models: Simple (no log backups), Full (point-in-time recovery), Bulk-logged. Test recovery procedures regularly."
     },
     {
       "id": 40,
-      "question": "How do you implement audit trails in databases?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use triggers to track changes, temporal tables (SQL Server 2016+), Change Data Capture, custom audit tables with timestamps and user info, database-level auditing features. Consider performance impact and storage requirements."
+      "question": "What are the different types of database relationships?",
+      "category": "Database Design",
+      "difficulty": "Easy",
+      "answer": "One-to-One: Single record in each table. One-to-Many: Single record to multiple records. Many-to-Many: Multiple records to multiple records (uses junction table). Self-referencing: Table relates to itself. Implement with primary/foreign keys."
     },
     {
       "id": 41,
-      "question": "What is the difference between HAVING and WHERE with GROUP BY?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "WHERE filters individual rows before grouping. HAVING filters groups after aggregation. WHERE can't use aggregate functions, HAVING can. Example: WHERE removes individual low sales, HAVING removes groups with low total sales."
+      "question": "How do you handle database performance tuning?",
+      "category": "SQL Performance",
+      "difficulty": "Advanced",
+      "answer": "Monitor slow queries, analyze execution plans, optimize indexes, update statistics, normalize/denormalize appropriately, partition large tables, use appropriate data types, configure memory and storage properly, use query hints when necessary."
     },
     {
       "id": 42,
-      "question": "Explain database connection pooling.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Connection pooling maintains cache of database connections for reuse. Benefits: Reduced connection overhead, improved performance, controlled resource usage. Configure: min/max connections, timeout, validation. Managed by application servers or drivers."
+      "question": "What is database partitioning and its benefits?",
+      "category": "SQL Performance",
+      "difficulty": "Advanced",
+      "answer": "Partitioning splits large tables into smaller, manageable pieces. Benefits: Improved query performance, easier maintenance, faster backup/restore. Types: Range, List, Hash. Implement based on access patterns (date ranges, regions)."
     },
     {
       "id": 43,
-      "question": "What are the different types of database replication?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Snapshot: Periodic full copies. Transactional: Real-time transaction replication. Merge: Bidirectional synchronization. Peer-to-peer: Multi-master replication. Use for: high availability, reporting, geographic distribution, load balancing."
+      "question": "Explain the difference between CHAR, VARCHAR, and NVARCHAR.",
+      "category": "Data Types",
+      "difficulty": "Easy",
+      "answer": "CHAR: Fixed-length, non-Unicode. VARCHAR: Variable-length, non-Unicode. NVARCHAR: Variable-length, Unicode (supports all characters). Use NVARCHAR for international applications, VARCHAR for English-only, CHAR for fixed-length codes."
     },
     {
       "id": 44,
-      "question": "How do you handle database security?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Principle of least privilege, secure authentication, encrypt sensitive data, use roles and permissions, audit database activity, secure network connections, regular patching, backup encryption, row-level security, dynamic data masking."
+      "question": "What are database statistics and why are they important?",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "Statistics contain information about data distribution in tables. Used by query optimizer to choose efficient execution plans. Important for: join order, index selection, query performance. Update automatically or manually with UPDATE STATISTICS."
     },
     {
       "id": 45,
-      "question": "What is the difference between clustered and non-clustered indexes?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Clustered: Determines physical order, one per table, faster for range queries. Non-clustered: Separate structure, multiple per table, contains pointers to data. Clustered index should be on increasing key (identity), non-clustered on frequently searched columns."
+      "question": "How do you implement audit trails in databases?",
+      "category": "Security",
+      "difficulty": "Medium",
+      "answer": "Use triggers to track changes, temporal tables (SQL Server 2016+), Change Data Capture, custom audit tables with timestamps and user info, database-level auditing features. Consider performance impact and storage requirements."
     },
     {
       "id": 46,
-      "question": "Explain database sharding strategies.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Sharding splits database horizontally across multiple servers. Strategies: Key-based (hash of shard key), Range-based (value ranges), Directory-based (lookup service). Benefits: Scalability, performance. Challenges: Cross-shard queries, data distribution."
+      "question": "Explain database connection pooling.",
+      "category": "Performance",
+      "difficulty": "Medium",
+      "answer": "Connection pooling maintains cache of database connections for reuse. Benefits: Reduced connection overhead, improved performance, controlled resource usage. Configure: min/max connections, timeout, validation. Managed by application servers or drivers."
     },
     {
       "id": 47,
-      "question": "What are database functions and their types?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Scalar functions: Return single value (UPPER, GETDATE). Aggregate functions: Operate on multiple rows (SUM, COUNT). Table-valued functions: Return table. Window functions: Operate on window of rows. User-defined functions: Custom logic."
+      "question": "What are the different types of database replication?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Snapshot: Periodic full copies. Transactional: Real-time transaction replication. Merge: Bidirectional synchronization. Peer-to-peer: Multi-master replication. Use for: high availability, reporting, geographic distribution, load balancing."
     },
     {
       "id": 48,
-      "question": "How do you handle database migrations?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use version-controlled migration scripts, automated deployment tools, rollback strategies, test with production-like data, maintain migration history table, handle data transformation, coordinate with application deployments, backup before migrations."
+      "question": "How do you handle database security?",
+      "category": "Security",
+      "difficulty": "Medium",
+      "answer": "Principle of least privilege, secure authentication, encrypt sensitive data, use roles and permissions, audit database activity, secure network connections, regular patching, backup encryption, row-level security, dynamic data masking."
     },
     {
       "id": 49,
-      "question": "What is the difference between CROSS APPLY and OUTER APPLY?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "CROSS APPLY: Returns rows from left table that produce results from right table expression (like INNER JOIN). OUTER APPLY: Returns all rows from left table, NULL if no results from right (like LEFT JOIN). Used with table-valued functions."
+      "question": "What is the difference between clustered and non-clustered indexes?",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "Clustered: Determines physical order, one per table, faster for range queries. Non-clustered: Separate structure, multiple per table, contains pointers to data. Clustered index should be on increasing key (identity), non-clustered on frequently searched columns."
     },
     {
       "id": 50,
-      "question": "Explain database deadlock prevention strategies.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Access objects in same order, use lower isolation levels, keep transactions short, use lock hints carefully, implement retry logic, set lock timeout, use deadlock priority, monitor with deadlock graphs. Design application to minimize lock contention."
+      "question": "Explain database sharding strategies.",
+      "category": "Architecture",
+      "difficulty": "Advanced",
+      "answer": "Sharding splits database horizontally across multiple servers. Strategies: Key-based (hash of shard key), Range-based (value ranges), Directory-based (lookup service). Benefits: Scalability, performance. Challenges: Cross-shard queries, data distribution."
     },
     {
       "id": 51,
-      "question": "What are database snapshots and their use cases?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Database snapshots are read-only, static views of database at point in time. Use for: reporting on consistent data, recovery from user errors, protecting against administrative errors. Created with CREATE DATABASE ... AS SNAPSHOT."
+      "question": "What are database functions and their types?",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "Scalar functions: Return single value (UPPER, GETDATE). Aggregate functions: Operate on multiple rows (SUM, COUNT). Table-valued functions: Return table. Window functions: Operate on window of rows. User-defined functions: Custom logic."
     },
     {
       "id": 52,
-      "question": "How do you optimize database storage?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use appropriate data types, implement compression, manage file growth, separate data and log files, use filegroups for large databases, implement partitioning, regular index maintenance, archive old data, monitor space usage."
+      "question": "How do you handle database migrations?",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Use version-controlled migration scripts, automated deployment tools, rollback strategies, test with production-like data, maintain migration history table, handle data transformation, coordinate with application deployments, backup before migrations."
     },
     {
       "id": 53,
-      "question": "What is the difference between LAG and LEAD functions?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "LAG: Accesses data from previous row in result set. LEAD: Accesses data from next row. Useful for: calculating differences between consecutive rows, comparing current value with previous/next. Specify offset and default value for boundaries."
+      "question": "What is the difference between CROSS APPLY and OUTER APPLY?",
+      "category": "SQL Joins",
+      "difficulty": "Advanced",
+      "answer": "CROSS APPLY: Returns rows from left table that produce results from right table expression (like INNER JOIN). OUTER APPLY: Returns all rows from left table, NULL if no results from right (like LEFT JOIN). Used with table-valued functions."
     },
     {
       "id": 54,
-      "question": "Explain database caching strategies.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Buffer pool: Caches data pages in memory. Query cache: Caches query results. Application-level caching: Redis, Memcached. Read replicas for reporting. Use for: frequently accessed data, expensive queries. Invalidate cache appropriately on data changes."
+      "question": "Explain database deadlock prevention strategies.",
+      "category": "Transactions",
+      "difficulty": "Advanced",
+      "answer": "Access objects in same order, use lower isolation levels, keep transactions short, use lock hints carefully, implement retry logic, set lock timeout, use deadlock priority, monitor with deadlock graphs. Design application to minimize lock contention."
     },
     {
       "id": 55,
-      "question": "What are database sequences and when to use them?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Sequences generate sequence of numeric values. Use for: surrogate keys, order numbers, unique identifiers. Advantages over identity: can be shared across tables, can cache values for performance. Created with CREATE SEQUENCE."
+      "question": "What are database snapshots and their use cases?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Database snapshots are read-only, static views of database at point in time. Use for: reporting on consistent data, recovery from user errors, protecting against administrative errors. Created with CREATE DATABASE ... AS SNAPSHOT."
     },
     {
       "id": 56,
-      "question": "How do you handle database concurrency issues?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Use appropriate isolation levels, implement optimistic concurrency (row versioning), use pessimistic locking when necessary, handle deadlocks, use retry logic, implement conflict resolution strategies, test with concurrent users."
+      "question": "How do you optimize database storage?",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Use appropriate data types, implement compression, manage file growth, separate data and log files, use filegroups for large databases, implement partitioning, regular index maintenance, archive old data, monitor space usage."
     },
     {
       "id": 57,
-      "question": "What is the difference between UNION and JOIN?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "UNION combines rows from multiple queries (vertical combination). JOIN combines columns from multiple tables (horizontal combination). UNION requires same number/type of columns, JOIN requires related columns for matching."
+      "question": "What is the difference between LAG and LEAD functions?",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "LAG: Accesses data from previous row in result set. LEAD: Accesses data from next row. Useful for: calculating differences between consecutive rows, comparing current value with previous/next. Specify offset and default value for boundaries."
     },
     {
       "id": 58,
-      "question": "Explain database monitoring and alerting.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Monitor: performance counters, query execution times, blocking, deadlocks, space usage, backup status. Use: DMVs, extended events, SQL Server Profiler, third-party tools. Set alerts for: high CPU, low disk space, failed jobs, long-running queries."
+      "question": "Explain database caching strategies.",
+      "category": "Performance",
+      "difficulty": "Medium",
+      "answer": "Buffer pool: Caches data pages in memory. Query cache: Caches query results. Application-level caching: Redis, Memcached. Read replicas for reporting. Use for: frequently accessed data, expensive queries. Invalidate cache appropriately on data changes."
     },
     {
       "id": 59,
-      "question": "What are database constraints and their performance impact?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Constraints ensure data integrity but have performance cost: FOREIGN KEY (checks on INSERT/UPDATE), CHECK (validation), UNIQUE (index maintenance). Benefits: data quality, query optimization (unique constraints create indexes). Balance integrity vs performance."
+      "question": "What are database sequences and when to use them?",
+      "category": "Database Objects",
+      "difficulty": "Medium",
+      "answer": "Sequences generate sequence of numeric values. Use for: surrogate keys, order numbers, unique identifiers. Advantages over identity: can be shared across tables, can cache values for performance. Created with CREATE SEQUENCE."
     },
     {
       "id": 60,
-      "question": "How do you implement full-text search in SQL?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use full-text indexes, CONTAINS and FREETEXT predicates, thesaurus files for synonyms, stoplists for common words. Alternative: use dedicated search engines (Elasticsearch) for complex requirements. Configure for performance and relevance."
+      "question": "How do you handle database concurrency issues?",
+      "category": "Transactions",
+      "difficulty": "Advanced",
+      "answer": "Use appropriate isolation levels, implement optimistic concurrency (row versioning), use pessimistic locking when necessary, handle deadlocks, use retry logic, implement conflict resolution strategies, test with concurrent users."
     },
     {
       "id": 61,
-      "question": "What is the difference between temporary tables and CTEs?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "CTEs: Logical construct, not stored, can be recursive, scope limited to statement. Temp tables: Physical storage in tempdb, can have indexes, scope limited to session/batch. Use CTEs for readability, temp tables for complex intermediate results."
+      "question": "What is the difference between UNION and JOIN?",
+      "category": "SQL Comparison",
+      "difficulty": "Easy",
+      "answer": "UNION combines rows from multiple queries (vertical combination). JOIN combines columns from multiple tables (horizontal combination). UNION requires same number/type of columns, JOIN requires related columns for matching."
     },
     {
       "id": 62,
-      "question": "Explain database high availability solutions.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Always On Availability Groups (SQL Server), Database Mirroring, Log Shipping, Replication, Clustering. Choose based on: RTO/RPO requirements, budget, complexity. Implement automatic failover, monitoring, and regular failover testing."
+      "question": "Explain database monitoring and alerting.",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Monitor: performance counters, query execution times, blocking, deadlocks, space usage, backup status. Use: DMVs, extended events, SQL Server Profiler, third-party tools. Set alerts for: high CPU, low disk space, failed jobs, long-running queries."
     },
     {
       "id": 63,
-      "question": "What are database collations and their importance?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Collations define rules for character comparison and sorting. Affects: string comparison, sorting, case sensitivity, accent sensitivity. Set at database, table, or column level. Important for international applications and data consistency."
+      "question": "What are database constraints and their performance impact?",
+      "category": "Database Design",
+      "difficulty": "Medium",
+      "answer": "Constraints ensure data integrity but have performance cost: FOREIGN KEY (checks on INSERT/UPDATE), CHECK (validation), UNIQUE (index maintenance). Benefits: data quality, query optimization (unique constraints create indexes). Balance integrity vs performance."
     },
     {
       "id": 64,
-      "question": "How do you handle database version control?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Use migration-based tools (Flyway, Liquibase), source control for scripts, database projects in VS, versioned schema changes, maintain change log. Automate deployments, test changes, coordinate with application versions."
+      "question": "How do you implement full-text search in SQL?",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "Use full-text indexes, CONTAINS and FREETEXT predicates, thesaurus files for synonyms, stoplists for common words. Alternative: use dedicated search engines (Elasticsearch) for complex requirements. Configure for performance and relevance."
     },
     {
       "id": 65,
-      "question": "What is the difference between DELETE and TRUNCATE with identity columns?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "DELETE: Doesn't reset identity, can be rolled back, fires triggers. TRUNCATE: Resets identity to seed, can't be rolled back, doesn't fire triggers. Use DELETE for selective removal, TRUNCATE for complete table clearance when resetting identity is acceptable."
+      "question": "What is the difference between temporary tables and CTEs?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "CTEs: Logical construct, not stored, can be recursive, scope limited to statement. Temp tables: Physical storage in tempdb, can have indexes, scope limited to session/batch. Use CTEs for readability, temp tables for complex intermediate results."
     },
     {
       "id": 66,
-      "question": "Explain database compression techniques.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Row compression: Reduces metadata overhead. Page compression: Row compression + prefix and dictionary compression. Columnstore compression: For data warehousing. Benefits: reduced storage, improved I/O. Cost: increased CPU. Test compression ratio and performance impact."
+      "question": "Explain database high availability solutions.",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Always On Availability Groups (SQL Server), Database Mirroring, Log Shipping, Replication, Clustering. Choose based on: RTO/RPO requirements, budget, complexity. Implement automatic failover, monitoring, and regular failover testing."
     },
     {
       "id": 67,
-      "question": "What are database synonyms and their use cases?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Synonyms are alternative names for database objects. Use for: abstraction (hide location changes), simplicity (shorter names), security (mask object names). Created with CREATE SYNONYM. Don't provide performance benefits."
+      "question": "What are database collations and their importance?",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Collations define rules for character comparison and sorting. Affects: string comparison, sorting, case sensitivity, accent sensitivity. Set at database, table, or column level. Important for international applications and data consistency."
     },
     {
       "id": 68,
-      "question": "How do you implement data encryption in databases?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Transparent Data Encryption (TDE): Encrypts entire database. Column-level encryption: Specific sensitive columns. Always Encrypted: Client-side encryption. Use certificates, keys, and proper key management. Balance security vs performance and functionality."
+      "question": "How do you handle database version control?",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Use migration-based tools (Flyway, Liquibase), source control for scripts, database projects in VS, versioned schema changes, maintain change log. Automate deployments, test changes, coordinate with application versions."
     },
     {
       "id": 69,
-      "question": "What is the difference between static and dynamic SQL?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Static SQL: Hard-coded in application, compiled once. Dynamic SQL: Constructed at runtime with string concatenation. Dynamic SQL is flexible but vulnerable to SQL injection. Use parameterized dynamic SQL or sp_executesql for safety."
+      "question": "What is the difference between DELETE and TRUNCATE with identity columns?",
+      "category": "DDL/DML",
+      "difficulty": "Medium",
+      "answer": "DELETE: Doesn't reset identity, can be rolled back, fires triggers. TRUNCATE: Resets identity to seed, can't be rolled back, doesn't fire triggers. Use DELETE for selective removal, TRUNCATE for complete table clearance when resetting identity is acceptable."
     },
     {
       "id": 70,
-      "question": "Explain database query hints and when to use them.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Query hints override optimizer decisions. Examples: NOLOCK (dirty reads), INDEX (force index), OPTION (MAXDOP, RECOMPILE). Use sparingly: when optimizer chooses poor plan, for specific performance requirements. Test thoroughly as hints may become obsolete."
+      "question": "Explain database compression techniques.",
+      "category": "Performance",
+      "difficulty": "Advanced",
+      "answer": "Row compression: Reduces metadata overhead. Page compression: Row compression + prefix and dictionary compression. Columnstore compression: For data warehousing. Benefits: reduced storage, improved I/O. Cost: increased CPU. Test compression ratio and performance impact."
     },
     {
       "id": 71,
-      "question": "What are database linked servers?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Linked servers allow queries across different SQL Server instances or other data sources. Use for: distributed queries, data integration. Configure with sp_addlinkedserver. Consider performance and security implications of cross-server queries."
+      "question": "What are database synonyms and their use cases?",
+      "category": "Database Objects",
+      "difficulty": "Medium",
+      "answer": "Synonyms are alternative names for database objects. Use for: abstraction (hide location changes), simplicity (shorter names), security (mask object names). Created with CREATE SYNONYM. Don't provide performance benefits."
     },
     {
       "id": 72,
-      "question": "How do you handle database corruption?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Regular DBCC CHECKDB, implement early detection, maintain valid backups, use page restore for minimal downtime, implement corruption recovery procedures, monitor for I/O errors. Test restore procedures regularly."
+      "question": "How do you implement data encryption in databases?",
+      "category": "Security",
+      "difficulty": "Advanced",
+      "answer": "Transparent Data Encryption (TDE): Encrypts entire database. Column-level encryption: Specific sensitive columns. Always Encrypted: Client-side encryption. Use certificates, keys, and proper key management. Balance security vs performance and functionality."
     },
     {
       "id": 73,
-      "question": "What is the difference between ISNULL and COALESCE?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "ISNULL: SQL Server specific, two parameters, returns type of first parameter. COALESCE: ANSI standard, multiple parameters, returns type with highest precedence. Use COALESCE for portability and multiple fallback values."
+      "question": "What is the difference between static and dynamic SQL?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "Static SQL: Hard-coded in application, compiled once. Dynamic SQL: Constructed at runtime with string concatenation. Dynamic SQL is flexible but vulnerable to SQL injection. Use parameterized dynamic SQL or sp_executesql for safety."
     },
     {
       "id": 74,
-      "question": "Explain database performance counters to monitor.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Buffer cache hit ratio, page life expectancy, batch requests/sec, lock waits, deadlocks, checkpoint pages/sec, log growths, user connections. Use DMVs, Performance Monitor, extended events. Establish baselines and alert on thresholds."
+      "question": "Explain database query hints and when to use them.",
+      "category": "SQL Performance",
+      "difficulty": "Advanced",
+      "answer": "Query hints override optimizer decisions. Examples: NOLOCK (dirty reads), INDEX (force index), OPTION (MAXDOP, RECOMPILE). Use sparingly: when optimizer chooses poor plan, for specific performance requirements. Test thoroughly as hints may become obsolete."
     },
     {
       "id": 75,
-      "question": "What are database filegroups and their benefits?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Filegroups group database files for administrative purposes. Benefits: improved performance (spread I/O), partial availability (filegroup restore), backup flexibility, data placement control. Use for large databases and specific performance requirements."
+      "question": "What are database linked servers?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Linked servers allow queries across different SQL Server instances or other data sources. Use for: distributed queries, data integration. Configure with sp_addlinkedserver. Consider performance and security implications of cross-server queries."
     },
     {
       "id": 76,
-      "question": "How do you implement database auditing?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "SQL Server Audit feature, DDL/DML triggers, Change Data Capture, temporal tables, custom logging. Audit: logins, data changes, schema changes, permission changes. Consider performance impact and storage requirements for audit data."
+      "question": "How do you handle database corruption?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Regular DBCC CHECKDB, implement early detection, maintain valid backups, use page restore for minimal downtime, implement corruption recovery procedures, monitor for I/O errors. Test restore procedures regularly."
     },
     {
       "id": 77,
-      "question": "What is the difference between CHAR and NCHAR?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "CHAR: Fixed-length, non-Unicode, 1 byte per character. NCHAR: Fixed-length, Unicode, 2 bytes per character. Use NCHAR for international character support, CHAR for English-only fixed-length data. Similar difference between VARCHAR and NVARCHAR."
+      "question": "What is the difference between ISNULL and COALESCE?",
+      "category": "SQL Functions",
+      "difficulty": "Medium",
+      "answer": "ISNULL: SQL Server specific, two parameters, returns type of first parameter. COALESCE: ANSI standard, multiple parameters, returns type with highest precedence. Use COALESCE for portability and multiple fallback values."
     },
     {
       "id": 78,
-      "question": "Explain database maintenance plans.",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Automated tasks for database health: backup, index reorganization/rebuild, update statistics, integrity checks, cleanup. Schedule during maintenance windows. Monitor job history and adjust based on database usage patterns."
+      "question": "Explain database performance counters to monitor.",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Buffer cache hit ratio, page life expectancy, batch requests/sec, lock waits, deadlocks, checkpoint pages/sec, log growths, user connections. Use DMVs, Performance Monitor, extended events. Establish baselines and alert on thresholds."
     },
     {
       "id": 79,
-      "question": "What are database snapshots vs database copies?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Snapshot: Read-only, point-in-time view, uses sparse files, minimal storage initially. Copy: Complete duplicate, independent, full storage required. Use snapshots for reporting and recovery, copies for testing and development."
+      "question": "What are database filegroups and their benefits?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Filegroups group database files for administrative purposes. Benefits: improved performance (spread I/O), partial availability (filegroup restore), backup flexibility, data placement control. Use for large databases and specific performance requirements."
     },
     {
       "id": 80,
-      "question": "How do you handle database scalability?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Vertical scaling: More powerful hardware. Horizontal scaling: Read replicas, sharding, partitioning. Application-level: Caching, connection pooling. Database design: Normalization, efficient queries, proper indexing. Plan for growth and monitor performance trends."
+      "question": "How do you implement database auditing?",
+      "category": "Security",
+      "difficulty": "Medium",
+      "answer": "SQL Server Audit feature, DDL/DML triggers, Change Data Capture, temporal tables, custom logging. Audit: logins, data changes, schema changes, permission changes. Consider performance impact and storage requirements for audit data."
     },
     {
       "id": 81,
-      "question": "What is the difference between sp_executesql and EXEC?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "sp_executesql: Supports parameters, reusable execution plans, safer against SQL injection. EXEC: No parameter support, new execution plan each time. Prefer sp_executesql for dynamic SQL with parameters for performance and security."
+      "question": "What is the difference between CHAR and NCHAR?",
+      "category": "Data Types",
+      "difficulty": "Easy",
+      "answer": "CHAR: Fixed-length, non-Unicode, 1 byte per character. NCHAR: Fixed-length, Unicode, 2 bytes per character. Use NCHAR for international character support, CHAR for English-only fixed-length data. Similar difference between VARCHAR and NVARCHAR."
     },
     {
       "id": 82,
-      "question": "Explain database resource governance.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Resource Governor in SQL Server controls CPU, memory, and I/O usage by workload groups. Use for: prioritizing critical applications, limiting resource-intensive queries, isolating workloads. Configure resource pools and workload groups."
+      "question": "Explain database maintenance plans.",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Automated tasks for database health: backup, index reorganization/rebuild, update statistics, integrity checks, cleanup. Schedule during maintenance windows. Monitor job history and adjust based on database usage patterns."
     },
     {
       "id": 83,
-      "question": "What are database checkpoints?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Checkpoints write dirty pages from memory to disk, minimizing recovery time. Occur: automatically, on database shutdown, manually with CHECKPOINT. Checkpoint frequency affects recovery time and I/O patterns. Configure with recovery interval."
+      "question": "What are database snapshots vs database copies?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Snapshot: Read-only, point-in-time view, uses sparse files, minimal storage initially. Copy: Complete duplicate, independent, full storage required. Use snapshots for reporting and recovery, copies for testing and development."
     },
     {
       "id": 84,
-      "question": "How do you implement data archiving strategies?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Identify archive criteria (age, usage), implement partitioning for easy archival, use separate archive database, maintain referential integrity, provide access to archived data, automate archive process, test restore procedures."
+      "question": "How do you handle database scalability?",
+      "category": "Architecture",
+      "difficulty": "Advanced",
+      "answer": "Vertical scaling: More powerful hardware. Horizontal scaling: Read replicas, sharding, partitioning. Application-level: Caching, connection pooling. Database design: Normalization, efficient queries, proper indexing. Plan for growth and monitor performance trends."
     },
     {
       "id": 85,
-      "question": "What is the difference between logical and physical database design?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Logical design: Entities, relationships, normalization - what data is stored. Physical design: Tables, indexes, storage - how data is stored and accessed. Logical focuses on data structure, physical on performance and storage."
+      "question": "What is the difference between sp_executesql and EXEC?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "sp_executesql: Supports parameters, reusable execution plans, safer against SQL injection. EXEC: No parameter support, new execution plan each time. Prefer sp_executesql for dynamic SQL with parameters for performance and security."
     },
     {
       "id": 86,
-      "question": "Explain database failover strategies.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Automatic failover: Always On AG, database mirroring. Manual failover: Log shipping, replication. Test failover procedures regularly, monitor failover health, maintain secondary systems, document recovery procedures, set RTO/RPO objectives."
+      "question": "Explain database resource governance.",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Resource Governor in SQL Server controls CPU, memory, and I/O usage by workload groups. Use for: prioritizing critical applications, limiting resource-intensive queries, isolating workloads. Configure resource pools and workload groups."
     },
     {
       "id": 87,
-      "question": "What are database default constraints?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "Default constraints provide value when no value is specified during INSERT. Use for: common values, system dates (GETDATE()), sequence values. Created with DEFAULT keyword in CREATE/ALTER TABLE. Can be added/dropped without data loss."
+      "question": "What are database checkpoints?",
+      "category": "Administration",
+      "difficulty": "Medium",
+      "answer": "Checkpoints write dirty pages from memory to disk, minimizing recovery time. Occur: automatically, on database shutdown, manually with CHECKPOINT. Checkpoint frequency affects recovery time and I/O patterns. Configure with recovery interval."
     },
     {
       "id": 88,
-      "question": "How do you handle database performance baselining?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Collect performance metrics over time: query execution times, resource usage, wait statistics. Use: DMVs, extended events, performance monitor. Establish normal ranges, alert on deviations, use for capacity planning and performance troubleshooting."
+      "question": "How do you implement data archiving strategies?",
+      "category": "Data Management",
+      "difficulty": "Medium",
+      "answer": "Identify archive criteria (age, usage), implement partitioning for easy archival, use separate archive database, maintain referential integrity, provide access to archived data, automate archive process, test restore procedures."
     },
     {
       "id": 89,
-      "question": "What is the difference between database roles and permissions?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Roles: Groups of permissions that can be assigned to users. Permissions: Specific rights (SELECT, INSERT, etc.) on database objects. Use roles for manageable security, assign permissions to roles, then users to roles. Follow principle of least privilege."
+      "question": "What is the difference between logical and physical database design?",
+      "category": "Database Design",
+      "difficulty": "Medium",
+      "answer": "Logical design: Entities, relationships, normalization - what data is stored. Physical design: Tables, indexes, storage - how data is stored and accessed. Logical focuses on data structure, physical on performance and storage."
     },
     {
       "id": 90,
-      "question": "Explain database wait statistics analysis.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Wait statistics show what SQL Server is waiting for. Common waits: PAGEIOLATCH (I/O), LCK_M (blocking), CXPACKET (parallelism). Use sys.dm_os_wait_stats to identify bottlenecks. Focus on highest wait times and resource contention."
+      "question": "Explain database failover strategies.",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Automatic failover: Always On AG, database mirroring. Manual failover: Log shipping, replication. Test failover procedures regularly, monitor failover health, maintain secondary systems, document recovery procedures, set RTO/RPO objectives."
     },
     {
       "id": 91,
-      "question": "What are database computed columns?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Computed columns are virtual columns calculated from other columns. Can be persisted (stored physically) or non-persisted (calculated on read). Use for: derived data, concatenated fields, calculated values. Can be indexed if persisted and deterministic."
+      "question": "What are database default constraints?",
+      "category": "Database Design",
+      "difficulty": "Easy",
+      "answer": "Default constraints provide value when no value is specified during INSERT. Use for: common values, system dates (GETDATE()), sequence values. Created with DEFAULT keyword in CREATE/ALTER TABLE. Can be added/dropped without data loss."
     },
     {
       "id": 92,
-      "question": "How do you implement database change tracking?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Change Tracking (lightweight, net changes), Change Data Capture (detailed change history), temporal tables (point-in-time querying), custom triggers. Choose based on: granularity needed, performance impact, storage requirements, application needs."
+      "question": "How do you handle database performance baselining?",
+      "category": "Performance",
+      "difficulty": "Medium",
+      "answer": "Collect performance metrics over time: query execution times, resource usage, wait statistics. Use: DMVs, extended events, performance monitor. Establish normal ranges, alert on deviations, use for capacity planning and performance troubleshooting."
     },
     {
       "id": 93,
-      "question": "What is the difference between database mirroring and replication?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Mirroring: High availability, real-time copy, automatic failover. Replication: Data distribution, can be one-way or multi-master, configurable latency. Use mirroring for DR, replication for reporting and data distribution."
+      "question": "What is the difference between database roles and permissions?",
+      "category": "Security",
+      "difficulty": "Medium",
+      "answer": "Roles: Groups of permissions that can be assigned to users. Permissions: Specific rights (SELECT, INSERT, etc.) on database objects. Use roles for manageable security, assign permissions to roles, then users to roles. Follow principle of least privilege."
     },
     {
       "id": 94,
-      "question": "Explain database parameter sniffing and solutions.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Parameter sniffing: Query plan optimized for first parameter values, may be bad for subsequent values. Solutions: OPTION (RECOMPILE), OPTIMIZE FOR, plan guides, query store hints. Test with different parameter values to identify issues."
+      "question": "Explain database wait statistics analysis.",
+      "category": "Performance",
+      "difficulty": "Advanced",
+      "answer": "Wait statistics show what SQL Server is waiting for. Common waits: PAGEIOLATCH (I/O), LCK_M (blocking), CXPACKET (parallelism). Use sys.dm_os_wait_stats to identify bottlenecks. Focus on highest wait times and resource contention."
     },
     {
       "id": 95,
-      "question": "What are database sparse columns?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Sparse columns optimize storage for NULL values. Use when majority of rows have NULL in column. Benefits: reduced storage. Limitations: some data type restrictions, increased overhead for non-NULL values. Use for wide tables with many optional columns."
+      "question": "What are database computed columns?",
+      "category": "Database Design",
+      "difficulty": "Medium",
+      "answer": "Computed columns are virtual columns calculated from other columns. Can be persisted (stored physically) or non-persisted (calculated on read). Use for: derived data, concatenated fields, calculated values. Can be indexed if persisted and deterministic."
     },
     {
       "id": 96,
-      "question": "How do you handle database statistics maintenance?",
-      "category": "sql",
-      "difficulty": "intermediate",
-      "answer": "Update statistics automatically (AUTO_UPDATE_STATISTICS), manually with UPDATE STATISTICS, use full scan for accuracy or sample for speed. Monitor statistics age with sys.dm_db_stats_properties. Outdated statistics cause poor query plans."
+      "question": "How do you implement database change tracking?",
+      "category": "Data Management",
+      "difficulty": "Medium",
+      "answer": "Change Tracking (lightweight, net changes), Change Data Capture (detailed change history), temporal tables (point-in-time querying), custom triggers. Choose based on: granularity needed, performance impact, storage requirements, application needs."
     },
     {
       "id": 97,
-      "question": "What is the difference between database and instance?",
-      "category": "sql",
-      "difficulty": "beginner",
-      "answer": "Instance: SQL Server service running on machine, contains system databases and user databases. Database: Collection of related data and objects within instance. One instance can host multiple databases. Instance-level settings affect all databases."
+      "question": "What is the difference between database mirroring and replication?",
+      "category": "Administration",
+      "difficulty": "Advanced",
+      "answer": "Mirroring: High availability, real-time copy, automatic failover. Replication: Data distribution, can be one-way or multi-master, configurable latency. Use mirroring for DR, replication for reporting and data distribution."
     },
     {
       "id": 98,
-      "question": "Explain database query store features.",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Query Store captures query performance data: execution plans, runtime statistics, wait statistics. Use for: performance troubleshooting, plan forcing, regression analysis. Configure retention and capture settings. Available in SQL Server 2016+."
+      "question": "Explain database parameter sniffing and solutions.",
+      "category": "Performance",
+      "difficulty": "Advanced",
+      "answer": "Parameter sniffing: Query plan optimized for first parameter values, may be bad for subsequent values. Solutions: OPTION (RECOMPILE), OPTIMIZE FOR, plan guides, query store hints. Test with different parameter values to identify issues."
     },
     {
       "id": 99,
-      "question": "What are database filtered indexes?",
-      "category": "sql",
-      "difficulty": "advanced",
-      "answer": "Filtered indexes include only subset of rows that satisfy filter predicate. Benefits: reduced size, improved performance, better statistics. Use for: sparse data, partitioned views, queries with specific WHERE conditions. Maintenance only on relevant data."
+      "question": "What are database sparse columns?",
+      "category": "Database Design",
+      "difficulty": "Advanced",
+      "answer": "Sparse columns optimize storage for NULL values. Use when majority of rows have NULL in column. Benefits: reduced storage. Limitations: some data type restrictions, increased overhead for non-NULL values. Use for wide tables with many optional columns."
     },
     {
       "id": 100,
+      "question": "How do you handle database statistics maintenance?",
+      "category": "Performance",
+      "difficulty": "Medium",
+      "answer": "Update statistics automatically (AUTO_UPDATE_STATISTICS), manually with UPDATE STATISTICS, use full scan for accuracy or sample for speed. Monitor statistics age with sys.dm_db_stats_properties. Outdated statistics cause poor query plans."
+    },
+    {
+      "id": 101,
+      "question": "What is the difference between database and instance?",
+      "category": "Administration",
+      "difficulty": "Easy",
+      "answer": "Instance: SQL Server service running on machine, contains system databases and user databases. Database: Collection of related data and objects within instance. One instance can host multiple databases. Instance-level settings affect all databases."
+    },
+    {
+      "id": 102,
+      "question": "Explain database query store features.",
+      "category": "Performance",
+      "difficulty": "Advanced",
+      "answer": "Query Store captures query performance data: execution plans, runtime statistics, wait statistics. Use for: performance troubleshooting, plan forcing, regression analysis. Configure retention and capture settings. Available in SQL Server 2016+."
+    },
+    {
+      "id": 103,
+      "question": "What are database filtered indexes?",
+      "category": "SQL Performance",
+      "difficulty": "Advanced",
+      "answer": "Filtered indexes include only subset of rows that satisfy filter predicate. Benefits: reduced size, improved performance, better statistics. Use for: sparse data, partitioned views, queries with specific WHERE conditions. Maintenance only on relevant data."
+    },
+    {
+      "id": 104,
       "question": "How do you implement database disaster recovery?",
-      "category": "sql",
-      "difficulty": "advanced",
+      "category": "Administration",
+      "difficulty": "Advanced",
       "answer": "Define RTO/RPO requirements, implement backup strategy (full/differential/log), use high availability solutions (Always On, mirroring), document recovery procedures, test recovery regularly, monitor backup health, secure offsite backups, automate where possible."
+    },
+    {
+      "id": 105,
+      "question": "What is a TVP?",
+      "category": "SQL Programming",
+      "difficulty": "Advanced",
+      "answer": "A TVP (Table-Valued Parameter) is a special SQL feature that lets you send an entire table (multiple rows) from C# → SQL Stored Procedure. Because SQL Server cannot accept a List<int> or List<string> directly. How a TVP works? (Easy Example)👉 Step 1 — Create a SQL Type that looks like a table  CREATE TYPE InitList AS TABLE (Id INT);This is like making a custom table in SQL.Step 2 — Stored Procedure accepts that table type CREATE PROCEDURE MyProc (@Ids InitList READONLY)AS BEGINSELECT * FROM SomeTable WHERE Id IN (SELECT Id FROM @Ids);END Step 3 — In C#, build a DataTable with that structure var dt = new DataTable();dt.Columns.Add('Id', typeof(int));dt.Rows.Add(10);dt.Rows Add(20);dt.Rows.Add(30); var param = new SqlParameter(@Ids, dt);param.SqlDbType = SqlDbType.Structured;param.TypeName = InitList;   // must match SQL Type name context.Database.ExecuteSqlCommand(EXEC MyProc @Ids, param); ⭐ Summary (TVP in one line)👉 A TVP is a temporary table that you send from C# to SQL Server as a single parameter."
+    },
+    {
+      "id": 106,
+      "question": "What is the difference between a Table Variable and a Temp Table in SQL?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "A Table Variable (@table) stores small sets of data inside a batch or stored procedure. It has limited indexing, no statistics, and is best for small operations. A Temp Table (#table) is created in tempdb, supports full indexing, has statistics, and performs better for large datasets and complex joins."
+    },
+    {
+      "id": 107,
+      "question": "What is the difference between a Temp Table and a CTE in SQL?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "A Temp Table (#table) stores data physically in tempdb, can be indexed, modified, and reused across multiple statements. A CTE is a logical query expression available only for one SQL statement and cannot be indexed. CTEs are best for simplifying queries and recursion."
+    },
+    {
+      "id": 108,
+      "question": "What is the difference between a TVP, Table Variable, and Temp Table?",
+      "category": "SQL Programming",
+      "difficulty": "Advanced",
+      "answer": "A TVP is used to pass multiple rows from applications into SQL and is read-only. Table Variables are good for small in-memory datasets inside a batch. Temp Tables support full indexing and statistics and are ideal for large datasets and multi-step processing."
+    },
+    {
+      "id": 109,
+      "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+      "category": "SQL Joins",
+      "difficulty": "Easy",
+      "answer": "INNER JOIN returns only matching records from both tables. LEFT JOIN returns all records from the left table and matching records from the right table; unmatched rows return NULL for right-side columns."
+    },
+    {
+      "id": 110,
+      "question": "What is a CTE and when should it be used?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "A CTE (Common Table Expression) is a temporary result set defined using WITH. It is used to simplify complex queries, improve readability, and implement recursion. CTEs do not store data physically and only exist for one statement execution."
+    },
+    {
+      "id": 111,
+      "question": "What is the difference between a Stored Procedure and a Function?",
+      "category": "SQL Programming",
+      "difficulty": "Medium",
+      "answer": "A Stored Procedure can perform actions like insert, update, delete, and return multiple result sets. A Function must return a value and cannot modify database state. Functions can be used inside SELECT statements; procedures cannot."
+    },
+    {
+      "id": 112,
+      "question": "What is the difference between a Clustered and Non-Clustered Index?",
+      "category": "SQL Performance",
+      "difficulty": "Medium",
+      "answer": "A Clustered Index determines the physical order of rows in a table and a table can have only one. A Non-Clustered Index is a separate structure pointing to the actual data and a table can have many. Clustered is faster for range scans; non-clustered is good for specific lookups."
+    },
+    {
+      "id": 113,
+      "question": "How do you implement pagination in SQL Server?",
+      "category": "SQL Queries",
+      "difficulty": "Medium",
+      "answer": "Pagination can be implemented using OFFSET and FETCH: SELECT ... ORDER BY Column OFFSET (@Page-1)*@PageSize ROWS FETCH NEXT @PageSize ROWS ONLY. For older versions, use ROW_NUMBER() with a CTE."
     }
   ]
 }
