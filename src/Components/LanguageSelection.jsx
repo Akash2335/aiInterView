@@ -192,7 +192,8 @@ const languages = [
     bgGradient: "from-teal-500/20 to-emerald-500/20",
     stats: "105+ Cases", 
     features: ["Complex Queries","Performance Tuning","Advanced Indexing", "Real-world Scenarios","Window Functions","Query Optimization"]
-}
+},
+
 ];
 
 const LearningSelection = ["Learning", "Interview"];

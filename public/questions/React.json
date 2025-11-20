@@ -643,6 +643,67 @@
       "category": "react",
       "difficulty": "intermediate",
       "answer": "WebSocket connections, chart libraries (Chart.js, Recharts), data streaming, performance optimization for frequent updates, debouncing renders, smooth animations, responsive sizing."
+    },
+    {
+      "id": 1,
+      "question": "Which library is most commonly used for lightweight form validation in modern React apps?",
+      "options": ["Formik", "React Hook Form", "Redux Form", "MobX Form"],
+      "answer": "React Hook Form"
+    },
+    {
+      "id": 2,
+      "question": "Which library is commonly paired with Formik for schema-based validation?",
+      "options": ["Zod", "Joi", "Yup", "Validator.js"],
+      "answer": "Yup"
+    },
+    {
+      "id": 3,
+      "question": "Which validation type is used when you check input values while the user is typing?",
+      "options": ["Submit-time validation", "Async validation", "Real-time validation", "Lazy validation"],
+      "answer": "Real-time validation"
+    },
+    {
+      "id": 4,
+      "question": "Which built-in HTML attribute is used for required fields in React forms?",
+      "options": ["mandatory", "need", "required", "must"],
+      "answer": "required"
+    },
+    {
+      "id": 5,
+      "question": "Which schema validation library is faster and very TypeScript friendly?",
+      "options": ["Yup", "Zod", "Joi", "Validator.js"],
+      "answer": "Zod"
+    },
+    {
+      "id": 6,
+      "question": "What type of component keeps form state inside React using useState?",
+      "options": ["Uncontrolled component", "Controlled component", "Pure component", "Lazy component"],
+      "answer": "Controlled component"
+    },
+    {
+      "id": 7,
+      "question": "Which attribute is used to validate email format in HTML?",
+      "options": ["type='text'", "type='mail'", "type='email'", "validate='email'"],
+      "answer": "type='email'"
+    },
+    {
+      "id": 8,
+      "question": "Which event is commonly used to trigger validation when the user leaves a field?",
+      "options": ["onChange", "onClick", "onBlur", "onFocus"],
+      "answer": "onBlur"
+    },
+    {
+      "id": 9,
+      "question": "Which React Hook Form function is used to submit the form?",
+      "options": ["handleSubmit", "submitForm", "validateForm", "runSubmit"],
+      "answer": "handleSubmit"
+    },
+    {
+      "id": 10,
+      "question": "Which library provides string validation like email, URL, and credit card checks?",
+      "options": ["Formik", "React Hook Form", "Validator.js", "Joi"],
+      "answer": "Validator.js"
     }
+
   ]
 }
