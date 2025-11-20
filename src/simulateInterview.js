@@ -79,7 +79,7 @@ export const populateInterviewHistory = (force = false) => {
   // Add sample data if history is empty or force is true
   if (currentHistory.length === 0 || force) {
     localStorage.setItem('interviewHistory', JSON.stringify(sampleInterviewData));
-    console.log('Sample interview history populated!');
+    // console.log('Sample interview history populated!');
     return sampleInterviewData;
   } else {
     console.log('Interview history already exists with', currentHistory.length, 'entries');

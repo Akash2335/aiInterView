@@ -239,7 +239,7 @@ const LanguageSelection = () => {
     }, []);
     // Filtered languages based on search and user permissions
     const filteredLanguages = useMemo(() => {
-        console.log(languages);
+        // console.log(languages);
         let filtered = languages;
         if (searchQuery.trim()) {
             const query = searchQuery.toLowerCase();
@@ -330,10 +330,17 @@ const LanguageSelection = () => {
         </div>
     );
     const selectLnguge = () => {
-        var lan = window.localStorage.getItem("learningProgress");
-        var data =  Object.keys(JSON.parse(lan));
-        if (!Array.isArray(data)) return;
-        setviewLanguageBadge(data);
+        try {
+            var lan = window.localStorage.getItem("learningProgress");
+            if (!lan) return;
+            var parsed = JSON.parse(lan);
+            if (typeof parsed !== 'object' || parsed === null) return;
+            var data = Object.keys(parsed);
+            if (!Array.isArray(data)) return;
+            setviewLanguageBadge(data);
+        } catch (error) {
+            console.error('Error parsing learningProgress:', error);
+        }
     }
 const RevisionLAnguageSelect=(language)=>{
     resetLearningProgress(language);

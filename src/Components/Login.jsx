@@ -23,7 +23,7 @@ function Login() {
           "AsyncAwaitQ", "AsyncAwaitBasic", "AsyncFollowUp", "AsyncPatterns", "CSharp", "cCollection",
           "cicdAction", "entityFramwork", "JavaScript", "LINQAdvanced", "LINQQueryPractice",
           "NETCaseStudies", "NETCoreAWS", "NETFollowUp", "ReactFollowUp", "ReduxStateManagement",
-          "SQLCaseStudies", "SQLQueryStudies","ShapBasic","Ccoding"
+          "SQLCaseStudies", "SQLQueryStudies","ShapBasic","Ccoding","Api"
         ];
       } else {
         // For other users, allow all languages
@@ -31,7 +31,7 @@ function Login() {
           "AsyncAwaitQ", "AsyncAwaitBasic", "AsyncFollowUp", "AsyncPatterns", "CSharp", "cCollection",
           "cicdAction", "entityFramwork", "JavaScript", "LINQAdvanced", "LINQQueryPractice",
           "NETCaseStudies", "NETCoreAWS", "NETFollowUp", "ReactFollowUp", "ReduxStateManagement",
-          "SQLCaseStudies", "SQLQueryStudies","ShapBasic","Ccoding"
+          "SQLCaseStudies", "SQLQueryStudies","ShapBasic","Ccoding","Api"
         ];
       }
       login(username, permissions);

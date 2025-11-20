@@ -7,13 +7,13 @@
       "difficulty": "beginner",
       "answer": "State is internal, mutable data managed within a component. Props are external, immutable data passed from parent to child. State triggers re-renders when changed, props cause re-renders when parent re-renders with new props."
     },
-    {
-      "id": 2,
-      "question": "Explain React hooks (useState, useEffect, useContext).",
-      "category": "react",
-      "difficulty": "beginner",
-      "answer": "useState: Manages component state. useEffect: Handles side effects (API calls, subscriptions). useContext: Accesses context values without prop drilling. Hooks must be called at top level and only in functional components."
-    },
+{
+  "id": 2,
+  "question": "Explain all major React hooks such as useState, useEffect, useContext, useRef, useMemo, useCallback, useReducer, useLayoutEffect, useImperativeHandle, and useId.",
+  "category": "react",
+  "difficulty": "beginner",
+  "answer": "React provides a set of built-in hooks for handling state, lifecycle, performance, and context in functional components:\n\n• useState – Manages local component state.\n• useEffect – Runs side effects such as API calls, subscriptions, timers.\n• useContext – Consumes values from React Context without prop drilling.\n• useRef – Stores mutable values and references DOM elements.\n• useMemo – Memoizes expensive calculations to avoid recalculation on every render.\n• useCallback – Memoizes functions to prevent unnecessary re-renders.\n• useReducer – Manages complex state logic using reducers (similar to Redux patterns).\n• useLayoutEffect – Like useEffect, but fires synchronously after DOM updates (useful for layout measurements).\n• useImperativeHandle – Customizes the value exposed when a component is used with forwardRef.\n• useId – Generates unique IDs for accessibility and SSR-safe identifiers.\n• useDebugValue – Used inside custom hooks to show debug info in React DevTools.\n• useTransition – Allows marking state updates as non-blocking for smoother UI.\n• useDeferredValue – Defers a value for improved rendering performance.\n• useSyncExternalStore – Safely subscribes to external stores (Redux, Zustand, etc.).\n• useInsertionEffect – Used by CSS-in-JS libraries to insert styles before layout.\n\nHooks must follow the Rules of Hooks: call them only at the top level of a component or inside custom hooks—not inside loops, conditions, or nested functions."
+},
     {
       "id": 3,
       "question": "What is Virtual DOM and how does it work?",
