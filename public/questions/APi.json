@@ -1,0 +1,136 @@
+[
+  {
+    "id": 1,
+    "question": "What is the difference between REST and SOAP APIs?",
+    "answer": "REST (Representational State Transfer) is an architectural style that uses standard HTTP methods (GET, POST, PUT, DELETE) and is stateless, using JSON/XML formats. SOAP (Simple Object Access Protocol) is a protocol that uses XML and WSDL, requires more bandwidth, and has built-in error handling. REST is more flexible and faster, while SOAP is more standardized and secure."
+  },
+  {
+    "id": 2,
+    "question": "What are the key principles of RESTful API design?",
+    "answer": "Key principles include: 1) Statelessness - each request contains all necessary information, 2) Client-Server architecture - separation of concerns, 3) Cacheability - responses must define themselves as cacheable or not, 4) Uniform Interface - consistent resource identification and manipulation, 5) Layered System - architecture composed of hierarchical layers."
+  },
+  {
+    "id": 3,
+    "question": "How do you handle versioning in APIs?",
+    "answer": "Common versioning strategies include: 1) URI versioning (/api/v1/users), 2) Query string versioning (/api/users?version=1), 3) Header versioning (Custom header: Api-Version: 1), 4) Media type versioning (Accept: application/vnd.company.user-v1+json). URI versioning is most common and discoverable."
+  },
+  {
+    "id": 4,
+    "question": "What is HATEOAS and why is it important in REST APIs?",
+    "answer": "HATEOAS (Hypermedia as the Engine of Application State) means responses include links to related actions and resources. This makes the API self-discoverable and tells clients what they can do next, reducing coupling between client and server."
+  },
+  {
+    "id": 5,
+    "question": "How do you handle pagination in large datasets?",
+    "answer": "Two main approaches: 1) Offset-based pagination using LIMIT and OFFSET - simple but slow for large offsets, 2) Cursor-based pagination using WHERE id > last_id - faster and consistent for large datasets. Always include metadata like total count, next/previous links, and current page info."
+  },
+  {
+    "id": 6,
+    "question": "What is the difference between authentication and authorization?",
+    "answer": "Authentication verifies who the user is (e.g., username/password, JWT tokens). Authorization determines what an authenticated user can access (e.g., roles, permissions, scopes). Authentication comes first, then authorization."
+  },
+  {
+    "id": 7,
+    "question": "What are common API authentication methods?",
+    "answer": "1) API Keys - simple but less secure, 2) JWT (JSON Web Tokens) - stateless and scalable, 3) OAuth 2.0 - delegation framework, 4) Basic Authentication - username/password in header, 5) Bearer Tokens - token-based authentication. OAuth 2.0 with JWT is most common for modern APIs."
+  },
+  {
+    "id": 8,
+    "question": "How do you handle errors in APIs?",
+    "answer": "Use standard HTTP status codes (4xx for client errors, 5xx for server errors). Return consistent error response format with: error code, message, details, and timestamp. Include correlation IDs for debugging. Avoid exposing sensitive information in error responses."
+  },
+  {
+    "id": 9,
+    "question": "What is rate limiting and why is it important?",
+    "answer": "Rate limiting controls how many requests a client can make in a time window. It's crucial for: 1) Preventing abuse and DDoS attacks, 2) Ensuring fair usage among users, 3) Protecting backend services from overload, 4) Managing API costs. Common headers: X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset."
+  },
+  {
+    "id": 10,
+    "question": "What is idempotency in APIs and why is it important?",
+    "answer": "Idempotency means making multiple identical requests has the same effect as a single request. Crucial for: 1) Retry mechanisms - safe to retry failed requests, 2) Payment processing - prevent duplicate charges, 3) Distributed systems - handle network failures. GET, PUT, DELETE are naturally idempotent; POST is not."
+  },
+  {
+    "id": 11,
+    "question": "How do you document your APIs?",
+    "answer": "Use OpenAPI/Swagger specification for machine-readable documentation. Tools include: 1) Swagger UI - interactive documentation, 2) Redoc - beautiful static docs, 3) Postman - collection-based docs. Documentation should include endpoints, parameters, responses, examples, and authentication methods."
+  },
+  {
+    "id": 12,
+    "question": "What is content negotiation in APIs?",
+    "answer": "Content negotiation allows clients to request different representations of a resource using Accept headers. For example: Accept: application/json or Accept: application/xml. The server responds with the appropriate content type in Content-Type header."
+  },
+  {
+    "id": 13,
+    "question": "How do you test APIs?",
+    "answer": "Multiple testing levels: 1) Unit tests - individual components, 2) Integration tests - end-to-end API calls, 3) Contract tests - verify API specifications, 4) Performance tests - load and stress testing, 5) Security tests - vulnerability scanning. Tools: Postman, Jest, JMeter, OWASP ZAP."
+  },
+  {
+    "id": 14,
+    "question": "What is CORS and how do you handle it?",
+    "answer": "CORS (Cross-Origin Resource Sharing) is a security mechanism that allows or restricts resources requested from another domain. Configure CORS by setting appropriate headers: Access-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers. Essential for web applications consuming APIs from different domains."
+  },
+  {
+    "id": 15,
+    "question": "What are microservices and how do they communicate via APIs?",
+    "answer": "Microservices are small, independent services that work together. They communicate via: 1) Synchronous - HTTP/REST APIs, gRPC, 2) Asynchronous - message queues (RabbitMQ, Kafka), event-driven patterns. API Gateways often handle routing, composition, and cross-cutting concerns for microservices."
+  },
+  {
+    "id": 16,
+    "question": "How do you ensure API backward compatibility?",
+    "answer": "Strategies include: 1) Add new fields, don't remove or rename existing ones, 2) Use versioning for breaking changes, 3) Make new fields optional with sensible defaults, 4) Deprecate old features gradually, 5) Use feature flags, 6) Comprehensive testing of existing clients."
+  },
+  {
+    "id": 17,
+    "question": "What is an API Gateway and its benefits?",
+    "answer": "An API Gateway is a single entry point that handles requests to multiple backend services. Benefits: 1) Request routing and composition, 2) Authentication and authorization, 3) Rate limiting, 4) Caching, 5) Load balancing, 6) Monitoring and logging, 7) API versioning."
+  },
+  {
+    "id": 18,
+    "question": "How do you monitor API performance?",
+    "answer": "Key metrics: 1) Response time and latency, 2) Throughput (requests/second), 3) Error rates, 4) Availability/uptime, 5) Resource utilization. Tools: Prometheus, Grafana, New Relic, Application Insights. Implement distributed tracing for microservices."
+  },
+  {
+    "id": 19,
+    "question": "What is GraphQL and how does it differ from REST?",
+    "answer": "GraphQL is a query language for APIs that allows clients to request exactly the data they need. Differences: 1) Single endpoint vs. multiple endpoints, 2) Client-defined response structure vs. fixed responses, 3) Strongly typed schema, 4) Reduced over-fetching/under-fetching, 5) More complex to implement and cache."
+  },
+  {
+    "id": 20,
+    "question": "How do you secure APIs against common vulnerabilities?",
+    "answer": "Security measures: 1) Input validation and sanitization, 2) SQL injection protection (parameterized queries), 3) XSS prevention, 4) CSRF protection, 5) HTTPS enforcement, 6) Regular security updates, 7) API security testing, 8) Least privilege principle for access control."
+  },
+  {
+    "id": 21,
+    "question": "Your .NET Core API becomes slow after deployment. What steps do you take to diagnose the issue?",
+    "answer": "1. Confirm the Issue: Check logs, APM tools, and compare response times. 2. Enable Detailed Logging: Increase log levels and track request times, DB queries, and external calls. 3. Check Server & Infrastructure Metrics: Monitor CPU, memory, disk I/O, and network. 4. Identify Slow Database Queries: Use EF Core logging or SQL Profiler to find missing indexes, N+1 queries, or long-running operations. 5. Review API Code: Look for heavy LINQ, synchronous I/O, or blocking calls. 6. Check for Memory Leaks: Use tools like dotnet-dump. 7. Inspect Third-Party Dependencies: Check external API latency. 8. Check Deployment Configuration: Verify connection strings and environment settings. 9. Enable Performance Profiling: Use dotTrace or Application Insights Profiler. 10. Load Test: Reproduce the issue in a staging environment. 11. Implement Caching: For frequently accessed data. 12. Rollback or Compare: Diff recent code changes or rollback to a stable version."
+  },
+  {
+    "id": 22,
+    "question": "How would you design a query to paginate large datasets efficiently (SQL + EF Core)?",
+    "answer": "For normal datasets, use OFFSET-FETCH pagination with `Skip` and `Take` in EF Core, ensuring the ORDER BY column is indexed. For very large datasets (millions of rows), use Keyset (Seek) Pagination with a `WHERE` clause (e.g., `WHERE Id > lastId`). This uses an index seek and avoids the performance cost of skipping a large number of rows. Always use `AsNoTracking()` for read-only queries, project only necessary columns, and consider compiled queries for high-traffic endpoints."
+  },
+  {
+    "id": 23,
+    "question": "What are the most common EF Core performance issues and how do you solve them?",
+    "answer": "1. N+1 Queries: Solved by using `Include` for eager loading or projection with `Select`. 2. Early `ToList()`: Ensure filtering is done before calling `ToList()`. 3. Missing `AsNoTracking()`: Use it for read-only scenarios to reduce change-tracking overhead. 4. Large Object Graphs with `Include`: Use projection or `AsSplitQuery()`. 5. Missing Database Indexes: Add indexes on filtered/sorted columns. 6. Chatty Database: Use `AddRange`, `UpdateRange` for batching. 7. Lack of Compiled Queries: Use `EF.CompileAsyncQuery` for frequently executed queries. 8. Inefficient Pagination: Use keyset pagination over OFFSET for large skips. 9. Lazy Loading in APIs: Disable it to prevent unintended N+1 queries."
+  },
+  {
+    "id": 24,
+    "question": "Bug Hunt: Identify 3-4 issues in the provided OrderProcessor code.",
+    "answer": "Issue 1 - SQL Injection: The code uses string concatenation for the SQL query. Fix: Use parameterized queries. Issue 2 - Synchronous I/O in Async Method: `GetOrderFromDatabase` is a blocking call. Fix: Make all database operations async (e.g., `ExecuteReaderAsync`). Issue 3 - No Error Handling/Transactions: If the email sends but the status update fails, the system is inconsistent. Fix: Use try/catch and transactions for atomicity. Issue 4 - Mixed Responsibilities: The class handles DB access, email, and business logic. Fix: Use Dependency Injection (IOrderRepository, IEmailService). Bonus Issue - No Null Check: If the order isn't found, it causes a NullReferenceException. Fix: Add a null check for the order."
+  },
+  {
+    "id": 25,
+    "question": "What would you add to the OrderProcessor code for production-readiness?",
+    "answer": "1. Comprehensive Logging for all critical steps. 2. Retry Policies (e.g., using Polly) for transient failures like email sending. 3. Cancellation Support by passing `CancellationToken` to async methods. 4. Validation to check if the order exists and isn't already processed. 5. Idempotency to prevent double-processing of the same order. 6. Secure Configuration by storing secrets like connection strings in Azure Key Vault. 7. Telemetry and Monitoring to track performance and failures. 8. Unit Tests with mocked dependencies to ensure logic correctness."
+  },
+  {
+    "id": 26,
+    "question": "Explain ASP.NET Core Routing.",
+    "answer": "ASP.NET Core Routing maps incoming HTTP requests to endpoint handlers, such as MVC actions, Razor Pages, or Minimal API endpoints. There are two primary styles: 1. Convention-Based Routing: Defines a general pattern (e.g., `{controller=Home}/{action=Index}/{id?}`) in the middleware pipeline. 2. Attribute Routing: Uses attributes like `[Route]`, `[HttpGet]` directly on controllers and actions for precise control. The routing pipeline uses `UseRouting()` to match a request to an endpoint and `UseEndpoints()` to execute the matched endpoint. Route templates can include parameters, constraints (e.g., `{id:int}`), and default values. Minimal APIs (`.NET 6+`) use a simplified syntax like `app.MapGet(\"/hello\", () => \"World\");`."
+  },{
+  "id": 27,
+  "question": "Under high load, our .NET API throws `ObjectDisposedException: Cannot access a disposed object` related to `HttpClient`. What's the root cause and how do we fix it in production?",
+  "answer": "## Root Cause\nA pooled or shared `HttpMessageHandler` is being disposed prematurely, often due to incorrect `HttpClient` disposal or Dependency Injection (DI) lifetime mismatches. Under low load, the timing is not exposed, but under high concurrency, one request disposes the handler while others are still using it, causing the `ObjectDisposedException`.\n\n## Production-Safe Fixes\n1.  **Use `IHttpClientFactory`:** This is the primary and recommended solution. It manages handler lifetimes, pooling, and disposal automatically, preventing these issues.\n\n    **In Program.cs:**\n    ```csharp\n    services.AddHttpClient<MyService>(); // Registers a typed client\n    ```\n\n    **In your service:**\n    ```csharp\n    public class MyService\n    {\n        private readonly HttpClient _client;\n        public MyService(HttpClient client) => _client = client; // Injected & managed by DI\n        // Use _client without manually disposing it.\n    }\n    ```\n\n2.  **Stop Manual Disposal of Shared Handlers:** Never use `using` with an `HttpClient` that is built from a shared or singleton handler.\n\n## Code Example: Bad vs. Good\n\n**❌ Bad (Causes Exception):**\n```csharp\npublic class MyService\n{\n    private static readonly HttpMessageHandler _handler = new SocketsHttpHandler();\n    \n    public async Task<string> GetDataAsync()\n    {\n        using var client = new HttpClient(_handler); // Disposes the shared handler!\n        return await client.GetStringAsync(\"https://api.example.com/data\");\n    }\n}\n```\n\n**✅ Good (Safe):**\n```csharp\n// Program.cs\nservices.AddHttpClient<MyService>(); // Let the factory manage lifetimes\n\n// Service Class\npublic class MyService\n{\n    private readonly HttpClient _client;\n    public MyService(HttpClient client) => _client = client; // Factory injects a safe client\n    \n    public async Task<string> GetDataAsync()\n    {\n        return await _client.GetStringAsync(\"https://api.example.com/data\");\n    }\n}\n```\n\n**TL;DR for Interview:** The root cause is a shared `HttpMessageHandler` being disposed while still in use. The fix is to stop manually managing `HttpClient` and handler lifetimes and instead use `IHttpClientFactory`, which handles pooling and disposal correctly."
+}
+]

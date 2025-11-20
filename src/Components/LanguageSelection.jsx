@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useContext, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Cloud, Zap, Cpu, Sparkles, ArrowRight, Star, Mic2, Video, Layers, Workflow, Database, GitBranch, Search, X, RotateCcw, BookOpen, List, Grid3X3, Play, Users, Target, Rocket } from "lucide-react";
+import { Code2, Cloud, Zap, Cpu,Globe, Sparkles, ArrowRight, Star, Mic2, Video, Layers, Workflow, Database, GitBranch, Search, X, RotateCcw, BookOpen, List, Grid3X3, Play, Users, Target, Rocket } from "lucide-react";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import toast from "react-hot-toast";
 import { DarkModeContext } from '../App';
@@ -192,8 +192,18 @@ const languages = [
     bgGradient: "from-teal-500/20 to-emerald-500/20",
     stats: "105+ Cases", 
     features: ["Complex Queries","Performance Tuning","Advanced Indexing", "Real-world Scenarios","Window Functions","Query Optimization"]
-},
-
+},{
+    id: 30,
+    code: "Api",
+    label: "API",
+    icon: <Globe className="w-8 h-8" />,
+    description: "RESTful API development, integration, and optimization.",
+    lang: "JavaScript/TypeScript",
+    gradient: "from-blue-500 via-indigo-500 to-purple-500",
+    bgGradient: "from-blue-500/20 to-purple-500/20",
+    stats: "89+ Endpoints",
+    features: ["REST Architecture", "Authentication", "Rate Limiting", "Documentation"]
+}
 ];
 
 const LearningSelection = ["Learning", "Interview"];
