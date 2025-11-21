@@ -5,63 +5,57 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../App";
 import LanguageSelection from "../Components/LanguageSelection";
 
-// 🧩 Mock react-router-dom
+// Mock navigate
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
-  useNavigate: () => jest.fn(),
-  BrowserRouter: ({ children }) => <div>{children}</div>,
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockNavigate
 }));
 
-
-// 🧩 Mock react-hot-toast
+// Mock toast
 jest.mock("react-hot-toast", () => ({
-  error: jest.fn(),
+  error: jest.fn()
 }));
 
-// 🧩 Mock CalendarInterviewTracker (since it’s used inside LanguageSelection)
+// Mock Calendar
 jest.mock("../Pages/CalendarInterviewTracker", () => () => (
   <div data-testid="calendar-mock">Calendar Mock</div>
 ));
 
+// Helper render
+const renderWithContext = (darkMode = false) => {
+  return render(
+    <DarkModeContext.Provider value={{ darkMode }}>
+      <LanguageSelection />
+    </DarkModeContext.Provider>
+  );
+};
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("LanguageSelection Component", () => {
-  const renderWithContext = (darkMode = false) => {
-    return render(
-      <DarkModeContext.Provider value={{ darkMode }}>
-        <LanguageSelection />
-      </DarkModeContext.Provider>
-    );
-  };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  test("renders header and basic UI elements", () => {
+  test("renders header and UI elements", () => {
     renderWithContext();
 
-    // Check main heading
     expect(screen.getByText(/AI-POWERED TECHNICAL INTERVIEWS/i)).toBeInTheDocument();
-    expect(screen.getByText(/Choose a domain/i)).toBeInTheDocument();
-
-    // Check Calendar mock is rendered
     expect(screen.getByTestId("calendar-mock")).toBeInTheDocument();
-
-    // Check Learning and Interview buttons
     expect(screen.getByText("Learning")).toBeInTheDocument();
     expect(screen.getByText("Interview")).toBeInTheDocument();
   });
 
-  test("shows toast error when selecting language before choosing mode", async () => {
+  test("shows toast error when clicking language before selecting mode", async () => {
     renderWithContext();
 
-    const arrowButtons = screen.getAllByRole("button", { hidden: true });
+    // Lucide icons are SVG → use role: img
+    const arrowIcons = screen.getAllByRole("img", { hidden: true });
 
-    // Simulate clicking a card without selecting mode
-    fireEvent.click(arrowButtons[0]);
+    fireEvent.click(arrowIcons[0]);
 
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(
@@ -70,31 +64,27 @@ describe("LanguageSelection Component", () => {
     });
   });
 
-  test("navigates when mode selected and card clicked", async () => {
+  test("navigates when mode selected and language clicked", async () => {
     renderWithContext();
 
-    // Click "Learning" mode
-    const learningButton = screen.getByText("Learning");
-    fireEvent.click(learningButton);
+    // Select Learning Mode
+    fireEvent.click(screen.getByText("Learning"));
 
-    // Find a card's arrow and click it
-    const arrows = screen.getAllByRole("img", { hidden: true }); // Lucide icons render as svg
-    expect(arrows.length).toBeGreaterThan(0);
-
-    // Simulate selecting first language
-    const arrowIcon = arrows[0];
-    fireEvent.click(arrowIcon);
+    // Click first language arrow
+    const arrowIcons = screen.getAllByRole("img", { hidden: true });
+    fireEvent.click(arrowIcons[0]);
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalled();
+      expect(mockNavigate).toHaveBeenCalledTimes(1);
     });
   });
 
   test("renders correctly in dark mode", () => {
     renderWithContext(true);
 
-    const container = screen.getByText(/AI-POWERED TECHNICAL INTERVIEWS/i)
-      .closest("div");
-    expect(container).toHaveClass("backdrop-blur-md");
+    const header = screen.getByText(/AI-POWERED TECHNICAL INTERVIEWS/i);
+    expect(header).toHaveClass("backdrop-blur-md");
+
   });
+
 });

@@ -1,5 +1,35 @@
 {
   "data": [
+  {
+    "questionId": 1,
+    "question": "What is a Pure Function?",
+    "answer": "A pure function always returns the same output for the same input and has no side effects. It does not modify external state, global variables, or perform operations like API calls or DOM manipulation."
+  },
+  {
+    "questionId": 2,
+    "question": "Give an example of a Pure Function.",
+    "answer": "function add(a, b) { return a + b; } — It always gives the same result for the same inputs and does not change anything outside."
+  },
+  {
+    "questionId": 3,
+    "question": "What makes a function impure?",
+    "answer": "A function becomes impure if it has side effects such as modifying external variables, doing API calls, generating random values, or relying on time/date."
+  },
+  {
+    "questionId": 4,
+    "question": "What is a Pure Component in React?",
+    "answer": "A PureComponent in React performs a shallow comparison of props and state and only re-renders if a change is detected. It helps improve performance by avoiding unnecessary re-renders."
+  },
+  {
+    "questionId": 5,
+    "question": "Pure Component vs Normal Component?",
+    "answer": "A normal Component re-renders on every update, while a PureComponent re-renders only when props or state change (based on shallow comparison). PureComponent provides performance optimization."
+  },
+  {
+    "questionId": 6,
+    "question": "What is shallow comparison in PureComponent?",
+    "answer": "Shallow comparison checks only the top-level values: primitives are compared by value, objects/arrays are compared by reference. If references change, PureComponent re-renders."
+  },
     {
       "id": 1,
       "question": "What is the difference between state and props?",
