@@ -1,6 +1,31 @@
 {
   "data": [
   {
+    "id": 1,
+    "question": "What is an interceptor in frontend applications?",
+    "answer": "An interceptor is like middleware that sits between the request and response. It automatically intercepts HTTP calls to process or modify them before they reach the server or the UI."
+  },
+  {
+    "id": 2,
+    "question": "What is the main purpose of an interceptor?",
+    "answer": "The main purpose is to automatically attach common data such as authorization tokens, language, or headers, and centrally manage request processing without repeating code in every API call."
+  },
+  {
+    "id": 3,
+    "question": "How do interceptors handle exceptions?",
+    "answer": "Interceptors provide global error handling, allowing us to catch exceptions like 401 unauthorized, token expiration, or server errors and respond with actions such as redirecting to login or showing alerts."
+  },
+  {
+    "id": 4,
+    "question": "How do interceptors reduce code duplication?",
+    "answer": "Instead of writing token binding or error handling logic in every API request, the interceptor handles it once in a centralized place, improving maintainability and reducing redundancy."
+  },
+  {
+    "id": 5,
+    "question": "Is an interceptor similar to middleware?",
+    "answer": "Yes, an interceptor functions like middleware. It runs between the request and response lifecycle, modifying requests or responses before they continue further."
+  },
+  {
     "questionId": 1,
     "question": "What is a Pure Function?",
     "answer": "A pure function always returns the same output for the same input and has no side effects. It does not modify external state, global variables, or perform operations like API calls or DOM manipulation."
