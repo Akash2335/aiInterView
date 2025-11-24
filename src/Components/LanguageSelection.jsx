@@ -203,6 +203,22 @@ const languages = [
     bgGradient: "from-blue-500/20 to-purple-500/20",
     stats: "89+ Endpoints",
     features: ["REST Architecture", "Authentication", "Rate Limiting", "Documentation"]
+}{
+  id: 31,
+  code: "jwt",
+  label: "JWT",
+  icon: <Globe className="w-8 h-8" />,
+  description: "Secure token-based authentication and authorization using JSON Web Tokens.",
+  lang: "JavaScript / TypeScript",
+  gradient: "from-blue-500 via-indigo-500 to-purple-500",
+  bgGradient: "from-blue-500/20 to-purple-500/20",
+  stats: "High Security",
+  features: [
+    "Access & Refresh Tokens",
+    "HttpOnly Secure Cookies",
+    "Role-Based Authorization",
+    "Token Verification & Expiry"
+  ]
 }
 ];
 

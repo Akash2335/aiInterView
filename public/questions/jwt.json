@@ -1,0 +1,53 @@
+{
+"data":[
+  {
+    "id": 1,
+    "question": "Is JWT encrypted?",
+    "answer": "No, JWT is not encrypted. It is only Base64 encoded, meaning anyone can decode and read the payload if they access the token."
+  },
+  {
+    "id": 2,
+    "question": "What type of data should not be stored in JWT?",
+    "answer": "Sensitive or confidential data like passwords, bank or card numbers, Aadhaar/SSN, and private identity information should never be stored inside JWT."
+  },
+  {
+    "id": 3,
+    "question": "What type of data should be stored in JWT?",
+    "answer": "Only minimal identity and authorization information such as userId, email, role, and expiry time (exp) should be stored."
+  },
+  {
+    "id": 4,
+    "question": "Why should HTTPS be used with JWT?",
+    "answer": "HTTPS must be used to protect JWT from man-in-the-middle attacks by encrypting data transmission between client and server."
+  },
+  {
+    "id": 5,
+    "question": "How should JWT be signed securely?",
+    "answer": "JWT should be signed using a strong secret key stored in environment variables such as process.env.JWT_SECRET."
+  },
+  {
+    "id": 6,
+    "question": "What is the Access Token and Refresh Token strategy?",
+    "answer": "Access Token has a short expiry (5–15 minutes) used for authorization, while Refresh Token has a long expiry (days/weeks) used to generate new access tokens."
+  },
+  {
+    "id": 7,
+    "question": "Where should JWT be stored securely?",
+    "answer": "JWT should be stored in HttpOnly secure cookies to prevent XSS attacks. Avoid storing in localStorage or sessionStorage."
+  },
+  {
+    "id": 8,
+    "question": "How should JWT be verified?",
+    "answer": "JWT should be verified on the backend using signature verification before granting access."
+  },
+  {
+    "id": 9,
+    "question": "How to handle highly sensitive data if needed to send?",
+    "answer": "Highly sensitive data should be encrypted separately using encryption methods like AES before including in JWT, and decrypted only on backend."
+  },
+  {
+    "id": 10,
+    "question": "What is the primary purpose of JWT?",
+    "answer": "JWT should be used only for authentication and authorization, not for transferring secure or private data."
+  }
+]}
