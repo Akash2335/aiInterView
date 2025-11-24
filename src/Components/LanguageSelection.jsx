@@ -203,7 +203,7 @@ const languages = [
     bgGradient: "from-blue-500/20 to-purple-500/20",
     stats: "89+ Endpoints",
     features: ["REST Architecture", "Authentication", "Rate Limiting", "Documentation"]
-}{
+},{
   id: 31,
   code: "jwt",
   label: "JWT",
